@@ -75,7 +75,6 @@ com/google/android/gms/common/annotation/KeepForSdk.class
 com/google/android/gms/internal/zzyh.class
 com/google/android/gms/appindexing/Action.class
 com/google/android/gms/ads/internal/overlay/AdOverlayInfoParcel.class
-com/fasterxml/jackson/core/JsonParser.class
 android/support/v7/graphics/drawable/DrawerArrowDrawable.class
 com/google/android/gms/wallet/InstrumentInfo.class
 com/google/android/gms/internal/zztq.class
@@ -86,7 +85,6 @@ android/support/v7/view/menu/CascadingMenuPopup$1.class
 com/google/android/gms/fitness/FitnessStatusCodes.class
 com/google/android/gms/appinvite/AppInviteApi.class
 com/google/android/gms/ads/internal/overlay/zzp.class
-com/fasterxml/jackson/core/base/ParserBase.class
 com/google/android/gms/internal/zzale.class
 com/google/android/gms/cast/CastRemoteDisplay$CastRemoteDisplaySessionResult.class
 com/google/android/gms/common/internal/safeparcel/zza.class
@@ -109,7 +107,6 @@ com/google/android/gms/internal/zzwq.class
 com/google/android/gms/internal/zzajd.class
 com/google/firebase/storage/StorageException$ErrorCode.class
 com/google/android/gms/analytics/Logger$LogLevel.class
-com/dropbox/core/DbxRequestConfig.class
 com/google/android/gms/ads/internal/overlay/zza.class
 com/google/android/gms/internal/zzakk.class
 android/support/v4/media/MediaMetadataCompat$TextKey.class
@@ -135,7 +132,6 @@ com/google/android/gms/tagmanager/TagManagerApiImpl.class
 android/support/annotation/DimenRes.class
 android/support/v7/view/menu/ShowableListMenu.class
 com/google/android/gms/ads/NativeExpressAdView.class
-com/fasterxml/jackson/core/util/JsonGeneratorDelegate.class
 android/support/v4/app/ServiceCompat$StopForegroundFlags.class
 com/google/android/gms/cast/framework/media/uicontroller/UIMediaController.class
 com/google/android/gms/internal/zzacq.class
@@ -176,7 +172,6 @@ com/google/android/gms/internal/zzadi.class
 com/google/android/gms/internal/zzazn.class
 com/google/android/gms/internal/zzvm.class
 com/google/android/gms/common/GooglePlayServicesUtil.class
-com/dropbox/core/DbxWebAuthNoRedirect.class
 android/support/v7/widget/LinearLayoutCompat$DividerMode.class
 com/google/android/gms/ads/internal/overlay/zzy.class
 com/google/android/gms/internal/zzrl.class
@@ -277,7 +272,6 @@ android/support/v4/widget/SimpleCursorAdapter.class
 com/google/android/gms/internal/zzazl.class
 com/google/android/gms/nearby/connection/AppIdentifier.class
 com/google/android/gms/wearable/NodeApi.class
-com/fasterxml/jackson/core/JsonFactory.class
 com/google/ads/mediation/AbstractAdViewAdapter.class
 com/google/android/gms/internal/zzlz.class
 com/google/android/gms/internal/zzapw$zza.class
@@ -353,7 +347,6 @@ com/google/android/gms/ads/internal/zzp.class
 android/support/v7/appcompat/R$attr.class
 android/support/v4/view/accessibility/AccessibilityEventCompat.class
 com/google/android/gms/fitness/data/Goal$FrequencyObjective.class
-com/dropbox/core/DbxWebAuth.class
 android/support/v4/view/ViewCompatJB.class
 com/google/android/gms/internal/zzis.class
 com/google/android/gms/common/zzo.class
@@ -377,7 +370,6 @@ com/google/android/gms/internal/zzxz.class
 com/google/android/gms/internal/zzcku.class
 android/support/v4/widget/MaterialProgressDrawable$Ring.class
 com/google/android/gms/internal/zzzo.class
-com/fasterxml/jackson/core/JsonGenerator.class
 com/google/android/gms/internal/zzaiu.class
 com/google/android/gms/internal/zzig.class
 com/google/android/gms/internal/zzun.class
@@ -484,7 +476,6 @@ com/google/android/gms/common/internal/zzad.class
 com/google/android/gms/common/internal/zzbv.class
 com/google/android/gms/internal/zzgv.class
 com/google/android/gms/nearby/messages/internal/zzf.class
-com/dropbox/core/v2/team/DbxTeamTeamRequests.class
 com/google/android/gms/internal/zzzi.class
 com/google/android/gms/nearby/messages/Message.class
 android/support/v4/app/ServiceCompat$ServiceCompatImpl.class
@@ -648,7 +639,6 @@ com/google/android/gms/common/SignInButton.class
 com/google/android/gms/internal/zzalg.class
 android/support/v4/text/util/LinkifyCompat$1.class
 android/support/v4/media/session/PlaybackStateCompat$State.class
-com/dropbox/core/v2/sharing/DbxUserSharingRequests.class
 com/google/android/gms/games/multiplayer/turnbased/LoadMatchesResponse.class
 com/google/android/gms/internal/zzayh.class
 com/google/android/gms/fitness/data/Goal$MismatchedGoalException.class
@@ -685,17 +675,14 @@ android/support/v4/content/PermissionChecker$PermissionResult.class
 android/support/v7/app/AppCompatDelegateImplV9.class
 android/support/v4/view/ViewCompatJellybeanMr1.class
 com/google/android/gms/internal/zzmc.class
-com/fasterxml/jackson/core/json/JsonWriteContext.class
 com/google/android/gms/measurement/AppMeasurement.class
 com/google/firebase/database/ThrowOnExtraProperties.class
 android/support/v7/appcompat/R$styleable.class
 android/support/v7/widget/Toolbar.class
 android/support/multidex/MultiDexApplication.class
-com/fasterxml/jackson/core/util/VersionUtil.class
 com/google/android/gms/internal/zzqj.class
 com/google/android/gms/wearable/CapabilityApi$CapabilityFilterType.class
 com/google/android/gms/fitness/data/Goal.class
-com/fasterxml/jackson/core/filter/FilteringGeneratorDelegate.class
 com/google/android/gms/R$styleable.class
 com/google/android/gms/auth/api/credentials/zzb.class
 com/google/android/gms/internal/zzabt.class
@@ -717,7 +704,6 @@ com/google/android/gms/nearby/connection/PayloadTransferUpdate$Status.class
 android/support/v4/media/MediaBrowserCompat$ItemCallback.class
 com/google/android/gms/internal/zzty.class
 com/google/android/gms/internal/zzabu.class
-com/fasterxml/jackson/core/type/ResolvedType.class
 android/support/v4/widget/SearchViewCompat$OnCloseListenerCompat.class
 com/google/android/gms/ads/internal/overlay/zzs.class
 android/support/v7/view/menu/CascadingMenuPopup$CascadingMenuInfo.class
@@ -761,8 +747,6 @@ com/google/android/gms/ads/internal/zzal.class
 com/google/android/gms/internal/zzrj.class
 android/support/v4/media/MediaMetadataCompat$BitmapKey.class
 com/google/android/gms/identity/intents/AddressConstants$Themes.class
-com/fasterxml/jackson/core/base/GeneratorBase.class
-com/fasterxml/jackson/core/util/JsonParserDelegate.class
 com/google/android/gms/internal/zzadm.class
 android/support/v4/graphics/drawable/DrawableCompat.class
 com/google/android/gms/internal/zznb.class
@@ -776,10 +760,8 @@ com/google/android/gms/internal/zzvo.class
 android/support/v4/app/AppOpsManagerCompat.class
 com/google/android/gms/ads/MobileAds.class
 com/google/android/gms/internal/zzafc.class
-com/dropbox/core/http/StandardHttpRequestor.class
 com/google/android/gms/internal/zzia.class
 com/google/android/gms/safetynet/SafetyNet.class
-com/dropbox/core/v2/files/DbxUserFilesRequests.class
 com/google/android/gms/internal/zzya.class
 com/google/android/gms/auth/zzd.class
 com/google/android/gms/internal/zzacr.class
@@ -914,7 +896,6 @@ com/google/android/gms/internal/zzlf.class
 com/google/android/gms/location/places/PlaceFilter$zza.class
 com/google/android/gms/ads/internal/js/zzl.class
 com/google/android/gms/common/internal/safeparcel/zzb.class
-com/fasterxml/jackson/core/util/DefaultPrettyPrinter.class
 com/google/android/gms/ads/internal/zza.class
 android/support/v4/view/ViewCompat$FocusRelativeDirection.class
 com/google/android/gms/internal/zzayw.class
@@ -934,11 +915,9 @@ com/google/android/gms/internal/zzhr.class
 com/google/android/gms/internal/zzwu.class
 com/google/android/gms/common/api/Api$zzf.class
 android/support/annotation/LayoutRes.class
-com/fasterxml/jackson/core/JsonParseException.class
 com/google/android/gms/internal/zzmz.class
 android/support/v4/app/ServiceCompat$Api24ServiceCompatImpl.class
 android/support/v4/app/Fragment.class
-com/fasterxml/jackson/core/ObjectCodec.class
 com/google/android/gms/internal/zzajy.class
 com/google/android/gms/internal/zzrx.class
 com/google/ads/mediation/MediationServerParameters.class
@@ -951,12 +930,10 @@ com/google/android/gms/internal/zzaew.class
 com/google/android/gms/ads/search/DynamicHeightSearchAdRequest.class
 com/google/android/gms/wallet/Wallet.class
 android/support/v4/view/accessibility/AccessibilityRecordCompat.class
-com/fasterxml/jackson/core/filter/FilteringParserDelegate.class
 com/google/firebase/database/PropertyName.class
 android/support/v4/view/ViewCompatICSMr1.class
 com/google/android/gms/internal/zzcab.class
 com/google/android/gms/games/Games.class
-com/fasterxml/jackson/core/JsonGenerationException.class
 android/support/v7/appcompat/R$dimen.class
 android/support/v4/app/FragmentManager.class
 com/google/android/gms/internal/zzqc.class
@@ -986,7 +963,6 @@ com/google/android/gms/common/api/Api$zze.class
 com/google/android/gms/internal/zzajz.class
 com/google/android/gms/ads/search/DynamicHeightSearchAdRequest$Builder.class
 com/google/android/gms/drive/query/Query.class
-com/fasterxml/jackson/core/Version.class
 android/support/annotation/IntRange.class
 com/google/android/gms/internal/zzaie.class
 com/google/android/gms/wallet/WalletConstants.class

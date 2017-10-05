@@ -24,6 +24,8 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 /**
  * An activity that displays a map showing the place at the device's current location.
@@ -61,6 +63,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     //private String[] mLikelyPlaceAddresses = new String[mMaxEntries];
     //private String[] mLikelyPlaceAttributions = new String[mMaxEntries];
     //private LatLng[] mLikelyPlaceLatLngs = new LatLng[mMaxEntries];
+
+    private StorageReference mStorageRef;
 @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +89,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 .addApi(Places.PLACE_DETECTION_API)
                 .build();
         mGoogleApiClient.connect();
+
+        mStorageRef = FirebaseStorage.getInstance().getReference();
     }
 
     /**

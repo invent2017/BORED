@@ -1,7 +1,4 @@
-#Tue Oct 03 18:28:30 SGT 2017
+#Thu Oct 05 18:46:37 SGT 2017
 base.0=C\:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\!\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
-renamed.1=classes2.dex
 renamed.0=classes.dex
-file.1=C\:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\!\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes2.dex
-base.1=C\:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\!\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
 file.0=C\:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\!\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex

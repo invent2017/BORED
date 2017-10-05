@@ -12,12 +12,12 @@
         "source": "C:\\Users\\LikHern\\.android\\build-cache\\3ac3ba95c790e5960d50bdf1dbe1b96acdb54702\\output\\res\\drawable-xxxhdpi-v4\\ic_group_expand_02.png"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\ic_group_collapse_08.png",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\3ac3ba95c790e5960d50bdf1dbe1b96acdb54702\\output\\res\\drawable-xxxhdpi-v4\\ic_group_collapse_08.png"
-    },
-    {
         "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png",
         "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\drawable-xxxhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
+    },
+    {
+        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\ic_group_collapse_08.png",
+        "source": "C:\\Users\\LikHern\\.android\\build-cache\\3ac3ba95c790e5960d50bdf1dbe1b96acdb54702\\output\\res\\drawable-xxxhdpi-v4\\ic_group_collapse_08.png"
     },
     {
         "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\cast_ic_stop_circle_filled_white.png",
@@ -44,12 +44,12 @@
         "source": "C:\\Users\\LikHern\\.android\\build-cache\\b451ef381a4cf58256e3bbca04d2f71d9091ba6e\\output\\res\\drawable-xxxhdpi-v4\\quantum_ic_replay_30_grey600_36.png"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\powered_by_google_dark.png",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\370eff81a2e26ae1f4c9fb01057f3f3ac37854f2\\output\\res\\drawable-xxxhdpi-v4\\powered_by_google_dark.png"
-    },
-    {
         "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\quantum_ic_play_arrow_grey600_36.png",
         "source": "C:\\Users\\LikHern\\.android\\build-cache\\b451ef381a4cf58256e3bbca04d2f71d9091ba6e\\output\\res\\drawable-xxxhdpi-v4\\quantum_ic_play_arrow_grey600_36.png"
+    },
+    {
+        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\powered_by_google_dark.png",
+        "source": "C:\\Users\\LikHern\\.android\\build-cache\\370eff81a2e26ae1f4c9fb01057f3f3ac37854f2\\output\\res\\drawable-xxxhdpi-v4\\powered_by_google_dark.png"
     },
     {
         "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\ic_group_collapse_10.png",
@@ -120,12 +120,12 @@
         "source": "C:\\Users\\LikHern\\.android\\build-cache\\3ac3ba95c790e5960d50bdf1dbe1b96acdb54702\\output\\res\\drawable-xxxhdpi-v4\\ic_group_collapse_06.png"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
-    },
-    {
         "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\ic_group_collapse_00.png",
         "source": "C:\\Users\\LikHern\\.android\\build-cache\\3ac3ba95c790e5960d50bdf1dbe1b96acdb54702\\output\\res\\drawable-xxxhdpi-v4\\ic_group_collapse_00.png"
+    },
+    {
+        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png",
+        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
         "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\quantum_ic_play_arrow_grey600_48.png",

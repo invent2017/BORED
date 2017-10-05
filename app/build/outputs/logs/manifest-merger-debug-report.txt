@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED!\app\src\main\AndroidManifest.xml:2:1-37:12
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED!\app\src\main\AndroidManifest.xml:2:1-47:12
 	package
 		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED!\app\src\main\AndroidManifest.xml:3:5-35
 		INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED!\app\src\main\AndroidManifest.xml
@@ -26,7 +26,7 @@ ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED!\app\src\main\AndroidMa
 	android:name
 		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED!\app\src\main\AndroidManifest.xml:9:22-78
 application
-ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED!\app\src\main\AndroidManifest.xml:11:5-35:19
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED!\app\src\main\AndroidManifest.xml:11:5-45:19
 MERGED from [com.google.android.gms:play-services:11.0.4] C:\Users\LikHern\.android\build-cache\7cabd0ae65f8d101e6777ff6953ed1741d4b984f\output\AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-ads-lite:11.0.4] C:\Users\LikHern\.android\build-cache\d097e224c22d312e57f415d2dcd67cd082057314\output\AndroidManifest.xml:23:5-26:19
 MERGED from [com.google.android.gms:play-services-analytics:11.0.4] C:\Users\LikHern\.android\build-cache\a558f27eeb4bc769dc25fc18bae080f166040583\output\AndroidManifest.xml:26:5-19
@@ -43,7 +43,6 @@ MERGED from [com.google.android.gms:play-services-clearcut:11.0.4] C:\Users\LikH
 MERGED from [com.google.firebase:firebase-config:11.0.4] C:\Users\LikHern\.android\build-cache\f86f4eb4a93a90f3bee2c2e73bcf59b239943e71\output\AndroidManifest.xml:18:5-19
 MERGED from [com.google.android.gms:play-services-awareness:11.0.4] C:\Users\LikHern\.android\build-cache\87495323654918d2b663b444083ce307f4f5f1af\output\AndroidManifest.xml:18:5-19
 MERGED from [com.google.firebase:firebase-crash:11.0.4] C:\Users\LikHern\.android\build-cache\01d12c8f71bb809eab11cad5b399b75d56dae11b\output\AndroidManifest.xml:22:5-23:19
-MERGED from [com.google.firebase:firebase-auth:11.0.4] C:\Users\LikHern\.android\build-cache\b0cc108c38dd47c31ec6f4f65c06ebd3850e51f7\output\AndroidManifest.xml:19:5-20:19
 MERGED from [com.google.firebase:firebase-dynamic-links:11.0.4] C:\Users\LikHern\.android\build-cache\164088991e27569ca010361e2eb9689c12af3e87\output\AndroidManifest.xml:5:3-17
 MERGED from [com.google.firebase:firebase-messaging:11.0.4] C:\Users\LikHern\.android\build-cache\f03fc1e6f217b1b8d3ae52cf883a3174c22ce46a\output\AndroidManifest.xml:19:5-29:19
 MERGED from [com.google.android.gms:play-services-fitness:11.0.4] C:\Users\LikHern\.android\build-cache\240ea5c329959096609d7fc1ab803963732a1fde\output\AndroidManifest.xml:18:5-19
@@ -60,10 +59,6 @@ MERGED from [com.google.android.gms:play-services-places:11.0.4] C:\Users\LikHer
 MERGED from [com.google.android.gms:play-services-plus:11.0.4] C:\Users\LikHern\.android\build-cache\f0037e6c7cda0b104f9c084c006de5083d2e5660\output\AndroidManifest.xml:18:5-19
 MERGED from [com.google.android.gms:play-services-safetynet:11.0.4] C:\Users\LikHern\.android\build-cache\4745e601d5553c2bc72246f520205b3a44c7fd3e\output\AndroidManifest.xml:18:5-19
 MERGED from [com.google.android.gms:play-services-tagmanager-api:11.0.4] C:\Users\LikHern\.android\build-cache\5a41f9ec56ea74eb09e843da5b8cedc09614b8ad\output\AndroidManifest.xml:23:5-33:19
-MERGED from [com.google.firebase:firebase-analytics:11.0.4] C:\Users\LikHern\.android\build-cache\9a74d9fd0b3648282fe49dd40734ef22ea20ce6c\output\AndroidManifest.xml:24:5-34:19
-MERGED from [com.google.firebase:firebase-analytics-impl:11.0.4] C:\Users\LikHern\.android\build-cache\bca6f00b5f8bb86d3228fa6d86dd3aeea72fa487\output\AndroidManifest.xml:24:5-28:19
-MERGED from [com.google.firebase:firebase-iid:11.0.4] C:\Users\LikHern\.android\build-cache\252899afa4a138d9d7b78e24555b7ad96a811277\output\AndroidManifest.xml:28:5-49:19
-MERGED from [com.google.firebase:firebase-common:11.0.4] C:\Users\LikHern\.android\build-cache\ba781f74fc7b80ecaeafc387a003709542ace145\output\AndroidManifest.xml:4:5-7:19
 MERGED from [com.google.android.gms:play-services-tagmanager-v4-impl:11.0.4] C:\Users\LikHern\.android\build-cache\47969ca0a4dc5344745ca87c3c4f0ed5af6c19ec\output\AndroidManifest.xml:19:5-19
 MERGED from [com.google.android.gms:play-services-analytics-impl:11.0.4] C:\Users\LikHern\.android\build-cache\c2b3b7a8c2efbd40e9ec302d74678c0656c7722e\output\AndroidManifest.xml:26:5-19
 MERGED from [com.google.android.gms:play-services-vision:11.0.4] C:\Users\LikHern\.android\build-cache\5d71267d54a06b0c57ecd99eb91ad3bbd6ba2bd8\output\AndroidManifest.xml:4:5-19
@@ -71,7 +66,14 @@ MERGED from [com.google.android.gms:play-services-vision-common:11.0.4] C:\Users
 MERGED from [com.google.android.gms:play-services-identity:11.0.4] C:\Users\LikHern\.android\build-cache\99cbab22b0b6228b6d426717fff332056336e9a6\output\AndroidManifest.xml:18:5-19
 MERGED from [com.google.android.gms:play-services-maps:11.0.4] C:\Users\LikHern\.android\build-cache\cee8909bc80aed3267563fc965e7c37cd4080ced\output\AndroidManifest.xml:24:5-19
 MERGED from [com.google.android.gms:play-services-wearable:11.0.4] C:\Users\LikHern\.android\build-cache\f8cdc3fca035f65f3924c7cfa4d211ef6e197dd9\output\AndroidManifest.xml:18:5-19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\LikHern\.android\build-cache\9a86fbc625fd97c8295169901ed43e2681fea9f3\output\AndroidManifest.xml:9:5-20
+MERGED from [com.google.firebase:firebase-auth:11.0.4] C:\Users\LikHern\.android\build-cache\b0cc108c38dd47c31ec6f4f65c06ebd3850e51f7\output\AndroidManifest.xml:19:5-20:19
 MERGED from [com.google.android.gms:play-services-base:11.0.4] C:\Users\LikHern\.android\build-cache\e8da200131a218569ee5428ed3e217b32330f8df\output\AndroidManifest.xml:18:5-20:19
+MERGED from [com.google.firebase:firebase-core:11.0.4] C:\Users\LikHern\.android\build-cache\325ac425d48163e7e570efe3be0c03e56ad36c7b\output\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-analytics:11.0.4] C:\Users\LikHern\.android\build-cache\9a74d9fd0b3648282fe49dd40734ef22ea20ce6c\output\AndroidManifest.xml:24:5-34:19
+MERGED from [com.google.firebase:firebase-analytics-impl:11.0.4] C:\Users\LikHern\.android\build-cache\bca6f00b5f8bb86d3228fa6d86dd3aeea72fa487\output\AndroidManifest.xml:24:5-28:19
+MERGED from [com.google.firebase:firebase-iid:11.0.4] C:\Users\LikHern\.android\build-cache\252899afa4a138d9d7b78e24555b7ad96a811277\output\AndroidManifest.xml:28:5-49:19
+MERGED from [com.google.firebase:firebase-common:11.0.4] C:\Users\LikHern\.android\build-cache\ba781f74fc7b80ecaeafc387a003709542ace145\output\AndroidManifest.xml:4:5-7:19
 MERGED from [com.google.android.gms:play-services-tasks:11.0.4] C:\Users\LikHern\.android\build-cache\4a7bfff9dfc7a974470abe22fc57f61614adf2b9\output\AndroidManifest.xml:4:5-19
 MERGED from [com.google.android.gms:play-services-basement:11.0.4] C:\Users\LikHern\.android\build-cache\c2a1ca16e8a671a6a9a5916720eb1ab0fa079bb9\output\AndroidManifest.xml:19:5-21:19
 MERGED from [com.android.support:support-v4:25.2.0] C:\Users\LikHern\.android\build-cache\1aa1ed2387d9a7d74e4c349f6e760a3b429da7b4\output\AndroidManifest.xml:25:5-20
@@ -80,7 +82,6 @@ MERGED from [com.android.support:support-media-compat:25.2.0] C:\Users\LikHern\.
 MERGED from [com.android.support:support-core-ui:25.2.0] C:\Users\LikHern\.android\build-cache\7ecd27599767ed4ac48685475523c83a907aace6\output\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-core-utils:25.2.0] C:\Users\LikHern\.android\build-cache\d64bb809dc124313d3ab94b9e8d8735ade30e8d8\output\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:25.2.0] C:\Users\LikHern\.android\build-cache\265b1b7235948d6edeb6222bd071b2cb215518b4\output\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\LikHern\.android\build-cache\9a86fbc625fd97c8295169901ed43e2681fea9f3\output\AndroidManifest.xml:9:5-20
 	android:label
 		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED!\app\src\main\AndroidManifest.xml:14:9-41
 	android:supportsRtl
@@ -124,6 +125,22 @@ activity#com.projectbored.app.StoryUpload
 ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED!\app\src\main\AndroidManifest.xml:34:9-69
 	android:name
 		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED!\app\src\main\AndroidManifest.xml:34:19-66
+provider#android.support.v4.content.FileProvider
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED!\app\src\main\AndroidManifest.xml:36:9-44:20
+	android:authorities
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED!\app\src\main\AndroidManifest.xml:37:13-68
+	android:grantUriPermissions
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED!\app\src\main\AndroidManifest.xml:40:13-47
+	android:exported
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED!\app\src\main\AndroidManifest.xml:39:13-37
+	android:name
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED!\app\src\main\AndroidManifest.xml:38:13-67
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED!\app\src\main\AndroidManifest.xml:41:13-43:64
+	android:resource
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED!\app\src\main\AndroidManifest.xml:43:17-51
+	android:name
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED!\app\src\main\AndroidManifest.xml:42:17-67
 uses-sdk
 INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED!\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:multidex:1.0.1] C:\Users\LikHern\.android\build-cache\7932e766aa9a629c7e51049c9bf5f1883595b3e4\output\AndroidManifest.xml:18:5-42
@@ -146,13 +163,10 @@ MERGED from [com.google.android.gms:play-services-clearcut:11.0.4] C:\Users\LikH
 MERGED from [com.google.firebase:firebase-config:11.0.4] C:\Users\LikHern\.android\build-cache\f86f4eb4a93a90f3bee2c2e73bcf59b239943e71\output\AndroidManifest.xml:17:5-43
 MERGED from [com.google.android.gms:play-services-awareness:11.0.4] C:\Users\LikHern\.android\build-cache\87495323654918d2b663b444083ce307f4f5f1af\output\AndroidManifest.xml:17:5-43
 MERGED from [com.google.firebase:firebase-crash:11.0.4] C:\Users\LikHern\.android\build-cache\01d12c8f71bb809eab11cad5b399b75d56dae11b\output\AndroidManifest.xml:20:5-43
-MERGED from [com.google.firebase:firebase-auth:11.0.4] C:\Users\LikHern\.android\build-cache\b0cc108c38dd47c31ec6f4f65c06ebd3850e51f7\output\AndroidManifest.xml:17:5-43
 MERGED from [com.google.firebase:firebase-database:11.0.4] C:\Users\LikHern\.android\build-cache\a970b82218e2b77c541d9b08130c5e7eb84c8835\output\AndroidManifest.xml:3:5-43
 MERGED from [com.google.firebase:firebase-database-connection:11.0.4] C:\Users\LikHern\.android\build-cache\d2daab9e9f76d52ea50265ec8d7b47fb924ac395\output\AndroidManifest.xml:3:5-43
 MERGED from [com.google.firebase:firebase-dynamic-links:11.0.4] C:\Users\LikHern\.android\build-cache\164088991e27569ca010361e2eb9689c12af3e87\output\AndroidManifest.xml:3:3-41
 MERGED from [com.google.firebase:firebase-messaging:11.0.4] C:\Users\LikHern\.android\build-cache\f03fc1e6f217b1b8d3ae52cf883a3174c22ce46a\output\AndroidManifest.xml:17:5-43
-MERGED from [com.google.firebase:firebase-storage:11.0.4] C:\Users\LikHern\.android\build-cache\841f78882e50af2c82c8fe874746e2fa2000a685\output\AndroidManifest.xml:3:5-43
-MERGED from [com.google.firebase:firebase-storage-common:11.0.4] C:\Users\LikHern\.android\build-cache\a06543e31568aa3847ad60499e86fed02714fe7f\output\AndroidManifest.xml:3:5-43
 MERGED from [com.google.android.gms:play-services-fitness:11.0.4] C:\Users\LikHern\.android\build-cache\240ea5c329959096609d7fc1ab803963732a1fde\output\AndroidManifest.xml:17:5-43
 MERGED from [com.google.android.gms:play-services-games:11.0.4] C:\Users\LikHern\.android\build-cache\4ef8304581667a5c9aa198faa1ac9d8d9e611479\output\AndroidManifest.xml:17:5-43
 MERGED from [com.google.android.gms:play-services-drive:11.0.4] C:\Users\LikHern\.android\build-cache\1fc366c4eb7cccf7bf8356bdf0d60c22f9ebbeb5\output\AndroidManifest.xml:17:5-43
@@ -169,10 +183,6 @@ MERGED from [com.google.android.gms:play-services-plus:11.0.4] C:\Users\LikHern\
 MERGED from [com.google.android.gms:play-services-safetynet:11.0.4] C:\Users\LikHern\.android\build-cache\4745e601d5553c2bc72246f520205b3a44c7fd3e\output\AndroidManifest.xml:17:5-43
 MERGED from [com.google.android.gms:play-services-tagmanager:11.0.4] C:\Users\LikHern\.android\build-cache\79490a306f4b9aec365c0149f06e29289473c058\output\AndroidManifest.xml:17:5-43
 MERGED from [com.google.android.gms:play-services-tagmanager-api:11.0.4] C:\Users\LikHern\.android\build-cache\5a41f9ec56ea74eb09e843da5b8cedc09614b8ad\output\AndroidManifest.xml:17:5-43
-MERGED from [com.google.firebase:firebase-analytics:11.0.4] C:\Users\LikHern\.android\build-cache\9a74d9fd0b3648282fe49dd40734ef22ea20ce6c\output\AndroidManifest.xml:17:5-43
-MERGED from [com.google.firebase:firebase-analytics-impl:11.0.4] C:\Users\LikHern\.android\build-cache\bca6f00b5f8bb86d3228fa6d86dd3aeea72fa487\output\AndroidManifest.xml:17:5-43
-MERGED from [com.google.firebase:firebase-iid:11.0.4] C:\Users\LikHern\.android\build-cache\252899afa4a138d9d7b78e24555b7ad96a811277\output\AndroidManifest.xml:17:5-43
-MERGED from [com.google.firebase:firebase-common:11.0.4] C:\Users\LikHern\.android\build-cache\ba781f74fc7b80ecaeafc387a003709542ace145\output\AndroidManifest.xml:3:5-43
 MERGED from [com.google.android.gms:play-services-tagmanager-v4-impl:11.0.4] C:\Users\LikHern\.android\build-cache\47969ca0a4dc5344745ca87c3c4f0ed5af6c19ec\output\AndroidManifest.xml:17:5-43
 MERGED from [com.google.android.gms:play-services-analytics-impl:11.0.4] C:\Users\LikHern\.android\build-cache\c2b3b7a8c2efbd40e9ec302d74678c0656c7722e\output\AndroidManifest.xml:17:5-43
 MERGED from [com.google.android.gms:play-services-vision:11.0.4] C:\Users\LikHern\.android\build-cache\5d71267d54a06b0c57ecd99eb91ad3bbd6ba2bd8\output\AndroidManifest.xml:3:5-43
@@ -181,7 +191,16 @@ MERGED from [com.google.android.gms:play-services-wallet:11.0.4] C:\Users\LikHer
 MERGED from [com.google.android.gms:play-services-identity:11.0.4] C:\Users\LikHern\.android\build-cache\99cbab22b0b6228b6d426717fff332056336e9a6\output\AndroidManifest.xml:17:5-43
 MERGED from [com.google.android.gms:play-services-maps:11.0.4] C:\Users\LikHern\.android\build-cache\cee8909bc80aed3267563fc965e7c37cd4080ced\output\AndroidManifest.xml:23:5-43
 MERGED from [com.google.android.gms:play-services-wearable:11.0.4] C:\Users\LikHern\.android\build-cache\f8cdc3fca035f65f3924c7cfa4d211ef6e197dd9\output\AndroidManifest.xml:17:5-43
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\LikHern\.android\build-cache\9a86fbc625fd97c8295169901ed43e2681fea9f3\output\AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-storage:11.0.4] C:\Users\LikHern\.android\build-cache\841f78882e50af2c82c8fe874746e2fa2000a685\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.firebase:firebase-storage-common:11.0.4] C:\Users\LikHern\.android\build-cache\a06543e31568aa3847ad60499e86fed02714fe7f\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.firebase:firebase-auth:11.0.4] C:\Users\LikHern\.android\build-cache\b0cc108c38dd47c31ec6f4f65c06ebd3850e51f7\output\AndroidManifest.xml:17:5-43
 MERGED from [com.google.android.gms:play-services-base:11.0.4] C:\Users\LikHern\.android\build-cache\e8da200131a218569ee5428ed3e217b32330f8df\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-core:11.0.4] C:\Users\LikHern\.android\build-cache\325ac425d48163e7e570efe3be0c03e56ad36c7b\output\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-analytics:11.0.4] C:\Users\LikHern\.android\build-cache\9a74d9fd0b3648282fe49dd40734ef22ea20ce6c\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-analytics-impl:11.0.4] C:\Users\LikHern\.android\build-cache\bca6f00b5f8bb86d3228fa6d86dd3aeea72fa487\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-iid:11.0.4] C:\Users\LikHern\.android\build-cache\252899afa4a138d9d7b78e24555b7ad96a811277\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-common:11.0.4] C:\Users\LikHern\.android\build-cache\ba781f74fc7b80ecaeafc387a003709542ace145\output\AndroidManifest.xml:3:5-43
 MERGED from [com.google.android.gms:play-services-tasks:11.0.4] C:\Users\LikHern\.android\build-cache\4a7bfff9dfc7a974470abe22fc57f61614adf2b9\output\AndroidManifest.xml:3:5-43
 MERGED from [com.google.android.gms:play-services-basement:11.0.4] C:\Users\LikHern\.android\build-cache\c2a1ca16e8a671a6a9a5916720eb1ab0fa079bb9\output\AndroidManifest.xml:17:5-43
 MERGED from [com.android.support:support-v4:25.2.0] C:\Users\LikHern\.android\build-cache\1aa1ed2387d9a7d74e4c349f6e760a3b429da7b4\output\AndroidManifest.xml:21:5-23:54
@@ -190,7 +209,6 @@ MERGED from [com.android.support:support-media-compat:25.2.0] C:\Users\LikHern\.
 MERGED from [com.android.support:support-core-ui:25.2.0] C:\Users\LikHern\.android\build-cache\7ecd27599767ed4ac48685475523c83a907aace6\output\AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-core-utils:25.2.0] C:\Users\LikHern\.android\build-cache\d64bb809dc124313d3ab94b9e8d8735ade30e8d8\output\AndroidManifest.xml:21:5-23:61
 MERGED from [com.android.support:support-compat:25.2.0] C:\Users\LikHern\.android\build-cache\265b1b7235948d6edeb6222bd071b2cb215518b4\output\AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\LikHern\.android\build-cache\9a86fbc625fd97c8295169901ed43e2681fea9f3\output\AndroidManifest.xml:5:5-7:41
 	tools:overrideLibrary
 		ADDED from [com.android.support:appcompat-v7:25.2.0] C:\Users\LikHern\.android\build-cache\05ec4691f1a8a3a8937b8851e216b91d3f85f920\output\AndroidManifest.xml:23:9-75
 	android:targetSdkVersion
@@ -207,11 +225,11 @@ MERGED from [com.google.firebase:firebase-crash:11.0.4] C:\Users\LikHern\.androi
 MERGED from [com.google.android.gms:play-services-gcm:11.0.4] C:\Users\LikHern\.android\build-cache\1886f60500e36dace8621ddfc5dc7bb33a4f1627\output\AndroidManifest.xml:21:5-66
 MERGED from [com.google.android.gms:play-services-iid:11.0.4] C:\Users\LikHern\.android\build-cache\62dd0adb45b1a4eb1075a33a21ff2d1667d02e89\output\AndroidManifest.xml:21:5-66
 MERGED from [com.google.android.gms:play-services-tagmanager-api:11.0.4] C:\Users\LikHern\.android\build-cache\5a41f9ec56ea74eb09e843da5b8cedc09614b8ad\output\AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-analytics-impl:11.0.4] C:\Users\LikHern\.android\build-cache\c2b3b7a8c2efbd40e9ec302d74678c0656c7722e\output\AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-maps:11.0.4] C:\Users\LikHern\.android\build-cache\cee8909bc80aed3267563fc965e7c37cd4080ced\output\AndroidManifest.xml:20:5-66
 MERGED from [com.google.firebase:firebase-analytics:11.0.4] C:\Users\LikHern\.android\build-cache\9a74d9fd0b3648282fe49dd40734ef22ea20ce6c\output\AndroidManifest.xml:20:5-66
 MERGED from [com.google.firebase:firebase-analytics-impl:11.0.4] C:\Users\LikHern\.android\build-cache\bca6f00b5f8bb86d3228fa6d86dd3aeea72fa487\output\AndroidManifest.xml:20:5-66
 MERGED from [com.google.firebase:firebase-iid:11.0.4] C:\Users\LikHern\.android\build-cache\252899afa4a138d9d7b78e24555b7ad96a811277\output\AndroidManifest.xml:20:5-66
-MERGED from [com.google.android.gms:play-services-analytics-impl:11.0.4] C:\Users\LikHern\.android\build-cache\c2b3b7a8c2efbd40e9ec302d74678c0656c7722e\output\AndroidManifest.xml:20:5-66
-MERGED from [com.google.android.gms:play-services-maps:11.0.4] C:\Users\LikHern\.android\build-cache\cee8909bc80aed3267563fc965e7c37cd4080ced\output\AndroidManifest.xml:20:5-66
 	android:name
 		ADDED from [com.google.android.gms:play-services-ads-lite:11.0.4] C:\Users\LikHern\.android\build-cache\d097e224c22d312e57f415d2dcd67cd082057314\output\AndroidManifest.xml:19:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
@@ -219,11 +237,11 @@ ADDED from [com.google.android.gms:play-services-ads-lite:11.0.4] C:\Users\LikHe
 MERGED from [com.google.android.gms:play-services-analytics:11.0.4] C:\Users\LikHern\.android\build-cache\a558f27eeb4bc769dc25fc18bae080f166040583\output\AndroidManifest.xml:21:5-78
 MERGED from [com.google.android.gms:play-services-nearby:11.0.4] C:\Users\LikHern\.android\build-cache\6cd6910e9a5c8cd9740c98f97f5642927bb31dcb\output\AndroidManifest.xml:4:5-78
 MERGED from [com.google.android.gms:play-services-tagmanager-api:11.0.4] C:\Users\LikHern\.android\build-cache\5a41f9ec56ea74eb09e843da5b8cedc09614b8ad\output\AndroidManifest.xml:21:5-78
+MERGED from [com.google.android.gms:play-services-analytics-impl:11.0.4] C:\Users\LikHern\.android\build-cache\c2b3b7a8c2efbd40e9ec302d74678c0656c7722e\output\AndroidManifest.xml:21:5-78
+MERGED from [com.google.android.gms:play-services-maps:11.0.4] C:\Users\LikHern\.android\build-cache\cee8909bc80aed3267563fc965e7c37cd4080ced\output\AndroidManifest.xml:19:5-78
 MERGED from [com.google.firebase:firebase-analytics:11.0.4] C:\Users\LikHern\.android\build-cache\9a74d9fd0b3648282fe49dd40734ef22ea20ce6c\output\AndroidManifest.xml:21:5-78
 MERGED from [com.google.firebase:firebase-analytics-impl:11.0.4] C:\Users\LikHern\.android\build-cache\bca6f00b5f8bb86d3228fa6d86dd3aeea72fa487\output\AndroidManifest.xml:21:5-78
 MERGED from [com.google.firebase:firebase-iid:11.0.4] C:\Users\LikHern\.android\build-cache\252899afa4a138d9d7b78e24555b7ad96a811277\output\AndroidManifest.xml:19:5-78
-MERGED from [com.google.android.gms:play-services-analytics-impl:11.0.4] C:\Users\LikHern\.android\build-cache\c2b3b7a8c2efbd40e9ec302d74678c0656c7722e\output\AndroidManifest.xml:21:5-78
-MERGED from [com.google.android.gms:play-services-maps:11.0.4] C:\Users\LikHern\.android\build-cache\cee8909bc80aed3267563fc965e7c37cd4080ced\output\AndroidManifest.xml:19:5-78
 	android:name
 		ADDED from [com.google.android.gms:play-services-ads-lite:11.0.4] C:\Users\LikHern\.android\build-cache\d097e224c22d312e57f415d2dcd67cd082057314\output\AndroidManifest.xml:20:22-76
 activity#com.google.android.gms.ads.AdActivity
@@ -236,10 +254,10 @@ ADDED from [com.google.android.gms:play-services-ads-lite:11.0.4] C:\Users\LikHe
 		ADDED from [com.google.android.gms:play-services-ads-lite:11.0.4] C:\Users\LikHern\.android\build-cache\d097e224c22d312e57f415d2dcd67cd082057314\output\AndroidManifest.xml:25:19-71
 uses-permission#android.permission.WAKE_LOCK
 ADDED from [com.google.android.gms:play-services-analytics:11.0.4] C:\Users\LikHern\.android\build-cache\a558f27eeb4bc769dc25fc18bae080f166040583\output\AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-analytics-impl:11.0.4] C:\Users\LikHern\.android\build-cache\c2b3b7a8c2efbd40e9ec302d74678c0656c7722e\output\AndroidManifest.xml:24:5-67
 MERGED from [com.google.firebase:firebase-analytics:11.0.4] C:\Users\LikHern\.android\build-cache\9a74d9fd0b3648282fe49dd40734ef22ea20ce6c\output\AndroidManifest.xml:22:5-67
 MERGED from [com.google.firebase:firebase-analytics-impl:11.0.4] C:\Users\LikHern\.android\build-cache\bca6f00b5f8bb86d3228fa6d86dd3aeea72fa487\output\AndroidManifest.xml:22:5-67
 MERGED from [com.google.firebase:firebase-iid:11.0.4] C:\Users\LikHern\.android\build-cache\252899afa4a138d9d7b78e24555b7ad96a811277\output\AndroidManifest.xml:21:5-67
-MERGED from [com.google.android.gms:play-services-analytics-impl:11.0.4] C:\Users\LikHern\.android\build-cache\c2b3b7a8c2efbd40e9ec302d74678c0656c7722e\output\AndroidManifest.xml:24:5-67
 	android:name
 		ADDED from [com.google.android.gms:play-services-analytics:11.0.4] C:\Users\LikHern\.android\build-cache\a558f27eeb4bc769dc25fc18bae080f166040583\output\AndroidManifest.xml:24:22-65
 activity#com.google.android.gms.appinvite.PreviewActivity
@@ -340,6 +358,20 @@ category#android.intent.category.BROWSABLE
 ADDED from [com.google.android.gms:play-services-tagmanager-api:11.0.4] C:\Users\LikHern\.android\build-cache\5a41f9ec56ea74eb09e843da5b8cedc09614b8ad\output\AndroidManifest.xml:30:17-77
 	android:name
 		ADDED from [com.google.android.gms:play-services-tagmanager-api:11.0.4] C:\Users\LikHern\.android\build-cache\5a41f9ec56ea74eb09e843da5b8cedc09614b8ad\output\AndroidManifest.xml:30:27-75
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:11.0.4] C:\Users\LikHern\.android\build-cache\cee8909bc80aed3267563fc965e7c37cd4080ced\output\AndroidManifest.xml:21:5-77
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:11.0.4] C:\Users\LikHern\.android\build-cache\cee8909bc80aed3267563fc965e7c37cd4080ced\output\AndroidManifest.xml:21:19-51
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:11.0.4] C:\Users\LikHern\.android\build-cache\cee8909bc80aed3267563fc965e7c37cd4080ced\output\AndroidManifest.xml:21:52-75
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:11.0.4] C:\Users\LikHern\.android\build-cache\e8da200131a218569ee5428ed3e217b32330f8df\output\AndroidManifest.xml:19:9-172
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:11.0.4] C:\Users\LikHern\.android\build-cache\e8da200131a218569ee5428ed3e217b32330f8df\output\AndroidManifest.xml:19:146-170
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:11.0.4] C:\Users\LikHern\.android\build-cache\e8da200131a218569ee5428ed3e217b32330f8df\output\AndroidManifest.xml:19:86-145
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:11.0.4] C:\Users\LikHern\.android\build-cache\e8da200131a218569ee5428ed3e217b32330f8df\output\AndroidManifest.xml:19:19-85
 receiver#com.google.android.gms.measurement.AppMeasurementReceiver
 ADDED from [com.google.firebase:firebase-analytics:11.0.4] C:\Users\LikHern\.android\build-cache\9a74d9fd0b3648282fe49dd40734ef22ea20ce6c\output\AndroidManifest.xml:25:7-26:18
 MERGED from [com.google.firebase:firebase-analytics-impl:11.0.4] C:\Users\LikHern\.android\build-cache\bca6f00b5f8bb86d3228fa6d86dd3aeea72fa487\output\AndroidManifest.xml:25:7-26:18
@@ -442,17 +474,3 @@ ADDED from [com.google.firebase:firebase-common:11.0.4] C:\Users\LikHern\.androi
 		ADDED from [com.google.firebase:firebase-common:11.0.4] C:\Users\LikHern\.android\build-cache\ba781f74fc7b80ecaeafc387a003709542ace145\output\AndroidManifest.xml:6:169-192
 	android:name
 		ADDED from [com.google.firebase:firebase-common:11.0.4] C:\Users\LikHern\.android\build-cache\ba781f74fc7b80ecaeafc387a003709542ace145\output\AndroidManifest.xml:6:79-143
-uses-feature#0x00020000
-ADDED from [com.google.android.gms:play-services-maps:11.0.4] C:\Users\LikHern\.android\build-cache\cee8909bc80aed3267563fc965e7c37cd4080ced\output\AndroidManifest.xml:21:5-77
-	android:glEsVersion
-		ADDED from [com.google.android.gms:play-services-maps:11.0.4] C:\Users\LikHern\.android\build-cache\cee8909bc80aed3267563fc965e7c37cd4080ced\output\AndroidManifest.xml:21:19-51
-	android:required
-		ADDED from [com.google.android.gms:play-services-maps:11.0.4] C:\Users\LikHern\.android\build-cache\cee8909bc80aed3267563fc965e7c37cd4080ced\output\AndroidManifest.xml:21:52-75
-activity#com.google.android.gms.common.api.GoogleApiActivity
-ADDED from [com.google.android.gms:play-services-base:11.0.4] C:\Users\LikHern\.android\build-cache\e8da200131a218569ee5428ed3e217b32330f8df\output\AndroidManifest.xml:19:9-172
-	android:exported
-		ADDED from [com.google.android.gms:play-services-base:11.0.4] C:\Users\LikHern\.android\build-cache\e8da200131a218569ee5428ed3e217b32330f8df\output\AndroidManifest.xml:19:146-170
-	android:theme
-		ADDED from [com.google.android.gms:play-services-base:11.0.4] C:\Users\LikHern\.android\build-cache\e8da200131a218569ee5428ed3e217b32330f8df\output\AndroidManifest.xml:19:86-145
-	android:name
-		ADDED from [com.google.android.gms:play-services-base:11.0.4] C:\Users\LikHern\.android\build-cache\e8da200131a218569ee5428ed3e217b32330f8df\output\AndroidManifest.xml:19:19-85
