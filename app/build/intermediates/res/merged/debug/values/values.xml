@@ -806,15 +806,15 @@
     <string name="common_open_on_phone">Open on phone</string>
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
-    <string name="default_web_client_id" translatable="false">700136303975-8qi5bq2ta4oeh8hbiq94oaveqqsmacbu.apps.googleusercontent.com</string>
+    <string name="default_web_client_id" translatable="false">217030357615-og7v4t6v760kk3cn1r0lbr06mopr7ing.apps.googleusercontent.com</string>
     <string name="fcm_fallback_notification_channel_label">Miscellaneous</string>
-    <string name="firebase_database_url" translatable="false">https://bored-7093f.firebaseio.com</string>
-    <string name="gcm_defaultSenderId" translatable="false">700136303975</string>
-    <string name="google_api_key" translatable="false">AIzaSyDVj3RIR9xwHwmZZY4uAClvX5SCgMnuFWo</string>
-    <string name="google_app_id" translatable="false">1:700136303975:android:6f7b7c2af9d2fe26</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDVj3RIR9xwHwmZZY4uAClvX5SCgMnuFWo</string>
+    <string name="firebase_database_url" translatable="false">https://bored-9db45.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">217030357615</string>
+    <string name="google_api_key" translatable="false">AIzaSyAl9w2kBxi1uxNG_nNcGlixNUeuLgKlXe4</string>
+    <string name="google_app_id" translatable="false">1:217030357615:android:6f7b7c2af9d2fe26</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAl9w2kBxi1uxNG_nNcGlixNUeuLgKlXe4</string>
     <string name="google_maps_key" translatable="false">AIzaSyDqvjPj18uoo4DgyFEey0dCMhV2UQhmkAI</string>
-    <string name="google_storage_bucket" translatable="false">bored-7093f.appspot.com</string>
+    <string name="google_storage_bucket" translatable="false">bored-9db45.appspot.com</string>
     <string name="mr_button_content_description">Cast button</string>
     <string name="mr_cast_button_connected">Cast button. Connected</string>
     <string name="mr_cast_button_connecting">Cast button. Connecting</string>

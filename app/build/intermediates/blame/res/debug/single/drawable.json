@@ -88,28 +88,28 @@
         "source": "C:\\Users\\LikHern\\.android\\build-cache\\3ac3ba95c790e5960d50bdf1dbe1b96acdb54702\\output\\res\\drawable\\mr_vol_type_audiotrack_dark.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_disabled.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\e8da200131a218569ee5428ed3e217b32330f8df\\output\\res\\drawable\\common_google_signin_btn_text_disabled.xml"
-    },
-    {
         "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
         "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\drawable\\abc_ratingbar_indicator_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_disabled.xml",
+        "source": "C:\\Users\\LikHern\\.android\\build-cache\\e8da200131a218569ee5428ed3e217b32330f8df\\output\\res\\drawable\\common_google_signin_btn_text_disabled.xml"
     },
     {
         "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_button_connected_dark.xml",
         "source": "C:\\Users\\LikHern\\.android\\build-cache\\3ac3ba95c790e5960d50bdf1dbe1b96acdb54702\\output\\res\\drawable\\mr_button_connected_dark.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_icon_background.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\drawable\\notification_icon_background.xml"
+        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_expanded_controller_seekbar_thumb.xml",
+        "source": "C:\\Users\\LikHern\\.android\\build-cache\\b451ef381a4cf58256e3bbca04d2f71d9091ba6e\\output\\res\\drawable\\cast_expanded_controller_seekbar_thumb.xml"
     },
     {
         "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_mini_controller_mute.xml",
         "source": "C:\\Users\\LikHern\\.android\\build-cache\\b451ef381a4cf58256e3bbca04d2f71d9091ba6e\\output\\res\\drawable\\cast_ic_mini_controller_mute.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_expanded_controller_seekbar_thumb.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\b451ef381a4cf58256e3bbca04d2f71d9091ba6e\\output\\res\\drawable\\cast_expanded_controller_seekbar_thumb.xml"
+        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_icon_background.xml",
+        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\drawable\\notification_icon_background.xml"
     },
     {
         "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_notification_disconnect.xml",

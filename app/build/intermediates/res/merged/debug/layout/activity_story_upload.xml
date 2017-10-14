@@ -29,10 +29,5 @@
             android:hint="Insert Caption Here"
             android:inputType="textPersonName" />
 
-        <Button
-            android:id="@+id/uploadstory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Upload Story" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
