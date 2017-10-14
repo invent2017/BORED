@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "217030357615",
+    "firebase_url": "https://bored-9db45.firebaseio.com",
+    "project_id": "bored-9db45",
+    "storage_bucket": "bored-9db45.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:217030357615:android:6f7b7c2af9d2fe26",
+        "android_client_info": {
+          "package_name": "com.projectbored.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "217030357615-og7v4t6v760kk3cn1r0lbr06mopr7ing.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAl9w2kBxi1uxNG_nNcGlixNUeuLgKlXe4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
