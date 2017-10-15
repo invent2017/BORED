@@ -29,7 +29,6 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="40dp"
             android:layout_weight="0.32"
-            android:scaleType="centerCrop"
             app:srcCompat="@drawable/cast_abc_scrubber_control_off_mtrl_alpha" />
 
         <EditText
