@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -24,6 +25,11 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -65,6 +71,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     //private LatLng[] mLikelyPlaceLatLngs = new LatLng[mMaxEntries];
 
     private StorageReference mStorageRef;
+    private DatabaseReference mDataRef;
 @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +98,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         mGoogleApiClient.connect();
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
+        mDataRef = FirebaseDatabase.getInstance().getReference();
     }
 
     /**
@@ -200,6 +208,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
+
+        //Load nearby stories.
+        loadStories();
     }
 
     /**
@@ -324,10 +335,28 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         } */
     }
 
-    public void loadStories(String snippet) {
+    //Displays stories within 1km of the user on the map.
 
-        LatLng position = new LatLng(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude());
-        mMap.addMarker(new MarkerOptions().position(position).snippet(snippet));
+    public void loadStories() {
+        ValueEventListener storyListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Story story = dataSnapshot.getValue(Story.class);
+                if (story != null) {
+                    if ((int) mLastKnownLocation.distanceTo(story.getLocation()) <= 1000) {
+                        mMap.addMarker(new MarkerOptions()
+                                .position(new LatLng(story.getLocation().getLatitude(),story.getLocation().getLongitude()))
+                                .snippet(story.getCaption()));
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(MapsActivityCurrentPlace.this, "Failed to load stories.", Toast.LENGTH_SHORT).show();
+            }
+        };
+        mDataRef.addValueEventListener(storyListener);
     }
 
     /**

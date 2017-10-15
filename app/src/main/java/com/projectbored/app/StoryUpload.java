@@ -34,6 +34,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -146,7 +147,7 @@ public class StoryUpload extends AppCompatActivity {
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                uploadStory2(taskSnapshot);
+                uploadStoryData(taskSnapshot);
             }
         });
 
@@ -158,7 +159,7 @@ public class StoryUpload extends AppCompatActivity {
                 Toast.LENGTH_SHORT).show();
     }
 
-    private void uploadStory2 (UploadTask.TaskSnapshot taskSnapshot) {
+    private void uploadStoryData (UploadTask.TaskSnapshot taskSnapshot) {
         final Uri PHOTO_URI = taskSnapshot.getMetadata().getDownloadUrl();
         try{
             mFusedLocationProviderClient.getLastLocation()
@@ -166,10 +167,10 @@ public class StoryUpload extends AppCompatActivity {
                         @Override
                         public void onSuccess(Location location) {
                             if (location != null) {
+                                Date dateTime = new Date();
                                 Story story = new Story(PHOTO_URI,
-                                        location.getLatitude(),
-                                        location.getLongitude(),
-                                        caption.getText().toString());
+                                        location,
+                                        caption.getText().toString(), dateTime);
                                 mDataRef.setValue(story);
                             }
                         }
