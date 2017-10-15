@@ -1,4 +1,0 @@
-#Sat Oct 14 20:39:17 SGT 2017
-base.0=/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_2
-renamed.0=classes.dex
-file.0=/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_2/classes.dex
