@@ -1235,7 +1235,8 @@ int id notification_main_column 0x7f0e00f6
 int id notification_main_column_container 0x7f0e00f5
 int id omnibox_title_section 0x7f0e0056
 int id omnibox_url_section 0x7f0e0057
-int id option_add_story 0x7f0e010a
+int id option_add_story 0x7f0e010b
+int id option_upload_story 0x7f0e010a
 int id packed 0x7f0e001a
 int id parent 0x7f0e0017
 int id parentPanel 0x7f0e0084
@@ -1404,7 +1405,8 @@ int layout select_dialog_item_material 0x7f04003d
 int layout select_dialog_multichoice_material 0x7f04003e
 int layout select_dialog_singlechoice_material 0x7f04003f
 int layout support_simple_spinner_dropdown_item 0x7f040040
-int menu current_place_menu 0x7f100000
+int menu add_story_menu 0x7f100000
+int menu current_place_menu 0x7f100001
 int mipmap ic_launcher 0x7f030000
 int string abc_action_bar_home_description 0x7f080000
 int string abc_action_bar_home_description_format 0x7f080001

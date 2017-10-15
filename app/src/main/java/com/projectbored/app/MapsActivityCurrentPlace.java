@@ -324,7 +324,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         } */
     }
 
-    public void addMarker(String snippet) {
+    public void loadStories(String snippet) {
+
         LatLng position = new LatLng(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude());
         mMap.addMarker(new MarkerOptions().position(position).snippet(snippet));
     }

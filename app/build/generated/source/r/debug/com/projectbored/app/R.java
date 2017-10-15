@@ -3770,7 +3770,8 @@ containing a value of this type.
         public static final int notification_main_column_container=0x7f0e00f5;
         public static final int omnibox_title_section=0x7f0e0056;
         public static final int omnibox_url_section=0x7f0e0057;
-        public static final int option_add_story=0x7f0e010a;
+        public static final int option_add_story=0x7f0e010b;
+        public static final int option_upload_story=0x7f0e010a;
         public static final int packed=0x7f0e001a;
         public static final int parent=0x7f0e0017;
         public static final int parentPanel=0x7f0e0084;
@@ -3947,7 +3948,8 @@ containing a value of this type.
         public static final int support_simple_spinner_dropdown_item=0x7f040040;
     }
     public static final class menu {
-        public static final int current_place_menu=0x7f100000;
+        public static final int add_story_menu=0x7f100000;
+        public static final int current_place_menu=0x7f100001;
     }
     public static final class mipmap {
         public static final int ic_launcher=0x7f030000;
