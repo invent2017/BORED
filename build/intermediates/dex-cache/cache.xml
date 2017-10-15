@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/0b9cc38a2fab7c2f17c4a19afb0ef5bcbcf4f88b/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="af13a350b71b437ebf4be335d02a8f785c39b111">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a93a1abb1b00cae31ba77c50931c812f0e2cf068/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/e678aab9958e61d4f728401f0cb829c5b4c21e64/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="fc3036436defd3070337b7191c50a136ebca7f8f">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_84fde532181da4c169b0d130a24487828b3720da/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/76f3fc34c146749e865b7101582534b21b12d172/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="dae0d68af4c87df40eca67069861e53b7cefaaa0">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_663658e37e3b8b7d66ccc2b52bfa3a85b9a4615d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/1562fe436caf99ab1b598eb437aaec1dfed276fc/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="8fe8a8f77d651982ce5e18f6187dc4daf914ac57">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d2b9eb30e1c7df51fbe310c701a4475754e6a73b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/6ac8976a865985e9619c3fb0f8c38fe00d4f7f84/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="576570f46ff6ccc69a984af9e55ddd58d9549270">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_14f8a764a8cc00844c2ac92f757eecd00b478492/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/7c8216ef0a10e240d3e5986d00e34aee04a82053/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="ffd0ddf5e57b4d60c4a3fbcd38fa20349a0cebd1">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d4e0d1e9518dcd13ea5efecd709be7eb8299a954/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/a42b99a49b9055bbd50ef46a2249f1171cbe0d28/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="810f41e5b7fd99f196ebeabe865ba2c54e7e76dc">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_65c12a9cf68cd142d63755074e21dba41df5af80/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/b23281063909897384137b88dcfa2712ef6a97b9/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="4b685077cdb08cf7ae8b61afd1fe910e47d91b9a">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e4073a52d5d1d539e4be87bc16081303992c3518/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/656b75582cfc4c4b258f5d3d6c0e8a459e69ac3c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="7c24e2e9773fb498e390ce973db382c3ddcf748e">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a3f59b31adff10411def5903d975830ce7e48757/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4d86bcbecf074343fa60bf80e8322039075db380">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_09d242bfc82ecca8954d9579c2c52a7e755c03ba/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/c9a6f7c979866189a78dc7a224add8c7cccc4a29/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="416fb9ee2fd6e7af0bba04b01d90cb475b1e2074">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2f7dd59bcecbff1df56e6692c72f9ee7ac8d22bb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/737c6b6ac4aae39fb56b6e3817fc55f21e2b405f/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="cb454b52545859ed2f24a6c01366805b0fa04b22">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_44ae8e7fa3d037e8c54bed38b926a9fc3ca9a032/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/10317d078c355148b8bbe7c7b6809b70cbe27467/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="fa0446a14ed5dd3725047d6399ffea771a564b30">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9342e8c9b46b6228aaa6847ec3c9e740fcb6ce7b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/26c4e54f1036c6f654dc83e65b1a0f0744824b98/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="c1b91bc7e480ab100d0397b16c93732e26fd10eb">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0a14e07b7e1eec8fcd2a13a8a52a770988b38e6c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/cec853667bbb1b9d86a9e7b1ed4d9013b8a7c1af/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="fcae52a60bc07924d370b4d376116cd8f8581f54">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_131fffd136077c328da99559a72328c4b356357b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/0bfd79092d96f6baae7817e9f590df09370f147a/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="c6aa915c08cfd82780c10d4b957018bf819a48e2">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7ce3da31f77d97055c7aa21c42b9ee534b94de26/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/7e8bd68601460dc07393e76753e865968688933d/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="eea424e61a0c85b93a0e477565314a58136abaea">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_85454164e83fa9e7e9556f25956adbb217f5262a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="329beed9013d4b9041e162815a055aefb526f81d">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_09d242bfc82ecca8954d9579c2c52a7e755c03ba/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/37c56093f81ec09acf850117116e9d8a00c73769/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="e7f890dd2539b7f2582f450f0721e2dea6ae510c">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c2e05756dfbd6b959b2b80a05842de8eea257e47/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/32e89a9dd5470ce6b0d79d513b7cc24b4df0a30e/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3ac08c35419ab7cf9146969de471768dbe502f0f">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_fd53a7d7bcc7194619e723c3bbc3f05b23f831d3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/d48f3ad811a99399bbc01b4faad4dc064d8c1956/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="02b91f8efa91dcdf5c555ee24b7f006f02cd0f8b">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_6ae92e4b57d0345ea43dcd463d42916eeb4f04c5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/444c4441d1acd77e7286edf23b3692f054d29834/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="e820b7be8c035dd522da4bc822e8a76c8e27921a">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_43cea70acb411720a6ce9d1a34ae422731052121/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/2470b128306ad362be01d300d7583ca7b1270eb4/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="41f47bbcd281fdb1e42e220220ab3bfa1da591e0">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_4176fc5e768cbec69428b25f92ece8f39414b32b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/46210bab26d1493a5d2bca566fd3ebb90d471edc/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="bfba7cf662f7e3e2cfeb92226c6b84c08e590225">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e6ee641074a532b4032cd711e44430b607c85242/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/b757ab0a4c75def83a6225c64bdd97b1ed2feefe/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="34c23b5894b4f24d566bfc33e0e25462c6436b78">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5f49a22d448c99ee7613ee08d98ea6730fb49fe5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/1c3c1b48030a782bfd905c5ac501f6b03a944c16/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="56d68d1174b9c1e368017a850b62b12429f39757">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7613a62a8cc8722365ec95f35a9e46d5d0f9c026/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/a1c064c4a18cfebac2c3664591547aa7dd2e9d4b/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="ed87ccdcb70c17d71ba4e6e4ac16afa62d3c49fb">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c2ce2db4b64c405ae9f824f71e0eee903306ea8c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/102368708c846fbd218c938be49f2cd964c7b5b4/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="67eb33110dbacb46a48175b08ae0c96761d2c17d">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5fea5709309a3dff8bcd405873f1edda7e9ae703/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/e733fa296512aadfbc5cd325e30da1ad150cb225/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="057fb316bed8467398333f30926c2d5506e275b2">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9368af6a70cda4839946c4136b17e1d1ad4a3bc1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/c4600d4d3d9ad20f352efdd567a626fa584ae57c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="8544f739799dd15db63927073a21312864ab0bfd">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5c4770fdf6c08c5bd78573773eb89511a2339fd4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/693b43dfa76359721fe6e5e3dac2ccbab7cf2944/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="2c379c235d7983201bb83edfc3c60bb0dafb5805">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7347da0cc170ee8f8e81e60e1b0ab167c604e04d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/0ca60874f5fa12a269478d78ef0faabf74ed6b54/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="377c5f26ebf67f3fa6ef2f663a58cac7ce647dde">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9e29f5c9d3bb124c2ec946781e106b74a6429aa7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/06a802f48a26e46a65224a75e1317b6ff1c21d20/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="c8bf878c09bf0df6ae76eb6c2df38c6a186b38b7">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_bd1a4ef9322d30f1d514d4a144dd6a8c06db3d13/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/b30b12a807b6c86d2dcb06b627104de63bdf9832/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="63b03eaa1aa9b9431c7638841175f9842dcbf274">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7c5cd0a969788863bd0dc12799efefc4af74c0a4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/bdd151925b50f41172f84de5a6311d146955e9fa/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="2b12b18c5518021cc71577c83d1290f8ddaa3c98">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_8996b918e3d7ed496caad3e02fbcc9067ee78465/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/bc93eae6307cc398ecaeb251c6fd7b46a1f78a4a/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="f15e20dd7bcde7c688cfda44d0c8320a5c1c24b8">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a51fc0330912cbc2ec823bd3d14ef3e7e46bfcb6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.2.0/support-annotations-25.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="4a5a82a027706397fff621b22fd6fa796e91d7c5">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.2.0_5a0a72a0cfff663b9f2c08fae5134290e2095d12/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/f4bf3da2ec5f4afe820e91e03b7ff635405a30f9/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d8942ee348aaa9341f08f7e2437063893fe27542">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e0fde1b0984b82f70ed0fb508638204b177b536c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_4d9ca21aeac61378134784df23bbe16a0cae69fa/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/0e9ebece8e8360286a3d3d7ff5843be6ba8c0404/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="364364bf77b4a71afc5930fc3ae57b3f0eea637c">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_cfc900a5b255231662e419fc8546766e6736a988/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/a496b86701744cd4cddf751bf1deb49b96634f4a/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="2c73e2a93e00abd240e495c1e62217e53904a3f3">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9fad01686a50fdd2fa33a6dcdcb363df79d26feb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/30a4dccf86ac827dad08936afb05b421016f505e/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="a25b0b5aec89681b95d32780ad7904c1e1e4c679">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e003e3c278fc1e3916fd3811d65db4f3eb6b6fb6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/dd9719707b7b30f4c64c1c33a79efd33b72b2470/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="2c2f1b3f82c027e98f56bb0154de0acbcce42e6d">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f11f1ca63e899a1208514d683d75b2cc02773cb3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="702d339bc0a81d21354cd7e2cf2b67225fa4a16c">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_dc854191bfc96f76a469da0e42d8dcb208837b6d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/d8b18bdef773ccb333be2c29a7bba47b34d3ead4/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="c72b1515efbd8ad652e2d63582c8234a979b1e53">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e9e83d89556a3e1e8a52d52976acb39b863be5fb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/bc9699f148d03a6edf3d5b8c6aae2ed50b59fdd6/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="5594a368622908d89c47d9a391aa2724fe046c35">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_99ea7f8d261503b5d01a1b0212bfb081f73553b6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/84a8820874012f091f4ea83d3e1a23a34d699a18/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="e5b429c146094a612134910688d169ec08deeefb">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9d8b5cb32f443f2fc8b18a234a4b34ea0c42bfa3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/65ce567c27ac0b813e960b395bb36c3eb86a81e0/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="e1625e48a836779b5fa141d22e5d05563aaccc9a">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f4e994bcfcd6157a05298a8d1bce92584961d071/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/be3f1613bd417d78eaa3eb323d7afb32d0e8db71/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="a5d52089bf4d31537232bb6bcb70cee817d8a374">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_fea5c6b412badd9efebc3d9aa08704735e1b5285/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/ba8917f1843081c459ef05072d760d399f03a4fa/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="9be5e957849eb82ad9addf9bdb2896de8bf5654b">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_178af568d84f7ce1e8d8aa65caf2bc4487d801f2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/b8f5601357ccbf03abc134ed284c1e472c70ed21/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="f2cb88e7e28736d44e7e643deb80c9af1c3662c8">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_62fc23d40737b7e4b8f6af15b2bcb329417034db/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/806af71b2e228613e5743a8f0978aba55640a633/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="f47f4d5bdfd7d7bf330945b8a7ccce4ab437a710">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0d089c7847edb248c06b4465d922dd16e5e32ece/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/e0b8a2d85cddb9e8a57dd181dc9aba80a370640a/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="70ffe00aaf049893f59d1dad57bd82992faa38ef">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_37e74a7ff5a86de66e9c117fc57e14dd6284ef1b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_4d9ca21aeac61378134784df23bbe16a0cae69fa/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/a70ef877a996e302a372b7215729c943687c5db3/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="dd282bdeaa904c59d77e57dedd7e0a241c9b679d">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_463b8076586193395640db714fdd71d69905b2fa/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/305c93efe05b8eb550393e1e2399e922cd9e1efd/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="2430e711762a749feb00b3d64858ca4768251b9d">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5fd3c04f73b0a11d2a492ad6ab18663435ec6ff8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/fcd510f07443109724ff9744f74961f61adae7fd/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="b5b6af36bacf1d812cd3dc45f9dcab9ea471ed91">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_3545ae07f01eb886418db0bca43f0f8e76765d84/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/8e1a66f0b454e275806ee8cb168fb82f3014fab9/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6b3430725095bd46b785e97bd34240826c27b4db">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_41ebf752c7c7a5383e0b0d1ce3865e234046dbbf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/8f84df7545512807d30be70f0b5670658def9751/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="c6706cc7c8c3093560edd55d322218afe7798aa9">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_92a0d389f60a0f240c076f712fb534f2540dffd7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/c36fcfd1439cf7476f015d2560aff8e33df6e6be/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="ee394a892dd21c03a528139c1e8d4e0e1264ac84">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_be48181563a872a675e5459ba74f511145c090a3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/6c597f6944c3524fbe05c59ff3844f2fc12958b4/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_aeb84a798b57b8fbd0fd7ad4a227a1bf92f3315b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/7b774b125da1b6e01256bd7f439cef4f3652c3ac/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="c175c3009577fad8b433703f5d7ac2dc21d3871f">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5439f65f259a2a2b13f77ca55d94f5bd901635da/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/fbb120bfb86447ee53d3793e2d69355692cb5008/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="f5ff5e3811e8c9485fd27f9052ae4d4d23a22d9d">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f9a4c661b70f9021ed8e9c69691dbab8836ed620/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/24b3875bbd9fdcf523c0dc9fa0ad39d814d4bda8/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="76ea35b41786082af23db898ca9e0fc07cc71fb9">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a2f33c13918ac0b85eb628fe249fc212e87a6b6c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/461451760ec87aa81371965bafb239118e30320a/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="0bffdc0bd4f7ca0e27c5bfeef39569f8da00aa26">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_50ea497c1f1fa581db3d6cd66855b085aa2e5c12/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/f867ce354f3ec81d52b5f8a6a253efdc0d0f5089/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="1b12397bc9f342b29d9e9108978828f99a6da579">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_79730d98ab3e9beb87c1f3ed6301cd9881544c06/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Drifter/.android/build-cache/babddd53f7b072e0003e713582c6fbf88988a194/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="43e9789bd3240271265ab30ce1be9f224843f5a8">
+        <dex dex="/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9dbacb171f47ec60e41a083c1467c52a441e63c7/classes.dex" />
+    </item>
+
+</items>

@@ -3544,8 +3544,8 @@ containing a value of this type.
         public static final int notification_bg_normal=0x7f020148;
         public static final int notification_bg_normal_pressed=0x7f020149;
         public static final int notification_icon_background=0x7f02014a;
-        public static final int notification_template_icon_bg=0x7f02017a;
-        public static final int notification_template_icon_low_bg=0x7f02017b;
+        public static final int notification_template_icon_bg=0x7f02017b;
+        public static final int notification_template_icon_low_bg=0x7f02017c;
         public static final int notification_tile_bg=0x7f02014b;
         public static final int notify_panel_notification_icon_bg=0x7f02014c;
         public static final int places_ic_clear=0x7f02014d;
@@ -3593,6 +3593,7 @@ containing a value of this type.
         public static final int quantum_ic_volume_off_white_36=0x7f020177;
         public static final int quantum_ic_volume_up_grey600_36=0x7f020178;
         public static final int quantum_ic_volume_up_white_36=0x7f020179;
+        public static final int sharebutton=0x7f02017a;
     }
     public static final class id {
         public static final int action0=0x7f0e00f0;

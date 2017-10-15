@@ -1,238 +1,474 @@
 [
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_select_dialog_material.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_select_dialog_material.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/activity_story_upload.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/res/layout/activity_story_upload.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_screen_content_include.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\notification_template_part_chronometer.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_screen_content_include.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\notification_template_media_custom.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\notification_template_media_custom.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\place_autocomplete_item_powered_by_google.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\370eff81a2e26ae1f4c9fb01057f3f3ac37854f2\\output\\res\\layout\\place_autocomplete_item_powered_by_google.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_popup_menu_item_layout.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/cast_mini_controller.xml",
+        "source": "/Users/Drifter/.android/build-cache/1c3c1b48030a782bfd905c5ac501f6b03a944c16/output/res/layout/cast_mini_controller.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\place_autocomplete_item_powered_by_google.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\370eff81a2e26ae1f4c9fb01057f3f3ac37854f2\\output\\res\\layout\\place_autocomplete_item_powered_by_google.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_expanded_menu_layout.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_list_menu_item_radio.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\notification_template_media.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/cast_help_text.xml",
+        "source": "/Users/Drifter/.android/build-cache/1c3c1b48030a782bfd905c5ac501f6b03a944c16/output/res/layout/cast_help_text.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/mr_playback_control.xml",
+        "source": "/Users/Drifter/.android/build-cache/0b9cc38a2fab7c2f17c4a19afb0ef5bcbcf4f88b/output/res/layout/mr_playback_control.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\cast_tracks_chooser_dialog_row_layout.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\b451ef381a4cf58256e3bbca04d2f71d9091ba6e\\output\\res\\layout\\cast_tracks_chooser_dialog_row_layout.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_screen_toolbar.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_chooser_list_item.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\3ac3ba95c790e5960d50bdf1dbe1b96acdb54702\\output\\res\\layout\\mr_chooser_list_item.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\cast_tracks_chooser_dialog_row_layout.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\b451ef381a4cf58256e3bbca04d2f71d9091ba6e\\output\\res\\layout\\cast_tracks_chooser_dialog_row_layout.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\cast_expanded_controller_activity.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\b451ef381a4cf58256e3bbca04d2f71d9091ba6e\\output\\res\\layout\\cast_expanded_controller_activity.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/notification_template_part_chronometer.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_list_menu_item_icon.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/custom_info_contents.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/res/layout/custom_info_contents.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\place_autocomplete_item_prediction.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\370eff81a2e26ae1f4c9fb01057f3f3ac37854f2\\output\\res\\layout\\place_autocomplete_item_prediction.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_chooser_list_item.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\3ac3ba95c790e5960d50bdf1dbe1b96acdb54702\\output\\res\\layout\\mr_chooser_list_item.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_search_view.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_list_menu_item_layout.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\place_autocomplete_item_prediction.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\370eff81a2e26ae1f4c9fb01057f3f3ac37854f2\\output\\res\\layout\\place_autocomplete_item_prediction.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_action_bar_up_container.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_search_view.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\notification_template_lines_media.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_screen_simple.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_activity_chooser_view_list_item.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_chooser_dialog.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\3ac3ba95c790e5960d50bdf1dbe1b96acdb54702\\output\\res\\layout\\mr_chooser_dialog.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_action_mode_bar.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_action_bar_title_item.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/mr_chooser_list_item.xml",
+        "source": "/Users/Drifter/.android/build-cache/0b9cc38a2fab7c2f17c4a19afb0ef5bcbcf4f88b/output/res/layout/mr_chooser_list_item.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\notification_action_tombstone.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/notification_template_custom_big.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/notification_template_custom_big.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_action_menu_item_layout.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/notification_template_media_custom.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/notification_template_media_custom.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_maps.xml",
-        "source": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\src\\main\\res\\layout\\activity_maps.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_action_bar_up_container.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_action_bar_up_container.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_volume_control.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\3ac3ba95c790e5960d50bdf1dbe1b96acdb54702\\output\\res\\layout\\mr_volume_control.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/support_simple_spinner_dropdown_item.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_activity_chooser_view.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_volume_control.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\3ac3ba95c790e5960d50bdf1dbe1b96acdb54702\\output\\res\\layout\\mr_volume_control.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\cast_mini_controller.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\b451ef381a4cf58256e3bbca04d2f71d9091ba6e\\output\\res\\layout\\cast_mini_controller.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_activity_chooser_view.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\place_autocomplete_fragment.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\370eff81a2e26ae1f4c9fb01057f3f3ac37854f2\\output\\res\\layout\\place_autocomplete_fragment.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/place_autocomplete_item_powered_by_google.xml",
+        "source": "/Users/Drifter/.android/build-cache/bc9699f148d03a6edf3d5b8c6aae2ed50b59fdd6/output/res/layout/place_autocomplete_item_powered_by_google.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_title_material.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_alert_dialog_title_material.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\cast_mini_controller.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\b451ef381a4cf58256e3bbca04d2f71d9091ba6e\\output\\res\\layout\\cast_mini_controller.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_controller_material_dialog_b.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\3ac3ba95c790e5960d50bdf1dbe1b96acdb54702\\output\\res\\layout\\mr_controller_material_dialog_b.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\place_autocomplete_fragment.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\370eff81a2e26ae1f4c9fb01057f3f3ac37854f2\\output\\res\\layout\\place_autocomplete_fragment.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_action_menu_layout.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_title_material.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_alert_dialog_title_material.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\select_dialog_item_material.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_controller_material_dialog_b.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\3ac3ba95c790e5960d50bdf1dbe1b96acdb54702\\output\\res\\layout\\mr_controller_material_dialog_b.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_alert_dialog_material.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_action_menu_layout.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_list_menu_item_layout.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_list_menu_item_layout.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\notification_template_icon_group.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\place_autocomplete_progress.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\370eff81a2e26ae1f4c9fb01057f3f3ac37854f2\\output\\res\\layout\\place_autocomplete_progress.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_title_material.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_alert_dialog_title_material.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\place_autocomplete_progress.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\370eff81a2e26ae1f4c9fb01057f3f3ac37854f2\\output\\res\\layout\\place_autocomplete_progress.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/place_autocomplete_fragment.xml",
+        "source": "/Users/Drifter/.android/build-cache/bc9699f148d03a6edf3d5b8c6aae2ed50b59fdd6/output/res/layout/place_autocomplete_fragment.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_story_upload.xml",
-        "source": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\src\\main\\res\\layout\\activity_story_upload.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/mr_chooser_dialog.xml",
+        "source": "/Users/Drifter/.android/build-cache/0b9cc38a2fab7c2f17c4a19afb0ef5bcbcf4f88b/output/res/layout/mr_chooser_dialog.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\cast_intro_overlay.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\b451ef381a4cf58256e3bbca04d2f71d9091ba6e\\output\\res\\layout\\cast_intro_overlay.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\cast_intro_overlay.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\b451ef381a4cf58256e3bbca04d2f71d9091ba6e\\output\\res\\layout\\cast_intro_overlay.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_list_menu_item_radio.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_list_menu_item_checkbox.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_playback_control.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\3ac3ba95c790e5960d50bdf1dbe1b96acdb54702\\output\\res\\layout\\mr_playback_control.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_playback_control.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\3ac3ba95c790e5960d50bdf1dbe1b96acdb54702\\output\\res\\layout\\mr_playback_control.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\cast_help_text.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\b451ef381a4cf58256e3bbca04d2f71d9091ba6e\\output\\res\\layout\\cast_help_text.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\cast_help_text.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\b451ef381a4cf58256e3bbca04d2f71d9091ba6e\\output\\res\\layout\\cast_help_text.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\cast_tracks_chooser_dialog_layout.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\b451ef381a4cf58256e3bbca04d2f71d9091ba6e\\output\\res\\layout\\cast_tracks_chooser_dialog_layout.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\cast_tracks_chooser_dialog_layout.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\b451ef381a4cf58256e3bbca04d2f71d9091ba6e\\output\\res\\layout\\cast_tracks_chooser_dialog_layout.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/notification_template_lines_media.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/notification_template_lines_media.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_controller_volume_item.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\3ac3ba95c790e5960d50bdf1dbe1b96acdb54702\\output\\res\\layout\\mr_controller_volume_item.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_search_dropdown_item_icons_2line.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/mr_controller_material_dialog_b.xml",
+        "source": "/Users/Drifter/.android/build-cache/0b9cc38a2fab7c2f17c4a19afb0ef5bcbcf4f88b/output/res/layout/mr_controller_material_dialog_b.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_screen_toolbar.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_action_mode_bar.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/cast_tracks_chooser_dialog_row_layout.xml",
+        "source": "/Users/Drifter/.android/build-cache/1c3c1b48030a782bfd905c5ac501f6b03a944c16/output/res/layout/cast_tracks_chooser_dialog_row_layout.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\custom_info_contents.xml",
-        "source": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\src\\main\\res\\layout\\custom_info_contents.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_screen_simple_overlay_action_mode.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\notification_action.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_action_mode_bar.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_custom_big.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\notification_template_custom_big.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_custom_big.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\notification_template_custom_big.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\notification_template_part_time.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/cast_expanded_controller_activity.xml",
+        "source": "/Users/Drifter/.android/build-cache/1c3c1b48030a782bfd905c5ac501f6b03a944c16/output/res/layout/cast_expanded_controller_activity.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_popup_menu_item_layout.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_expanded_menu_layout.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_activity_chooser_view.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\select_dialog_multichoice_material.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_expanded_menu_layout.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_dialog_title_material.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/place_autocomplete_progress.xml",
+        "source": "/Users/Drifter/.android/build-cache/bc9699f148d03a6edf3d5b8c6aae2ed50b59fdd6/output/res/layout/place_autocomplete_progress.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/activity_maps.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/res/layout/activity_maps.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/select_dialog_item_material.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/select_dialog_multichoice_material.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_screen_simple.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_header_item_layout.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/cast_intro_overlay.xml",
+        "source": "/Users/Drifter/.android/build-cache/1c3c1b48030a782bfd905c5ac501f6b03a944c16/output/res/layout/cast_intro_overlay.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_screen_content_include.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_button_bar_material.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\cast_expanded_controller_activity.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\b451ef381a4cf58256e3bbca04d2f71d9091ba6e\\output\\res\\layout\\cast_expanded_controller_activity.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/cast_tracks_chooser_dialog_layout.xml",
+        "source": "/Users/Drifter/.android/build-cache/1c3c1b48030a782bfd905c5ac501f6b03a944c16/output/res/layout/cast_tracks_chooser_dialog_layout.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\notification_template_lines_media.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/mr_volume_control.xml",
+        "source": "/Users/Drifter/.android/build-cache/0b9cc38a2fab7c2f17c4a19afb0ef5bcbcf4f88b/output/res/layout/mr_volume_control.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_chooser_dialog.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\3ac3ba95c790e5960d50bdf1dbe1b96acdb54702\\output\\res\\layout\\mr_chooser_dialog.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/notification_action_tombstone.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_maps.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\src\\main\\res\\layout\\activity_maps.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/select_dialog_singlechoice_material.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/notification_action.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/notification_action.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\select_dialog_item_material.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_search_view.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_story_upload.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\src\\main\\res\\layout\\activity_story_upload.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/notification_template_icon_group.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mr_controller_volume_item.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\3ac3ba95c790e5960d50bdf1dbe1b96acdb54702\\output\\res\\layout\\mr_controller_volume_item.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/notification_template_media.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\custom_info_contents.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\src\\main\\res\\layout\\custom_info_contents.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\notification_action.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/place_autocomplete_item_prediction.xml",
+        "source": "/Users/Drifter/.android/build-cache/bc9699f148d03a6edf3d5b8c6aae2ed50b59fdd6/output/res/layout/place_autocomplete_item_prediction.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/mr_controller_volume_item.xml",
+        "source": "/Users/Drifter/.android/build-cache/0b9cc38a2fab7c2f17c4a19afb0ef5bcbcf4f88b/output/res/layout/mr_controller_volume_item.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/layout/abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED!\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_dialog_title_material.xml"
     }
 ]

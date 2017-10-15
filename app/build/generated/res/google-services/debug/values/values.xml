@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">217030357615-og7v4t6v760kk3cn1r0lbr06mopr7ing.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://bored-9db45.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">217030357615</string>
+    <string name="google_api_key" translatable="false">AIzaSyAl9w2kBxi1uxNG_nNcGlixNUeuLgKlXe4</string>
+    <string name="google_app_id" translatable="false">1:217030357615:android:6f7b7c2af9d2fe26</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAl9w2kBxi1uxNG_nNcGlixNUeuLgKlXe4</string>
+    <string name="google_storage_bucket" translatable="false">bored-9db45.appspot.com</string>
+</resources>
