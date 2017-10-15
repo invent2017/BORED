@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -152,6 +153,9 @@ public class StoryUpload extends AppCompatActivity {
         Intent i = new Intent(this, MapsActivityCurrentPlace.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
+
+        Toast.makeText(this, "Story added!",
+                Toast.LENGTH_SHORT).show();
     }
 
     private void uploadStory2 (UploadTask.TaskSnapshot taskSnapshot) {

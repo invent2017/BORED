@@ -1,7 +1,7 @@
--injars 'C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED\app\build\intermediates\transforms\jarMerging\debug\jars\1\1f\combined.jar'
--outjars 'C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED\app\build\intermediates\multi-dex\debug\componentClasses.jar'
+-injars '/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/jarMerging/debug/jars/1/1f/combined.jar'
+-outjars '/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/multi-dex/debug/componentClasses.jar'
 
--libraryjars 'C:\Users\LikHern\AppData\Local\Android\Sdk\build-tools\25.0.0\lib\shrinkedAndroid.jar'
+-libraryjars /Users/Drifter/Library/Android/sdk/build-tools/25.0.0/lib/shrinkedAndroid.jar
 
 -forceprocessing
 -dontoptimize
@@ -10,7 +10,7 @@
 -dontpreverify
 -dontnote **
 -dontwarn **
--printconfiguration 'C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED\app\build\intermediates\multi-dex\debug\components.flags'
+-printconfiguration '/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/multi-dex/debug/components.flags'
 
 
 -keep public class * extends android.app.Instrumentation {

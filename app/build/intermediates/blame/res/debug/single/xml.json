@@ -1,6 +1,10 @@
 [
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\xml\\file_paths.xml",
-        "source": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\src\\main\\res\\xml\\file_paths.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\xml\\file_paths.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\src\\main\\res\\xml\\file_paths.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/xml/file_paths.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/res/xml/file_paths.xml"
     }
 ]
