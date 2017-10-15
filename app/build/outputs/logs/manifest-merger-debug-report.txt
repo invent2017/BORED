@@ -163,8 +163,6 @@ MERGED from [com.google.android.gms:play-services-clearcut:11.0.4] C:\Users\LikH
 MERGED from [com.google.firebase:firebase-config:11.0.4] C:\Users\LikHern\.android\build-cache\f86f4eb4a93a90f3bee2c2e73bcf59b239943e71\output\AndroidManifest.xml:17:5-43
 MERGED from [com.google.android.gms:play-services-awareness:11.0.4] C:\Users\LikHern\.android\build-cache\87495323654918d2b663b444083ce307f4f5f1af\output\AndroidManifest.xml:17:5-43
 MERGED from [com.google.firebase:firebase-crash:11.0.4] C:\Users\LikHern\.android\build-cache\01d12c8f71bb809eab11cad5b399b75d56dae11b\output\AndroidManifest.xml:20:5-43
-MERGED from [com.google.firebase:firebase-database:11.0.4] C:\Users\LikHern\.android\build-cache\a970b82218e2b77c541d9b08130c5e7eb84c8835\output\AndroidManifest.xml:3:5-43
-MERGED from [com.google.firebase:firebase-database-connection:11.0.4] C:\Users\LikHern\.android\build-cache\d2daab9e9f76d52ea50265ec8d7b47fb924ac395\output\AndroidManifest.xml:3:5-43
 MERGED from [com.google.firebase:firebase-dynamic-links:11.0.4] C:\Users\LikHern\.android\build-cache\164088991e27569ca010361e2eb9689c12af3e87\output\AndroidManifest.xml:3:3-41
 MERGED from [com.google.firebase:firebase-messaging:11.0.4] C:\Users\LikHern\.android\build-cache\f03fc1e6f217b1b8d3ae52cf883a3174c22ce46a\output\AndroidManifest.xml:17:5-43
 MERGED from [com.google.android.gms:play-services-fitness:11.0.4] C:\Users\LikHern\.android\build-cache\240ea5c329959096609d7fc1ab803963732a1fde\output\AndroidManifest.xml:17:5-43
@@ -196,6 +194,8 @@ MERGED from [com.google.firebase:firebase-storage:11.0.4] C:\Users\LikHern\.andr
 MERGED from [com.google.firebase:firebase-storage-common:11.0.4] C:\Users\LikHern\.android\build-cache\a06543e31568aa3847ad60499e86fed02714fe7f\output\AndroidManifest.xml:3:5-43
 MERGED from [com.google.firebase:firebase-auth:11.0.4] C:\Users\LikHern\.android\build-cache\b0cc108c38dd47c31ec6f4f65c06ebd3850e51f7\output\AndroidManifest.xml:17:5-43
 MERGED from [com.google.android.gms:play-services-base:11.0.4] C:\Users\LikHern\.android\build-cache\e8da200131a218569ee5428ed3e217b32330f8df\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-database:11.0.4] C:\Users\LikHern\.android\build-cache\a970b82218e2b77c541d9b08130c5e7eb84c8835\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.firebase:firebase-database-connection:11.0.4] C:\Users\LikHern\.android\build-cache\d2daab9e9f76d52ea50265ec8d7b47fb924ac395\output\AndroidManifest.xml:3:5-43
 MERGED from [com.google.firebase:firebase-core:11.0.4] C:\Users\LikHern\.android\build-cache\325ac425d48163e7e570efe3be0c03e56ad36c7b\output\AndroidManifest.xml:4:5-43
 MERGED from [com.google.firebase:firebase-analytics:11.0.4] C:\Users\LikHern\.android\build-cache\9a74d9fd0b3648282fe49dd40734ef22ea20ce6c\output\AndroidManifest.xml:17:5-43
 MERGED from [com.google.firebase:firebase-analytics-impl:11.0.4] C:\Users\LikHern\.android\build-cache\bca6f00b5f8bb86d3228fa6d86dd3aeea72fa487\output\AndroidManifest.xml:17:5-43

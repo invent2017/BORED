@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.NonNull;
@@ -19,8 +20,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
@@ -36,14 +41,20 @@ public class StoryUpload extends AppCompatActivity {
     EditText caption;
 
     private StorageReference mStorageRef;
+    private DatabaseReference mDataRef;
 
     String mCurrentPhotoPath;
+
+    private FusedLocationProviderClient mFusedLocationProviderClient;
+    private Location mLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.projectbored.app.R.layout.activity_story_upload);
         mStorageRef = FirebaseStorage.getInstance().getReference();
+        mDataRef = FirebaseDatabase.getInstance().getReference();
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         caption = (EditText)findViewById(R.id.story_caption);
 
@@ -135,12 +146,40 @@ public class StoryUpload extends AppCompatActivity {
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Uri photoUri = taskSnapshot.getMetadata().getDownloadUrl();
+                uploadStory2(taskSnapshot);
             }
         });
 
         Intent i = new Intent(this, MapsActivityCurrentPlace.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
+    }
+
+    private void uploadStory2 (UploadTask.TaskSnapshot taskSnapshot) {
+        final Uri PHOTO_URI = taskSnapshot.getMetadata().getDownloadUrl();
+        try{
+            mFusedLocationProviderClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            if (location != null) {
+                                mDataRef.child(caption.getText().toString())
+                                        .child(Double.toString(location.getLatitude()))
+                                        .child(Double.toString(location.getLongitude()))
+                                        .setValue(PHOTO_URI);
+                            }
+                        }
+                    });
+        } catch (SecurityException e) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+            builder.setMessage("Cannot get your location.")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+            builder.create();
+        }
     }
 }
