@@ -46,7 +46,6 @@ public class StoryUpload extends AppCompatActivity {
     String mCurrentPhotoPath;
 
     private FusedLocationProviderClient mFusedLocationProviderClient;
-    private Location mLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,10 +162,11 @@ public class StoryUpload extends AppCompatActivity {
                         @Override
                         public void onSuccess(Location location) {
                             if (location != null) {
-                                mDataRef.child(caption.getText().toString())
-                                        .child(Double.toString(location.getLatitude()))
-                                        .child(Double.toString(location.getLongitude()))
-                                        .setValue(PHOTO_URI);
+                                Story story = new Story(PHOTO_URI,
+                                        location.getLatitude(),
+                                        location.getLongitude(),
+                                        caption.getText().toString());
+                                mDataRef.setValue(story);
                             }
                         }
                     });
