@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:2:1-47:12
+ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:2:1-49:12
 	package
 		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:3:5-35
 		INJECTED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml
@@ -26,7 +26,7 @@ ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BO
 	android:name
 		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:9:22-78
 application
-ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:11:5-45:19
+ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:11:5-47:19
 MERGED from [com.google.android.gms:play-services:11.0.4] /Users/Drifter/.android/build-cache/73dd7316fb6ec34cef8cc7e300ddc2f4e3f54342/output/AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-ads-lite:11.0.4] /Users/Drifter/.android/build-cache/c9a6f7c979866189a78dc7a224add8c7cccc4a29/output/AndroidManifest.xml:23:5-26:19
 MERGED from [com.google.android.gms:play-services-analytics:11.0.4] /Users/Drifter/.android/build-cache/30a4dccf86ac827dad08936afb05b421016f505e/output/AndroidManifest.xml:26:5-19
@@ -110,7 +110,7 @@ ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BO
 	android:label
 		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:27:13-56
 	android:name
-		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:26:13-73
+		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:26:13-53
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
 ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:28:13-32:29
 action#android.intent.action.MAIN
@@ -122,27 +122,32 @@ ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BO
 	android:name
 		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:31:27-74
 activity#com.projectbored.app.StoryUpload
-ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:34:9-69
+ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:34:9-49
 	android:name
-		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:34:19-66
+		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:34:19-46
 provider#android.support.v4.content.FileProvider
 ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:36:9-44:20
 	android:authorities
-		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:37:13-68
+		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:38:13-68
 	android:grantUriPermissions
 		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:40:13-47
 	android:exported
 		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:39:13-37
 	android:name
-		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:38:13-67
+		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:37:13-67
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:41:13-43:64
+ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:41:13-43:54
 	android:resource
 		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:43:17-51
 	android:name
 		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:42:17-67
+activity#com.projectbored.app.ShowStory
+ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:46:9-56
+	android:name
+		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:46:19-44
 uses-sdk
 INJECTED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:multidex:1.0.1] /Users/Drifter/.android/build-cache/58dc68050b66da1b54d477a1e572c7cfdb9fbad6/output/AndroidManifest.xml:18:5-42
 MERGED from [com.google.android.gms:play-services:11.0.4] /Users/Drifter/.android/build-cache/73dd7316fb6ec34cef8cc7e300ddc2f4e3f54342/output/AndroidManifest.xml:4:5-43
 MERGED from [com.google.android.gms:play-services-ads:11.0.4] /Users/Drifter/.android/build-cache/a496b86701744cd4cddf751bf1deb49b96634f4a/output/AndroidManifest.xml:17:5-43
 MERGED from [com.google.android.gms:play-services-ads-lite:11.0.4] /Users/Drifter/.android/build-cache/c9a6f7c979866189a78dc7a224add8c7cccc4a29/output/AndroidManifest.xml:22:5-43

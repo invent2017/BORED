@@ -23,7 +23,7 @@
             android:value="AIzaSyDDI26HcgBs3lpWJz4lZn5Lo4TXy1QAlrc" />
 
         <activity
-            android:name="com.projectbored.app.MapsActivityCurrentPlace"
+            android:name=".MapsActivityCurrentPlace"
             android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,17 +31,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.projectbored.app.StoryUpload" />
-        
+        <activity android:name=".StoryUpload" />
+
         <provider
-            android:authorities="com.projectbored.app.fileprovider"
             android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.projectbored.app.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"></meta-data>
+                android:resource="@xml/file_paths" />
         </provider>
+
+        <activity android:name=".ShowStory"></activity>
     </application>
 
 </manifest>
