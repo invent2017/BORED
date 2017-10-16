@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+// still need to make ImageView retrieve image and textView retrieve caption
+// still need to let upvote/downvote change the thingies in the database possibly so they work
+
 public class ShowStory extends ActionBarActivity implements View.OnClickListener {
 
     ImageButton upVoteButton;
@@ -31,7 +34,7 @@ public class ShowStory extends ActionBarActivity implements View.OnClickListener
         mClickShare.setOnClickListener(this);
 
         }
-    }
+
 
     // stuff the buttons do when clicked -hy
 
