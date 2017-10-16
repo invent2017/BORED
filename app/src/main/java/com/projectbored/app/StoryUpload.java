@@ -160,7 +160,7 @@ public class StoryUpload extends AppCompatActivity {
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
 
-        Toast.makeText(this, "Story added!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Story added!", Toast.LENGTH_LONG).show();
     }
 
     private void uploadStoryData (UploadTask.TaskSnapshot taskSnapshot) {
