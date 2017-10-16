@@ -159,9 +159,6 @@ public class StoryUpload extends AppCompatActivity {
         Intent i = new Intent(this, MapsActivityCurrentPlace.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
-
-        Toast.makeText(this, "Story added!",
-                Toast.LENGTH_SHORT).show();
     }
 
     private void uploadStoryData (UploadTask.TaskSnapshot taskSnapshot) {
@@ -177,17 +174,38 @@ public class StoryUpload extends AppCompatActivity {
                         public void onSuccess(Location location) {
                             if (location != null) {
                                 Date dateTime = new Date();
-                                Story story = new Story(PHOTO_URI,
-                                        location,
-                                        caption.getText().toString(), dateTime);
+                                Story story = new Story(PHOTO_URI, location, caption.getText().toString(), dateTime);
                                 mDataRef.setValue(story);
+
+                                uploadSuccessNotification();
+                            } else {
+                                cannotGetLocation();
                             }
+                        }
+                    })
+                    .addOnFailureListener(this, new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            uploadErrorNotification();
                         }
                     });
         } else {
             ActivityCompat.requestPermissions(this,
                     new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
                     PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+
         }
+    }
+
+    private void uploadSuccessNotification() {
+        Toast.makeText(this, "Story added!", Toast.LENGTH_SHORT).show();
+    }
+
+    private void uploadErrorNotification() {
+        Toast.makeText(this, "Failed to upload to database.", Toast.LENGTH_SHORT).show();
+    }
+
+    private void cannotGetLocation() {
+        Toast.makeText(this, "Cannot get your location.", Toast.LENGTH_SHORT).show();
     }
 }

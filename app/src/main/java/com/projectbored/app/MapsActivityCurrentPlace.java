@@ -345,8 +345,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 if (story != null) {
                     if ((int) mLastKnownLocation.distanceTo(story.getLocation()) <= 1000) {
                         mMap.addMarker(new MarkerOptions()
+                                .title(story.getCaption())
                                 .position(new LatLng(story.getLocation().getLatitude(),story.getLocation().getLongitude()))
-                                .snippet(story.getCaption()));
+                                .snippet(story.getDateTime().toString()));
                     }
                 }
             }
