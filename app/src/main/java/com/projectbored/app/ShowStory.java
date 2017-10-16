@@ -1,5 +1,6 @@
 package com.projectbored.app;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,7 +13,6 @@ public class ShowStory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_story);
     }
-
 
     // creating the menu that launches backToMap method
 
@@ -30,10 +30,14 @@ public class ShowStory extends AppCompatActivity {
         return true;
     }
 
-    // backToMap method
+    // backToMap method (that just goes back to map i guess lol)
+    // idk if this works
 
     private void backToMap() {
         // to fill in with code
+        // i think this is suppose to open the map activity
+        Intent intent = new Intent(this, MapsActivityCurrentPlace.class);
+        startActivity(intent);
     }
 
 }
