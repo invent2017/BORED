@@ -1,4 +1,7 @@
-#Sun Oct 15 17:09:11 SGT 2017
-base.0=C\:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
+#Mon Oct 16 09:57:13 SGT 2017
+base.0=/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_09d242bfc82ecca8954d9579c2c52a7e755c03ba
+renamed.1=classes2.dex
 renamed.0=classes.dex
-file.0=C\:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
+file.1=/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_4d9ca21aeac61378134784df23bbe16a0cae69fa/classes.dex
+base.1=/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_4d9ca21aeac61378134784df23bbe16a0cae69fa
+file.0=/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_09d242bfc82ecca8954d9579c2c52a7e755c03ba/classes.dex
