@@ -27,8 +27,8 @@
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="40dp"
-            android:layout_weight="0.32"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.8"
             app:srcCompat="@drawable/cast_abc_scrubber_control_off_mtrl_alpha" />
 
         <EditText
@@ -37,8 +37,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:ems="10"
+            android:layout_weight="0.15"
             android:hint="Insert Caption Here"
-            android:inputType="textPersonName" />
+            android:inputType="textImeMultiLine" />
 
         <Button
             android:id="@+id/uploadstory"
@@ -46,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_weight="0.06"
+            android:layout_weight="0.05"
             android:background="@drawable/sharebutton"
             android:gravity="center_vertical"
             android:text="Share"

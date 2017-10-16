@@ -343,7 +343,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Story story = dataSnapshot.getValue(Story.class);
                 if (story != null) {
-                    if ((int) mLastKnownLocation.distanceTo(story.getLocation()) <= 1000) {
+                    if ((int) mLastKnownLocation.distanceTo(story.getLocation()) <= 100) {
                         mMap.addMarker(new MarkerOptions()
                                 .title(story.getCaption())
                                 .position(new LatLng(story.getLocation().getLatitude(),story.getLocation().getLongitude()))

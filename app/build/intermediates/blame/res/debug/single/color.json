@@ -1,302 +1,402 @@
 [
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\wallet_primary_text_holo_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\24d4295cca88e2f039f46e608f1639781a9d8a33\\output\\res\\color\\wallet_primary_text_holo_light.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\switch_thumb_material_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\e0b8a2d85cddb9e8a57dd181dc9aba80a370640a\\output\\res\\color\\common_google_signin_btn_text_dark.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\switch_thumb_material_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_spinner.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_spinner.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_btn_checkable.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_tint_btn_checkable.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_default.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_tint_default.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_spinner.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_tint_spinner.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_light.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/color/abc_primary_text_disable_only_material_light.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_btn_checkable.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_btn_checkable.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_tint.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\e8da200131a218569ee5428ed3e217b32330f8df\\output\\res\\color\\common_google_signin_btn_tint.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/common_google_signin_btn_text_dark.xml",
+        "source": "/Users/Drifter/.android/build-cache/e0b8a2d85cddb9e8a57dd181dc9aba80a370640a/output/res/color/common_google_signin_btn_text_dark.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_secondary_text_material_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\wallet_primary_text_holo_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\24d4295cca88e2f039f46e608f1639781a9d8a33\\output\\res\\color\\wallet_primary_text_holo_light.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_primary_text_material_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_btn_checkable.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_btn_checkable.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_thumb.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_tint_switch_thumb.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/abc_tint_switch_thumb.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/color/abc_tint_switch_thumb.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_secondary_text_material_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_tint.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\e8da200131a218569ee5428ed3e217b32330f8df\\output\\res\\color\\common_google_signin_btn_tint.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_track.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_switch_track.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_spinner.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_spinner.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_primary_text_material_light.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_tint.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\e8da200131a218569ee5428ed3e217b32330f8df\\output\\res\\color\\common_google_signin_btn_tint.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_light.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/color/abc_primary_text_material_light.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_primary_text_material_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/color/abc_secondary_text_material_dark.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/abc_btn_colored_borderless_text_material.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/color/abc_btn_colored_borderless_text_material.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_track.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_switch_track.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_edittext.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_edittext.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_primary_text_material_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\switch_thumb_material_dark.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_spinner.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_spinner.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_dark.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/color/abc_primary_text_material_dark.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_secondary_text_material_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_edittext.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_tint_edittext.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_track.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_switch_track.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_spinner.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_spinner.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_primary_text_material_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/wallet_primary_text_holo_light.xml",
+        "source": "/Users/Drifter/.android/build-cache/be3f1613bd417d78eaa3eb323d7afb32d0e8db71/output/res/color/wallet_primary_text_holo_light.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\wallet_secondary_text_holo_dark.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\be3f1613bd417d78eaa3eb323d7afb32d0e8db71\\output\\res\\color\\wallet_secondary_text_holo_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_seek_thumb.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_tint_seek_thumb.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_text_material.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_btn_colored_text_material.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\e8da200131a218569ee5428ed3e217b32330f8df\\output\\res\\color\\common_google_signin_btn_text_dark.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_dark.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_hint_foreground_material_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_search_url_text.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_edittext.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_edittext.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_secondary_text_material_light.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_dark.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_hint_foreground_material_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\switch_thumb_material_dark.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_text_material.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_btn_colored_text_material.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\e8da200131a218569ee5428ed3e217b32330f8df\\output\\res\\color\\common_google_signin_btn_text_light.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\switch_thumb_material_light.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\wallet_primary_text_holo_light.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\24d4295cca88e2f039f46e608f1639781a9d8a33\\output\\res\\color\\wallet_primary_text_holo_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/color/abc_primary_text_disable_only_material_dark.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_thumb.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_switch_thumb.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_thumb.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_switch_thumb.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_default.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_tint_default.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_thumb.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_switch_thumb.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\wallet_secondary_text_holo_dark.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\24d4295cca88e2f039f46e608f1639781a9d8a33\\output\\res\\color\\wallet_secondary_text_holo_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_light.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/color/abc_hint_foreground_material_light.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_dark.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_hint_foreground_material_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_light.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/color/abc_secondary_text_material_light.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_light.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_hint_foreground_material_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_secondary_text_material_light.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\switch_thumb_material_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_light.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_hint_foreground_material_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_seek_thumb.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_seek_thumb.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_edittext.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_tint_edittext.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_search_url_text.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_light.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\e8da200131a218569ee5428ed3e217b32330f8df\\output\\res\\color\\common_google_signin_btn_text_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\wallet_primary_text_holo_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\be3f1613bd417d78eaa3eb323d7afb32d0e8db71\\output\\res\\color\\wallet_primary_text_holo_light.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_search_url_text.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\switch_thumb_material_light.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_dark.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\e8da200131a218569ee5428ed3e217b32330f8df\\output\\res\\color\\common_google_signin_btn_text_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_primary_text_material_dark.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_search_url_text.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_edittext.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_edittext.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_dark.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\e0b8a2d85cddb9e8a57dd181dc9aba80a370640a\\output\\res\\color\\common_google_signin_btn_text_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_hint_foreground_material_dark.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_seek_thumb.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_tint_seek_thumb.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_spinner.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_tint_spinner.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\wallet_primary_text_holo_light.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\be3f1613bd417d78eaa3eb323d7afb32d0e8db71\\output\\res\\color\\wallet_primary_text_holo_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_tint.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\e8da200131a218569ee5428ed3e217b32330f8df\\output\\res\\color\\common_google_signin_btn_tint.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_light.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\e0b8a2d85cddb9e8a57dd181dc9aba80a370640a\\output\\res\\color\\common_google_signin_btn_text_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/switch_thumb_material_light.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/color/switch_thumb_material_light.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_light.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_hint_foreground_material_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_track.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_switch_track.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\wallet_secondary_text_holo_dark.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\24d4295cca88e2f039f46e608f1639781a9d8a33\\output\\res\\color\\wallet_secondary_text_holo_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\e8da200131a218569ee5428ed3e217b32330f8df\\output\\res\\color\\common_google_signin_btn_text_light.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_seek_thumb.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_seek_thumb.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_hint_foreground_material_dark.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_secondary_text_material_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_secondary_text_material_dark.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\switch_thumb_material_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_default.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_default.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_primary_text_material_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/abc_btn_colored_text_material.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/color/abc_btn_colored_text_material.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_edittext.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_edittext.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\e0b8a2d85cddb9e8a57dd181dc9aba80a370640a\\output\\res\\color\\common_google_signin_btn_text_light.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_default.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_default.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_track.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_tint_switch_track.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_tint.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\e0b8a2d85cddb9e8a57dd181dc9aba80a370640a\\output\\res\\color\\common_google_signin_btn_tint.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_default.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_default.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_text_material.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_btn_colored_text_material.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_text_material.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_btn_colored_text_material.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_btn_checkable.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_btn_checkable.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_primary_text_material_dark.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_secondary_text_material_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_primary_text_material_light.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\wallet_secondary_text_holo_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\24d4295cca88e2f039f46e608f1639781a9d8a33\\output\\res\\color\\wallet_secondary_text_holo_dark.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_secondary_text_material_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_tint.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\e0b8a2d85cddb9e8a57dd181dc9aba80a370640a\\output\\res\\color\\common_google_signin_btn_tint.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/abc_tint_seek_thumb.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/color/abc_tint_seek_thumb.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_default.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_default.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/abc_search_url_text.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/color/abc_search_url_text.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\wallet_primary_text_holo_light.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\24d4295cca88e2f039f46e608f1639781a9d8a33\\output\\res\\color\\wallet_primary_text_holo_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\e8da200131a218569ee5428ed3e217b32330f8df\\output\\res\\color\\common_google_signin_btn_text_dark.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_dark.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\e8da200131a218569ee5428ed3e217b32330f8df\\output\\res\\color\\common_google_signin_btn_text_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\switch_thumb_material_light.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\switch_thumb_material_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/wallet_secondary_text_holo_dark.xml",
+        "source": "/Users/Drifter/.android/build-cache/be3f1613bd417d78eaa3eb323d7afb32d0e8db71/output/res/color/wallet_secondary_text_holo_dark.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_light.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\e8da200131a218569ee5428ed3e217b32330f8df\\output\\res\\color\\common_google_signin_btn_text_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_hint_foreground_material_light.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_track.xml",
-        "source": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_tint_switch_track.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/common_google_signin_btn_tint.xml",
+        "source": "/Users/Drifter/.android/build-cache/e0b8a2d85cddb9e8a57dd181dc9aba80a370640a/output/res/color/common_google_signin_btn_tint.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_btn_checkable.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_btn_checkable.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_seek_thumb.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_seek_thumb.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
     },
     {
-        "merged": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
-        "source": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_primary_text_material_dark.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_btn_checkable.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_tint_btn_checkable.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\switch_thumb_material_light.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\switch_thumb_material_dark.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_search_url_text.xml"
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/switch_thumb_material_dark.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/color/switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_primary_text_material_dark.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/abc_tint_btn_checkable.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/color/abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_dark.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/color/abc_hint_foreground_material_dark.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/abc_tint_switch_track.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/color/abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_text_material.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_btn_colored_text_material.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\wallet_secondary_text_holo_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\24d4295cca88e2f039f46e608f1639781a9d8a33\\output\\res\\color\\wallet_secondary_text_holo_dark.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_text_material.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_btn_colored_text_material.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/abc_tint_edittext.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/color/abc_tint_edittext.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_seek_thumb.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_search_url_text.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/abc_tint_spinner.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/color/abc_tint_spinner.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/abc_tint_default.xml",
+        "source": "/Users/Drifter/.android/build-cache/8032240aad432fd4db2cda9579eabe12258bdda1/output/res/color/abc_tint_default.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/build/intermediates/res/merged/debug/color/common_google_signin_btn_text_light.xml",
+        "source": "/Users/Drifter/.android/build-cache/e0b8a2d85cddb9e8a57dd181dc9aba80a370640a/output/res/color/common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_hint_foreground_material_dark.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_thumb.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_tint_switch_thumb.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\wallet_secondary_text_holo_dark.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\be3f1613bd417d78eaa3eb323d7afb32d0e8db71\\output\\res\\color\\wallet_secondary_text_holo_dark.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_light.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\color\\abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_thumb.xml",
+        "source": "/Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\color\\abc_tint_switch_thumb.xml"
     }
 ]
