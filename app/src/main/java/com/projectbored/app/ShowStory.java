@@ -5,13 +5,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class ShowStory extends AppCompatActivity {
+
+    Button upVoteButton;
+    Button downVoteButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_story);
+
+        Button upVoteButton = (Button)findViewById(R.id.upVoteButton);
+        
+        //tbc
+
+        }
     }
 
     // creating the menu that launches backToMap method
