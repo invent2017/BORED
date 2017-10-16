@@ -43,7 +43,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".ShowStory"></activity>
+        <activity android:name=".ShowStory" />
     </application>
 
 </manifest>

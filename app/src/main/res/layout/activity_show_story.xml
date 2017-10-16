@@ -54,24 +54,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_weight="1"
+                android:background="@android:color/transparent"
                 android:onClick="downVote"
-                app:srcCompat="?android:attr/findOnPageNextDrawable" />
+                android:padding="10dp"
+                app:srcCompat="@drawable/flag" />
 
             <ImageButton
                 android:id="@+id/upVoteButton"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_weight="1"
+                android:background="@android:color/transparent"
                 android:onClick="upVote"
-                app:srcCompat="?android:attr/findOnPagePreviousDrawable" />
+                android:padding="10dp"
+                app:srcCompat="@drawable/upvote" />
 
             <ImageButton
                 android:id="@+id/shareButton"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_weight="1"
+                android:background="@android:color/transparent"
                 android:onClick="shareFunction"
-                app:srcCompat="?attr/actionModeShareDrawable" />
+                android:padding="10dp"
+                app:srcCompat="@drawable/share" />
         </LinearLayout>
 
     </LinearLayout>
