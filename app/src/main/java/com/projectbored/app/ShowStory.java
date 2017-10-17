@@ -30,12 +30,30 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_show_story);
 
         imageView = (ImageView)findViewById(R.id.imageView);
+
         ImageButton mClickUpVoteButton = (ImageButton)findViewById(R.id.upVoteButton);
-        mClickUpVoteButton.setOnClickListener(this);
+        mClickUpVoteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                upVote();
+            }
+        });
+
         ImageButton mClickDownVoteButton = (ImageButton)findViewById(R.id.downVoteButton);
-        mClickDownVoteButton.setOnClickListener(this);
+        mClickDownVoteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                downVote();
+            }
+        });
+
         ImageButton mClickShare = (ImageButton)findViewById(R.id.shareButton);
-        mClickShare.setOnClickListener(this);
+        mClickShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shareFunction();
+            }
+        });
 
         }
 

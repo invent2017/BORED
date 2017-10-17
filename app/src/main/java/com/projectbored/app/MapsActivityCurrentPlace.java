@@ -37,7 +37,7 @@ import com.google.firebase.storage.StorageReference;
  * An activity that displays a map showing the place at the device's current location.
  */
 public class MapsActivityCurrentPlace extends AppCompatActivity
-        implements OnMapReadyCallback,
+        implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener,
                 GoogleApiClient.ConnectionCallbacks,
                 GoogleApiClient.OnConnectionFailedListener {
 
@@ -358,6 +358,20 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             }
         };
         mDataRef.addValueEventListener(storyListener);
+    }
+
+    //not done with the following 2 methods yet
+
+    @Override
+    public boolean onMarkerClick(Marker marker){
+        showStoryDetails();
+
+        return false;
+    }
+
+    public void showStoryDetails() {
+        Intent intent = new Intent(this, ShowStory.class);
+        startActivity(intent);
     }
 
     /**

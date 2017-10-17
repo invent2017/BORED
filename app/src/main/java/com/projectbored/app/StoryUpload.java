@@ -43,6 +43,8 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class StoryUpload extends AppCompatActivity {
 
@@ -179,24 +181,16 @@ public class StoryUpload extends AppCompatActivity {
                         @Override
                         public void onSuccess(final Location location) {
                             if (location != null) {
-                                FirebaseDatabase.getInstance().getReference()
-                                        .addListenerForSingleValueEvent(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                                Date dateTime = new Date();
-                                                Story story = new Story(PHOTO_URI, location, caption.getText().toString(), dateTime);
-                                                mDataRef.push().setValue(story);
-                                                uploadSuccessNotification();
-                                            }
+                                String key = mDataRef.child("stories").push().getKey();
+                                Story story = new Story(PHOTO_URI, location, caption.getText().toString(), new Date());
+                                Map<String, Object> storyDetails = story.toMap();
 
-                                            @Override
-                                            public void onCancelled(DatabaseError databaseError) {
-                                                uploadErrorNotification();
-                                            }
-                                        });
+                                Map<String, Object> childUpdates = new HashMap<>();
+                                childUpdates.put("/stories/" + key, storyDetails);
 
+                                mDataRef.updateChildren(childUpdates);
 
-
+                                uploadSuccessNotification();
                             } else {
                                 genericError();
                             }
