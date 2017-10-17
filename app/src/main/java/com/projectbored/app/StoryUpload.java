@@ -28,8 +28,11 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
@@ -164,6 +167,9 @@ public class StoryUpload extends AppCompatActivity {
     private void uploadStoryData (UploadTask.TaskSnapshot taskSnapshot) {
         final Uri PHOTO_URI = taskSnapshot.getMetadata().getDownloadUrl();
 
+
+
+
         if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
                 android.Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
@@ -171,21 +177,24 @@ public class StoryUpload extends AppCompatActivity {
             mFusedLocationProviderClient.getLastLocation()
                     .addOnSuccessListener(this, new OnSuccessListener<Location>() {
                         @Override
-                        public void onSuccess(Location location) {
+                        public void onSuccess(final Location location) {
                             if (location != null) {
-                                Date dateTime = new Date();
-                                Story story = new Story(PHOTO_URI, location, caption.getText().toString(), dateTime);
-                                mDataRef.setValue(story).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        uploadSuccessNotification();
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        uploadErrorNotification();
-                                    }
-                                });
+                                FirebaseDatabase.getInstance().getReference()
+                                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                Date dateTime = new Date();
+                                                Story story = new Story(PHOTO_URI, location, caption.getText().toString(), dateTime);
+                                                mDataRef.push().setValue(story);
+                                                uploadSuccessNotification();
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+                                                uploadErrorNotification();
+                                            }
+                                        });
+
 
 
                             } else {

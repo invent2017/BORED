@@ -12,6 +12,7 @@ public class Story {
     public Location location;
     public String caption;
     public Date dateTime;
+    public int votes;
 
     public Story() {
 
@@ -22,6 +23,7 @@ public class Story {
         location = myLocation;
         caption = new String(snippet);
         this.dateTime = dateTime;
+        votes = 0;
 
     }
 
@@ -39,6 +41,14 @@ public class Story {
 
     public void setDateTime(Date time) {
         dateTime = time;
+    }
+
+    public void upVote() {
+        votes++;
+    }
+
+    public void downVote() {
+        votes--;
     }
 
     public Uri getUri(){
