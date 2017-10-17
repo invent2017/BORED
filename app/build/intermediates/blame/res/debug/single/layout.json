@@ -8,12 +8,12 @@
         "source": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\src\\main\\res\\layout\\activity_story_upload.xml"
     },
     {
-        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
-        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_list_menu_item_radio.xml"
-    },
-    {
         "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\layout\\place_autocomplete_progress.xml",
         "source": "C:\\Users\\LikHern\\.android\\build-cache\\370eff81a2e26ae1f4c9fb01057f3f3ac37854f2\\output\\res\\layout\\place_autocomplete_progress.xml"
+    },
+    {
+        "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\layout\\abc_list_menu_item_radio.xml"
     },
     {
         "merged": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",

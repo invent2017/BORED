@@ -9,12 +9,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 // still need to make ImageView retrieve image and textView retrieve caption
 // still need to let upvote/downvote change the thingies in the database possibly so they work
 
 public class ShowStory extends ActionBarActivity implements View.OnClickListener {
 
+    ImageView imageView;
     ImageButton upVoteButton;
     ImageButton downVoteButton;
     ImageButton shareButton;
@@ -26,6 +28,7 @@ public class ShowStory extends ActionBarActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_story);
 
+        imageView = (ImageView)findViewById(R.id.imageView);
         ImageButton mClickUpVoteButton = (ImageButton)findViewById(R.id.upVoteButton);
         mClickUpVoteButton.setOnClickListener(this);
         ImageButton mClickDownVoteButton = (ImageButton)findViewById(R.id.downVoteButton);
@@ -88,6 +91,7 @@ public class ShowStory extends ActionBarActivity implements View.OnClickListener
         // to fill in with code -hy
         // i think this is suppose to open the map activity -hy
         Intent intent = new Intent(this, MapsActivityCurrentPlace.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //I think you need to add this to go back to the main activity otherwise it will lag -LH
         startActivity(intent);
     }
 

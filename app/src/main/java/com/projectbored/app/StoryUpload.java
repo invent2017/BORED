@@ -175,18 +175,28 @@ public class StoryUpload extends AppCompatActivity {
                             if (location != null) {
                                 Date dateTime = new Date();
                                 Story story = new Story(PHOTO_URI, location, caption.getText().toString(), dateTime);
-                                mDataRef.setValue(story);
+                                mDataRef.setValue(story).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        uploadSuccessNotification();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        uploadErrorNotification();
+                                    }
+                                });
 
-                                uploadSuccessNotification();
+
                             } else {
-                                cannotGetLocation();
+                                genericError();
                             }
                         }
                     })
                     .addOnFailureListener(this, new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            uploadErrorNotification();
+                            cannotGetLocation();
                         }
                     });
         } else {
@@ -202,10 +212,14 @@ public class StoryUpload extends AppCompatActivity {
     }
 
     private void uploadErrorNotification() {
-        Toast.makeText(this, "Failed to upload to database.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Failed to upload story.", Toast.LENGTH_SHORT).show();
     }
 
     private void cannotGetLocation() {
         Toast.makeText(this, "Cannot get your location.", Toast.LENGTH_SHORT).show();
+    }
+
+    private void genericError() {
+        Toast.makeText(this, "An error occured.", Toast.LENGTH_SHORT).show();
     }
 }
