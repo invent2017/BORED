@@ -223,6 +223,6 @@ public class StoryUpload extends AppCompatActivity {
     }
 
     private void genericError() {
-        Toast.makeText(this, "An error occured.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "An error occurred.", Toast.LENGTH_SHORT).show();
     }
 }

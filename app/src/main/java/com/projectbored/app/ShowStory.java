@@ -31,24 +31,24 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
         imageView = (ImageView)findViewById(R.id.imageView);
 
-        ImageButton mClickUpVoteButton = (ImageButton)findViewById(R.id.upVoteButton);
-        mClickUpVoteButton.setOnClickListener(new View.OnClickListener() {
+        upVoteButton = (ImageButton)findViewById(R.id.upVoteButton);
+        upVoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 upVote();
             }
         });
 
-        ImageButton mClickDownVoteButton = (ImageButton)findViewById(R.id.downVoteButton);
-        mClickDownVoteButton.setOnClickListener(new View.OnClickListener() {
+        downVoteButton = (ImageButton)findViewById(R.id.downVoteButton);
+        downVoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 downVote();
             }
         });
 
-        ImageButton mClickShare = (ImageButton)findViewById(R.id.shareButton);
-        mClickShare.setOnClickListener(new View.OnClickListener() {
+        shareButton = (ImageButton)findViewById(R.id.shareButton);
+        shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 shareFunction();
