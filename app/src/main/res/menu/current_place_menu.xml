@@ -14,6 +14,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/option_add_story"
-        android:title="Add Story"
+        android:title="@string/add_story"
         app:showAsAction="always" />
 </menu>

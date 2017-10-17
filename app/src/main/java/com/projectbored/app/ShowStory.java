@@ -10,11 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.os.Bundle;
 
 // still need to make ImageView retrieve image and textView retrieve caption
 // still need to let upvote/downvote change the thingies in the database possibly so they work
 
-public class ShowStory extends ActionBarActivity implements View.OnClickListener {
+public class ShowStory extends AppCompatActivity implements View.OnClickListener {
 
     ImageView imageView;
     ImageButton upVoteButton;
@@ -41,32 +42,43 @@ public class ShowStory extends ActionBarActivity implements View.OnClickListener
 
     // stuff the buttons do when clicked -hy
 
+    public void upVote(){
+        //do something
+    }
+
+    public void downVote(){
+        //do something
+    }
+
+    public void shareFunction(){
+        // this is the sharing code, it might not work -hy
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        // i don't actually know what the subject or whatnot is so heh
+        String shareBody = "Check out this cool story on bored!";
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Cool BORED! story");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+    }
+
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.upVoteButton: {
-                // do something for button 1 click
+                upVote();
                 break;
             }
 
             case R.id.downVoteButton: {
-                // do something for button 2 click
+                downVote();
                 break;
             }
 
             case R.id.shareButton: {
-                // this is the sharing code, it might not work -hy
-                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                // i don't actually know what the subject or whatnot is so heh
-                String shareBody = "Check out this cool story on bored!";
-                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Cool BORED! story");
-                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-                startActivity(Intent.createChooser(sharingIntent, "Share via"));
+                shareFunction();
                 break;
             }
         }
     }
-
 
     // creating the menu that launches backToMap method -hy
 

@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">BORED!</string>
     <string name="title_activity_maps">BORED!</string>
-    <string name="option_add_story">Add Story</string>
+    <string name="retrievedstory">retrievedStory</string>
+    <string name="textview">TextView</string>
+    <string name="down_vote">down vote</string>
+    <string name="up_vote">up vote</string>
+    <string name="share">share</string>
+    <string name="insert_caption_here">Insert Caption Here</string>
+    <string name="Share">Share</string>
+    <string name="nextonly">Next</string>
+    <string name="add_story">Add Story</string>
+    <string name="map">Map</string>
 </resources>

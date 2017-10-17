@@ -718,6 +718,7 @@
     <integer name="mr_controller_volume_group_list_fade_in_duration_ms">400</integer>
     <integer name="mr_controller_volume_group_list_fade_out_duration_ms">200</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
+    <string name="Share">Share</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
     <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
@@ -749,6 +750,7 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
+    <string name="add_story">Add Story</string>
     <string name="app_name">BORED!</string>
     <string name="cast_ad_label">Ad</string>
     <string name="cast_casting_to_device">Casting to %1$s</string>
@@ -807,6 +809,7 @@
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="default_web_client_id" translatable="false">217030357615-og7v4t6v760kk3cn1r0lbr06mopr7ing.apps.googleusercontent.com</string>
+    <string name="down_vote">down vote</string>
     <string name="fcm_fallback_notification_channel_label">Miscellaneous</string>
     <string name="firebase_database_url" translatable="false">https://bored-9db45.firebaseio.com</string>
     <string name="gcm_defaultSenderId" translatable="false">217030357615</string>
@@ -815,6 +818,8 @@
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAl9w2kBxi1uxNG_nNcGlixNUeuLgKlXe4</string>
     <string name="google_maps_key" translatable="false">AIzaSyDqvjPj18uoo4DgyFEey0dCMhV2UQhmkAI</string>
     <string name="google_storage_bucket" translatable="false">bored-9db45.appspot.com</string>
+    <string name="insert_caption_here">Insert Caption Here</string>
+    <string name="map">Map</string>
     <string name="mr_button_content_description">Cast button</string>
     <string name="mr_cast_button_connected">Cast button. Connected</string>
     <string name="mr_cast_button_connecting">Cast button. Connecting</string>
@@ -835,9 +840,10 @@
     <string name="mr_controller_volume_slider">Volume slider</string>
     <string name="mr_system_route_name">System</string>
     <string name="mr_user_route_category_name">Devices</string>
-    <string name="option_add_story">Add Story</string>
+    <string name="nextonly">Next</string>
     <string name="place_autocomplete_clear_button">Clear search</string>
     <string name="place_autocomplete_search_hint">Search</string>
+    <string name="retrievedstory">retrievedStory</string>
     <string name="s1">Save image</string>
     <string name="s2">"Allow Ad to store image in Picture gallery?"</string>
     <string name="s3">Accept</string>
@@ -845,11 +851,14 @@
     <string name="s5">Create calendar event</string>
     <string name="s6">Allow Ad to create a calendar event?</string>
     <string name="search_menu_title">Search</string>
+    <string name="share">share</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="tagmanager_preview_dialog_button">Continue</string>
     <string name="tagmanager_preview_dialog_message">Preview mode updated.</string>
     <string name="tagmanager_preview_dialog_title">Preview</string>
+    <string name="textview">TextView</string>
     <string name="title_activity_maps">BORED!</string>
+    <string name="up_vote">up vote</string>
     <string name="wallet_buy_button_place_holder">Buy with Google</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>

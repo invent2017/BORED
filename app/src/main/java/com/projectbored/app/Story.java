@@ -7,10 +7,6 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.Date;
 
-/**
- * Created by LikHern on 15/10/2017.
- */
-
 public class Story {
     public Uri uri;
     public Location location;
