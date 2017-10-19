@@ -3,7 +3,6 @@ package com.projectbored.app;
 import android.location.Location;
 import android.net.Uri;
 
-import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
@@ -26,7 +25,7 @@ public class Story {
     public Story (Uri u, Location myLocation, String snippet, Date dateTime) {
         uri = u;
         location = myLocation;
-        caption = new String(snippet);
+        caption = snippet;
         this.dateTime = dateTime;
         votes = 0;
 
@@ -44,7 +43,7 @@ public class Story {
 
     @Exclude
     public void setCaption(String storyCaption) {
-        caption = new String(storyCaption);
+        caption = storyCaption;
     }
 
     @Exclude
