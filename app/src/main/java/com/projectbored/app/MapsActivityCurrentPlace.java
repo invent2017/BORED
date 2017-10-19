@@ -283,6 +283,10 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     private void addStory() {
         Intent intent = new Intent(this, StoryUpload.class);
+        Bundle storyLoc = new Bundle();
+        storyLoc.putDouble("Latitude", mLastKnownLocation.getLatitude());
+        storyLoc.putDouble("Longitude", mLastKnownLocation.getLongitude());
+        intent.putExtras(storyLoc);
         startActivity(intent);
 
 

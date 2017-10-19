@@ -1,3 +1,12 @@
+-keepattributes Signature
+
+-keepclassmembers class com.projectbored.app.Story.** {
+    *;
+}
+
+-keepclassmembers class HashMap;
+-keepclassmembers class Map;
+
 #
 # Proguard config for a Google Maps Android API sample project.
 #

@@ -2,15 +2,11 @@ package com.projectbored.app;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -18,21 +14,14 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
@@ -40,7 +29,6 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -55,9 +43,7 @@ public class StoryUpload extends AppCompatActivity {
 
     String mCurrentPhotoPath;
 
-    private FusedLocationProviderClient mFusedLocationProviderClient;
-
-    private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
+    Bundle location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,9 +51,10 @@ public class StoryUpload extends AppCompatActivity {
         setContentView(com.projectbored.app.R.layout.activity_story_upload);
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mDataRef = FirebaseDatabase.getInstance().getReference();
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         caption = (EditText)findViewById(R.id.story_caption);
+
+        location = getIntent().getExtras();
 
         dispatchTakePictureIntent();
     }
@@ -169,60 +156,22 @@ public class StoryUpload extends AppCompatActivity {
     private void uploadStoryData (UploadTask.TaskSnapshot taskSnapshot) {
         final Uri PHOTO_URI = taskSnapshot.getMetadata().getDownloadUrl();
 
+        Location storyLocation = new Location("");
+        storyLocation.setLatitude(location.getDouble("Latitude"));
+        storyLocation.setLongitude(location.getDouble("Longitude"));
 
+        if (storyLocation != null) {
+            String key = mDataRef.child("stories").push().getKey();
+            Story story = new Story(PHOTO_URI, storyLocation, caption.getText().toString(), new Date());
+            Map<String, Object> storyDetails = story.toMap();
 
+            Map<String, Object> childUpdates = new HashMap<>();
+            childUpdates.put("/stories/" + key, storyDetails);
 
-        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
-                android.Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-
-            mFusedLocationProviderClient.getLastLocation()
-                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                        @Override
-                        public void onSuccess(final Location location) {
-                            if (location != null) {
-                                String key = mDataRef.child("stories").push().getKey();
-                                Story story = new Story(PHOTO_URI, location, caption.getText().toString(), new Date());
-                                Map<String, Object> storyDetails = story.toMap();
-
-                                Map<String, Object> childUpdates = new HashMap<>();
-                                childUpdates.put("/stories/" + key, storyDetails);
-
-                                mDataRef.updateChildren(childUpdates);
-
-                                uploadSuccessNotification();
-                            } else {
-                                genericError();
-                            }
-                        }
-                    })
-                    .addOnFailureListener(this, new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            cannotGetLocation();
-                        }
-                    });
+            mDataRef.updateChildren(childUpdates);
+            Toast.makeText(this, "Story added!", Toast.LENGTH_SHORT).show();
         } else {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
-
+            Toast.makeText(this, "An error occurred.", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void uploadSuccessNotification() {
-        Toast.makeText(this, "Story added!", Toast.LENGTH_SHORT).show();
-    }
-
-    private void uploadErrorNotification() {
-        Toast.makeText(this, "Failed to upload story.", Toast.LENGTH_SHORT).show();
-    }
-
-    private void cannotGetLocation() {
-        Toast.makeText(this, "Cannot get your location.", Toast.LENGTH_SHORT).show();
-    }
-
-    private void genericError() {
-        Toast.makeText(this, "An error occurred.", Toast.LENGTH_SHORT).show();
     }
 }
