@@ -1,5 +1,419 @@
 [
     {
+        "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 69,
+                    "endOffset": 120
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 69,
+                        "endOffset": 120
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 125,
+                    "endColumn": 83,
+                    "endOffset": 204
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 125,
+                        "endColumn": 83,
+                        "endOffset": 204
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 209,
+                    "endColumn": 83,
+                    "endOffset": 288
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 209,
+                        "endColumn": 83,
+                        "endOffset": 288
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 293,
+                    "endColumn": 95,
+                    "endOffset": 384
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 293,
+                        "endColumn": 95,
+                        "endOffset": 384
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 389,
+                    "endColumn": 101,
+                    "endOffset": 486
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 389,
+                        "endColumn": 101,
+                        "endOffset": 486
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 491,
+                    "endColumn": 101,
+                    "endOffset": 588
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 491,
+                        "endColumn": 101,
+                        "endOffset": 588
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 593,
+                    "endColumn": 93,
+                    "endOffset": 682
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 593,
+                        "endColumn": 93,
+                        "endOffset": 682
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 69,
+                    "endOffset": 120
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 69,
+                        "endOffset": 120
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 125,
+                    "endColumn": 83,
+                    "endOffset": 204
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 125,
+                        "endColumn": 83,
+                        "endOffset": 204
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 209,
+                    "endColumn": 83,
+                    "endOffset": 288
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 209,
+                        "endColumn": 83,
+                        "endOffset": 288
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 293,
+                    "endColumn": 95,
+                    "endOffset": 384
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 293,
+                        "endColumn": 95,
+                        "endOffset": 384
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 389,
+                    "endColumn": 101,
+                    "endOffset": 486
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 389,
+                        "endColumn": 101,
+                        "endOffset": 486
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 491,
+                    "endColumn": 101,
+                    "endOffset": 588
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 491,
+                        "endColumn": 101,
+                        "endOffset": 588
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 593,
+                    "endColumn": 93,
+                    "endOffset": 682
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 593,
+                        "endColumn": 93,
+                        "endOffset": 682
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 69,
+                    "endOffset": 120
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 69,
+                        "endOffset": 120
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 125,
+                    "endColumn": 83,
+                    "endOffset": 204
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 125,
+                        "endColumn": 83,
+                        "endOffset": 204
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 209,
+                    "endColumn": 83,
+                    "endOffset": 288
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 209,
+                        "endColumn": 83,
+                        "endOffset": 288
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 293,
+                    "endColumn": 95,
+                    "endOffset": 384
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 293,
+                        "endColumn": 95,
+                        "endOffset": 384
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 389,
+                    "endColumn": 101,
+                    "endOffset": 486
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 389,
+                        "endColumn": 101,
+                        "endOffset": 486
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 491,
+                    "endColumn": 101,
+                    "endOffset": 588
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 491,
+                        "endColumn": 101,
+                        "endOffset": 588
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 593,
+                    "endColumn": 93,
+                    "endOffset": 682
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 593,
+                        "endColumn": 93,
+                        "endOffset": 682
+                    }
+                }
+            }
+        ]
+    },
+    {
         "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
         "map": [
             {
@@ -126,6 +540,282 @@
                 },
                 "from": {
                     "file": "C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 593,
+                        "endColumn": 93,
+                        "endOffset": 682
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 69,
+                    "endOffset": 120
+                },
+                "from": {
+                    "file": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 69,
+                        "endOffset": 120
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 125,
+                    "endColumn": 83,
+                    "endOffset": 204
+                },
+                "from": {
+                    "file": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 125,
+                        "endColumn": 83,
+                        "endOffset": 204
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 209,
+                    "endColumn": 83,
+                    "endOffset": 288
+                },
+                "from": {
+                    "file": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 209,
+                        "endColumn": 83,
+                        "endOffset": 288
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 293,
+                    "endColumn": 95,
+                    "endOffset": 384
+                },
+                "from": {
+                    "file": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 293,
+                        "endColumn": 95,
+                        "endOffset": 384
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 389,
+                    "endColumn": 101,
+                    "endOffset": 486
+                },
+                "from": {
+                    "file": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 389,
+                        "endColumn": 101,
+                        "endOffset": 486
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 491,
+                    "endColumn": 101,
+                    "endOffset": 588
+                },
+                "from": {
+                    "file": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 491,
+                        "endColumn": 101,
+                        "endOffset": 588
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 593,
+                    "endColumn": 93,
+                    "endOffset": 682
+                },
+                "from": {
+                    "file": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 593,
+                        "endColumn": 93,
+                        "endOffset": 682
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 69,
+                    "endOffset": 120
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 69,
+                        "endOffset": 120
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 125,
+                    "endColumn": 83,
+                    "endOffset": 204
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 125,
+                        "endColumn": 83,
+                        "endOffset": 204
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 209,
+                    "endColumn": 83,
+                    "endOffset": 288
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 209,
+                        "endColumn": 83,
+                        "endOffset": 288
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 293,
+                    "endColumn": 95,
+                    "endOffset": 384
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 293,
+                        "endColumn": 95,
+                        "endOffset": 384
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 389,
+                    "endColumn": 101,
+                    "endOffset": 486
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 389,
+                        "endColumn": 101,
+                        "endOffset": 486
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 491,
+                    "endColumn": 101,
+                    "endOffset": 588
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 491,
+                        "endColumn": 101,
+                        "endOffset": 588
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 593,
+                    "endColumn": 93,
+                    "endOffset": 682
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -414,558 +1104,6 @@
         ]
     },
     {
-        "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 69,
-                    "endOffset": 120
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 69,
-                        "endOffset": 120
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 125,
-                    "endColumn": 83,
-                    "endOffset": 204
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 125,
-                        "endColumn": 83,
-                        "endOffset": 204
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 4,
-                    "startColumn": 4,
-                    "startOffset": 209,
-                    "endColumn": 83,
-                    "endOffset": 288
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 209,
-                        "endColumn": 83,
-                        "endOffset": 288
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 5,
-                    "startColumn": 4,
-                    "startOffset": 293,
-                    "endColumn": 95,
-                    "endOffset": 384
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 5,
-                        "startColumn": 4,
-                        "startOffset": 293,
-                        "endColumn": 95,
-                        "endOffset": 384
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 6,
-                    "startColumn": 4,
-                    "startOffset": 389,
-                    "endColumn": 101,
-                    "endOffset": 486
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 389,
-                        "endColumn": 101,
-                        "endOffset": 486
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 7,
-                    "startColumn": 4,
-                    "startOffset": 491,
-                    "endColumn": 101,
-                    "endOffset": 588
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 7,
-                        "startColumn": 4,
-                        "startOffset": 491,
-                        "endColumn": 101,
-                        "endOffset": 588
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 8,
-                    "startColumn": 4,
-                    "startOffset": 593,
-                    "endColumn": 93,
-                    "endOffset": 682
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 8,
-                        "startColumn": 4,
-                        "startOffset": 593,
-                        "endColumn": 93,
-                        "endOffset": 682
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 69,
-                    "endOffset": 120
-                },
-                "from": {
-                    "file": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 69,
-                        "endOffset": 120
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 125,
-                    "endColumn": 83,
-                    "endOffset": 204
-                },
-                "from": {
-                    "file": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 125,
-                        "endColumn": 83,
-                        "endOffset": 204
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 4,
-                    "startColumn": 4,
-                    "startOffset": 209,
-                    "endColumn": 83,
-                    "endOffset": 288
-                },
-                "from": {
-                    "file": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 209,
-                        "endColumn": 83,
-                        "endOffset": 288
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 5,
-                    "startColumn": 4,
-                    "startOffset": 293,
-                    "endColumn": 95,
-                    "endOffset": 384
-                },
-                "from": {
-                    "file": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 5,
-                        "startColumn": 4,
-                        "startOffset": 293,
-                        "endColumn": 95,
-                        "endOffset": 384
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 6,
-                    "startColumn": 4,
-                    "startOffset": 389,
-                    "endColumn": 101,
-                    "endOffset": 486
-                },
-                "from": {
-                    "file": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 389,
-                        "endColumn": 101,
-                        "endOffset": 486
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 7,
-                    "startColumn": 4,
-                    "startOffset": 491,
-                    "endColumn": 101,
-                    "endOffset": 588
-                },
-                "from": {
-                    "file": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 7,
-                        "startColumn": 4,
-                        "startOffset": 491,
-                        "endColumn": 101,
-                        "endOffset": 588
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 8,
-                    "startColumn": 4,
-                    "startOffset": 593,
-                    "endColumn": 93,
-                    "endOffset": 682
-                },
-                "from": {
-                    "file": "C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 8,
-                        "startColumn": 4,
-                        "startOffset": 593,
-                        "endColumn": 93,
-                        "endOffset": 682
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 69,
-                    "endOffset": 120
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 69,
-                        "endOffset": 120
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 125,
-                    "endColumn": 83,
-                    "endOffset": 204
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 125,
-                        "endColumn": 83,
-                        "endOffset": 204
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 4,
-                    "startColumn": 4,
-                    "startOffset": 209,
-                    "endColumn": 83,
-                    "endOffset": 288
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 209,
-                        "endColumn": 83,
-                        "endOffset": 288
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 5,
-                    "startColumn": 4,
-                    "startOffset": 293,
-                    "endColumn": 95,
-                    "endOffset": 384
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 5,
-                        "startColumn": 4,
-                        "startOffset": 293,
-                        "endColumn": 95,
-                        "endOffset": 384
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 6,
-                    "startColumn": 4,
-                    "startOffset": 389,
-                    "endColumn": 101,
-                    "endOffset": 486
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 389,
-                        "endColumn": 101,
-                        "endOffset": 486
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 7,
-                    "startColumn": 4,
-                    "startOffset": 491,
-                    "endColumn": 101,
-                    "endOffset": 588
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 7,
-                        "startColumn": 4,
-                        "startOffset": 491,
-                        "endColumn": 101,
-                        "endOffset": 588
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 8,
-                    "startColumn": 4,
-                    "startOffset": 593,
-                    "endColumn": 93,
-                    "endOffset": 682
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 8,
-                        "startColumn": 4,
-                        "startOffset": 593,
-                        "endColumn": 93,
-                        "endOffset": 682
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 69,
-                    "endOffset": 120
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 69,
-                        "endOffset": 120
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 125,
-                    "endColumn": 83,
-                    "endOffset": 204
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 125,
-                        "endColumn": 83,
-                        "endOffset": 204
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 4,
-                    "startColumn": 4,
-                    "startOffset": 209,
-                    "endColumn": 83,
-                    "endOffset": 288
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 209,
-                        "endColumn": 83,
-                        "endOffset": 288
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 5,
-                    "startColumn": 4,
-                    "startOffset": 293,
-                    "endColumn": 95,
-                    "endOffset": 384
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 5,
-                        "startColumn": 4,
-                        "startOffset": 293,
-                        "endColumn": 95,
-                        "endOffset": 384
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 6,
-                    "startColumn": 4,
-                    "startOffset": 389,
-                    "endColumn": 101,
-                    "endOffset": 486
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 389,
-                        "endColumn": 101,
-                        "endOffset": 486
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 7,
-                    "startColumn": 4,
-                    "startOffset": 491,
-                    "endColumn": 101,
-                    "endOffset": 588
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 7,
-                        "startColumn": 4,
-                        "startOffset": 491,
-                        "endColumn": 101,
-                        "endOffset": 588
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 8,
-                    "startColumn": 4,
-                    "startOffset": 593,
-                    "endColumn": 93,
-                    "endOffset": 682
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 8,
-                        "startColumn": 4,
-                        "startOffset": 593,
-                        "endColumn": 93,
-                        "endOffset": 682
-                    }
-                }
-            }
-        ]
-    },
-    {
         "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
         "map": [
             {
@@ -1092,144 +1230,6 @@
                 },
                 "from": {
                     "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 8,
-                        "startColumn": 4,
-                        "startOffset": 593,
-                        "endColumn": 93,
-                        "endOffset": 682
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 69,
-                    "endOffset": 120
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 69,
-                        "endOffset": 120
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 125,
-                    "endColumn": 83,
-                    "endOffset": 204
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 125,
-                        "endColumn": 83,
-                        "endOffset": 204
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 4,
-                    "startColumn": 4,
-                    "startOffset": 209,
-                    "endColumn": 83,
-                    "endOffset": 288
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 209,
-                        "endColumn": 83,
-                        "endOffset": 288
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 5,
-                    "startColumn": 4,
-                    "startOffset": 293,
-                    "endColumn": 95,
-                    "endOffset": 384
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 5,
-                        "startColumn": 4,
-                        "startOffset": 293,
-                        "endColumn": 95,
-                        "endOffset": 384
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 6,
-                    "startColumn": 4,
-                    "startOffset": 389,
-                    "endColumn": 101,
-                    "endOffset": 486
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 389,
-                        "endColumn": 101,
-                        "endOffset": 486
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 7,
-                    "startColumn": 4,
-                    "startOffset": 491,
-                    "endColumn": 101,
-                    "endOffset": 588
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
-                    "position": {
-                        "startLine": 7,
-                        "startColumn": 4,
-                        "startOffset": 491,
-                        "endColumn": 101,
-                        "endOffset": 588
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 8,
-                    "startColumn": 4,
-                    "startOffset": 593,
-                    "endColumn": 93,
-                    "endOffset": 682
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-night-v8\\values-night-v8.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,

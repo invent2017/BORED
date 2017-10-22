@@ -84,10 +84,10 @@ public class Story {
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-        result.put("URI", uri);
+        result.put("URI", uri.toString());
         result.put("Location", location);
         result.put("Caption", caption);
-        result.put("Date/Time", dateTime);
+        result.put("DateTime", dateTime);
 
         return result;
     }

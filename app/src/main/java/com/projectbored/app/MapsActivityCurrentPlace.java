@@ -70,7 +70,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     //private String[] mLikelyPlaceAttributions = new String[mMaxEntries];
     //private LatLng[] mLikelyPlaceLatLngs = new LatLng[mMaxEntries];
 
-    private StorageReference mStorageRef;
     private DatabaseReference mDataRef;
 @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +96,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 .build();
         mGoogleApiClient.connect();
 
-        mStorageRef = FirebaseStorage.getInstance().getReference();
         mDataRef = FirebaseDatabase.getInstance().getReference();
     }
 
@@ -282,13 +280,18 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
 
     private void addStory() {
-        Intent intent = new Intent(this, StoryUpload.class);
-        Bundle storyLoc = new Bundle();
-        storyLoc.putDouble("Latitude", mLastKnownLocation.getLatitude());
-        storyLoc.putDouble("Longitude", mLastKnownLocation.getLongitude());
-        intent.putExtras(storyLoc);
-        startActivity(intent);
-
+        if(mLastKnownLocation == null) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+        } else {
+            Intent intent = new Intent(this, StoryUpload.class);
+            Bundle storyLoc = new Bundle();
+            storyLoc.putDouble("Latitude", mLastKnownLocation.getLatitude());
+            storyLoc.putDouble("Longitude", mLastKnownLocation.getLongitude());
+            intent.putExtras(storyLoc);
+            startActivity(intent);
+        }
 
 
         /*if (mMap == null) {
@@ -378,8 +381,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         startActivity(intent);
     }
 
-    /**
-     * Displays a form allowing the user to select a place from a list of likely places.
+    /*
+      Displays a form allowing the user to select a place from a list of likely places.
      */
     /*private void openPlacesDialog() {
         // Ask the user to choose the place where they are now.
