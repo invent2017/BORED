@@ -33,6 +33,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import static android.R.attr.value;
+
 /**
  * An activity that displays a map showing the place at the device's current location.
  */
@@ -372,7 +374,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     public void showStoryDetails() {
         Intent intent = new Intent(this, ShowStory.class);
         startActivity(intent);
-        // add more code...
+        // add more code... find the identification for the story from here to give to ShowStory
     }
 
     /*
