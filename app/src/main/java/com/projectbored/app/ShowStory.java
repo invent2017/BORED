@@ -21,12 +21,16 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     ImageButton downVoteButton;
     ImageButton shareButton;
 
+    Story story;
+
     // onCreate method here -hy
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_story);
+
+        story = getStoryDetails();
 
         imageView = (ImageView)findViewById(R.id.imageView);
 
@@ -59,12 +63,17 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
     // stuff the buttons do when clicked -hy
 
+    public Story getStoryDetails() {
+        Intent i = getIntent();
+        return i.getParcelableExtra("Story");
+    }
+
     public void upVote(){
-        //do something
+        story.upVote();
     }
 
     public void downVote(){
-        //do something
+        story.downVote();
     }
 
     public void shareFunction(){

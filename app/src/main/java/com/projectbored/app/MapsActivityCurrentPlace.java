@@ -71,6 +71,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     //private LatLng[] mLikelyPlaceLatLngs = new LatLng[mMaxEntries];
 
     private DatabaseReference mDataRef;
+    private FirebaseStorage storage;
+    private StorageReference mStorageRef;
 @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,6 +99,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         mGoogleApiClient.connect();
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
+        storage = FirebaseStorage.getInstance();
+        mStorageRef = storage.getReference();
     }
 
     /**
@@ -208,7 +212,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         getDeviceLocation();
 
         //Load nearby stories.
-        loadStories();
+        //loadStories();
     }
 
     /**
@@ -345,10 +349,12 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 Story story = dataSnapshot.getValue(Story.class);
                 if (story != null) {
                     if ((int) mLastKnownLocation.distanceTo(story.getLocation()) <= 100) {
-                        mMap.addMarker(new MarkerOptions()
-                                .title(story.getCaption())
-                                .position(new LatLng(story.getLocation().getLatitude(),story.getLocation().getLongitude()))
-                                .snippet(story.getDateTime().toString()));
+                        Marker storyMarker;
+                        storyMarker = mMap.addMarker(new MarkerOptions()
+                                    .title(story.getCaption())
+                                    .position(new LatLng(story.getLocation().getLatitude(),story.getLocation().getLongitude()))
+                                    .snippet(story.getDateTime().toString()));
+                        storyMarker.setTag(story);
                     }
                 }
             }
@@ -365,13 +371,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     @Override
     public boolean onMarkerClick(Marker marker){
-        showStoryDetails();
-
+        showStoryDetails(marker);
         return false;
     }
 
-    public void showStoryDetails() {
+    public void showStoryDetails(Marker marker) {
         Intent intent = new Intent(this, ShowStory.class);
+        intent.putExtra("Story", (Story)marker.getTag());
         startActivity(intent);
     }
 
