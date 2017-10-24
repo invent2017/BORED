@@ -60,10 +60,13 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
             }
         });
 
+        int votes = story.votes;
         voteNumber = (TextView) findViewById(R.id.voteNumber);
+        voteNumber.setText(votes);
 
+        String Caption = story.caption;
         storyCaption = (TextView) findViewById(R.id.storyCaption);
-
+        storyCaption.setText(Caption);
         }
 
 
