@@ -752,6 +752,7 @@
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="add_story">Add Story</string>
     <string name="app_name">BORED!</string>
+    <string name="caption">caption</string>
     <string name="cast_ad_label">Ad</string>
     <string name="cast_casting_to_device">Casting to %1$s</string>
     <string name="cast_closed_captions">Closed captions</string>

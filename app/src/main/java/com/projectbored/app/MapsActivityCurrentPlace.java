@@ -33,8 +33,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import static android.R.attr.value;
-
 /**
  * An activity that displays a map showing the place at the device's current location.
  */
@@ -53,7 +51,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     // A default location (Sydney, Australia) and default zoom to use when location permission is
     // not granted.
     private final LatLng mDefaultLocation = new LatLng(1.346313, 103.841332);
-    private static final int DEFAULT_ZOOM = 15;
+    private static final int DEFAULT_ZOOM = 23;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private boolean mLocationPermissionGranted;
 
@@ -214,7 +212,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         getDeviceLocation();
 
         //Load nearby stories.
-        //loadStories();
+        loadStories();
     }
 
     /**
@@ -283,8 +281,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
      * current place on the map - provided the user has granted location permission.
      */
 
-
-
     private void addStory() {
             Intent intent = new Intent(this, StoryUpload.class);
             Bundle storyLoc = new Bundle();
@@ -341,10 +337,10 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         } */
     }
 
-    //Displays stories within 1km of the user on the map.
+    //Displays stories within 100 m of the user on the map.
 
     public void loadStories() {
-        ValueEventListener storyListener = new ValueEventListener() {
+       ValueEventListener storyListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Story story = dataSnapshot.getValue(Story.class);
@@ -352,9 +348,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                     if ((int) mLastKnownLocation.distanceTo(story.getLocation()) <= 100) {
                         Marker storyMarker;
                         storyMarker = mMap.addMarker(new MarkerOptions()
-                                    .title(story.getCaption())
                                     .position(new LatLng(story.getLocation().getLatitude(),story.getLocation().getLongitude()))
-                                    .snippet(story.getDateTime().toString()));
+                                    );
                         storyMarker.setTag(story);
                     }
                 }
@@ -380,7 +375,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         Intent intent = new Intent(this, ShowStory.class);
         intent.putExtra("Story", (Story)marker.getTag());
         startActivity(intent);
-        // add more code... find the identification for the story from here to give to ShowStory
     }
 
     /*

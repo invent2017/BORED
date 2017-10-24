@@ -147,7 +147,6 @@ ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BO
 		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:46:19-44
 uses-sdk
 INJECTED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [com.android.support:multidex:1.0.1] /Users/Drifter/.android/build-cache/58dc68050b66da1b54d477a1e572c7cfdb9fbad6/output/AndroidManifest.xml:18:5-42
 MERGED from [com.google.android.gms:play-services:11.0.4] /Users/Drifter/.android/build-cache/73dd7316fb6ec34cef8cc7e300ddc2f4e3f54342/output/AndroidManifest.xml:4:5-43
 MERGED from [com.google.android.gms:play-services-ads:11.0.4] /Users/Drifter/.android/build-cache/a496b86701744cd4cddf751bf1deb49b96634f4a/output/AndroidManifest.xml:17:5-43
 MERGED from [com.google.android.gms:play-services-ads-lite:11.0.4] /Users/Drifter/.android/build-cache/c9a6f7c979866189a78dc7a224add8c7cccc4a29/output/AndroidManifest.xml:22:5-43
