@@ -64,9 +64,9 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         voteNumber = (TextView) findViewById(R.id.voteNumber);
         voteNumber.setText(votes);
 
-        String Caption = story.caption;
+        String caption = story.caption;
         storyCaption = (TextView) findViewById(R.id.storyCaption);
-        storyCaption.setText(Caption);
+        storyCaption.setText(caption);
         }
 
 
