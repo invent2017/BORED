@@ -50,7 +50,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     // A default location (Sydney, Australia) and default zoom to use when location permission is
     // not granted.
-    private final LatLng mDefaultLocation = new LatLng(-33.8523341, 151.2106085);
+    private final LatLng mDefaultLocation = new LatLng(1.346313, 103.841332);
     private static final int DEFAULT_ZOOM = 15;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private boolean mLocationPermissionGranted;
@@ -287,7 +287,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             intent.putExtras(storyLoc);
             startActivity(intent);
 
-
         /*if (mMap == null) {
             return;
         }
@@ -373,6 +372,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     public void showStoryDetails() {
         Intent intent = new Intent(this, ShowStory.class);
         startActivity(intent);
+        // add more code...
     }
 
     /*
