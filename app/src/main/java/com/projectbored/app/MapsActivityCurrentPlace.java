@@ -280,18 +280,12 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
 
     private void addStory() {
-        if(mLastKnownLocation == null) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
-        } else {
             Intent intent = new Intent(this, StoryUpload.class);
             Bundle storyLoc = new Bundle();
             storyLoc.putDouble("Latitude", mLastKnownLocation.getLatitude());
             storyLoc.putDouble("Longitude", mLastKnownLocation.getLongitude());
             intent.putExtras(storyLoc);
             startActivity(intent);
-        }
 
 
         /*if (mMap == null) {
