@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.os.Bundle;
+import android.widget.TextView;
 
 // still need to make ImageView retrieve image and textView retrieve caption
 // still need to let upvote/downvote change the thingies in the database possibly so they work
@@ -20,6 +20,8 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     ImageButton upVoteButton;
     ImageButton downVoteButton;
     ImageButton shareButton;
+    TextView voteNumber;
+    TextView storyCaption;
 
     Story story;
 
@@ -58,6 +60,13 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
             }
         });
 
+        int votes = story.votes;
+        voteNumber = (TextView) findViewById(R.id.voteNumber);
+        voteNumber.setText(votes);
+
+        String caption = story.caption;
+        storyCaption = (TextView) findViewById(R.id.storyCaption);
+        storyCaption.setText(caption);
         }
 
 
