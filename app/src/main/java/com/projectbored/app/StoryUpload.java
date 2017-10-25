@@ -164,14 +164,14 @@ public class StoryUpload extends AppCompatActivity {
             storyLocation.setLongitude(location.getDouble("Longitude"));
 
             if (storyLocation != null) {
-                String key = mDataRef.child("stories").push().getKey();
+                //String key = mDataRef.child("stories").push().getKey();
                 Story story = new Story(PHOTO_URI, storyLocation, caption.getText().toString(), new Date());
-                Map<String, Object> storyDetails = story.toMap();
+                //Map<String, Object> storyDetails = story.toMap();
 
-                Map<String, Object> childUpdates = new HashMap<>();
-                childUpdates.put("/stories/" + key, storyDetails);
+                //Map<String, Object> childUpdates = new HashMap<>();
+                //childUpdates.put("/stories/" + key, storyDetails);
 
-                mDataRef.updateChildren(childUpdates);
+                mDataRef.push().setValue(story);
                 Toast.makeText(this, "Story added!", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "An error occurred.", Toast.LENGTH_SHORT).show();

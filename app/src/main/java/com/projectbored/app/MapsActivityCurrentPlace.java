@@ -3,6 +3,7 @@ package com.projectbored.app;
 import android.content.pm.PackageManager;
 import android.content.Intent;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -33,6 +34,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import static android.R.attr.data;
 import static android.R.attr.value;
 
 /**
@@ -214,7 +220,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         getDeviceLocation();
 
         //Load nearby stories.
-        //loadStories();
+        loadStories();
     }
 
     /**
@@ -342,22 +348,21 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     }
 
     //Displays stories within 1km of the user on the map.
-
+    //Something wrong with this
     public void loadStories() {
         ValueEventListener storyListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Story story = dataSnapshot.getValue(Story.class);
-                if (story != null) {
-                    if ((int) mLastKnownLocation.distanceTo(story.getLocation()) <= 100) {
-                        Marker storyMarker;
-                        storyMarker = mMap.addMarker(new MarkerOptions()
-                                    .title(story.getCaption())
-                                    .position(new LatLng(story.getLocation().getLatitude(),story.getLocation().getLongitude()))
-                                    .snippet(story.getDateTime().toString()));
-                        storyMarker.setTag(story);
+                if(story != null) {
+                        if(mLastKnownLocation.distanceTo(story.getLocation()) <= 100){
+                            Marker storyMarker;
+                            storyMarker = mMap.addMarker(new MarkerOptions()
+                                    .position(new LatLng(story.getLocation().getLatitude(),story.getLocation().getLongitude())));
+                            storyMarker.setTag(story);
+                        }
                     }
-                }
+
             }
 
             @Override
@@ -367,8 +372,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         };
         mDataRef.addValueEventListener(storyListener);
     }
-
-    //not done with the following 2 methods yet
 
     @Override
     public boolean onMarkerClick(Marker marker){
@@ -380,7 +383,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         Intent intent = new Intent(this, ShowStory.class);
         intent.putExtra("Story", (Story)marker.getTag());
         startActivity(intent);
-        // add more code... find the identification for the story from here to give to ShowStory
     }
 
     /*

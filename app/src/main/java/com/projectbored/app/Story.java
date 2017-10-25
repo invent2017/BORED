@@ -14,7 +14,7 @@ import java.util.Map;
 
 @IgnoreExtraProperties
 public class Story implements Parcelable {
-    public Uri uri;
+    public String uri;
     public Location location;
     public String caption;
     public Date dateTime;
@@ -38,11 +38,20 @@ public class Story implements Parcelable {
     }
 
     public Story (Uri u, Location myLocation, String snippet, Date dateTime) {
+        uri = u.toString();
+        location = myLocation;
+        caption = snippet;
+        this.dateTime = dateTime;
+        votes = 0;
+    }
+
+    public Story(String u, Location myLocation, String snippet, Date dateTime){
         uri = u;
         location = myLocation;
         caption = snippet;
         this.dateTime = dateTime;
         votes = 0;
+
     }
 
     private Story(Parcel in) {
@@ -61,7 +70,7 @@ public class Story implements Parcelable {
 
     @Exclude
     public void setUri(Uri u) {
-        uri = u;
+        uri = u.toString();
     }
 
     @Exclude
@@ -90,7 +99,7 @@ public class Story implements Parcelable {
     }
 
     @Exclude
-    public Uri getUri(){
+    public String getUri(){
         return uri;
     }
 
@@ -112,7 +121,7 @@ public class Story implements Parcelable {
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-        result.put("URI", uri.toString());
+        result.put("URI", uri);
         result.put("Location", location);
         result.put("Caption", caption);
         result.put("DateTime", dateTime);
