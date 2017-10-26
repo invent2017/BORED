@@ -1,260 +1,5 @@
 [
     {
-        "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v22\\values-v22.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 74,
-                    "endOffset": 125
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 74,
-                        "endOffset": 125
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 130,
-                    "endColumn": 86,
-                    "endOffset": 212
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 130,
-                        "endColumn": 86,
-                        "endOffset": 212
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 4,
-                    "startColumn": 4,
-                    "startOffset": 217,
-                    "endLine": 8,
-                    "endColumn": 12,
-                    "endOffset": 548
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 217,
-                        "endLine": 8,
-                        "endColumn": 12,
-                        "endOffset": 548
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 9,
-                    "startColumn": 4,
-                    "startOffset": 553,
-                    "endLine": 13,
-                    "endColumn": 12,
-                    "endOffset": 896
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
-                    "position": {
-                        "startLine": 9,
-                        "startColumn": 4,
-                        "startOffset": 553,
-                        "endLine": 13,
-                        "endColumn": 12,
-                        "endOffset": 896
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v22\\values-v22.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 74,
-                    "endOffset": 125
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 74,
-                        "endOffset": 125
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 130,
-                    "endColumn": 86,
-                    "endOffset": 212
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 130,
-                        "endColumn": 86,
-                        "endOffset": 212
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 4,
-                    "startColumn": 4,
-                    "startOffset": 217,
-                    "endLine": 8,
-                    "endColumn": 12,
-                    "endOffset": 548
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 217,
-                        "endLine": 8,
-                        "endColumn": 12,
-                        "endOffset": 548
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 9,
-                    "startColumn": 4,
-                    "startOffset": 553,
-                    "endLine": 13,
-                    "endColumn": 12,
-                    "endOffset": 896
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
-                    "position": {
-                        "startLine": 9,
-                        "startColumn": 4,
-                        "startOffset": 553,
-                        "endLine": 13,
-                        "endColumn": 12,
-                        "endOffset": 896
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v22\\values-v22.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 74,
-                    "endOffset": 125
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 74,
-                        "endOffset": 125
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 130,
-                    "endColumn": 86,
-                    "endOffset": 212
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 130,
-                        "endColumn": 86,
-                        "endOffset": 212
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 4,
-                    "startColumn": 4,
-                    "startOffset": 217,
-                    "endLine": 8,
-                    "endColumn": 12,
-                    "endOffset": 548
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 217,
-                        "endLine": 8,
-                        "endColumn": 12,
-                        "endOffset": 548
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 9,
-                    "startColumn": 4,
-                    "startOffset": 553,
-                    "endLine": 13,
-                    "endColumn": 12,
-                    "endOffset": 896
-                },
-                "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
-                    "position": {
-                        "startLine": 9,
-                        "startColumn": 4,
-                        "startOffset": 553,
-                        "endLine": 13,
-                        "endColumn": 12,
-                        "endOffset": 896
-                    }
-                }
-            }
-        ]
-    },
-    {
         "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v22\\values-v22.xml",
         "map": [
             {
@@ -425,7 +170,7 @@
         ]
     },
     {
-        "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v22\\values-v22.xml",
+        "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v22\\values-v22.xml",
         "map": [
             {
                 "to": {
@@ -436,7 +181,7 @@
                     "endOffset": 125
                 },
                 "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-v22\\values-v22.xml",
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-v22\\values-v22.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -455,7 +200,7 @@
                     "endOffset": 212
                 },
                 "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-v22\\values-v22.xml",
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-v22\\values-v22.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -475,7 +220,7 @@
                     "endOffset": 548
                 },
                 "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-v22\\values-v22.xml",
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-v22\\values-v22.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -496,7 +241,7 @@
                     "endOffset": 896
                 },
                 "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-v22\\values-v22.xml",
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-v22\\values-v22.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -595,7 +340,7 @@
         ]
     },
     {
-        "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v22\\values-v22.xml",
+        "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v22\\values-v22.xml",
         "map": [
             {
                 "to": {
@@ -606,7 +351,7 @@
                     "endOffset": 125
                 },
                 "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-v22\\values-v22.xml",
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-v22\\values-v22.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -625,7 +370,7 @@
                     "endOffset": 212
                 },
                 "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-v22\\values-v22.xml",
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-v22\\values-v22.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -645,7 +390,7 @@
                     "endOffset": 548
                 },
                 "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-v22\\values-v22.xml",
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-v22\\values-v22.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -666,7 +411,177 @@
                     "endOffset": 896
                 },
                 "from": {
-                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-v22\\values-v22.xml",
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-v22\\values-v22.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 553,
+                        "endLine": 13,
+                        "endColumn": 12,
+                        "endOffset": 896
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v22\\values-v22.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 74,
+                    "endOffset": 125
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 74,
+                        "endOffset": 125
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 130,
+                    "endColumn": 86,
+                    "endOffset": 212
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 130,
+                        "endColumn": 86,
+                        "endOffset": 212
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 217,
+                    "endLine": 8,
+                    "endColumn": 12,
+                    "endOffset": 548
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 217,
+                        "endLine": 8,
+                        "endColumn": 12,
+                        "endOffset": 548
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 553,
+                    "endLine": 13,
+                    "endColumn": 12,
+                    "endOffset": 896
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 553,
+                        "endLine": 13,
+                        "endColumn": 12,
+                        "endOffset": 896
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v22\\values-v22.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 74,
+                    "endOffset": 125
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 74,
+                        "endOffset": 125
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 130,
+                    "endColumn": 86,
+                    "endOffset": 212
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 130,
+                        "endColumn": 86,
+                        "endOffset": 212
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 217,
+                    "endLine": 8,
+                    "endColumn": 12,
+                    "endOffset": 548
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 217,
+                        "endLine": 8,
+                        "endColumn": 12,
+                        "endOffset": 548
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 553,
+                    "endLine": 13,
+                    "endColumn": 12,
+                    "endOffset": 896
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -752,6 +667,91 @@
                 },
                 "from": {
                     "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\.android\\build-cache\\8032240aad432fd4db2cda9579eabe12258bdda1\\output\\res\\values-v22\\values-v22.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 553,
+                        "endLine": 13,
+                        "endColumn": 12,
+                        "endOffset": 896
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\Desktop\\RI\\2017\\INVENT\\BORED\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v22\\values-v22.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 74,
+                    "endOffset": 125
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 74,
+                        "endOffset": 125
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 130,
+                    "endColumn": 86,
+                    "endOffset": 212
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 130,
+                        "endColumn": 86,
+                        "endOffset": 212
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 217,
+                    "endLine": 8,
+                    "endColumn": 12,
+                    "endOffset": 548
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 217,
+                        "endLine": 8,
+                        "endColumn": 12,
+                        "endOffset": 548
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 553,
+                    "endLine": 13,
+                    "endColumn": 12,
+                    "endOffset": 896
+                },
+                "from": {
+                    "file": "C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\Drifter\\Documents\\a Raffles INVENT\\_Android Studio Projects\\BORED\\C:\\Users\\LikHern\\.android\\build-cache\\05ec4691f1a8a3a8937b8851e216b91d3f85f920\\output\\res\\values-v22\\values-v22.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,

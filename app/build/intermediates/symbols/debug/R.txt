@@ -1156,7 +1156,6 @@ int id disableHome 0x7f0e0023
 int id donate_with 0x7f0e006b
 int id donate_with_google 0x7f0e006c
 int id downVoteButton 0x7f0e00ad
-int id editText 0x7f0e00af
 int id edit_query 0x7f0e009d
 int id email 0x7f0e003e
 int id end 0x7f0e0041
@@ -1335,6 +1334,7 @@ int id uploadstory 0x7f0e00b3
 int id url 0x7f0e0051
 int id useLogo 0x7f0e0028
 int id volume_item_container 0x7f0e00eb
+int id voteNumber 0x7f0e00af
 int id wide 0x7f0e005a
 int id withText 0x7f0e004c
 int id wrap 0x7f0e0019

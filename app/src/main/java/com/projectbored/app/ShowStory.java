@@ -1,6 +1,9 @@
 package com.projectbored.app;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,6 +13,15 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 // still need to make ImageView retrieve image and textView retrieve caption
 // still need to let upvote/downvote change the thingies in the database possibly so they work
@@ -35,6 +47,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         story = getStoryDetails();
 
         imageView = (ImageView)findViewById(R.id.imageView);
+        loadImage();
 
         upVoteButton = (ImageButton)findViewById(R.id.upVoteButton);
         upVoteButton.setOnClickListener(new View.OnClickListener() {
@@ -60,11 +73,11 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
             }
         });
 
-        int votes = story.votes;
+        int votes = story.getVotes();
         voteNumber = (TextView) findViewById(R.id.voteNumber);
         voteNumber.setText(votes);
 
-        String caption = story.caption;
+        String caption = story.getCaption();
         storyCaption = (TextView) findViewById(R.id.storyCaption);
         storyCaption.setText(caption);
         }
@@ -129,6 +142,10 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
             backToMap();
         }
         return true;
+    }
+
+    private void loadImage(){
+        Glide.with(this).load(Uri.parse(story.getUri())).into(imageView);
     }
 
     // backToMap method (that just goes back to map i guess lol) -hy

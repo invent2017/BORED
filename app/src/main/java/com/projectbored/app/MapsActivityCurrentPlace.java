@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
@@ -26,6 +27,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -79,8 +81,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     //private LatLng[] mLikelyPlaceLatLngs = new LatLng[mMaxEntries];
 
     private DatabaseReference mDataRef;
-    private FirebaseStorage storage;
-    private StorageReference mStorageRef;
+
 @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,8 +108,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         mGoogleApiClient.connect();
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
-        storage = FirebaseStorage.getInstance();
-        mStorageRef = storage.getReference();
     }
 
     /**
@@ -354,15 +353,12 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Story story = dataSnapshot.getValue(Story.class);
-                if(story != null) {
-                        if(mLastKnownLocation.distanceTo(story.getLocation()) <= 100){
-                            Marker storyMarker;
-                            storyMarker = mMap.addMarker(new MarkerOptions()
-                                    .position(new LatLng(story.getLocation().getLatitude(),story.getLocation().getLongitude())));
-                            storyMarker.setTag(story);
-                        }
-                    }
-
+                if(story != null && mLastKnownLocation.distanceTo(story.getLocation()) <= 100) {
+                    Marker storyMarker;
+                    storyMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(story.getLocation().getLatitude(),story.getLocation().getLongitude())));
+                    storyMarker.setTag(story);
+                }
             }
 
             @Override
@@ -371,6 +367,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             }
         };
         mDataRef.addValueEventListener(storyListener);
+
     }
 
     @Override

@@ -14,11 +14,11 @@ import java.util.Map;
 
 @IgnoreExtraProperties
 public class Story implements Parcelable {
-    public String uri;
-    public Location location;
-    public String caption;
-    public Date dateTime;
-    public int votes;
+    private String uri;
+    private Location location;
+    private String caption;
+    private Date dateTime;
+    private int votes;
 
     @Exclude
     private int mData;
@@ -68,52 +68,44 @@ public class Story implements Parcelable {
         }
     };
 
-    @Exclude
     public void setUri(Uri u) {
         uri = u.toString();
     }
 
-    @Exclude
     public void setLocation(Location myLocation) {
         location = myLocation;
     }
 
-    @Exclude
     public void setCaption(String storyCaption) {
         caption = storyCaption;
     }
 
-    @Exclude
     public void setDateTime(Date time) {
         dateTime = time;
     }
 
-    @Exclude
     public void upVote() {
         votes++;
     }
 
-    @Exclude
     public void downVote() {
         votes--;
     }
 
-    @Exclude
+    public int getVotes() { return votes;}
+
     public String getUri(){
         return uri;
     }
 
-    @Exclude
     public Location getLocation() {
         return location;
     }
 
-    @Exclude
     public String getCaption() {
         return caption;
     }
 
-    @Exclude
     public Date getDateTime() {
         return dateTime;
     }
