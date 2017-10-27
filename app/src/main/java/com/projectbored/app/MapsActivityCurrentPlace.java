@@ -81,6 +81,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     //private LatLng[] mLikelyPlaceLatLngs = new LatLng[mMaxEntries];
 
     private DatabaseReference mDataRef;
+    private DatabaseReference mStoryRef;
 
 @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +108,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 .build();
         mGoogleApiClient.connect();
 
-        mDataRef = FirebaseDatabase.getInstance().getReference().child("stories");
+        mDataRef = FirebaseDatabase.getInstance().getReference().child("locations");
+        mStoryRef = FirebaseDatabase.getInstance().getReference().child("stories");
     }
 
     /**
@@ -219,7 +221,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         getDeviceLocation();
 
         //Load nearby stories.
-        loadStories();
+        getNearbyStories();
     }
 
     /**
@@ -346,18 +348,28 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         } */
     }
 
-    //Displays stories within 1km of the user on the map.
-    //Something wrong with this
-    public void loadStories() {
+    //Displays stories within 100m of the user on the map.
+    //I think I'm getting somewhere with this but not done yet
+    public void getNearbyStories() {
         ValueEventListener storyListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren())
                 {
-                    Location storyLocation = ds.child("Location").getValue(Location.class); //returns null for some reason
+                    String locationFromDatabase = ds.getKey();
+                    String locationString = locationFromDatabase.replace("d", ".");
+                    String [] locationArray = locationString.split(",");
+
+                    Location storyLocation = new Location("");
+                    storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
+                    storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
 
                     if(mLastKnownLocation.distanceTo(storyLocation) <= 100) {
-                        Story story = new Story();
+                        String storyKey = ds.getValue(String.class);
+                        loadStories(storyKey);
+
+                        //Anything below to be called in loadStories
+                        /*Story story = new Story();
 
                         String caption = ds.child("Caption").getValue(String.class);
                         Date dateTime = ds.child("DateTime").getValue(Date.class);
@@ -373,7 +385,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                         Marker storyMarker;
                         storyMarker = mMap.addMarker(new MarkerOptions()
                                 .position(new LatLng(storyLocation.getLatitude(),storyLocation.getLongitude())));
-                        storyMarker.setTag(story);
+                        storyMarker.setTag(story); */
                     }
                 }
             }
@@ -385,6 +397,24 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         };
         mDataRef.addValueEventListener(storyListener);
 
+    }
+
+    public void loadStories(String key) {
+        mStoryRef.child(key).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Story story = dataSnapshot.getValue(Story.class);
+                Marker storyMarker;
+                storyMarker = mMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(story.getLocation().getLatitude(),story.getLocation().getLongitude())));
+                storyMarker.setTag(story);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override

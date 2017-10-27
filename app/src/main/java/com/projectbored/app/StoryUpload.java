@@ -164,15 +164,17 @@ public class StoryUpload extends AppCompatActivity {
             storyLocation.setLongitude(location.getDouble("Longitude"));
 
             if (storyLocation != null) {
-                //String key = Double.toString(storyLocation.getLatitude())
-                //                                + ","
-                //                                + Double.toString(storyLocation.getLongitude());
+                String locationString = Double.toString(storyLocation.getLatitude())
+                                                + ","
+                                                + Double.toString(storyLocation.getLongitude());
+                String keyLocationString = locationString.replace(".", "d"); //keys in Firebase cannot contain ".", so replace with "d"
                 String key = mDataRef.child("stories").push().getKey();
                 Story story = new Story(PHOTO_URI, storyLocation, caption.getText().toString(), new Date());
                 Map<String, Object> storyDetails = story.toMap();
 
                 Map<String, Object> childUpdates = new HashMap<>();
                 childUpdates.put("/stories/" + key, storyDetails);
+                childUpdates.put("/locations/" + keyLocationString, key);
                 mDataRef.updateChildren(childUpdates);
 
                 Toast.makeText(this, "Story added!", Toast.LENGTH_SHORT).show();
