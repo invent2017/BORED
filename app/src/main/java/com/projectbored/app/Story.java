@@ -94,6 +94,10 @@ public class Story implements Parcelable {
 
     public int getVotes() { return votes;}
 
+    public void setVotes(int storyVotes) {
+        votes = storyVotes;
+    }
+
     public String getUri(){
         return uri;
     }
@@ -117,6 +121,7 @@ public class Story implements Parcelable {
         result.put("Location", location);
         result.put("Caption", caption);
         result.put("DateTime", dateTime);
+        result.put("Votes", votes);
 
         return result;
     }

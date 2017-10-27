@@ -107,7 +107,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 .build();
         mGoogleApiClient.connect();
 
-        mDataRef = FirebaseDatabase.getInstance().getReference();
+        mDataRef = FirebaseDatabase.getInstance().getReference().child("stories");
     }
 
     /**
@@ -352,12 +352,29 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         ValueEventListener storyListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Story story = dataSnapshot.getValue(Story.class);
-                if(story != null && mLastKnownLocation.distanceTo(story.getLocation()) <= 100) {
-                    Marker storyMarker;
-                    storyMarker = mMap.addMarker(new MarkerOptions()
-                            .position(new LatLng(story.getLocation().getLatitude(),story.getLocation().getLongitude())));
-                    storyMarker.setTag(story);
+                for(DataSnapshot ds : dataSnapshot.getChildren())
+                {
+                    Location storyLocation = ds.child("Location").getValue(Location.class);
+
+                    if(mLastKnownLocation.distanceTo(storyLocation) <= 100) {
+                        Story story = new Story();
+
+                        String caption = ds.child("Caption").getValue(String.class);
+                        Date dateTime = ds.child("DateTime").getValue(Date.class);
+                        String storyURI = ds.child("URI").getValue(String.class);
+                        int votes = ds.child("Votes").getValue(int.class);
+
+                        story.setCaption(caption);
+                        story.setDateTime(dateTime);
+                        story.setLocation(storyLocation);
+                        story.setUri(Uri.parse(storyURI));
+                        story.setVotes(votes);
+
+                        Marker storyMarker;
+                        storyMarker = mMap.addMarker(new MarkerOptions()
+                                .position(new LatLng(storyLocation.getLatitude(),storyLocation.getLongitude())));
+                        storyMarker.setTag(story);
+                    }
                 }
             }
 
