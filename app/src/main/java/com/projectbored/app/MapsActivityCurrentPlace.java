@@ -81,7 +81,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     //private LatLng[] mLikelyPlaceLatLngs = new LatLng[mMaxEntries];
 
     private DatabaseReference mDataRef;
-    private DatabaseReference mStoryRef;
 
 @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +108,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         mGoogleApiClient.connect();
 
         mDataRef = FirebaseDatabase.getInstance().getReference().child("locations");
-        mStoryRef = FirebaseDatabase.getInstance().getReference().child("stories");
     }
 
     /**
@@ -358,7 +356,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     //Displays stories within 100m of the user on the map.
     public void getNearbyStories() {
-        ValueEventListener storyListener = new ValueEventListener() {
+        mDataRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren())
@@ -373,10 +371,11 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
                     if(mLastKnownLocation.distanceTo(storyLocation) <= 100) {
                         String storyKey = ds.getValue(String.class);
-                        loadStories(storyKey, storyLocation);
 
-                        //Anything below to be called in loadStories
-                        /* */
+                        Marker storyMarker;
+                        storyMarker = mMap.addMarker(new MarkerOptions()
+                                .position(new LatLng(storyLocation.getLatitude(),storyLocation.getLongitude())));
+                        storyMarker.setTag(storyKey);
                     }
                 }
             }
@@ -385,38 +384,10 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             public void onCancelled(DatabaseError databaseError) {
                 Toast.makeText(MapsActivityCurrentPlace.this, "Failed to load stories.", Toast.LENGTH_SHORT).show();
             }
-        };
-        mDataRef.addValueEventListener(storyListener);
-
-    }
-
-    public void loadStories(String key, final Location storyLocation) {
-        mStoryRef.child(key).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String caption = dataSnapshot.child("Caption").getValue(String.class);
-                Date dateTime = dataSnapshot.child("DateTime").getValue(Date.class);
-                String storyURI = dataSnapshot.child("URI").getValue(String.class);
-                int votes = 0;
-
-                if (dataSnapshot.child("Votes").getValue(int.class) != null){
-                    votes = dataSnapshot.child("Votes").getValue(int.class);
-                }
-
-                Story story = new Story(storyURI, storyLocation, caption, dateTime, votes);
-
-                Marker storyMarker;
-                storyMarker = mMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(storyLocation.getLatitude(),storyLocation.getLongitude())));
-                storyMarker.setTag(story);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(MapsActivityCurrentPlace.this, "Failed to load stories", Toast.LENGTH_SHORT).show();
-            }
         });
+
     }
+
 
     @Override
     public boolean onMarkerClick(Marker marker){
@@ -426,8 +397,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     public void showStoryDetails(Marker marker) {
         Intent intent = new Intent(this, ShowStory.class);
-        Story story = (Story)marker.getTag();
-        intent.putExtra("Story", story);
+        String key = (String)marker.getTag();
+        intent.putExtra("key", key);
         startActivity(intent);
     }
 

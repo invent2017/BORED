@@ -18,6 +18,11 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -36,8 +41,13 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     TextView voteNumber;
     TextView storyCaptionView;
 
-    Story story;
+    String key;
 
+    String storyUri;
+    String storyCaption;
+    int storyVotes;
+
+    DatabaseReference mDataRef;
 
     // onCreate method here -hy
 
@@ -46,10 +56,12 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_story);
 
-        story = getIntent().getParcelableExtra("Story");
+        key = getIntent().getStringExtra("key");
+
+        loadStoryDetails(key);
 
         imageView = (ImageView)findViewById(R.id.imageView);
-        loadImage();
+        loadImage(storyUri, imageView);
 
         upVoteButton = (ImageButton)findViewById(R.id.upVoteButton);
         upVoteButton.setOnClickListener(new View.OnClickListener() {
@@ -75,23 +87,24 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
             }
         });
 
-        int votes = story.getVotes();
         voteNumber = (TextView) findViewById(R.id.voteNumber);
-        voteNumber.setText(votes);
+        voteNumber.setText(storyVotes);
 
         storyCaptionView = (TextView) findViewById(R.id.storyCaption);
-        storyCaptionView.setText(story.getCaption());
+        storyCaptionView.setText(storyCaption);
         }
 
 
     // stuff the buttons do when clicked -hy
 
     public void upVote(){
-        story.upVote();
+        storyVotes++;
+        updateVotes();
     }
 
     public void downVote(){
-        story.downVote();
+        storyVotes--;
+        updateVotes();
     }
 
     public void shareFunction(){
@@ -140,8 +153,41 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         return true;
     }
 
-    private void loadImage(){
-        Glide.with(this).load(Uri.parse(story.getUri())).into(imageView);
+    private void loadStoryDetails(String storyKey){
+        mDataRef = FirebaseDatabase.getInstance().getReference().child("stories").child(storyKey);
+        mDataRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if(ds.getKey().equals("URI")) {
+                        storyUri = ds.getValue(String.class);
+                    }
+
+                    if(ds.getKey().equals("Caption")) {
+                        storyCaption = ds.getValue(String.class);
+                    }
+
+                    if(ds.getKey().equals("Votes")) {
+                        storyVotes = ds.getValue(int.class);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(ShowStory.this, "Failed to load story data.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    private void loadImage(String uri, ImageView view){ //uri is null for some reason
+
+        Glide.with(this).load(Uri.parse(uri)).into(view);
+    }
+
+    private void updateVotes() {
+        mDataRef.child("Votes").setValue(storyVotes);
     }
 
     // backToMap method (that just goes back to map i guess lol) -hy

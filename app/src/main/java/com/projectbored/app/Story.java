@@ -2,8 +2,6 @@ package com.projectbored.app;
 
 import android.location.Location;
 import android.net.Uri;
-import android.os.Parcel;
-import android.os.Parcelable;
 
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
@@ -13,26 +11,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 @IgnoreExtraProperties
-public class Story implements Parcelable {
+public class Story {
     private String uri;
     private Location location;
     private String caption;
     private Date dateTime;
     private int votes;
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel out, int flags){
-        out.writeString(uri);
-        location.writeToParcel(out, flags);
-        out.writeString(caption);
-        out.writeLong(dateTime.getTime());
-        out.writeInt(votes);
-    }
 
     public Story() {
 
@@ -54,26 +39,6 @@ public class Story implements Parcelable {
         votes = numVotes;
 
     }
-
-    private Story(Parcel in) {
-        uri = in.readString();
-        location = in.readParcelable(Location.class.getClassLoader());
-        caption = in.readString();
-        long tmpDate = in.readLong();
-        dateTime = tmpDate == -1 ? null : new Date(tmpDate);
-        votes = in.readInt();
-
-    }
-
-    public static final Parcelable.Creator<Story> CREATOR = new Parcelable.Creator<Story>() {
-        public Story createFromParcel(Parcel in) {
-            return new Story(in);
-        }
-
-        public Story[] newArray(int size) {
-            return new Story[size];
-        }
-    };
 
     public void setUri(Uri u) {
         uri = u.toString();
