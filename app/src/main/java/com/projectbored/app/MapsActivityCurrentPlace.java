@@ -366,7 +366,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
                     if(mLastKnownLocation.distanceTo(storyLocation) <= 100) {
                         String storyKey = ds.getValue(String.class);
-                        loadStories(storyKey);
+                        loadStories(storyKey, storyLocation);
 
                         //Anything below to be called in loadStories
                         /*Story story = new Story();
@@ -399,20 +399,20 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     }
 
-    public void loadStories(String key) {
+    public void loadStories(String key, final Location storyLocation) {
         mStoryRef.child(key).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Story story = dataSnapshot.getValue(Story.class);
                 Marker storyMarker;
                 storyMarker = mMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(story.getLocation().getLatitude(),story.getLocation().getLongitude())));
+                        .position(new LatLng(storyLocation.getLatitude(),storyLocation.getLongitude())));
                 storyMarker.setTag(story);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Toast.makeText(MapsActivityCurrentPlace.this, "Failed to load stories", Toast.LENGTH_SHORT).show();
             }
         });
     }
