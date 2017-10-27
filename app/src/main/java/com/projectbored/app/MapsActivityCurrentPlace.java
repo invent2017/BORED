@@ -354,7 +354,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren())
                 {
-                    Location storyLocation = ds.child("Location").getValue(Location.class);
+                    Location storyLocation = ds.child("Location").getValue(Location.class); //returns null for some reason
 
                     if(mLastKnownLocation.distanceTo(storyLocation) <= 100) {
                         Story story = new Story();
