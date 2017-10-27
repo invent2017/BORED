@@ -186,6 +186,14 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     public void onMapReady(GoogleMap map) {
         mMap = map;
 
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                showStoryDetails(marker);
+                return false;
+            }
+        });
+
         // Use a custom info window adapter to handle multiple lines of text in the
         // info window contents.
         /*
@@ -349,7 +357,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     }
 
     //Displays stories within 100m of the user on the map.
-    //I think I'm getting somewhere with this but not done yet
     public void getNearbyStories() {
         ValueEventListener storyListener = new ValueEventListener() {
             @Override
@@ -369,23 +376,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                         loadStories(storyKey, storyLocation);
 
                         //Anything below to be called in loadStories
-                        /*Story story = new Story();
-
-                        String caption = ds.child("Caption").getValue(String.class);
-                        Date dateTime = ds.child("DateTime").getValue(Date.class);
-                        String storyURI = ds.child("URI").getValue(String.class);
-                        int votes = ds.child("Votes").getValue(int.class);
-
-                        story.setCaption(caption);
-                        story.setDateTime(dateTime);
-                        story.setLocation(storyLocation);
-                        story.setUri(Uri.parse(storyURI));
-                        story.setVotes(votes);
-
-                        Marker storyMarker;
-                        storyMarker = mMap.addMarker(new MarkerOptions()
-                                .position(new LatLng(storyLocation.getLatitude(),storyLocation.getLongitude())));
-                        storyMarker.setTag(story); */
+                        /* */
                     }
                 }
             }
@@ -403,7 +394,17 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         mStoryRef.child(key).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Story story = dataSnapshot.getValue(Story.class);
+                String caption = dataSnapshot.child("Caption").getValue(String.class);
+                Date dateTime = dataSnapshot.child("DateTime").getValue(Date.class);
+                String storyURI = dataSnapshot.child("URI").getValue(String.class);
+                int votes = 0;
+
+                if (dataSnapshot.child("Votes").getValue(int.class) != null){
+                    votes = dataSnapshot.child("Votes").getValue(int.class);
+                }
+
+                Story story = new Story(storyURI, storyLocation, caption, dateTime, votes);
+
                 Marker storyMarker;
                 storyMarker = mMap.addMarker(new MarkerOptions()
                         .position(new LatLng(storyLocation.getLatitude(),storyLocation.getLongitude())));
@@ -420,12 +421,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     @Override
     public boolean onMarkerClick(Marker marker){
         showStoryDetails(marker);
-        return false;
+        return true;
     }
 
     public void showStoryDetails(Marker marker) {
         Intent intent = new Intent(this, ShowStory.class);
-        intent.putExtra("Story", (Story)marker.getTag());
+        Story story = (Story)marker.getTag();
+        intent.putExtra("Story", story);
         startActivity(intent);
     }
 

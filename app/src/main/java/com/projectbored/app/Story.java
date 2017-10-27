@@ -20,9 +20,6 @@ public class Story implements Parcelable {
     private Date dateTime;
     private int votes;
 
-    @Exclude
-    private int mData;
-
     @Override
     public int describeContents() {
         return 0;
@@ -30,7 +27,11 @@ public class Story implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel out, int flags){
-        out.writeInt(mData);
+        out.writeString(uri);
+        location.writeToParcel(out, flags);
+        out.writeString(caption);
+        out.writeLong(dateTime.getTime());
+        out.writeInt(votes);
     }
 
     public Story() {
@@ -45,17 +46,23 @@ public class Story implements Parcelable {
         votes = 0;
     }
 
-    public Story(String u, Location myLocation, String snippet, Date dateTime){
+    public Story(String u, Location myLocation, String snippet, Date dateTime, int numVotes){
         uri = u;
         location = myLocation;
         caption = snippet;
         this.dateTime = dateTime;
-        votes = 0;
+        votes = numVotes;
 
     }
 
     private Story(Parcel in) {
-        mData = in.readInt();
+        uri = in.readString();
+        location = in.readParcelable(Location.class.getClassLoader());
+        caption = in.readString();
+        long tmpDate = in.readLong();
+        dateTime = tmpDate == -1 ? null : new Date(tmpDate);
+        votes = in.readInt();
+
     }
 
     public static final Parcelable.Creator<Story> CREATOR = new Parcelable.Creator<Story>() {

@@ -3,6 +3,7 @@ package com.projectbored.app;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Location;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,9 +34,10 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     ImageButton downVoteButton;
     ImageButton shareButton;
     TextView voteNumber;
-    TextView storyCaption;
+    TextView storyCaptionView;
 
     Story story;
+
 
     // onCreate method here -hy
 
@@ -44,7 +46,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_story);
 
-        story = getStoryDetails();
+        story = getIntent().getParcelableExtra("Story");
 
         imageView = (ImageView)findViewById(R.id.imageView);
         loadImage();
@@ -77,18 +79,12 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         voteNumber = (TextView) findViewById(R.id.voteNumber);
         voteNumber.setText(votes);
 
-        String caption = story.getCaption();
-        storyCaption = (TextView) findViewById(R.id.storyCaption);
-        storyCaption.setText(caption);
+        storyCaptionView = (TextView) findViewById(R.id.storyCaption);
+        storyCaptionView.setText(story.getCaption());
         }
 
 
     // stuff the buttons do when clicked -hy
-
-    public Story getStoryDetails() {
-        Intent i = getIntent();
-        return i.getParcelableExtra("Story");
-    }
 
     public void upVote(){
         story.upVote();
