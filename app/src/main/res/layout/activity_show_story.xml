@@ -75,7 +75,8 @@
                 android:id="@+id/voteNumber"
                 android:layout_width="29dp"
                 android:layout_height="wrap_content"
-                android:ems="8"
+                android:ems="14"
+                android:textSize="40dp"
                 android:inputType="number" />
 
             <ImageButton
