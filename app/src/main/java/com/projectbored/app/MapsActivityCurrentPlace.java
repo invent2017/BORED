@@ -2,6 +2,7 @@ package com.projectbored.app;
 
 import android.content.pm.PackageManager;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
@@ -24,6 +25,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -40,6 +42,7 @@ import com.google.firebase.storage.StorageReference;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 import static android.R.attr.data;
 import static android.R.attr.marqueeRepeatLimit;
@@ -397,9 +400,22 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 String storyKey = dataSnapshot.getValue(String.class);
 
                 Marker storyMarker;
-                storyMarker = mMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(storyLocation.getLatitude(),storyLocation.getLongitude())));
-                storyMarker.setTag(storyKey);
+
+                if(mLastKnownLocation.distanceTo(storyLocation) <= 100){
+                    //Add a yellow marker.
+                    storyMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(storyLocation.getLatitude(),storyLocation.getLongitude()))
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
+                    storyMarker.setTag(storyKey);
+
+                } else {
+                    //Add a purple marker.
+                    storyMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(storyLocation.getLatitude(),storyLocation.getLongitude()))
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
+                    storyMarker.setTag(storyKey);
+
+                }
             }
 
             @Override

@@ -38,6 +38,9 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     TextView voteNumber;
     TextView storyCaption;
 
+    boolean upvoteClicked = false;
+    boolean downvoteClicked = false;
+
     int storyVotes;
 
     DatabaseReference mStoryRef;
@@ -93,12 +96,34 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     // stuff the buttons do when clicked -hy
 
     public void upVote(){
-        storyVotes++;
+        if(upvoteClicked) {
+            storyVotes--;
+            upvoteClicked = false;
+        } else if(downvoteClicked) {
+            storyVotes = storyVotes + 2;
+            upvoteClicked = true;
+            downvoteClicked = false;
+        } else {
+            storyVotes++;
+            upvoteClicked = true;
+        }
+
         updateVotes();
     }
 
     public void downVote(){
-        storyVotes--;
+        if (downvoteClicked) {
+            storyVotes++;
+            downvoteClicked = false;
+        } else if(upvoteClicked) {
+            storyVotes = storyVotes - 2;
+            downvoteClicked = true;
+            upvoteClicked = false;
+        } else {
+            storyVotes--;
+            downvoteClicked = true;
+        }
+
         updateVotes();
     }
 
