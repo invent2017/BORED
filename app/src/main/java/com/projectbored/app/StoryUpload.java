@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.NonNull;
@@ -159,7 +160,7 @@ public class StoryUpload extends AppCompatActivity {
         if(PHOTO_URI == null) {
             Toast.makeText(this, "Couldn't upload story.", Toast.LENGTH_SHORT).show();
         } else {
-            Location storyLocation = new Location("");
+            Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
             storyLocation.setLatitude(location.getDouble("Latitude"));
             storyLocation.setLongitude(location.getDouble("Longitude"));
 

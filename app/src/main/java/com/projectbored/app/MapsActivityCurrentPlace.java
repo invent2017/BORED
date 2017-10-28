@@ -3,6 +3,7 @@ package com.projectbored.app;
 import android.content.pm.PackageManager;
 import android.content.Intent;
 import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -41,6 +42,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static android.R.attr.data;
+import static android.R.attr.marqueeRepeatLimit;
 import static android.R.attr.value;
 
 /**
@@ -187,8 +189,15 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                showStoryDetails(marker);
-                return false;
+                LatLng markerPosition = marker.getPosition();
+                Location markerLocation = new Location(LocationManager.GPS_PROVIDER);
+                markerLocation.setLatitude(markerPosition.latitude);
+                markerLocation.setLongitude(markerPosition.longitude);
+
+                if(mLastKnownLocation.distanceTo(markerLocation) <= 100) {
+                    showStoryDetails(marker);
+                }
+                return true;
             }
         });
 
@@ -365,14 +374,11 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                     String locationString = locationFromDatabase.replace("d", ".");
                     String [] locationArray = locationString.split(",");
 
-                    Location storyLocation = new Location("");
+                    Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
                     storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
                     storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
 
-                    if(mLastKnownLocation.distanceTo(storyLocation) <= 100) {
-                        displayStories(locationFromDatabase, storyLocation);
-
-                    }
+                    displayStories(locationFromDatabase, storyLocation);
                 }
             }
 
@@ -406,7 +412,14 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     @Override
     public boolean onMarkerClick(Marker marker){
-        showStoryDetails(marker);
+        LatLng markerPosition = marker.getPosition();
+        Location markerLocation = new Location(LocationManager.GPS_PROVIDER);
+        markerLocation.setLatitude(markerPosition.latitude);
+        markerLocation.setLongitude(markerPosition.longitude);
+
+        if(mLastKnownLocation.distanceTo(markerLocation) <= 100) {
+            showStoryDetails(marker);
+        }
         return true;
     }
 
