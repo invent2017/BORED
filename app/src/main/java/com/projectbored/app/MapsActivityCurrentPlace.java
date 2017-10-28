@@ -370,12 +370,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                     storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
 
                     if(mLastKnownLocation.distanceTo(storyLocation) <= 100) {
-                        String storyKey = ds.getValue(String.class);
+                        displayStories(locationFromDatabase, storyLocation);
 
-                        Marker storyMarker;
-                        storyMarker = mMap.addMarker(new MarkerOptions()
-                                .position(new LatLng(storyLocation.getLatitude(),storyLocation.getLongitude())));
-                        storyMarker.setTag(storyKey);
                     }
                 }
             }
@@ -388,6 +384,25 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     }
 
+    public void displayStories(final String key, final Location storyLocation) {
+        mDataRef.child(key).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String storyKey = dataSnapshot.getValue(String.class);
+
+                Marker storyMarker;
+                storyMarker = mMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(storyLocation.getLatitude(),storyLocation.getLongitude())));
+                storyMarker.setTag(storyKey);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 
     @Override
     public boolean onMarkerClick(Marker marker){
@@ -398,7 +413,10 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     public void showStoryDetails(Marker marker) {
         Intent intent = new Intent(this, ShowStory.class);
         String key = (String)marker.getTag();
-        intent.putExtra("key", key);
+        Bundle storyDetails = new Bundle();
+        storyDetails.putString("key", key);
+        intent.putExtras(storyDetails);
+
         startActivity(intent);
     }
 
