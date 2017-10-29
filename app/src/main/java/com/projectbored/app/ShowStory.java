@@ -178,21 +178,18 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
         if(storyKey != null) {
             mVotesRef= FirebaseDatabase.getInstance().getReference().child("stories").child(storyKey).child("Votes");
-            mStoryRef.child("stories").child(storyKey).addValueEventListener(new ValueEventListener() {
+            mStoryRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     String uri = dataSnapshot.child("URI").getValue(String.class);
                     String caption = dataSnapshot.child("Caption").getValue(String.class);
-                    int votes = dataSnapshot.child("Votes").getValue(Integer.class);
+
 
                     if(uri != null && caption != null){
                         StorageReference mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl(uri);
 
                         //Load story image into image view.
                         Glide.with(ShowStory.this).using(new FirebaseImageLoader()).load(mStorageRef).into(imageView);
-
-                        storyVotes = votes;
-                        voteNumber.setText(String.format(new Locale("en", "US"),"%d",votes));
 
                         storyCaption.setText(caption);
                     }
@@ -201,6 +198,21 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
                     Toast.makeText(ShowStory.this, "Failed to load story data.", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            mStoryRef.child("stories").child(storyKey).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    int votes = dataSnapshot.child("Votes").getValue(Integer.class);
+
+                    storyVotes = votes;
+                    voteNumber.setText(String.format(new Locale("en", "US"),"%d",votes));
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
                 }
             });
 
