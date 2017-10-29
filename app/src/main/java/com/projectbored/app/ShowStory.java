@@ -29,7 +29,6 @@ import java.util.Locale;
 // still need to let upvote/downvote change the thingies in the database possibly so they work
 
 public class ShowStory extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = ShowStory.class.getSimpleName();
 
     ImageView imageView;
     ImageButton upVoteButton;

@@ -366,7 +366,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         } */
     }
 
-    //Displays stories within 100m of the user on the map.
+
     public void getNearbyStories() {
         mDataRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -399,21 +399,11 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String storyKey = dataSnapshot.getValue(String.class);
 
-                Marker storyMarker;
-
                 if(mLastKnownLocation.distanceTo(storyLocation) <= 100){
-                    //Add a yellow marker.
-                    storyMarker = mMap.addMarker(new MarkerOptions()
-                            .position(new LatLng(storyLocation.getLatitude(),storyLocation.getLongitude()))
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
-                    storyMarker.setTag(storyKey);
+                    showNearbyStories(storyKey, storyLocation);
 
                 } else {
-                    //Add a purple marker.
-                    storyMarker = mMap.addMarker(new MarkerOptions()
-                            .position(new LatLng(storyLocation.getLatitude(),storyLocation.getLongitude()))
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
-                    storyMarker.setTag(storyKey);
+                    showFarStories(storyKey, storyLocation);
 
                 }
             }
@@ -424,6 +414,71 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             }
         });
     }
+
+    public void showNearbyStories(final String storyKey, final Location storyLocation) {
+
+        DatabaseReference mStoryRef = FirebaseDatabase.getInstance().getReference().child("stories");
+        mStoryRef.child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Marker storyMarker;
+                boolean featured = dataSnapshot.child("Featured").getValue(boolean.class);
+                if(featured){
+                    //Add a green marker. (Near, featured)
+                    storyMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(storyLocation.getLatitude(),storyLocation.getLongitude()))
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                    storyMarker.setTag(storyKey);
+                } else {
+                    //Add a yellow marker. (Near, not featured)
+                    storyMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(storyLocation.getLatitude(),storyLocation.getLongitude()))
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
+                    storyMarker.setTag(storyKey);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    public void showFarStories(final String storyKey, final Location storyLocation) {
+
+        DatabaseReference mStoryRef = FirebaseDatabase.getInstance().getReference().child("stories");
+        mStoryRef.child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Marker storyMarker;
+                boolean featured = dataSnapshot.child("Featured").getValue(boolean.class);
+                if(featured) {
+                    //Add a blue marker. (Far, featured)
+                    storyMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(storyLocation.getLatitude(),storyLocation.getLongitude()))
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+                    storyMarker.setTag(storyKey);
+                } else {
+                    //Add a purple marker. (Far, not featured)
+                    storyMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(storyLocation.getLatitude(),storyLocation.getLongitude()))
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
+                    storyMarker.setTag(storyKey);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+
 
 
     @Override
