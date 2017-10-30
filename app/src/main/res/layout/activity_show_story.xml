@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginRight="2dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_weight="1"
                 android:background="@drawable/reportbutton"
                 android:text="@string/report"
@@ -82,8 +82,9 @@
                 android:layout_marginTop="15dp"
                 android:ems="14"
                 android:gravity="center_vertical"
+                android:textAlignment="center"
                 android:inputType="number"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
             <ImageButton
                 android:id="@+id/upVoteButton"
