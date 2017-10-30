@@ -59,7 +59,15 @@
                 android:background="@android:color/transparent"
                 android:padding="10dp"
                 android:contentDescription="@string/down_vote"
-                app:srcCompat="@drawable/flag" />
+                app:srcCompat="@drawable/downvote" />
+
+            <TextView
+                android:id="@+id/voteNumber"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:ems="14"
+                android:inputType="number"
+                android:textSize="40dp" />
 
             <ImageButton
                 android:id="@+id/upVoteButton"
@@ -70,14 +78,6 @@
                 android:padding="10dp"
                 android:contentDescription="@string/up_vote"
                 app:srcCompat="@drawable/upvote" />
-
-            <TextView
-                android:id="@+id/voteNumber"
-                android:layout_width="29dp"
-                android:layout_height="wrap_content"
-                android:ems="14"
-                android:textSize="40dp"
-                android:inputType="number" />
 
             <ImageButton
                 android:id="@+id/shareButton"
