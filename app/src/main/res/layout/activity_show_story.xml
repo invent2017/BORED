@@ -51,42 +51,61 @@
             android:layout_weight="0.50"
             android:orientation="horizontal">
 
+            <Button
+                android:id="@+id/reportstory"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/reportbutton"
+                android:text="@string/report"
+                android:textColor="#fafafa"
+                android:textSize="12sp" />
+
             <ImageButton
                 android:id="@+id/downVoteButton"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:padding="10dp"
                 android:contentDescription="@string/down_vote"
+                android:padding="10dp"
+                android:paddingTop="0dp"
                 app:srcCompat="@drawable/downvote" />
 
             <TextView
                 android:id="@+id/voteNumber"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:ems="14"
+                android:gravity="center_vertical"
                 android:inputType="number"
-                android:textSize="40dp" />
+                android:textSize="16dp" />
 
             <ImageButton
                 android:id="@+id/upVoteButton"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:padding="10dp"
                 android:contentDescription="@string/up_vote"
+                android:padding="10dp"
                 app:srcCompat="@drawable/upvote" />
 
             <ImageButton
                 android:id="@+id/shareButton"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:padding="10dp"
                 android:contentDescription="@string/share"
+                android:padding="10dp"
                 app:srcCompat="@drawable/share" />
         </LinearLayout>
 

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     ImageButton shareButton;
     TextView voteNumber;
     TextView storyCaption;
+    Button reportStory;
 
     boolean upvoteClicked = false;
     boolean downvoteClicked = false;
@@ -88,11 +90,17 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
         storyDetails = getIntent().getExtras();
 
+        reportStory = (Button) findViewById(R.id.reportstory);
+
         loadStoryDetails(storyDetails);
         }
 
 
     // stuff the buttons do when clicked -hy
+
+   public void ReportStory(){
+        //sth about reporting story we have to code
+   }
 
     public void upVote(){
         if(upvoteClicked) {

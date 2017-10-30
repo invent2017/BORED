@@ -836,7 +836,7 @@ int drawable common_google_signin_btn_text_light 0x7f070098
 int drawable common_google_signin_btn_text_light_focused 0x7f070099
 int drawable common_google_signin_btn_text_light_normal 0x7f07009a
 int drawable common_google_signin_btn_text_light_normal_background 0x7f07009b
-int drawable flag 0x7f07009c
+int drawable downvote 0x7f07009c
 int drawable googleg_disabled_color_18 0x7f07009d
 int drawable googleg_standard_color_18 0x7f07009e
 int drawable ic_audiotrack_dark 0x7f07009f
