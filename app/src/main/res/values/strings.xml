@@ -10,7 +10,7 @@
     <string name="Share">Share</string>
     <string name="nextonly">Next</string>
     <string name="add_story">Add Story</string>
-    <string name="map">Map</string>
+    <string name="map">Back to Map</string>
     <string name="caption">caption</string>
     <string name="report"><b>Report</b></string>
 </resources>
