@@ -26,9 +26,6 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.Locale;
 
-// still need to make ImageView retrieve image and textView retrieve caption
-// still need to let upvote/downvote change the thingies in the database possibly so they work
-
 public class ShowStory extends AppCompatActivity implements View.OnClickListener {
 
     ImageView imageView;
@@ -37,7 +34,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     ImageButton shareButton;
     TextView voteNumber;
     TextView storyCaption;
-    Button reportStory;
+    Button reportStoryButton;
 
     boolean upvoteClicked = false;
     boolean downvoteClicked = false;
@@ -90,15 +87,29 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
         storyDetails = getIntent().getExtras();
 
-        reportStory = (Button) findViewById(R.id.reportstory);
+        reportStoryButton = (Button) findViewById(R.id.reportstory);
+        reportStoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reportStory();
+            }
+        });
 
         loadStoryDetails(storyDetails);
+
+        //alreadyRead();
         }
 
 
     // stuff the buttons do when clicked -hy
 
-   public void ReportStory(){
+
+   /** READ method idk man
+    public void alreadyRead(){
+        read = true;
+   } **/
+
+    public void reportStory(){
         //sth about reporting story we have to code
    }
 

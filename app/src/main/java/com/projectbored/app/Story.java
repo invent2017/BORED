@@ -19,6 +19,7 @@ public class Story {
     private int votes;
 
     private boolean featured;
+    private boolean read;
 
 
     public Story() {
@@ -32,6 +33,7 @@ public class Story {
         this.dateTime = dateTime;
         votes = 0;
         featured = false;
+        read = false;
     }
 
     public Story(String u, Location myLocation, String snippet, Date dateTime, int numVotes){
@@ -41,6 +43,7 @@ public class Story {
         this.dateTime = dateTime;
         votes = numVotes;
         featured = false;
+        read = false;
     }
 
     public void setUri(Uri u) {
@@ -97,6 +100,10 @@ public class Story {
         this.featured = featured;
     }
 
+    public boolean isRead() { return read;}
+
+    public void setRead(boolean read) {this.read = read; }
+
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
@@ -106,6 +113,7 @@ public class Story {
         result.put("DateTime", dateTime);
         result.put("Votes", votes);
         result.put("Featured", featured);
+        result.put("Read", read);
 
         return result;
     }
