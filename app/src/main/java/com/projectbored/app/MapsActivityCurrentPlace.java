@@ -605,15 +605,15 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     private AlertDialog.Builder promptLogIn() {
         AlertDialog.Builder logInPrompt = new AlertDialog.Builder(this);
-        logInPrompt.setMessage("Log in to access extra features?")
-                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+        logInPrompt.setMessage("Want to access bonus features? :)")
+                .setPositiveButton("Sign In", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent logInIntent = new Intent(MapsActivityCurrentPlace.this, Login.class);
                         startActivity(logInIntent);
                     }
                 })
-                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Later", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 

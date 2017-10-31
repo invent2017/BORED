@@ -140,6 +140,6 @@ public class Login extends AppCompatActivity {
         editor.putString("Username", username);
         editor.putString("Password", password);
 
-        editor.commit();
+        editor.apply();
     }
 }

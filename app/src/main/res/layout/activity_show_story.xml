@@ -58,7 +58,7 @@
                 android:layout_marginRight="2dp"
                 android:layout_marginTop="15dp"
                 android:layout_weight="1"
-                android:background="@drawable/reportbutton"
+                android:background="@drawable/roundishbutton"
                 android:text="@string/report"
                 android:textColor="#fafafa"
                 android:textSize="12sp" />
