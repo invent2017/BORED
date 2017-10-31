@@ -92,6 +92,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     private DatabaseReference mDataRef;
 
+    private boolean loggedIn;
+
 @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -169,11 +171,36 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
      * @param menu The options menu.
      * @return Boolean.
      */
-    @Override
+
+   @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(com.projectbored.app.R.menu.current_place_menu, menu);
         return true;
+        }
+
+    /*
+    TRYING TO DYNAMIC MENU WHERE IT SHOWS LOG OUT WHEN YOU ARE LOGGED IN BUT THEN IDK MAN
+        //ref : https://stackoverflow.com/questions/17311833/how-we-can-add-menu-item-dynamically
+        //ref : https://stackoverflow.com/questions/15580111/how-can-i-dynamically-create-menu-items
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.clear();
+        menu.add(0, 0, 0, "Add Story");
+        if(loggedIn = false)
+            menu.add(0, 1, 0, "Log In");
+        else {
+            menu.add(0,2,0,"Log Out");
+        }
+
+        //menu.add(0, 2, 0, "Option3").setShortcut('4', 's');
+
+        // SubMenu sMenu = menu.addSubMenu(0, 3, 0, "SubMenu"); //If you want to add submenu
+        // sMenu.add(0, 4, 0, "SubOption1").setShortcut('5', 'z');
+        // sMenu.add(0, 5, 0, "SubOption2").setShortcut('5', 'z');
+        return super.onPrepareOptionsMenu(menu);
     }
+    */
 
     /**
      * Handles a click on the menu option to get a place.
@@ -189,8 +216,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             addStoryGallery();
         }*/
 
+        if (item.getItemId() == R.id.option_log_in) {
+            Intent logInIntent = new Intent(MapsActivityCurrentPlace.this, Login.class);
+            startActivity(logInIntent);
+        }
         return true;
     }
+
 
     /**
      * Manipulates the map when it's available.
@@ -606,7 +638,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     private AlertDialog.Builder promptLogIn() {
         AlertDialog.Builder logInPrompt = new AlertDialog.Builder(this);
         logInPrompt.setMessage("Want to access bonus features? :)")
-                .setPositiveButton("Sign In", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Log In", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent logInIntent = new Intent(MapsActivityCurrentPlace.this, Login.class);
@@ -622,4 +654,5 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
         return logInPrompt;
     }
+
 }

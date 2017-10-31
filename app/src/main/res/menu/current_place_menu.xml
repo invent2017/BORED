@@ -14,6 +14,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/option_log_in"
+        android:title="Log in"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/option_add_story"
         android:title="@string/add_story"
         app:showAsAction="always" />

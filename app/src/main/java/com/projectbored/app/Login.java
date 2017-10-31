@@ -25,6 +25,7 @@ public class Login extends AppCompatActivity {
     private EditText passwordField;
     private Button signInButton;
     private Button signUpButton;
+    private boolean loggedIn;
 
     private TextView emptyFieldText;
 
@@ -90,6 +91,7 @@ public class Login extends AppCompatActivity {
                 }
             });
         }
+        loggedIn = true;
     }
 
     private void signUp() {
@@ -116,6 +118,7 @@ public class Login extends AppCompatActivity {
                 }
             });
         }
+        loggedIn = true;
     }
 
     private void addUser(String username, String password) {
