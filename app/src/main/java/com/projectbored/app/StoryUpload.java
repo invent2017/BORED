@@ -44,7 +44,7 @@ public class StoryUpload extends AppCompatActivity {
 
     String mCurrentPhotoPath;
 
-    Bundle location;
+    Bundle storyDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +55,10 @@ public class StoryUpload extends AppCompatActivity {
 
         caption = (EditText)findViewById(R.id.story_caption);
 
-        location = getIntent().getExtras();
+        storyDetails = getIntent().getExtras();
 
         dispatchTakePictureIntent();
+
     }
 
     @Override
@@ -161,8 +162,8 @@ public class StoryUpload extends AppCompatActivity {
             Toast.makeText(this, "Couldn't upload story.", Toast.LENGTH_SHORT).show();
         } else {
             Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
-            storyLocation.setLatitude(location.getDouble("Latitude"));
-            storyLocation.setLongitude(location.getDouble("Longitude"));
+            storyLocation.setLatitude(storyDetails.getDouble("Latitude"));
+            storyLocation.setLongitude(storyDetails.getDouble("Longitude"));
 
             if (storyLocation != null) {
                 String locationString = Double.toString(storyLocation.getLatitude())

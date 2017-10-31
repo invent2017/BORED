@@ -13,4 +13,18 @@
     <string name="map">Back to Map</string>
     <string name="caption">caption</string>
     <string name="report"><b>Report</b></string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="login_title">Log in to BORED!</string>
+    <string name="prompt_username">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_up">Sign up</string>
+    <string name="error_invalid_username">This username is invalid.</string>
+    <string name="error_incorrect_username">This username does not exist.</string>
+    <string name="error_existing_username">This username is already taken.</string>
+    <string name="error_invalid_password">This password is too short.</string>
+    <string name="error_incorrect_password">This password is incorrect.</string>
+    <string name="error_field_required">Username and password cannot be empty.</string>
 </resources>

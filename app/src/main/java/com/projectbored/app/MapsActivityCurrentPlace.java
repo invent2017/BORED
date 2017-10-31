@@ -1,5 +1,7 @@
 package com.projectbored.app;
 
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,6 +12,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -56,6 +59,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 GoogleApiClient.ConnectionCallbacks,
                 GoogleApiClient.OnConnectionFailedListener {
 
+    private static final String PREFS_NAME = "UserDetails";
+
     private static final String TAG = MapsActivityCurrentPlace.class.getSimpleName();
     private GoogleMap mMap;
     private CameraPosition mCameraPosition;
@@ -90,6 +95,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getUserData();
 
         // Retrieve location and camera position from saved instance state.
         if (savedInstanceState != null) {
@@ -175,9 +182,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == com.projectbored.app.R.id.option_add_story) {
-            addStory();
+        if (item.getItemId() == R.id.option_add_story) {
+            addStoryCamera();
         }
+        /*else if(item.getItemId() == R.id.option_add_story_gallery){
+            addStoryGallery();
+        }*/
+
         return true;
     }
 
@@ -310,12 +321,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
 
 
-    private void addStory() {
+    private void addStoryCamera() {
             Intent intent = new Intent(this, StoryUpload.class);
-            Bundle storyLoc = new Bundle();
-            storyLoc.putDouble("Latitude", mLastKnownLocation.getLatitude());
-            storyLoc.putDouble("Longitude", mLastKnownLocation.getLongitude());
-            intent.putExtras(storyLoc);
+            Bundle storySettings = new Bundle();
+            storySettings.putDouble("Latitude", mLastKnownLocation.getLatitude());
+            storySettings.putDouble("Longitude", mLastKnownLocation.getLongitude());
+            storySettings.putBoolean("FromGallery", false);
+            intent.putExtras(storySettings);
             startActivity(intent);
 
         /*if (mMap == null) {
@@ -366,6 +378,16 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         } */
     }
 
+    /*private void addStoryGallery() {
+        Intent intent = new Intent(this, StoryUpload.class);
+        Bundle storySettings = new Bundle();
+        storySettings.putDouble("Latitude", mLastKnownLocation.getLatitude());
+        storySettings.putDouble("Longitude", mLastKnownLocation.getLongitude());
+        storySettings.putBoolean("FromGallery", true);
+        intent.putExtras(storySettings);
+        startActivity(intent);
+    }*/
+
 
     public void getNearbyStories() {
         mDataRef.addValueEventListener(new ValueEventListener() {
@@ -401,10 +423,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
                 if(mLastKnownLocation.distanceTo(storyLocation) <= 100){
                     showNearbyStories(storyKey, storyLocation);
-
                 } else {
                     showFarStories(storyKey, storyLocation);
-
                 }
             }
 
@@ -570,5 +590,36 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
             mLastKnownLocation = null;
         }
+    }
+
+    private void getUserData() {
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        boolean loggedIn = settings.getBoolean("Logged in", false);
+        if(!loggedIn){
+            promptLogIn().create().show();
+        } else {
+            String username = settings.getString("Username", "");
+            Toast.makeText(this, "Logged in as " + username + "." , Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private AlertDialog.Builder promptLogIn() {
+        AlertDialog.Builder logInPrompt = new AlertDialog.Builder(this);
+        logInPrompt.setMessage("Log in to access extra features?")
+                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent logInIntent = new Intent(MapsActivityCurrentPlace.this, Login.class);
+                        startActivity(logInIntent);
+                    }
+                })
+                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+        return logInPrompt;
     }
 }
