@@ -2,6 +2,7 @@ package com.projectbored.app;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,72 +19,56 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Login extends AppCompatActivity {
+public class CreateAccount extends AppCompatActivity {
     public static final String PREFS_NAME = "UserDetails";
 
-    private EditText usernameField;
-    private EditText passwordField;
-    private Button signInButton;
-    private Button promptSignUpButton;
-    private boolean loggedIn;
+    public boolean loggedIn;
+    private DatabaseReference mDataRef;
 
+    private EditText usernameField;
+    private EditText emailField;
+    private EditText passwordField;
     private TextView emptyFieldText;
 
-    private DatabaseReference mDataRef;
+    private Button signUpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_create_account);
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
-        emptyFieldText = (TextView)findViewById(R.id.signInEmptyFieldAlert);
+        usernameField = (EditText)findViewById(R.id.signUpUsername);
+        emailField = (EditText)findViewById(R.id.signUpEmail);
+        passwordField = (EditText)findViewById(R.id.signUpPassword);
+        emptyFieldText = (TextView) findViewById(R.id.signUpEmptyFieldAlert);
 
-        usernameField = (EditText)findViewById(R.id.signInUsername);
-        passwordField = (EditText)findViewById(R.id.signInPassword);
-
-        signInButton = (Button)findViewById(R.id.signin_button);
-        signInButton.setOnClickListener(new View.OnClickListener() {
+        signUpButton = (Button)findViewById(R.id.signup_button);
+        signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signIn();
-            }
-        });
-
-        promptSignUpButton = (Button)findViewById(R.id.signup_prompt_button);
-        promptSignUpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signUp = new Intent(Login.this, CreateAccount.class);
-                startActivity(signUp);
+                signUp();
             }
         });
     }
 
-    private void signIn() {
-        if(usernameField.getText().toString().trim().isEmpty() || passwordField.getText().toString().trim().isEmpty())
+    private void signUp() {
+        if(usernameField.getText().toString().trim().isEmpty() || emailField.getText().toString().trim().isEmpty() || passwordField.getText().toString().trim().isEmpty())
         {
             emptyFieldText.setText(R.string.error_field_required);
         } else {
             final String username = usernameField.getText().toString();
+            final String email = emailField.getText().toString();
             final String password = passwordField.getText().toString();
 
             mDataRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.child(username).exists()){
-                        if(dataSnapshot.child(username).child("Password").getValue(String.class).equals(password)) {
-                            storeLocalUserData(username, password);
-
-                            Intent i = new Intent(Login.this, MapsActivityCurrentPlace.class);
-                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(i);
-                        } else {
-                            emptyFieldText.setText(R.string.error_incorrect_password);
-                        }
+                    if (dataSnapshot.child(username).exists()) {
+                        emptyFieldText.setText(R.string.error_existing_username);
                     } else {
-                        emptyFieldText.setText(R.string.error_incorrect_username);
+                        addUser(username, email, password);
                     }
                 }
 
@@ -94,6 +79,21 @@ public class Login extends AppCompatActivity {
             });
         }
         loggedIn = true;
+    }
+
+    private void addUser(String username, String email, String password) {
+        User user = new User(username, email, password);
+        Map<String, Object> userDetails = user.toMap();
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/users/" + username, userDetails);
+        mDataRef.updateChildren(childUpdates);
+
+        storeLocalUserData(username, password);
+
+        Intent i = new Intent(this, MapsActivityCurrentPlace.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
     }
 
     private void storeLocalUserData(String username, String password) {

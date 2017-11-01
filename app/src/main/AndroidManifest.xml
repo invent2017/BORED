@@ -49,7 +49,9 @@
         </provider>
 
         <activity android:name=".ShowStory" />
-        <activity android:name=".Login"></activity>
+        <activity android:name=".Login" />
+        <activity android:name=".CreateAccount" />
+        <activity android:name=".Logout"></activity>
     </application>
 
 </manifest>

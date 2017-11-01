@@ -110,7 +110,9 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
    } **/
 
     public void reportStory(){
-        //sth about reporting story we have to code
+        final String storyKey = storyDetails.getString("key");
+        mStoryRef.child("stories").child(storyKey).child("Flagged").setValue(true);
+        Toast.makeText(this, "Story flagged.", Toast.LENGTH_SHORT).show();
    }
 
     public void upVote(){

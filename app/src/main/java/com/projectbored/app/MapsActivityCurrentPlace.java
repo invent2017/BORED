@@ -182,25 +182,20 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     TRYING TO DYNAMIC MENU WHERE IT SHOWS LOG OUT WHEN YOU ARE LOGGED IN BUT THEN IDK MAN
         //ref : https://stackoverflow.com/questions/17311833/how-we-can-add-menu-item-dynamically
         //ref : https://stackoverflow.com/questions/15580111/how-can-i-dynamically-create-menu-items
-
+    */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        menu.clear();
-        menu.add(0, 0, 0, "Add Story");
-        if(loggedIn = false)
-            menu.add(0, 1, 0, "Log In");
-        else {
-            menu.add(0,2,0,"Log Out");
+        MenuItem logInOption = menu.findItem(R.id.option_log_in);
+        MenuItem logOutOption = menu.findItem(R.id.option_log_out);
+
+        if(loggedIn) {
+            logOutOption.setVisible(true);
+        } else {
+            logInOption.setVisible(true);
         }
-
-        //menu.add(0, 2, 0, "Option3").setShortcut('4', 's');
-
-        // SubMenu sMenu = menu.addSubMenu(0, 3, 0, "SubMenu"); //If you want to add submenu
-        // sMenu.add(0, 4, 0, "SubOption1").setShortcut('5', 'z');
-        // sMenu.add(0, 5, 0, "SubOption2").setShortcut('5', 'z');
-        return super.onPrepareOptionsMenu(menu);
+        return true;
     }
-    */
+
 
     /**
      * Handles a click on the menu option to get a place.
@@ -217,8 +212,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         }*/
 
         if (item.getItemId() == R.id.option_log_in) {
-            Intent logInIntent = new Intent(MapsActivityCurrentPlace.this, Login.class);
+            Intent logInIntent = new Intent(this, Login.class);
             startActivity(logInIntent);
+        }
+
+        if(item.getItemId() == R.id.option_log_out) {
+            Intent logoutIntent = new Intent(this, Logout.class);
+            startActivity(logoutIntent);
         }
         return true;
     }
@@ -626,7 +626,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     private void getUserData() {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        boolean loggedIn = settings.getBoolean("Logged in", false);
+        loggedIn = settings.getBoolean("Logged in", false);
         if(!loggedIn){
             promptLogIn().create().show();
         } else {

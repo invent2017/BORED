@@ -15,7 +15,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/option_log_in"
-        android:title="Log in"
+        android:title="@string/action_sign_in"
+        android:visible="false"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/option_log_out"
+        android:title="@string/action_log_out"
+        android:visible="false"
         app:showAsAction="always" />
     <item
         android:id="@+id/option_add_story"

@@ -41,7 +41,6 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.google.android.gms.version"
@@ -74,6 +73,8 @@
 
         <activity android:name="com.projectbored.app.ShowStory" />
         <activity android:name="com.projectbored.app.Login" />
+        <activity android:name="com.projectbored.app.CreateAccount" />
+        <activity android:name="com.projectbored.app.Logout" />
 
         <receiver android:name="com.google.android.gms.cast.framework.media.MediaIntentReceiver" />
 
