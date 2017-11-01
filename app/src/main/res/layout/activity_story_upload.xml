@@ -44,7 +44,7 @@
             android:ems="10"
             android:gravity="top"
             android:hint="@string/insert_caption_here"
-            android:lines="4"
+            android:lines="3"
             android:paddingTop="10dp" />
 <!--
         <Button
