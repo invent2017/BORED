@@ -28,6 +28,7 @@ import java.util.Locale;
 
 public class ShowStory extends AppCompatActivity implements View.OnClickListener {
 
+
     ImageView imageView;
     ImageButton upVoteButton;
     ImageButton downVoteButton;
@@ -266,7 +267,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         // to fill in with code -hy
         // i think this is suppose to open the map activity -hy
         Intent intent = new Intent(this, MapsActivityCurrentPlace.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //I think you need to add this to go back to the main activity otherwise it will lag -LH
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 

@@ -36,6 +36,16 @@ public class Story {
         flagged = false;
     }
 
+    public Story (String uri, Location location, String caption, Date dateTime) {
+        this.uri = uri;
+        this.location = location;
+        this.caption = caption;
+        this.dateTime = dateTime;
+        votes = 0;
+        featured = false;
+        flagged = false;
+    }
+
     public Story(String u, Location myLocation, String snippet, Date dateTime, int numVotes){
         uri = u;
         location = myLocation;

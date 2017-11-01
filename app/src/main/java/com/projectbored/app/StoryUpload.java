@@ -13,6 +13,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -21,8 +22,11 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
@@ -36,6 +40,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StoryUpload extends AppCompatActivity {
+    //private static final String TAG = ShowStory.class.getSimpleName();  //for debugging purposes
 
     EditText caption;
 
@@ -43,8 +48,9 @@ public class StoryUpload extends AppCompatActivity {
     private DatabaseReference mDataRef;
 
     String mCurrentPhotoPath;
+    String storyKey;
 
-    Bundle storyDetails;
+    Bundle storySettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +61,9 @@ public class StoryUpload extends AppCompatActivity {
 
         caption = (EditText)findViewById(R.id.story_caption);
 
-        storyDetails = getIntent().getExtras();
+        storySettings = getIntent().getExtras();
+
+        storyKey = mDataRef.child("stories").push().getKey();
 
         dispatchTakePictureIntent();
 
@@ -70,7 +78,7 @@ public class StoryUpload extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == com.projectbored.app.R.id.option_upload_story) {
-            uploadStory();
+            uploadStoryData();
         }
         return true;
     }
@@ -91,7 +99,7 @@ public class StoryUpload extends AppCompatActivity {
 
                     }
                 });
-                builder.create();
+                builder.create().show();
             }
             if (photoFile != null) {
                 Uri photoUri = FileProvider.getUriForFile(this, "com.projectbored.app.fileprovider", photoFile);
@@ -106,6 +114,7 @@ public class StoryUpload extends AppCompatActivity {
         //    Bundle extras= data.getExtras();
         //    Bitmap imageBitmap = (Bitmap)extras.get("data");
             ((ImageView) findViewById(com.projectbored.app.R.id.story_image)).setImageBitmap(BitmapFactory.decodeFile(mCurrentPhotoPath));
+            uploadImage();
         }
     }
 
@@ -121,7 +130,7 @@ public class StoryUpload extends AppCompatActivity {
         return image;
     }
 
-    private void uploadStory () {
+    private void uploadImage () {
         Uri file = Uri.fromFile(new File(mCurrentPhotoPath));
 
         StorageMetadata metadata = new StorageMetadata.Builder()
@@ -138,51 +147,90 @@ public class StoryUpload extends AppCompatActivity {
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
+                                Intent i = new Intent(StoryUpload.this, MapsActivityCurrentPlace.class);
+                                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(i);
                             }
                         });
-                builder.create();
+                builder.create().show();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                uploadStoryData(taskSnapshot);
+                uploadImageData(taskSnapshot);
             }
         });
-
-        Intent i = new Intent(this, MapsActivityCurrentPlace.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(i);
     }
-
-    private void uploadStoryData (UploadTask.TaskSnapshot taskSnapshot) {
+    private void uploadImageData(UploadTask.TaskSnapshot taskSnapshot) {
         final Uri PHOTO_URI = taskSnapshot.getMetadata().getDownloadUrl();
 
         if(PHOTO_URI == null) {
-            Toast.makeText(this, "Couldn't upload story.", Toast.LENGTH_SHORT).show();
+            AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+            builder.setMessage("Upload failed. Please try again later.")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent i = new Intent(StoryUpload.this, MapsActivityCurrentPlace.class);
+                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(i);
+                        }
+                    });
+            builder.create().show();
         } else {
-            Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
-            storyLocation.setLatitude(storyDetails.getDouble("Latitude"));
-            storyLocation.setLongitude(storyDetails.getDouble("Longitude"));
-
-            if (storyLocation != null) {
-                String locationString = Double.toString(storyLocation.getLatitude())
-                                                + ","
-                                                + Double.toString(storyLocation.getLongitude());
-                String keyLocationString = locationString.replace(".", "d"); //keys in Firebase cannot contain ".", so replace with "d"
-                String key = mDataRef.child("stories").push().getKey();
-                Story story = new Story(PHOTO_URI, storyLocation, caption.getText().toString(), new Date());
-                Map<String, Object> storyDetails = story.toMap();
-
-                Map<String, Object> childUpdates = new HashMap<>();
-                childUpdates.put("/stories/" + key, storyDetails);
-                childUpdates.put("/locations/" + keyLocationString, key);
-                mDataRef.updateChildren(childUpdates);
-
-                Toast.makeText(this, "Story added!", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "An error occurred.", Toast.LENGTH_SHORT).show();
-            }
+            mDataRef.child("stories").child(storyKey).child("URI").setValue(PHOTO_URI.toString());
         }
+    }
+
+    private void uploadStoryData () {
+        final Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
+        storyLocation.setLatitude(storySettings.getDouble("Latitude"));
+        storyLocation.setLongitude(storySettings.getDouble("Longitude"));
+
+        if (storyLocation != null) {
+            String locationString = Double.toString(storyLocation.getLatitude())
+                                    + ","
+                                    + Double.toString(storyLocation.getLongitude());
+            final String keyLocationString = locationString.replace(".", "d");    //keys in Firebase cannot contain ".", so replace with "d"
+
+            mDataRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String storyURI =  dataSnapshot.child("URI").getValue(String.class);
+                    Story story = new Story(storyURI, storyLocation, caption.getText().toString(), new Date());
+                    Map<String, Object> storyDetails = story.toMap();
+
+                    Map<String, Object> childUpdates = new HashMap<>();
+                    childUpdates.put("/stories/" + storyKey, storyDetails);
+                    childUpdates.put("/locations/" + keyLocationString, storyKey);
+                    mDataRef.updateChildren(childUpdates);
+
+                    Toast.makeText(StoryUpload.this, "Story added!", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(StoryUpload.this, MapsActivityCurrentPlace.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                    builder.setMessage("Upload failed. Please try again later.")
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent i = new Intent(StoryUpload.this, MapsActivityCurrentPlace.class);
+                                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(i);
+                                }
+                            });
+                    builder.create().show();
+                }
+            });
+
+
+        } else {
+            Toast.makeText(this, "An error occurred.", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

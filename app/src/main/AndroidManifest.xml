@@ -27,14 +27,17 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDDI26HcgBs3lpWJz4lZn5Lo4TXy1QAlrc" />
 
+        <activity android:name=".Startup">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".MapsActivityCurrentPlace"
             android:label="@string/title_activity_maps">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".StoryUpload" />
 
@@ -51,7 +54,8 @@
         <activity android:name=".ShowStory" />
         <activity android:name=".Login" />
         <activity android:name=".CreateAccount" />
-        <activity android:name=".Logout"></activity>
+        <activity android:name=".Logout" />
+
     </application>
 
 </manifest>

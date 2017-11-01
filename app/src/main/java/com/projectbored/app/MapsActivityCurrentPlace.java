@@ -92,13 +92,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     private DatabaseReference mDataRef;
 
-    private boolean loggedIn;
-
 @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        getUserData();
 
         // Retrieve location and camera position from saved instance state.
         if (savedInstanceState != null) {
@@ -183,10 +179,12 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         MenuItem logInOption = menu.findItem(R.id.option_log_in);
         MenuItem logOutOption = menu.findItem(R.id.option_log_out);
 
-        if(loggedIn) {
+        if(isLoggedIn()) {
+            logInOption.setVisible(false);
             logOutOption.setVisible(true);
         } else {
             logInOption.setVisible(true);
+            logOutOption.setVisible(false);
         }
         return true;
     }
@@ -207,8 +205,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         }*/
 
         if (item.getItemId() == R.id.option_log_in) {
-            Intent logInIntent = new Intent(this, Login.class);
-            startActivity(logInIntent);
+            Intent loginIntent = new Intent(this, Login.class);
+            startActivity(loginIntent);
         }
 
         if(item.getItemId() == R.id.option_log_out) {
@@ -278,6 +276,14 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
         //Load nearby stories.
         getNearbyStories();
+    }
+
+    //Close app when back button is pressed, instead of returning to splash screen
+    @Override
+    public void onBackPressed() {
+        Intent closeApp = new Intent(Intent.ACTION_MAIN);
+        closeApp.addCategory(Intent.CATEGORY_HOME);
+        startActivity(closeApp);
     }
 
     /**
@@ -619,35 +625,10 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         }
     }
 
-    private void getUserData() {
+    private boolean isLoggedIn() {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        loggedIn = settings.getBoolean("Logged in", false);
-        if(!loggedIn){
-            promptLogIn().create().show();
-        } else {
-            String username = settings.getString("Username", "");
-            Toast.makeText(this, "Logged in as " + username + "." , Toast.LENGTH_LONG).show();
-        }
-    }
-
-    private AlertDialog.Builder promptLogIn() {
-        AlertDialog.Builder logInPrompt = new AlertDialog.Builder(this);
-        logInPrompt.setMessage("Want to access bonus features? :)")
-                .setPositiveButton("Log In", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent logInIntent = new Intent(MapsActivityCurrentPlace.this, Login.class);
-                        startActivity(logInIntent);
-                    }
-                })
-                .setNegativeButton("Later", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-
-        return logInPrompt;
+        boolean loggedIn = settings.getBoolean("Logged in", false);
+        return loggedIn;
     }
 
 }
