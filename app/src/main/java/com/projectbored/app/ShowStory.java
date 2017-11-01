@@ -276,10 +276,14 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
             mStoryRef.child("stories").child(storyKey).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    int votes = dataSnapshot.child("Votes").getValue(Integer.class);
+                    try {
+                        int votes = dataSnapshot.child("Votes").getValue(Integer.class);
+                        storyVotes = votes;
+                        voteNumber.setText(String.format(new Locale("en", "US"),"%d",votes));
+                    } catch(NullPointerException e){
+                        voteNumber.setText(String.format(new Locale("en", "US"),"%d",0));
+                    }
 
-                    storyVotes = votes;
-                    voteNumber.setText(String.format(new Locale("en", "US"),"%d",votes));
                 }
 
                 @Override
