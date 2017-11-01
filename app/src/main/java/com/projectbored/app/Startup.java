@@ -29,6 +29,10 @@ public class Startup extends AppCompatActivity {
         } else {
             String username = settings.getString("Username", "");
             Toast.makeText(this, "Logged in as " + username + "." , Toast.LENGTH_LONG).show();
+
+            Intent start = new Intent(Startup.this, MapsActivityCurrentPlace.class);
+            start.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(start);
         }
     }
 

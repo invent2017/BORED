@@ -28,6 +28,7 @@ import java.util.Locale;
 
 public class ShowStory extends AppCompatActivity implements View.OnClickListener {
 
+
     ImageView imageView;
     ImageButton upVoteButton;
     ImageButton downVoteButton;

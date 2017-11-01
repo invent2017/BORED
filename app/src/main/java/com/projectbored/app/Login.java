@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -75,6 +76,8 @@ public class Login extends AppCompatActivity {
                     if(dataSnapshot.child(username).exists()){
                         if(dataSnapshot.child(username).child("Password").getValue(String.class).equals(password)) {
                             storeLocalUserData(username, password);
+
+                            Toast.makeText(Login.this, "Logged in as " + username + ".", Toast.LENGTH_SHORT).show();
 
                             Intent i = new Intent(Login.this, MapsActivityCurrentPlace.class);
                             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

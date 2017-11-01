@@ -36,6 +36,15 @@ public class Story {
         flagged = false;
     }
 
+    public Story (Location location, String caption, Date dateTime) {
+        this.location = location;
+        this.caption = caption;
+        this.dateTime = dateTime;
+        votes = 0;
+        featured = false;
+        flagged = false;
+    }
+
     public Story(String u, Location myLocation, String snippet, Date dateTime, int numVotes){
         uri = u;
         location = myLocation;
@@ -103,7 +112,6 @@ public class Story {
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-        result.put("URI", uri);
         result.put("Location", location);
         result.put("Caption", caption);
         result.put("DateTime", dateTime);
