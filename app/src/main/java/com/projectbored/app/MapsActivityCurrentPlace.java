@@ -178,11 +178,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         return true;
         }
 
-    /*
-    TRYING TO DYNAMIC MENU WHERE IT SHOWS LOG OUT WHEN YOU ARE LOGGED IN BUT THEN IDK MAN
-        //ref : https://stackoverflow.com/questions/17311833/how-we-can-add-menu-item-dynamically
-        //ref : https://stackoverflow.com/questions/15580111/how-can-i-dynamically-create-menu-items
-    */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem logInOption = menu.findItem(R.id.option_log_in);
