@@ -210,8 +210,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         }*/
 
         if (item.getItemId() == R.id.option_log_in) {
-            Intent logInIntent = new Intent(this, Login.class);
-            startActivity(logInIntent);
+            Intent loginIntent = new Intent(this, Login.class);
+            startActivity(loginIntent);
         }
 
         if(item.getItemId() == R.id.option_log_out) {

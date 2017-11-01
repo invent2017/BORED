@@ -22,8 +22,11 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
@@ -37,7 +40,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StoryUpload extends AppCompatActivity {
-    private static final String TAG = ShowStory.class.getSimpleName();  //for debugging purposes
+    //private static final String TAG = ShowStory.class.getSimpleName();  //for debugging purposes
 
     EditText caption;
 
@@ -129,15 +132,12 @@ public class StoryUpload extends AppCompatActivity {
 
     private void uploadImage () {
         Uri file = Uri.fromFile(new File(mCurrentPhotoPath));
-        Log.d(TAG, "1");
 
         StorageMetadata metadata = new StorageMetadata.Builder()
                 .setContentType("image/jpg")
                 .build();
-        Log.d(TAG, "2");
 
         UploadTask uploadTask = mStorageRef.child(file.getLastPathSegment()).putFile(file, metadata);
-        Log.d(TAG, "3");
 
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
@@ -158,13 +158,11 @@ public class StoryUpload extends AppCompatActivity {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 uploadImageData(taskSnapshot);
-                Log.d(TAG, "6");
             }
         });
     }
     private void uploadImageData(UploadTask.TaskSnapshot taskSnapshot) {
         final Uri PHOTO_URI = taskSnapshot.getMetadata().getDownloadUrl();
-        Log.d(TAG, "4");
 
         if(PHOTO_URI == null) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
@@ -180,12 +178,11 @@ public class StoryUpload extends AppCompatActivity {
             builder.create().show();
         } else {
             mDataRef.child("stories").child(storyKey).child("URI").setValue(PHOTO_URI.toString());
-            Log.d(TAG, "5");
         }
     }
 
     private void uploadStoryData () {
-        Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
+        final Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
         storyLocation.setLatitude(storySettings.getDouble("Latitude"));
         storyLocation.setLongitude(storySettings.getDouble("Longitude"));
 
@@ -193,20 +190,44 @@ public class StoryUpload extends AppCompatActivity {
             String locationString = Double.toString(storyLocation.getLatitude())
                                     + ","
                                     + Double.toString(storyLocation.getLongitude());
-            String keyLocationString = locationString.replace(".", "d");    //keys in Firebase cannot contain ".", so replace with "d"
-            Story story = new Story(storyLocation, caption.getText().toString(), new Date());
-            Map<String, Object> storyDetails = story.toMap();
+            final String keyLocationString = locationString.replace(".", "d");    //keys in Firebase cannot contain ".", so replace with "d"
 
-            Map<String, Object> childUpdates = new HashMap<>();
-            childUpdates.put("/stories/" + storyKey, storyDetails);
-            childUpdates.put("/locations/" + keyLocationString, storyKey);
-            mDataRef.updateChildren(childUpdates);
+            mDataRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String storyURI =  dataSnapshot.child("URI").getValue(String.class);
+                    Story story = new Story(storyURI, storyLocation, caption.getText().toString(), new Date());
+                    Map<String, Object> storyDetails = story.toMap();
 
-            Toast.makeText(this, "Story added!", Toast.LENGTH_SHORT).show();
+                    Map<String, Object> childUpdates = new HashMap<>();
+                    childUpdates.put("/stories/" + storyKey, storyDetails);
+                    childUpdates.put("/locations/" + keyLocationString, storyKey);
+                    mDataRef.updateChildren(childUpdates);
 
-            Intent intent = new Intent(this, MapsActivityCurrentPlace.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+                    Toast.makeText(StoryUpload.this, "Story added!", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(StoryUpload.this, MapsActivityCurrentPlace.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                    builder.setMessage("Upload failed. Please try again later.")
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent i = new Intent(StoryUpload.this, MapsActivityCurrentPlace.class);
+                                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(i);
+                                }
+                            });
+                    builder.create().show();
+                }
+            });
+
+
         } else {
             Toast.makeText(this, "An error occurred.", Toast.LENGTH_SHORT).show();
         }
