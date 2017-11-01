@@ -8,15 +8,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class Startup extends AppCompatActivity {
     private static final String PREFS_NAME = "UserDetails";
 
     private boolean loggedIn;
 
+    private DatabaseReference mDataRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startup);
+
+        mDataRef = FirebaseDatabase.getInstance().getReference();
 
         getUserData();
     }
@@ -28,12 +38,60 @@ public class Startup extends AppCompatActivity {
             promptLogIn().create().show();
         } else {
             String username = settings.getString("Username", "");
-            Toast.makeText(this, "Logged in as " + username + "." , Toast.LENGTH_LONG).show();
+            String password = settings.getString("Password", "");
+            //Toast.makeText(Startup.this, "Logged in as " + username + "." , Toast.LENGTH_LONG).show();
+            verifyAccount(settings, username, password);
 
-            Intent start = new Intent(Startup.this, MapsActivityCurrentPlace.class);
+            /*Intent start = new Intent(Startup.this, MapsActivityCurrentPlace.class);
             start.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(start);
+            startActivity(start);*/
         }
+    }
+
+    private void verifyAccount(final SharedPreferences settings, final String username, final String password){
+        mDataRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.child(username).exists()){
+                    if(dataSnapshot.child(username).child("Password").getValue(String.class).equals(password)) {
+                        Toast.makeText(Startup.this, "Logged in as " + username + "." , Toast.LENGTH_SHORT).show();
+
+                        Intent start = new Intent(Startup.this, MapsActivityCurrentPlace.class);
+                        start.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(start);
+                    } else {
+                        SharedPreferences.Editor editor = settings.edit();
+                        editor.putBoolean("Logged in", false);
+                        editor.remove("Username");
+                        editor.remove("Password");
+                        editor.apply();
+
+                        Toast.makeText(Startup.this, "Account settings have changed. Please log in again.", Toast.LENGTH_SHORT).show();
+
+                        Intent returnToMap = new Intent(Startup.this, MapsActivityCurrentPlace.class);
+                        returnToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(returnToMap);
+                    }
+                } else {
+                    SharedPreferences.Editor editor = settings.edit();
+                    editor.putBoolean("Logged in", false);
+                    editor.remove("Username");
+                    editor.remove("Password");
+                    editor.apply();
+
+                    Toast.makeText(Startup.this, "Account settings have changed. Please log in again.", Toast.LENGTH_SHORT).show();
+
+                    Intent returnToMap = new Intent(Startup.this, MapsActivityCurrentPlace.class);
+                    returnToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(returnToMap);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private AlertDialog.Builder promptLogIn() {

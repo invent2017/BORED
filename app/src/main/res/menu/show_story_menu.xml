@@ -5,4 +5,10 @@
         android:id="@+id/option_back_to_map"
         android:title="@string/map"
         app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/option_delete_story"
+        android:title="@string/delete"
+        android:visible="false"
+        app:showAsAction="always" />
 </menu>

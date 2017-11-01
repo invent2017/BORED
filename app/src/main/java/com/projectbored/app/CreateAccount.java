@@ -2,7 +2,6 @@ package com.projectbored.app;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -51,6 +50,13 @@ public class CreateAccount extends AppCompatActivity {
                 signUp();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent returnToMap = new Intent(this, MapsActivityCurrentPlace.class);
+        returnToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(returnToMap);
     }
 
     private void signUp() {

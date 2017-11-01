@@ -41,6 +41,7 @@ import java.util.Map;
 
 public class StoryUpload extends AppCompatActivity {
     //private static final String TAG = ShowStory.class.getSimpleName();  //for debugging purposes
+    private static final String PREFS_NAME = "UserDetails";
 
     EditText caption;
 
@@ -187,7 +188,7 @@ public class StoryUpload extends AppCompatActivity {
         storyLocation.setLongitude(storySettings.getDouble("Longitude"));
 
         if (storyLocation != null) {
-            String locationString = Double.toString(storyLocation.getLatitude())
+            final String locationString = Double.toString(storyLocation.getLatitude())
                                     + ","
                                     + Double.toString(storyLocation.getLongitude());
             final String keyLocationString = locationString.replace(".", "d");    //keys in Firebase cannot contain ".", so replace with "d"
@@ -202,6 +203,12 @@ public class StoryUpload extends AppCompatActivity {
                     Map<String, Object> childUpdates = new HashMap<>();
                     childUpdates.put("/stories/" + storyKey, storyDetails);
                     childUpdates.put("/locations/" + keyLocationString, storyKey);
+
+                    if(storySettings.getBoolean("Logged in")){
+                        String username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
+                        childUpdates.put("/users/" + username + "/stories/" + storyKey, locationString);
+                    }
+
                     mDataRef.updateChildren(childUpdates);
 
                     Toast.makeText(StoryUpload.this, "Story added!", Toast.LENGTH_SHORT).show();

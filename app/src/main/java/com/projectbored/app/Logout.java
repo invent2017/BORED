@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class Logout extends AppCompatActivity {
     final public static String PREFS_NAME = "UserDetails";
@@ -24,6 +25,8 @@ public class Logout extends AppCompatActivity {
         editor.putBoolean("Logged in", false);
 
         editor.apply();
+
+        Toast.makeText(this, "Logged out.", Toast.LENGTH_SHORT).show();
 
         Intent reload = new Intent(this, MapsActivityCurrentPlace.class);
         reload.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -11,6 +11,7 @@
     <string name="nextonly">Next</string>
     <string name="add_story">Add Story</string>
     <string name="map">Back to Map</string>
+    <string name="delete">Delete story</string>
     <string name="caption">caption</string>
     <string name="report"><b>Report</b></string>
     <string name="title_activity_login">Sign in</string>

@@ -2,6 +2,8 @@ package com.projectbored.app;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.provider.ContactsContract;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,7 +29,7 @@ import com.google.firebase.storage.StorageReference;
 import java.util.Locale;
 
 public class ShowStory extends AppCompatActivity implements View.OnClickListener {
-
+    private static final String PREFS_NAME = "UserDetails";
 
     ImageView imageView;
     ImageButton upVoteButton;
@@ -45,7 +47,10 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     DatabaseReference mStoryRef;
     DatabaseReference mVotesRef;
 
+    StorageReference mStorageRef;
+
     Bundle storyDetails;
+    boolean loggedIn;
 
     // onCreate method here -hy
 
@@ -55,6 +60,8 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_show_story);
 
         mStoryRef = FirebaseDatabase.getInstance().getReference();
+
+        mStorageRef = FirebaseStorage.getInstance().getReference();
 
         imageView = (ImageView)findViewById(R.id.imageView);
 
@@ -97,6 +104,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         });
 
         loadStoryDetails(storyDetails);
+        loggedIn = storyDetails.getBoolean("Logged in");
 
         //alreadyRead();
         }
@@ -117,35 +125,44 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
    }
 
     public void upVote(){
-        if(upvoteClicked) {
-            storyVotes--;
-            upvoteClicked = false;
-        } else if(downvoteClicked) {
-            storyVotes = storyVotes + 2;
-            upvoteClicked = true;
-            downvoteClicked = false;
+        if(loggedIn){
+            if(upvoteClicked) {
+                storyVotes--;
+                upvoteClicked = false;
+            } else if(downvoteClicked) {
+                storyVotes = storyVotes + 2;
+                upvoteClicked = true;
+                downvoteClicked = false;
+            } else {
+                storyVotes++;
+                upvoteClicked = true;
+            }
+
+            updateVotes();
         } else {
-            storyVotes++;
-            upvoteClicked = true;
+            Toast.makeText(this, "You must log in to upvote stories.", Toast.LENGTH_SHORT).show();
         }
 
-        updateVotes();
     }
 
     public void downVote(){
-        if (downvoteClicked) {
-            storyVotes++;
-            downvoteClicked = false;
-        } else if(upvoteClicked) {
-            storyVotes = storyVotes - 2;
-            downvoteClicked = true;
-            upvoteClicked = false;
-        } else {
-            storyVotes--;
-            downvoteClicked = true;
-        }
+        if(loggedIn) {
+            if (downvoteClicked) {
+                storyVotes++;
+                downvoteClicked = false;
+            } else if(upvoteClicked) {
+                storyVotes = storyVotes - 2;
+                downvoteClicked = true;
+                upvoteClicked = false;
+            } else {
+                storyVotes--;
+                downvoteClicked = true;
+            }
 
-        updateVotes();
+            updateVotes();
+        } else {
+            Toast.makeText(this, "You must log in to downvote stories.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void shareFunction(){
@@ -188,12 +205,46 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if(loggedIn) {
+            final MenuItem deleteStoryOption = menu.findItem(R.id.option_delete_story);
+            mStoryRef.child("users").child(getUsername()).child("stories").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.hasChild(storyDetails.getString("key"))) {
+                        deleteStoryOption.setVisible(true);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == com.projectbored.app.R.id.option_back_to_map) {
             backToMap();
         }
+
+        if(item.getItemId() == R.id.option_delete_story) {
+            deleteStory();
+        }
         return true;
     }
+
+    private void deleteStory(){
+        Intent delete = new Intent(getApplicationContext(), StoryDeleter.class);
+        storyDetails.putString("Username", getUsername());
+        delete.putExtras(storyDetails);
+        delete.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(delete);
+    }
+
 
     private void loadStoryDetails(Bundle storyDetails){
         final String storyKey = storyDetails.getString("key");
@@ -205,7 +256,6 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     String uri = dataSnapshot.child("URI").getValue(String.class);
                     String caption = dataSnapshot.child("Caption").getValue(String.class);
-
 
                     if(uri != null && caption != null){
                         StorageReference mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl(uri);
@@ -258,6 +308,11 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
     private void updateVotes() {
         mVotesRef.setValue(storyVotes);
+    }
+
+    private String getUsername() {
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        return settings.getString("Username", "");
     }
 
     // backToMap method (that just goes back to map i guess lol) -hy

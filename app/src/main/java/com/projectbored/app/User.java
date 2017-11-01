@@ -15,6 +15,7 @@ public class User {
     private String username;
     private String email;
     private String password;
+    private boolean admin;
 
     public User(){
 
@@ -24,6 +25,7 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+        admin = false;
     }
 
     public String getUsername() {
@@ -50,12 +52,21 @@ public class User {
         this.password = password;
     }
 
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("Username", username);
         result.put("Email", email);
         result.put("Password", password);
+        result.put("Admin", admin);
 
         return result;
     }

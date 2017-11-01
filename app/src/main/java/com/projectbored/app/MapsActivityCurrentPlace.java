@@ -117,7 +117,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 .build();
         mGoogleApiClient.connect();
 
-        mDataRef = FirebaseDatabase.getInstance().getReference().child("locations");
+        mDataRef = FirebaseDatabase.getInstance().getReference();
     }
 
     /**
@@ -279,8 +279,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
 
-        //Load nearby stories.
-        getNearbyStories();
+        //Load stories.
+        getStories();
     }
 
     //Close app when back button is pressed, instead of returning to splash screen
@@ -365,6 +365,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             storySettings.putDouble("Latitude", mLastKnownLocation.getLatitude());
             storySettings.putDouble("Longitude", mLastKnownLocation.getLongitude());
             storySettings.putBoolean("FromGallery", false);
+            storySettings.putBoolean("Logged in", isLoggedIn());
             intent.putExtras(storySettings);
             startActivity(intent);
 
@@ -427,8 +428,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     }*/
 
 
-    public void getNearbyStories() {
-        mDataRef.addValueEventListener(new ValueEventListener() {
+    public void getStories() {
+        mDataRef.child("locations").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren())
@@ -454,7 +455,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     }
 
     public void displayStories(final String key, final Location storyLocation) {
-        mDataRef.child(key).addValueEventListener(new ValueEventListener() {
+        mDataRef.child("locations").child(key).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String storyKey = dataSnapshot.getValue(String.class);
@@ -473,6 +474,31 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         });
     }
 
+    /*public void showOwnStories(String username) {
+        mDataRef.child("users").child(username).child("stories").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.getChildren())
+                {
+                    String storyKey = ds.getValue(String.class);
+                    String locationFromDatabase = ds.getKey();
+                    String locationString = locationFromDatabase.replace("d", ".");
+                    String [] locationArray = locationString.split(",");
+
+                    LatLng storyLocation = new LatLng(Double.parseDouble(locationArray[0]), Double.parseDouble(locationArray[1]));
+
+                    Marker storyMarker = mMap.addMarker(new MarkerOptions().position(storyLocation));
+                    storyMarker.setTag(storyKey);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }*/
+
     public void showNearbyStories(final String storyKey, final Location storyLocation) {
 
         DatabaseReference mStoryRef = FirebaseDatabase.getInstance().getReference().child("stories");
@@ -481,7 +507,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Marker storyMarker;
                 boolean featured = dataSnapshot.child("Featured").getValue(boolean.class);
-                if(featured){
+                if(featured) {
                     //Add a green marker. (Near, featured)
                     storyMarker = mMap.addMarker(new MarkerOptions()
                             .position(new LatLng(storyLocation.getLatitude(),storyLocation.getLongitude()))
@@ -494,6 +520,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
                     storyMarker.setTag(storyKey);
                 }
+
             }
 
             @Override
@@ -557,6 +584,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         String key = (String)marker.getTag();
         Bundle storyDetails = new Bundle();
         storyDetails.putString("key", key);
+        storyDetails.putBoolean("Logged in", isLoggedIn());
+        storyDetails.putDouble("Latitude", marker.getPosition().latitude);
+        storyDetails.putDouble("Longitude", marker.getPosition().longitude);
         intent.putExtras(storyDetails);
 
         startActivity(intent);
@@ -635,5 +665,11 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         boolean loggedIn = settings.getBoolean("Logged in", false);
         return loggedIn;
     }
+
+    /*private String getUsername() {
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        String username = settings.getString("Username", "");
+        return username;
+    }*/
 
 }

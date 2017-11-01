@@ -16,9 +16,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Login extends AppCompatActivity {
     public static final String PREFS_NAME = "UserDetails";
 
@@ -26,7 +23,6 @@ public class Login extends AppCompatActivity {
     private EditText passwordField;
     private Button signInButton;
     private Button promptSignUpButton;
-    private boolean loggedIn;
 
     private TextView emptyFieldText;
 
@@ -60,6 +56,13 @@ public class Login extends AppCompatActivity {
                 startActivity(signUp);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent returnToMap = new Intent(this, MapsActivityCurrentPlace.class);
+        returnToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(returnToMap);
     }
 
     private void signIn() {
@@ -96,7 +99,6 @@ public class Login extends AppCompatActivity {
                 }
             });
         }
-        loggedIn = true;
     }
 
     private void storeLocalUserData(String username, String password) {
