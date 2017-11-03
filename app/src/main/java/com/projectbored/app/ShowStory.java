@@ -114,6 +114,9 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
 
         addView();
+
+        //trying to do emoji things
+
     }
 
     public void addView(){
