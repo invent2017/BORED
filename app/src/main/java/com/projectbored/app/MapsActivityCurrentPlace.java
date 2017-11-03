@@ -38,6 +38,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -198,11 +200,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.option_add_story) {
-            addStoryCamera();
+            addStory();
         }
-        /*else if(item.getItemId() == R.id.option_add_story_gallery){
-            addStoryGallery();
-        }*/
 
         if (item.getItemId() == R.id.option_log_in) {
             Intent loginIntent = new Intent(this, Login.class);
@@ -354,15 +353,34 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
 
 
-    private void addStoryCamera() {
-            Intent intent = new Intent(this, StoryUpload.class);
-            Bundle storySettings = new Bundle();
-            storySettings.putDouble("Latitude", mLastKnownLocation.getLatitude());
-            storySettings.putDouble("Longitude", mLastKnownLocation.getLongitude());
-            storySettings.putBoolean("FromGallery", false);
-            storySettings.putBoolean("Logged in", isLoggedIn());
-            intent.putExtras(storySettings);
-            startActivity(intent);
+    private void addStory() {
+        AlertDialog.Builder storyPrompt = new AlertDialog.Builder(this);
+        storyPrompt.setTitle(R.string.add_story)
+                .setItems(R.array.add_story_options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(which == 0) {
+                            Intent intent = new Intent(MapsActivityCurrentPlace.this, StoryUpload.class);
+                            Bundle storySettings = new Bundle();
+                            storySettings.putDouble("Latitude", mLastKnownLocation.getLatitude());
+                            storySettings.putDouble("Longitude", mLastKnownLocation.getLongitude());
+                            storySettings.putBoolean("FromCamera", true);
+                            storySettings.putBoolean("Logged in", isLoggedIn());
+                            intent.putExtras(storySettings);
+                            startActivity(intent);
+                        } else if(which == 1) {
+                            Intent intent = new Intent(MapsActivityCurrentPlace.this, StoryUpload.class);
+                            Bundle storySettings = new Bundle();
+                            storySettings.putDouble("Latitude", mLastKnownLocation.getLatitude());
+                            storySettings.putDouble("Longitude", mLastKnownLocation.getLongitude());
+                            storySettings.putBoolean("FromCamera", false);
+                            storySettings.putBoolean("Logged in", isLoggedIn());
+                            intent.putExtras(storySettings);
+                            startActivity(intent);
+                        }
+                    }
+                });
+        storyPrompt.create().show();
 
         /*if (mMap == null) {
             return;
@@ -411,17 +429,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                     .snippet(getString(R.string.default_info_snippet)));
         } */
     }
-
-    /*private void addStoryGallery() {
-        Intent intent = new Intent(this, StoryUpload.class);
-        Bundle storySettings = new Bundle();
-        storySettings.putDouble("Latitude", mLastKnownLocation.getLatitude());
-        storySettings.putDouble("Longitude", mLastKnownLocation.getLongitude());
-        storySettings.putBoolean("FromGallery", true);
-        intent.putExtras(storySettings);
-        startActivity(intent);
-    }*/
-
 
     public void getStories() {
         mDataRef.child("locations").addValueEventListener(new ValueEventListener() {
@@ -497,10 +504,10 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     public void showNearbyStories(final String storyKey, final Location storyLocation) {
 
         DatabaseReference mStoryRef = FirebaseDatabase.getInstance().getReference().child("stories");
-        if(storyKey != null) {
-            mStoryRef.child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+        mStoryRef.child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()) {
                     Marker storyMarker;
                     boolean featured = dataSnapshot.child("Featured").getValue(boolean.class);
                     if (featured) {
@@ -516,15 +523,16 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
                         storyMarker.setTag(storyKey);
                     }
-
                 }
+            }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-                }
+            }
         });
-        }
+
+
     }
 
     public void showFarStories(final String storyKey, final Location storyLocation) {

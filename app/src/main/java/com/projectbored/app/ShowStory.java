@@ -22,6 +22,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -110,20 +112,37 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         loadStoryDetails(storyDetails);
         loggedIn = storyDetails.getBoolean("Logged in");
 
-        //for no. of views
+
         addView();
-        updateViews();
     }
 
-    // for no. of views
     public void addView(){
-        storyViews++;
+        DatabaseReference mStoryRef = FirebaseDatabase.getInstance().getReference().child("stories").child(storyDetails.getString("key")).child("Views");
+        mStoryRef.runTransaction(new Transaction.Handler() {
+            @Override
+            public Transaction.Result doTransaction(MutableData mutableData) {
+                int storyViews = 0;
+                if(mutableData.getValue() != null) {
+                    storyViews = mutableData.getValue(Integer.class);
+                }
+
+                ++storyViews;
+
+                mutableData.setValue(storyViews);
+                return Transaction.success(mutableData);
+            }
+
+            @Override
+            public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+
+            }
+        });
     }
 
     // stuff the buttons do when clicked -hy
 
     public void reportStory(){
-        final String storyKey = storyDetails.getString("key");
+        String storyKey = storyDetails.getString("key");
         mStoryRef.child("stories").child(storyKey).child("Flagged").setValue(true);
         Toast.makeText(this, "Story flagged.", Toast.LENGTH_SHORT).show();
    }
@@ -217,6 +236,8 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if(dataSnapshot.hasChild(storyDetails.getString("key"))) {
                         deleteStoryOption.setVisible(true);
+                    } else {
+                        deleteStoryOption.setVisible(false);
                     }
                 }
 
@@ -254,7 +275,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         final String storyKey = storyDetails.getString("key");
 
         if(storyKey != null) {
-            mViewsRef= FirebaseDatabase.getInstance().getReference().child("stories").child("Views");
+            mViewsRef= FirebaseDatabase.getInstance().getReference().child("stories").child(storyKey).child("Views");
             mVotesRef= FirebaseDatabase.getInstance().getReference().child("stories").child(storyKey).child("Votes");
             mStoryRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -289,14 +310,10 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                         // added this for views lel
                         int views = dataSnapshot.child("Views").getValue(Integer.class);
                         storyViews = views;
-                        String viewMessage = String.format(new Locale("en","US"),"%d",views) + getResources().getString(R.string.views);
-                        viewNumber.setText(viewMessage);
+                        viewNumber.setText(String.format(new Locale("en","US"), "%d", views));
                     } catch(NullPointerException e){
-                        voteNumber.setText(String.format(new Locale("en", "US"),"%d",0));
-
-                        // added this for views lel
-                        String viewMessage = String.format(new Locale("en","US"),"%d",0) + getResources().getString(R.string.views);
-                        viewNumber.setText(viewMessage);
+                        voteNumber.setText(String.format(new Locale("en", "US"), "%d", 0));
+                        viewNumber.setText(String.format(new Locale("en", "US"), "%d", 0));
                     }
 
                 }
@@ -327,21 +344,12 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         mVotesRef.setValue(storyVotes);
     }
 
-    private void updateViews() {
-        mViewsRef.setValue(storyViews);
-    }
-
     private String getUsername() {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         return settings.getString("Username", "");
     }
 
-    // backToMap method (that just goes back to map i guess lol) -hy
-    // idk if this works -hy
-
     private void backToMap() {
-        // to fill in with code -hy
-        // i think this is suppose to open the map activity -hy
         Intent intent = new Intent(this, MapsActivityCurrentPlace.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);

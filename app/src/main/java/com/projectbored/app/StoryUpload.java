@@ -2,6 +2,7 @@ package com.projectbored.app;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationManager;
@@ -33,7 +34,9 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -66,7 +69,11 @@ public class StoryUpload extends AppCompatActivity {
 
         storyKey = mDataRef.child("stories").push().getKey();
 
-        dispatchTakePictureIntent();
+        if(storySettings.getBoolean("FromCamera")){
+            dispatchTakePictureIntent();
+        } else{
+            galleryPickerIntent();
+        }
 
     }
 
@@ -110,12 +117,36 @@ public class StoryUpload extends AppCompatActivity {
         }
     }
 
+    static final int GALLERY_REQUEST = 2;
+    private void galleryPickerIntent() {
+        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+        photoPickerIntent.setType("image/*");
+        photoPickerIntent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(photoPickerIntent, "Select image"), GALLERY_REQUEST);
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
         //    Bundle extras= data.getExtras();
         //    Bitmap imageBitmap = (Bitmap)extras.get("data");
             ((ImageView) findViewById(com.projectbored.app.R.id.story_image)).setImageBitmap(BitmapFactory.decodeFile(mCurrentPhotoPath));
-            uploadImage();
+            Uri file = Uri.fromFile(new File(mCurrentPhotoPath));
+            uploadImage(file);
+        } else if(requestCode == GALLERY_REQUEST && resultCode == RESULT_OK) {
+            try {
+                Uri imageUri = data.getData();
+                InputStream imageStream = getContentResolver().openInputStream(imageUri);
+                Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                ((ImageView) findViewById(com.projectbored.app.R.id.story_image)).setImageBitmap(selectedImage);
+                uploadImage(imageUri);
+            } catch (FileNotFoundException e) {
+                Toast.makeText(this, "Something went wrong. Story not uploaded.", Toast.LENGTH_SHORT).show();
+
+                Intent i = new Intent(this, MapsActivityCurrentPlace.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+
         }
     }
 
@@ -131,8 +162,7 @@ public class StoryUpload extends AppCompatActivity {
         return image;
     }
 
-    private void uploadImage () {
-        Uri file = Uri.fromFile(new File(mCurrentPhotoPath));
+    private void uploadImage (Uri file) {
 
         StorageMetadata metadata = new StorageMetadata.Builder()
                 .setContentType("image/jpg")

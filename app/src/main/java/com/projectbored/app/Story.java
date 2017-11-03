@@ -94,6 +94,10 @@ public class Story {
         votes--;
     }
 
+    public int getViews() {
+        return views;
+    }
+
     public int getVotes() { return votes;}
 
     public String getUri(){

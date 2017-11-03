@@ -6,6 +6,7 @@
 
     <uses-feature android:name="android.hardware.camera2" />
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
@@ -53,7 +54,7 @@
         <activity android:name=".Login" />
         <activity android:name=".CreateAccount" />
         <activity android:name=".Logout" />
-        <activity android:name=".StoryDeleter"></activity>
+        <activity android:name=".StoryDeleter" />
     </application>
 
 </manifest>
