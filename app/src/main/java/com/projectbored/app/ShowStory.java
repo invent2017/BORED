@@ -36,6 +36,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     ImageButton downVoteButton;
     ImageButton shareButton;
     TextView voteNumber;
+    TextView viewNumber;
     TextView storyCaption;
     Button reportStoryButton;
 
@@ -43,9 +44,11 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     boolean downvoteClicked = false;
 
     int storyVotes;
+    int storyViews;
 
     DatabaseReference mStoryRef;
     DatabaseReference mVotesRef;
+    DatabaseReference mViewsRef;
 
     StorageReference mStorageRef;
 
@@ -90,6 +93,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         });
 
         voteNumber = (TextView) findViewById(R.id.voteNumber);
+        viewNumber = (TextView) findViewById(R.id.viewNumber);
 
         storyCaption = (TextView) findViewById(R.id.storyCaption);
 
@@ -106,17 +110,17 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         loadStoryDetails(storyDetails);
         loggedIn = storyDetails.getBoolean("Logged in");
 
-        //alreadyRead();
-        }
+        //for no. of views
+        addView();
+        updateViews();
+    }
 
+    // for no. of views
+    public void addView(){
+        storyViews++;
+    }
 
     // stuff the buttons do when clicked -hy
-
-
-   /** READ method idk man
-    public void alreadyRead(){
-        read = true;
-   } **/
 
     public void reportStory(){
         final String storyKey = storyDetails.getString("key");
@@ -250,6 +254,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         final String storyKey = storyDetails.getString("key");
 
         if(storyKey != null) {
+            mViewsRef= FirebaseDatabase.getInstance().getReference().child("stories").child("Views");
             mVotesRef= FirebaseDatabase.getInstance().getReference().child("stories").child(storyKey).child("Votes");
             mStoryRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -280,8 +285,18 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                         int votes = dataSnapshot.child("Votes").getValue(Integer.class);
                         storyVotes = votes;
                         voteNumber.setText(String.format(new Locale("en", "US"),"%d",votes));
+
+                        // added this for views lel
+                        int views = dataSnapshot.child("Views").getValue(Integer.class);
+                        storyViews = views;
+                        String viewMessage = String.format(new Locale("en","US"),"%d",views) + getResources().getString(R.string.views);
+                        viewNumber.setText(viewMessage);
                     } catch(NullPointerException e){
                         voteNumber.setText(String.format(new Locale("en", "US"),"%d",0));
+
+                        // added this for views lel
+                        String viewMessage = String.format(new Locale("en","US"),"%d",0) + getResources().getString(R.string.views);
+                        viewNumber.setText(viewMessage);
                     }
 
                 }
@@ -306,12 +321,14 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                     });
             builder.create();
         }
-
-
     }
 
     private void updateVotes() {
         mVotesRef.setValue(storyVotes);
+    }
+
+    private void updateViews() {
+        mViewsRef.setValue(storyViews);
     }
 
     private String getUsername() {

@@ -17,6 +17,7 @@ public class Story {
     private String caption;
     private Date dateTime;
     private int votes;
+    private int views;
 
     private boolean featured;
     private boolean flagged;
@@ -32,6 +33,7 @@ public class Story {
         caption = snippet;
         this.dateTime = dateTime;
         votes = 0;
+        views = 0;
         featured = false;
         flagged = false;
     }
@@ -42,16 +44,18 @@ public class Story {
         this.caption = caption;
         this.dateTime = dateTime;
         votes = 0;
+        views = 0;
         featured = false;
         flagged = false;
     }
 
-    public Story(String u, Location myLocation, String snippet, Date dateTime, int numVotes){
+    public Story(String u, Location myLocation, String snippet, Date dateTime, int numVotes, int numViews){
         uri = u;
         location = myLocation;
         caption = snippet;
         this.dateTime = dateTime;
         votes = numVotes;
+        views = numViews;
         featured = false;
         flagged = false;
     }
@@ -72,9 +76,15 @@ public class Story {
         dateTime = time;
     }
 
+    public void setViews (int storyViews){
+        views = storyViews;
+    }
+
     public void setVotes(int storyVotes) {
         votes = storyVotes;
     }
+
+    public void addView() { views++; }
 
     public void upVote() {
         votes++;
@@ -118,6 +128,7 @@ public class Story {
         result.put("Caption", caption);
         result.put("DateTime", dateTime);
         result.put("Votes", votes);
+        result.put("Views",views);
         result.put("Featured", featured);
         result.put("Flagged", flagged);
 
