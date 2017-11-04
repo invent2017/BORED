@@ -66,6 +66,25 @@ public class StoryDeleter extends AppCompatActivity {
                 startActivity(backToMap);
             }
         });
+
+        mStoryRef.child("users").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if(ds.child("Read").hasChild(storyKey)){
+                        ds.child("Read").child(storyKey).getRef().removeValue();
+                    }
+                    /*if(ds.child("Bookmarked").hasChild(storyKey)) {
+                        ds.child("Bookmarked").child(storyKey).getRef().removeValue();
+                    }*/
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         mStoryRef.child("users").child(username).child("stories").child(storyKey).removeValue();
         mStoryRef.child("stories").child(storyKey).removeValue();
         mStoryRef.child("locations").child(keyLocationString).removeValue();

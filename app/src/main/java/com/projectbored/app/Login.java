@@ -24,8 +24,6 @@ public class Login extends AppCompatActivity {
     private Button signInButton;
     private Button promptSignUpButton;
 
-    private TextView emptyFieldText;
-
     private DatabaseReference mDataRef;
 
     @Override
@@ -34,8 +32,6 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
-
-        emptyFieldText = (TextView)findViewById(R.id.signInEmptyFieldAlert);
 
         usernameField = (EditText)findViewById(R.id.signInUsername);
         passwordField = (EditText)findViewById(R.id.signInPassword);
@@ -68,7 +64,7 @@ public class Login extends AppCompatActivity {
     private void signIn() {
         if(usernameField.getText().toString().trim().isEmpty() || passwordField.getText().toString().trim().isEmpty())
         {
-            emptyFieldText.setText(R.string.error_field_required);
+            Toast.makeText(this, R.string.error_field_required, Toast.LENGTH_SHORT).show();
         } else {
             final String username = usernameField.getText().toString();
             final String password = passwordField.getText().toString();
@@ -86,10 +82,10 @@ public class Login extends AppCompatActivity {
                             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(i);
                         } else {
-                            emptyFieldText.setText(R.string.error_incorrect_password);
+                            Toast.makeText(Login.this, R.string.error_incorrect_password, Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        emptyFieldText.setText(R.string.error_incorrect_username);
+                        Toast.makeText(Login.this, R.string.error_incorrect_username, Toast.LENGTH_SHORT).show();
                     }
                 }
 

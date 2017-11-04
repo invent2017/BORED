@@ -140,6 +140,20 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
             }
         });
+
+        if(loggedIn){
+            String username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
+            if(username.equals("")) {
+
+            } else {
+                String storyKey = storyDetails.getString("key");
+                String storyLocation = Double.toString(storyDetails.getDouble("Latitude"))
+                        +  ","
+                        + Double.toString(storyDetails.getDouble("Longitude"));
+                DatabaseReference mUserRef = FirebaseDatabase.getInstance().getReference().child("users").child(username);
+                mUserRef.child("Read").child(storyKey).setValue(storyLocation);
+            }
+        }
     }
 
     // stuff the buttons do when clicked -hy

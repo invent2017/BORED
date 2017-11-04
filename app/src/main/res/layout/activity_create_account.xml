@@ -72,10 +72,5 @@
             android:text="@string/action_sign_up"
             android:textColor="#fafafa" />
 
-        <TextView
-            android:id="@+id/signUpEmptyFieldAlert"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#ff0000" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

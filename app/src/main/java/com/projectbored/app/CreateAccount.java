@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,7 +28,6 @@ public class CreateAccount extends AppCompatActivity {
     private EditText usernameField;
     private EditText emailField;
     private EditText passwordField;
-    private TextView emptyFieldText;
 
     private Button signUpButton;
 
@@ -41,7 +41,6 @@ public class CreateAccount extends AppCompatActivity {
         usernameField = (EditText)findViewById(R.id.signUpUsername);
         emailField = (EditText)findViewById(R.id.signUpEmail);
         passwordField = (EditText)findViewById(R.id.signUpPassword);
-        emptyFieldText = (TextView) findViewById(R.id.signUpEmptyFieldAlert);
 
         signUpButton = (Button)findViewById(R.id.signup_button);
         signUpButton.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +61,7 @@ public class CreateAccount extends AppCompatActivity {
     private void signUp() {
         if(usernameField.getText().toString().trim().isEmpty() || emailField.getText().toString().trim().isEmpty() || passwordField.getText().toString().trim().isEmpty())
         {
-            emptyFieldText.setText(R.string.error_field_required);
+            Toast.makeText(this, R.string.error_field_required, Toast.LENGTH_SHORT).show();
         } else {
             final String username = usernameField.getText().toString();
             final String email = emailField.getText().toString();
@@ -72,7 +71,7 @@ public class CreateAccount extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (dataSnapshot.child(username).exists()) {
-                        emptyFieldText.setText(R.string.error_existing_username);
+                        Toast.makeText(CreateAccount.this, R.string.error_existing_username, Toast.LENGTH_SHORT).show();
                     } else {
                         addUser(username, email, password);
                     }
