@@ -37,7 +37,7 @@
         </activity>
         <activity
             android:name=".MapsActivityCurrentPlace"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
         <activity android:name=".StoryUpload" />
 
         <provider
@@ -55,6 +55,7 @@
         <activity android:name=".CreateAccount" />
         <activity android:name=".Logout" />
         <activity android:name=".StoryDeleter" />
+        <activity android:name=".UserProfile"></activity>
     </application>
 
 </manifest>
