@@ -4,10 +4,8 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.location.Location;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -19,7 +17,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
@@ -33,25 +30,11 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.MutableData;
-import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ExecutionException;
-
-import static android.R.attr.data;
-import static android.R.attr.marqueeRepeatLimit;
-import static android.R.attr.value;
 
 /**
  * An activity that displays a map showing the place at the device's current location.
@@ -506,9 +489,12 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
+                if (dataSnapshot.exists() && storyKey != null) {
                     Marker storyMarker;
-                    boolean featured = dataSnapshot.child("stories").child(storyKey).child("Featured").getValue(boolean.class);
+                    boolean featured = false;
+                    if(dataSnapshot.child("stories").child(storyKey).child("Featured").exists()){
+                        featured = dataSnapshot.child("stories").child(storyKey).child("Featured").getValue(boolean.class);
+                    }
                     boolean isRead = false;
                     if(isLoggedIn()) {
                         String username = getSharedPreferences(PREFS_NAME, 0 ).getString("Username", "");
@@ -594,8 +580,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         });
 
     }
-
-
 
 
     @Override
