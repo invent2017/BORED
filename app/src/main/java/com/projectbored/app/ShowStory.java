@@ -42,13 +42,10 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     TextView storyCaption;
     Button reportStoryButton;
 
-    boolean upvoteClicked = false;
-    boolean downvoteClicked = false;
-
     int storyVotes;
     int storyViews;
 
-    DatabaseReference mStoryRef;
+    DatabaseReference mDataRef;
     DatabaseReference mVotesRef;
     DatabaseReference mViewsRef;
 
@@ -64,7 +61,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_story);
 
-        mStoryRef = FirebaseDatabase.getInstance().getReference();
+        mDataRef = FirebaseDatabase.getInstance().getReference();
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
@@ -120,7 +117,8 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     }
 
     public void addView(){
-        DatabaseReference mStoryRef = FirebaseDatabase.getInstance().getReference().child("stories").child(storyDetails.getString("key")).child("Views");
+        final String storyKey = storyDetails.getString("key");
+        DatabaseReference mStoryRef = FirebaseDatabase.getInstance().getReference().child("stories").child(storyKey).child("Views");
         mStoryRef.runTransaction(new Transaction.Handler() {
             @Override
             public Transaction.Result doTransaction(MutableData mutableData) {
@@ -142,17 +140,8 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         });
 
         if(loggedIn){
-            String username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
-            if(username.equals("")) {
-
-            } else {
-                String storyKey = storyDetails.getString("key");
-                String storyLocation = Double.toString(storyDetails.getDouble("Latitude"))
-                        +  ","
-                        + Double.toString(storyDetails.getDouble("Longitude"));
-                DatabaseReference mUserRef = FirebaseDatabase.getInstance().getReference().child("users").child(username);
-                mUserRef.child("Read").child(storyKey).setValue(storyLocation);
-            }
+            String username = getUsername();
+            mDataRef.child("stories").child(storyKey).child("Viewers").child(username).setValue(username);
         }
     }
 
@@ -160,25 +149,39 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
     public void reportStory(){
         String storyKey = storyDetails.getString("key");
-        mStoryRef.child("stories").child(storyKey).child("Flagged").setValue(true);
+        mDataRef.child("stories").child(storyKey).child("Flagged").setValue(true);
         Toast.makeText(this, "Story flagged.", Toast.LENGTH_SHORT).show();
    }
 
     public void upVote(){
         if(loggedIn){
-            if(upvoteClicked) {
-                storyVotes--;
-                upvoteClicked = false;
-            } else if(downvoteClicked) {
-                storyVotes = storyVotes + 2;
-                upvoteClicked = true;
-                downvoteClicked = false;
-            } else {
-                storyVotes++;
-                upvoteClicked = true;
-            }
+            mDataRef.child("stories").child(storyDetails.getString("key")).runTransaction(new Transaction.Handler() {
+                @Override
+                public Transaction.Result doTransaction(MutableData mutableData) {
+                    int votes = 0;
+                    if (mutableData.getValue() != null) {
+                        votes = mutableData.child("Votes").getValue(Integer.class);
+                        if(mutableData.child("Upvoters").hasChild(getUsername())) {
+                            votes--;
+                            mutableData.child("Upvoters").child(getUsername()).setValue(null);
+                        } else if(mutableData.child("Downvoters").hasChild(getUsername())) {
+                            votes = votes + 2;
+                            mutableData.child("Downvoters").child(getUsername()).setValue(null);
+                            mutableData.child("Upvoters").child(getUsername()).setValue(getUsername());
+                        } else {
+                            votes++;
+                            mutableData.child("Upvoters").child(getUsername()).setValue(getUsername());
+                        }
+                    }
+                    mutableData.child("Votes").setValue(votes);
+                    return Transaction.success(mutableData);
+                }
 
-            updateVotes();
+                @Override
+                public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+
+                }
+            });
         } else {
             Toast.makeText(this, "You must log in to upvote stories.", Toast.LENGTH_SHORT).show();
         }
@@ -186,20 +189,34 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     }
 
     public void downVote(){
-        if(loggedIn) {
-            if (downvoteClicked) {
-                storyVotes++;
-                downvoteClicked = false;
-            } else if(upvoteClicked) {
-                storyVotes = storyVotes - 2;
-                downvoteClicked = true;
-                upvoteClicked = false;
-            } else {
-                storyVotes--;
-                downvoteClicked = true;
-            }
+        if(loggedIn){
+            mDataRef.child("stories").child(storyDetails.getString("key")).runTransaction(new Transaction.Handler() {
+                @Override
+                public Transaction.Result doTransaction(MutableData mutableData) {
+                    int votes = 0;
+                    if (mutableData.getValue() != null) {
+                        votes = mutableData.child("Votes").getValue(Integer.class);
+                        if(mutableData.child("Downvoters").hasChild(getUsername())) {
+                            votes++;
+                            mutableData.child("Downvoters").child(getUsername()).setValue(null);
+                        } else if(mutableData.child("Upvoters").hasChild(getUsername())) {
+                            votes = votes - 2;
+                            mutableData.child("Upvoters").child(getUsername()).setValue(null);
+                            mutableData.child("Downvoters").child(getUsername()).setValue(getUsername());
+                        } else {
+                            votes--;
+                            mutableData.child("Downvoters").child(getUsername()).setValue(getUsername());
+                        }
+                    }
+                    mutableData.child("Votes").setValue(votes);
+                    return Transaction.success(mutableData);
+                }
 
-            updateVotes();
+                @Override
+                public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+
+                }
+            });
         } else {
             Toast.makeText(this, "You must log in to downvote stories.", Toast.LENGTH_SHORT).show();
         }
@@ -248,7 +265,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     public boolean onPrepareOptionsMenu(Menu menu) {
         if(loggedIn) {
             final MenuItem deleteStoryOption = menu.findItem(R.id.option_delete_story);
-            mStoryRef.child("users").child(getUsername()).child("stories").addListenerForSingleValueEvent(new ValueEventListener() {
+            mDataRef.child("users").child(getUsername()).child("stories").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if(dataSnapshot.hasChild(storyDetails.getString("key"))) {
@@ -294,7 +311,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         if(storyKey != null) {
             mViewsRef= FirebaseDatabase.getInstance().getReference().child("stories").child(storyKey).child("Views");
             mVotesRef= FirebaseDatabase.getInstance().getReference().child("stories").child(storyKey).child("Votes");
-            mStoryRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
+            mDataRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     String uri = dataSnapshot.child("URI").getValue(String.class);
@@ -316,7 +333,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                 }
             });
 
-            mStoryRef.child("stories").child(storyKey).addValueEventListener(new ValueEventListener() {
+            mDataRef.child("stories").child(storyKey).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     try {
