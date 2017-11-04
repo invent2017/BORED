@@ -231,10 +231,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 Location markerLocation = new Location(LocationManager.GPS_PROVIDER);
                 markerLocation.setLatitude(markerPosition.latitude);
                 markerLocation.setLongitude(markerPosition.longitude);
-
-                if(mLastKnownLocation.distanceTo(markerLocation) <= 100) {
-                    showStoryDetails(marker);
-                }
+                showStoryDetails(marker);
                 return true;
             }
         });
