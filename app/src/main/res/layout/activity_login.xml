@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:ems="10"
+            android:fontFamily="monospace"
             android:hint="@string/prompt_username"
             android:inputType="textPersonName" />
 
@@ -49,6 +50,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:ems="10"
+            android:fontFamily="monospace"
             android:hint="@string/prompt_password"
             android:inputType="textPassword" />
 
