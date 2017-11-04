@@ -225,14 +225,14 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         mMap = map;
 
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
+            @Overrideg
             public boolean onMarkerClick(Marker marker) {
                 LatLng markerPosition = marker.getPosition();
                 Location markerLocation = new Location(LocationManager.GPS_PROVIDER);
                 markerLocation.setLatitude(markerPosition.latitude);
                 markerLocation.setLongitude(markerPosition.longitude);
 
-                if(mLastKnownLocation.distanceTo(markerLocation) <= 100) {
+                if(mLastKnownLocation.distanceTo(markerLocation) <= 10) {
                     showStoryDetails(marker);
                 }
                 return true;
