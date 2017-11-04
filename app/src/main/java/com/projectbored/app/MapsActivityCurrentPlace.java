@@ -232,7 +232,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 markerLocation.setLatitude(markerPosition.latitude);
                 markerLocation.setLongitude(markerPosition.longitude);
 
-                if(mLastKnownLocation.distanceTo(markerLocation) <= 10) {
+                if(mLastKnownLocation.distanceTo(markerLocation) <= 100) {
                     showStoryDetails(marker);
                 }
                 return true;
