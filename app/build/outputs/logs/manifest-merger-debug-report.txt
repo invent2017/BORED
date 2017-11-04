@@ -238,7 +238,7 @@ MERGED from [com.android.support:support-compat:25.2.0] /Users/Drifter/.gradle/c
 	android:supportsRtl
 		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:21:9-35
 	android:label
-		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:20:9-41
+		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:20:9-47
 	android:icon
 		ADDED from /Users/Drifter/Documents/a Raffles INVENT/_Android Studio Projects/BORED/app/src/main/AndroidManifest.xml:19:9-43
 	android:allowBackup

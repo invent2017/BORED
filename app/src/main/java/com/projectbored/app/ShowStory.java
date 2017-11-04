@@ -245,29 +245,6 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     }
 
     @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        if(loggedIn) {
-            final MenuItem deleteStoryOption = menu.findItem(R.id.option_delete_story);
-            mStoryRef.child("users").child(getUsername()).child("stories").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.hasChild(storyDetails.getString("key"))) {
-                        deleteStoryOption.setVisible(true);
-                    } else {
-                        deleteStoryOption.setVisible(false);
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-        }
-        return true;
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == com.projectbored.app.R.id.option_back_to_map) {
             backToMap();

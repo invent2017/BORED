@@ -458,12 +458,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String storyKey = dataSnapshot.getValue(String.class);
-
-                if(mLastKnownLocation.distanceTo(storyLocation) <= 100){
-                    showNearbyStories(storyKey, storyLocation);
-                } else {
-                    showFarStories(storyKey, storyLocation);
-                }
+                showNearbyStories(storyKey, storyLocation);
             }
 
             @Override
