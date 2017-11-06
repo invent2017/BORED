@@ -1,4 +1,4 @@
-package com.projectbored.app;
+package com.projectbored.admin;
 
 import android.content.Intent;
 import android.content.SharedPreferences;

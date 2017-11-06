@@ -1,4 +1,4 @@
-package com.projectbored.app;
+package com.projectbored.admin;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,7 +14,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -59,7 +58,7 @@ public class StoryUpload extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.projectbored.app.R.layout.activity_story_upload);
+        setContentView(com.projectbored.admin.R.layout.activity_story_upload);
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
@@ -79,13 +78,13 @@ public class StoryUpload extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(com.projectbored.app.R.menu.add_story_menu, menu);
+        getMenuInflater().inflate(com.projectbored.admin.R.menu.add_story_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == com.projectbored.app.R.id.option_upload_story) {
+        if (item.getItemId() == com.projectbored.admin.R.id.option_upload_story) {
             uploadStoryData();
         }
         return true;
@@ -129,7 +128,7 @@ public class StoryUpload extends AppCompatActivity {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
         //    Bundle extras= data.getExtras();
         //    Bitmap imageBitmap = (Bitmap)extras.get("data");
-            ((ImageView) findViewById(com.projectbored.app.R.id.story_image)).setImageBitmap(BitmapFactory.decodeFile(mCurrentPhotoPath));
+            ((ImageView) findViewById(com.projectbored.admin.R.id.story_image)).setImageBitmap(BitmapFactory.decodeFile(mCurrentPhotoPath));
             Uri file = Uri.fromFile(new File(mCurrentPhotoPath));
             uploadImage(file);
         } else if(requestCode == GALLERY_REQUEST && resultCode == RESULT_OK) {
@@ -137,7 +136,7 @@ public class StoryUpload extends AppCompatActivity {
                 Uri imageUri = data.getData();
                 InputStream imageStream = getContentResolver().openInputStream(imageUri);
                 Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-                ((ImageView) findViewById(com.projectbored.app.R.id.story_image)).setImageBitmap(selectedImage);
+                ((ImageView) findViewById(com.projectbored.admin.R.id.story_image)).setImageBitmap(selectedImage);
                 uploadImage(imageUri);
             } catch (FileNotFoundException e) {
                 Toast.makeText(this, "Something went wrong. Story not uploaded.", Toast.LENGTH_SHORT).show();

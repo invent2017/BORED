@@ -1,4 +1,4 @@
-package com.projectbored.app;
+package com.projectbored.admin;
 
 import android.location.Location;
 import android.net.Uri;

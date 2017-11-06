@@ -1,4 +1,4 @@
-package com.projectbored.app;
+package com.projectbored.admin;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

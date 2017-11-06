@@ -1,4 +1,4 @@
-package com.projectbored.app;
+package com.projectbored.admin;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +20,6 @@ public class StoryDeleter extends AppCompatActivity {
     Bundle storyDetails;
 
     String storyKey;
-    String username;
     String keyLocationString;
 
     @Override
@@ -40,7 +39,6 @@ public class StoryDeleter extends AppCompatActivity {
 
     private void getValues(Bundle storyDetails) {
         storyKey = storyDetails.getString("key");
-        username = storyDetails.getString("Username");
         String locationString = Double.toString(storyDetails.getDouble("Latitude"))
                 + ","
                 + Double.toString(storyDetails.getDouble("Longitude"));
@@ -71,8 +69,8 @@ public class StoryDeleter extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    if(ds.child("Read").hasChild(storyKey)){
-                        ds.child("Read").child(storyKey).getRef().removeValue();
+                    if(ds.child("stories").hasChild(storyKey)) {
+                        ds.child("stories").child(storyKey).getRef().removeValue();
                     }
                     /*if(ds.child("Bookmarked").hasChild(storyKey)) {
                         ds.child("Bookmarked").child(storyKey).getRef().removeValue();
@@ -85,7 +83,6 @@ public class StoryDeleter extends AppCompatActivity {
 
             }
         });
-        mStoryRef.child("users").child(username).child("stories").child(storyKey).removeValue();
         mStoryRef.child("stories").child(storyKey).removeValue();
         mStoryRef.child("locations").child(keyLocationString).removeValue();
 

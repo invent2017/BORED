@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.projectbored.app">
+    package="com.projectbored.admin">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -28,7 +28,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDDI26HcgBs3lpWJz4lZn5Lo4TXy1QAlrc" />
 
-        <activity android:name=".Startup">
+        <activity android:name="com.projectbored.admin.Startup">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,13 +36,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MapsActivityCurrentPlace"
+            android:name="com.projectbored.admin.MapsActivityCurrentPlace"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".StoryUpload" />
+        <activity android:name="com.projectbored.admin.StoryUpload" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.projectbored.app.fileprovider"
+            android:authorities="com.projectbored.admin.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -50,12 +50,12 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".ShowStory" />
-        <activity android:name=".Login" />
-        <activity android:name=".CreateAccount" />
-        <activity android:name=".Logout" />
-        <activity android:name=".StoryDeleter" />
-        <activity android:name=".UserProfile"></activity>
+        <activity android:name="com.projectbored.admin.ShowStory" />
+        <activity android:name="com.projectbored.admin.Login" />
+        <activity android:name="com.projectbored.admin.CreateAccount" />
+        <activity android:name="com.projectbored.admin.Logout" />
+        <activity android:name="com.projectbored.admin.StoryDeleter" />
+        <activity android:name="com.projectbored.admin.UserProfile"></activity>
     </application>
 
 </manifest>

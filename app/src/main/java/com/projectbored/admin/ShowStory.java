@@ -1,9 +1,8 @@
-package com.projectbored.app;
+package com.projectbored.admin;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.provider.ContactsContract;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -48,7 +47,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     int storyVotes;
     int storyViews;
 
-    DatabaseReference mStoryRef;
+    DatabaseReference mDataRef;
     DatabaseReference mVotesRef;
     DatabaseReference mViewsRef;
 
@@ -64,7 +63,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_story);
 
-        mStoryRef = FirebaseDatabase.getInstance().getReference();
+        mDataRef = FirebaseDatabase.getInstance().getReference();
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
@@ -142,7 +141,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         });
 
         if(loggedIn){
-            String username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
+            String username = getUsername();
             if(username.equals("")) {
 
             } else {
@@ -150,8 +149,8 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                 String storyLocation = Double.toString(storyDetails.getDouble("Latitude"))
                         +  ","
                         + Double.toString(storyDetails.getDouble("Longitude"));
-                DatabaseReference mUserRef = FirebaseDatabase.getInstance().getReference().child("users").child(username);
-                mUserRef.child("Read").child(storyKey).setValue(storyLocation);
+                DatabaseReference mUserRef = FirebaseDatabase.getInstance().getReference().child("stories").child(storyKey);
+                mUserRef.child("Viewers").child(username).setValue(username);
             }
         }
     }
@@ -160,7 +159,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
     public void reportStory(){
         String storyKey = storyDetails.getString("key");
-        mStoryRef.child("stories").child(storyKey).child("Flagged").setValue(true);
+        mDataRef.child("stories").child(storyKey).child("Flagged").setValue(true);
         Toast.makeText(this, "Story flagged.", Toast.LENGTH_SHORT).show();
    }
 
@@ -245,31 +244,8 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     }
 
     @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        if(loggedIn) {
-            final MenuItem deleteStoryOption = menu.findItem(R.id.option_delete_story);
-            mStoryRef.child("users").child(getUsername()).child("stories").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.hasChild(storyDetails.getString("key"))) {
-                        deleteStoryOption.setVisible(true);
-                    } else {
-                        deleteStoryOption.setVisible(false);
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-        }
-        return true;
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == com.projectbored.app.R.id.option_back_to_map) {
+        if (item.getItemId() == com.projectbored.admin.R.id.option_back_to_map) {
             backToMap();
         }
 
@@ -281,7 +257,6 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
     private void deleteStory(){
         Intent delete = new Intent(getApplicationContext(), StoryDeleter.class);
-        storyDetails.putString("Username", getUsername());
         delete.putExtras(storyDetails);
         delete.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(delete);
@@ -294,7 +269,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         if(storyKey != null) {
             mViewsRef= FirebaseDatabase.getInstance().getReference().child("stories").child(storyKey).child("Views");
             mVotesRef= FirebaseDatabase.getInstance().getReference().child("stories").child(storyKey).child("Votes");
-            mStoryRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
+            mDataRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     String uri = dataSnapshot.child("URI").getValue(String.class);
@@ -316,7 +291,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                 }
             });
 
-            mStoryRef.child("stories").child(storyKey).addValueEventListener(new ValueEventListener() {
+            mDataRef.child("stories").child(storyKey).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     try {

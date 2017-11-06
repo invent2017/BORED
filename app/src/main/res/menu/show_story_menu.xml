@@ -4,7 +4,6 @@
     <item
         android:id="@+id/option_delete_story"
         android:title="@string/delete"
-        android:visible="false"
         app:showAsAction="always" />
 
     <item

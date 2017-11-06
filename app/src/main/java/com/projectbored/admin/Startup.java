@@ -1,4 +1,4 @@
-package com.projectbored.app;
+package com.projectbored.admin;
 
 import android.content.DialogInterface;
 import android.content.Intent;

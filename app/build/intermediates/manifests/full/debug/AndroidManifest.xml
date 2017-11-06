@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.projectbored.app"
+    package="com.projectbored.admin"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -31,10 +31,10 @@
         android:required="true" />
 
     <permission
-        android:name="com.projectbored.app.permission.C2D_MESSAGE"
+        android:name="com.projectbored.admin.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.projectbored.app.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.projectbored.admin.permission.C2D_MESSAGE" />
 
     <application
         android:allowBackup="true"
@@ -52,7 +52,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDDI26HcgBs3lpWJz4lZn5Lo4TXy1QAlrc" />
 
-        <activity android:name="com.projectbored.app.Startup" >
+        <activity android:name="com.projectbored.admin.Startup" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -60,13 +60,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.projectbored.app.MapsActivityCurrentPlace"
+            android:name="com.projectbored.admin.MapsActivityCurrentPlace"
             android:label="@string/title_activity_maps" />
-        <activity android:name="com.projectbored.app.StoryUpload" />
+        <activity android:name="com.projectbored.admin.StoryUpload" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.projectbored.app.fileprovider"
+            android:authorities="com.projectbored.admin.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data
@@ -74,12 +74,12 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name="com.projectbored.app.ShowStory" />
-        <activity android:name="com.projectbored.app.Login" />
-        <activity android:name="com.projectbored.app.CreateAccount" />
-        <activity android:name="com.projectbored.app.Logout" />
-        <activity android:name="com.projectbored.app.StoryDeleter" />
-        <activity android:name="com.projectbored.app.UserProfile" />
+        <activity android:name="com.projectbored.admin.ShowStory" />
+        <activity android:name="com.projectbored.admin.Login" />
+        <activity android:name="com.projectbored.admin.CreateAccount" />
+        <activity android:name="com.projectbored.admin.Logout" />
+        <activity android:name="com.projectbored.admin.StoryDeleter" />
+        <activity android:name="com.projectbored.admin.UserProfile" />
 
         <receiver android:name="com.google.android.gms.cast.framework.media.MediaIntentReceiver" />
 
@@ -138,7 +138,7 @@ Service handling Google Sign-In user revocation. For apps that do not integrate 
             android:exported="true"
             android:noHistory="true" > <!-- optional, removes the previewActivity from the activity stack. -->
             <intent-filter>
-                <data android:scheme="tagmanager.c.com.projectbored.app" />
+                <data android:scheme="tagmanager.c.com.projectbored.admin" />
 
                 <action android:name="android.intent.action.VIEW" />
 
@@ -179,7 +179,7 @@ Service handling Google Sign-In user revocation. For apps that do not integrate 
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
 
-                <category android:name="com.projectbored.app" />
+                <category android:name="com.projectbored.admin" />
             </intent-filter>
         </receiver>
         <!--
@@ -203,7 +203,7 @@ Service handling Google Sign-In user revocation. For apps that do not integrate 
 
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
-            android:authorities="com.projectbored.app.firebaseinitprovider"
+            android:authorities="com.projectbored.admin.firebaseinitprovider"
             android:exported="false"
             android:initOrder="100" />
     </application>
