@@ -119,18 +119,18 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     }
 
     public void addView(){
-        DatabaseReference mStoryRef = FirebaseDatabase.getInstance().getReference().child("stories").child(storyDetails.getString("key")).child("Views");
+        final String storyKey = storyDetails.getString("key");
+        DatabaseReference mStoryRef = FirebaseDatabase.getInstance().getReference().child("stories").child(storyKey).child("Views");
         mStoryRef.runTransaction(new Transaction.Handler() {
             @Override
             public Transaction.Result doTransaction(MutableData mutableData) {
-                int storyViews = 0;
                 if(mutableData.getValue() != null) {
-                    storyViews = mutableData.getValue(Integer.class);
+                    int storyViews = mutableData.getValue(Integer.class);
+                    ++storyViews;
+
+                    mutableData.setValue(storyViews);
                 }
 
-                ++storyViews;
-
-                mutableData.setValue(storyViews);
                 return Transaction.success(mutableData);
             }
 
@@ -142,16 +142,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
         if(loggedIn){
             String username = getUsername();
-            if(username.equals("")) {
-
-            } else {
-                String storyKey = storyDetails.getString("key");
-                String storyLocation = Double.toString(storyDetails.getDouble("Latitude"))
-                        +  ","
-                        + Double.toString(storyDetails.getDouble("Longitude"));
-                DatabaseReference mUserRef = FirebaseDatabase.getInstance().getReference().child("stories").child(storyKey);
-                mUserRef.child("Viewers").child(username).setValue(username);
-            }
+            mDataRef.child("stories").child(storyKey).child("Viewers").child(username).setValue(username);
         }
     }
 
