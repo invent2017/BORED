@@ -122,14 +122,13 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         mStoryRef.runTransaction(new Transaction.Handler() {
             @Override
             public Transaction.Result doTransaction(MutableData mutableData) {
-                int storyViews = 0;
                 if(mutableData.getValue() != null) {
-                    storyViews = mutableData.getValue(Integer.class);
+                    int storyViews = mutableData.getValue(Integer.class);
+                    ++storyViews;
+
+                    mutableData.setValue(storyViews);
                 }
 
-                ++storyViews;
-
-                mutableData.setValue(storyViews);
                 return Transaction.success(mutableData);
             }
 
