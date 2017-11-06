@@ -169,23 +169,37 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
             }
         });
-   }
+    }
 
     public void upVote(){
         if(loggedIn){
-            if(upvoteClicked) {
-                storyVotes--;
-                upvoteClicked = false;
-            } else if(downvoteClicked) {
-                storyVotes = storyVotes + 2;
-                upvoteClicked = true;
-                downvoteClicked = false;
-            } else {
-                storyVotes++;
-                upvoteClicked = true;
-            }
+            mDataRef.child("stories").child(storyDetails.getString("key")).runTransaction(new Transaction.Handler() {
+                @Override
+                public Transaction.Result doTransaction(MutableData mutableData) {
+                    int votes = 0;
+                    if (mutableData.getValue() != null) {
+                        votes = mutableData.child("Votes").getValue(Integer.class);
+                        if(mutableData.child("Upvoters").hasChild(getUsername())) {
+                            votes--;
+                            mutableData.child("Upvoters").child(getUsername()).setValue(null);
+                        } else if(mutableData.child("Downvoters").hasChild(getUsername())) {
+                            votes = votes + 2;
+                            mutableData.child("Downvoters").child(getUsername()).setValue(null);
+                            mutableData.child("Upvoters").child(getUsername()).setValue(getUsername());
+                        } else {
+                            votes++;
+                            mutableData.child("Upvoters").child(getUsername()).setValue(getUsername());
+                        }
+                    }
+                    mutableData.child("Votes").setValue(votes);
+                    return Transaction.success(mutableData);
+                }
 
-            updateVotes();
+                @Override
+                public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+
+                }
+            });
         } else {
             Toast.makeText(this, "You must log in to upvote stories.", Toast.LENGTH_SHORT).show();
         }
@@ -193,20 +207,34 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     }
 
     public void downVote(){
-        if(loggedIn) {
-            if (downvoteClicked) {
-                storyVotes++;
-                downvoteClicked = false;
-            } else if(upvoteClicked) {
-                storyVotes = storyVotes - 2;
-                downvoteClicked = true;
-                upvoteClicked = false;
-            } else {
-                storyVotes--;
-                downvoteClicked = true;
-            }
+        if(loggedIn){
+            mDataRef.child("stories").child(storyDetails.getString("key")).runTransaction(new Transaction.Handler() {
+                @Override
+                public Transaction.Result doTransaction(MutableData mutableData) {
+                    int votes = 0;
+                    if (mutableData.getValue() != null) {
+                        votes = mutableData.child("Votes").getValue(Integer.class);
+                        if(mutableData.child("Downvoters").hasChild(getUsername())) {
+                            votes++;
+                            mutableData.child("Downvoters").child(getUsername()).setValue(null);
+                        } else if(mutableData.child("Upvoters").hasChild(getUsername())) {
+                            votes = votes - 2;
+                            mutableData.child("Upvoters").child(getUsername()).setValue(null);
+                            mutableData.child("Downvoters").child(getUsername()).setValue(getUsername());
+                        } else {
+                            votes--;
+                            mutableData.child("Downvoters").child(getUsername()).setValue(getUsername());
+                        }
+                    }
+                    mutableData.child("Votes").setValue(votes);
+                    return Transaction.success(mutableData);
+                }
 
-            updateVotes();
+                @Override
+                public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+
+                }
+            });
         } else {
             Toast.makeText(this, "You must log in to downvote stories.", Toast.LENGTH_SHORT).show();
         }
