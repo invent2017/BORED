@@ -158,9 +158,26 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     // stuff the buttons do when clicked -hy
 
     public void reportStory(){
-        String storyKey = storyDetails.getString("key");
-        mDataRef.child("stories").child(storyKey).child("Flagged").setValue(true);
-        Toast.makeText(this, "Story flagged.", Toast.LENGTH_SHORT).show();
+        mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String storyKey = storyDetails.getString("key");
+                if(storyKey != null && dataSnapshot.child("stories").hasChild(storyKey)) {
+                    boolean isFlagged = dataSnapshot.child("stories").child(storyKey).child("Flagged").getValue(boolean.class);
+                    dataSnapshot.child("stories").child(storyKey).child("Flagged").getRef().setValue(!isFlagged);
+                    if(isFlagged) {
+                        Toast.makeText(ShowStory.this, "Story unflagged.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(ShowStory.this, "Story flagged.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
    }
 
     public void upVote(){
