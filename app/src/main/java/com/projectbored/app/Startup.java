@@ -1,8 +1,11 @@
 package com.projectbored.app;
 
+import com.projectbored.app.BuildConfig;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,7 +31,42 @@ public class Startup extends AppCompatActivity {
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
-        getUserData();
+        checkUpdates();
+    }
+
+    private void checkUpdates() {
+        final String versionName = BuildConfig.VERSION_NAME;
+        mDataRef.child("version").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(!(dataSnapshot.getValue(String.class).equals(versionName))) {
+                    AlertDialog.Builder updatePrompt = new AlertDialog.Builder(Startup.this);
+                    updatePrompt.setMessage("A new version of BORED! is available. Update?")
+                            .setPositiveButton("Update", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+                                            Uri.parse("https://projectboredinc.wordpress.com/"));
+                                    startActivity(browserIntent);
+                                }
+                            })
+                            .setNegativeButton("Later", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    getUserData();
+                                }
+                            });
+                    updatePrompt.create().show();
+                } else {
+                    getUserData();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void getUserData() {

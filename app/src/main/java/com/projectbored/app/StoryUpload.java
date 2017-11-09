@@ -41,6 +41,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StoryUpload extends AppCompatActivity {
     //private static final String TAG = ShowStory.class.getSimpleName();  //for debugging purposes
@@ -227,7 +229,8 @@ public class StoryUpload extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     String storyURI =  dataSnapshot.child("URI").getValue(String.class);
-                    Story story = new Story(storyURI, storyLocation, caption.getText().toString(), new Date());
+                    String storyCaption = caption.getText().toString();
+                    Story story = new Story(storyURI, storyLocation, storyCaption, new Date());
                     Map<String, Object> storyDetails = story.toMap();
 
                     Map<String, Object> childUpdates = new HashMap<>();
@@ -238,6 +241,17 @@ public class StoryUpload extends AppCompatActivity {
                         String username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
                         childUpdates.put("/users/" + username + "/stories/" + storyKey, locationString);
                     }
+
+                    /*if(storyCaption.contains("#")) {
+                        String hashTagPattern = "(#\\w+)";
+
+                        Pattern p = Pattern.compile(hashTagPattern);
+                        Matcher m = p.matcher(storyCaption);
+                        while(m.find()){
+                            String hashtag = m.group(1);
+                            childUpdates.put("/hashtags/" + hashtag + "/" + storyKey, locationString);
+                        }
+                    }*/
 
                     mDataRef.updateChildren(childUpdates);
 
