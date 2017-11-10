@@ -63,6 +63,9 @@ public class StoryUpload extends AppCompatActivity {
 
     Bundle storySettings;
 
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+    static final int GALLERY_REQUEST = 2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +101,6 @@ public class StoryUpload extends AppCompatActivity {
         return true;
     }
 
-    static final int REQUEST_IMAGE_CAPTURE = 1;
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
@@ -126,7 +128,6 @@ public class StoryUpload extends AppCompatActivity {
         }
     }
 
-    static final int GALLERY_REQUEST = 2;
     private void galleryPickerIntent() {
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
@@ -150,10 +151,7 @@ public class StoryUpload extends AppCompatActivity {
                 uploadImage(imageUri);
             } catch (FileNotFoundException e) {
                 Toast.makeText(this, "Something went wrong. Story not uploaded.", Toast.LENGTH_SHORT).show();
-
-                Intent i = new Intent(this, MapsActivityCurrentPlace.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
+                finish();
             }
         }
     }
@@ -264,9 +262,7 @@ public class StoryUpload extends AppCompatActivity {
 
                     Toast.makeText(StoryUpload.this, "Story added!", Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(StoryUpload.this, MapsActivityCurrentPlace.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
+                    finish();
                 }
 
                 @Override

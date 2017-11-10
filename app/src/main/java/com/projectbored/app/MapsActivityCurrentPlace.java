@@ -77,7 +77,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     private DatabaseReference mDataRef;
 
-@Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -184,20 +184,15 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.option_add_story) {
             addStory();
-        }
-
-        if (item.getItemId() == R.id.option_log_in) {
+        } else if (item.getItemId() == R.id.option_log_in) {
             Intent loginIntent = new Intent(this, Login.class);
             startActivity(loginIntent);
-        }
-
-        if(item.getItemId() == R.id.option_log_out) {
+        } else if(item.getItemId() == R.id.option_log_out) {
             Intent logoutIntent = new Intent(this, Logout.class);
             startActivity(logoutIntent);
         }
         return true;
     }
-
 
     /**
      * Manipulates the map when it's available.
@@ -286,26 +281,28 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                     new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
                     PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
         }
-        /*
-         * Get the best and most recent location of the device, which may be null in rare
-         * cases when a location is not available.
-         */
+        // Get the best and most recent location of the device, which may be null in rare
+        // cases when a location is not available.
         if (mLocationPermissionGranted) {
             mLastKnownLocation = LocationServices.FusedLocationApi
                     .getLastLocation(mGoogleApiClient);
         }
 
+        if (mLastKnownLocation == null) {
+            Log.d(TAG, "Current location is null. Using defaults.");
+            mLastKnownLocation = new Location(LocationManager.GPS_PROVIDER);
+            mLastKnownLocation.setLatitude(mDefaultLocation.latitude);
+            mLastKnownLocation.setLongitude(mDefaultLocation.longitude);
+            mMap.getUiSettings().setMyLocationButtonEnabled(false);
+        }
+
         // Set the map's camera position to the current location of the device.
         if (mCameraPosition != null) {
             mMap.moveCamera(CameraUpdateFactory.newCameraPosition(mCameraPosition));
-        } else if (mLastKnownLocation != null) {
+        } else {
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                     new LatLng(mLastKnownLocation.getLatitude(),
                             mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
-        } else {
-            Log.d(TAG, "Current location is null. Using defaults.");
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mDefaultLocation, DEFAULT_ZOOM));
-            mMap.getUiSettings().setMyLocationButtonEnabled(false);
         }
     }
 
@@ -444,8 +441,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String storyKey = dataSnapshot.getValue(String.class);
-
-                if(mLastKnownLocation.distanceTo(storyLocation) <= 100){
+                if(mLastKnownLocation != null &&
+                        mLastKnownLocation.distanceTo(storyLocation) <= 100){
                     showNearbyStories(storyKey, storyLocation);
                 } else {
                     showFarStories(storyKey, storyLocation);
@@ -672,7 +669,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         } else {
             mMap.setMyLocationEnabled(false);
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
-            mLastKnownLocation = null;
+            // TODO: Why do you need the line below?
+            // mLastKnownLocation = null;
         }
     }
 
