@@ -53,8 +53,13 @@ public class StoryDeleter extends AppCompatActivity {
         mStoryRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                mPhotoRef = FirebaseStorage.getInstance().getReferenceFromUrl(dataSnapshot.child("URI").getValue(String.class));
-                mPhotoRef.delete();
+                String url = dataSnapshot.child("URI").getValue(String.class);
+                if (url != null) {
+                    mPhotoRef =
+                            FirebaseStorage.getInstance().getReferenceFromUrl(
+                                dataSnapshot.child("URI").getValue(String.class));
+                    mPhotoRef.delete();
+                }
             }
 
             @Override
