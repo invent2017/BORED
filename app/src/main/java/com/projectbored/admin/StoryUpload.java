@@ -229,10 +229,12 @@ public class StoryUpload extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     String storyURI =  dataSnapshot.child("URI").getValue(String.class);
                     String storyCaption = caption.getText().toString();
+
+                    Map<String, Object> childUpdates = new HashMap<>();
+
                     Story story = new Story(storyURI, storyLocation, storyCaption, new Date());
                     Map<String, Object> storyDetails = story.toMap();
 
-                    Map<String, Object> childUpdates = new HashMap<>();
                     childUpdates.put("/stories/" + storyKey, storyDetails);
                     childUpdates.put("/locations/" + keyLocationString, storyKey);
 
@@ -241,24 +243,23 @@ public class StoryUpload extends AppCompatActivity {
                         childUpdates.put("/users/" + username + "/stories/" + storyKey, locationString);
                     }
 
-                    /*if(storyCaption.contains("#")) {
-                        String hashTagPattern = "(#\\w+)";
+                    if(storyCaption.contains("#")) {
+                        String hashTagPattern = ("#(\\w+)");
 
                         Pattern p = Pattern.compile(hashTagPattern);
                         Matcher m = p.matcher(storyCaption);
+
                         while(m.find()){
-                            String hashtag = m.group();
-                            childUpdates.put("/hashtags/" + hashtag, storyKey);
+                            String hashtag = m.group(1);
+                            childUpdates.put("/hashtags/" + hashtag + "/" + storyKey, locationString);
                         }
-                    }*/
+                    }
 
                     mDataRef.updateChildren(childUpdates);
 
                     Toast.makeText(StoryUpload.this, "Story added!", Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(StoryUpload.this, MapsActivityCurrentPlace.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
+                    finish();
                 }
 
                 @Override
