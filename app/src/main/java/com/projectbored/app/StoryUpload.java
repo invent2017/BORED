@@ -33,10 +33,15 @@ import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -106,7 +111,9 @@ public class StoryUpload extends AppCompatActivity {
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        Intent backToMap = new Intent(StoryUpload.this, MapsActivityCurrentPlace.class);
+                        backToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(backToMap);
                     }
                 });
                 builder.create().show();
@@ -124,7 +131,7 @@ public class StoryUpload extends AppCompatActivity {
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
         photoPickerIntent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(photoPickerIntent, "Select image"), GALLERY_REQUEST);
+        startActivityForResult(photoPickerIntent, GALLERY_REQUEST);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -139,7 +146,7 @@ public class StoryUpload extends AppCompatActivity {
                 Uri imageUri = data.getData();
                 InputStream imageStream = getContentResolver().openInputStream(imageUri);
                 Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-                ((ImageView) findViewById(com.projectbored.app.R.id.story_image)).setImageBitmap(selectedImage);
+                ((ImageView) findViewById(R.id.story_image)).setImageBitmap(selectedImage);
                 uploadImage(imageUri);
             } catch (FileNotFoundException e) {
                 Toast.makeText(this, "Something went wrong. Story not uploaded.", Toast.LENGTH_SHORT).show();
@@ -148,17 +155,14 @@ public class StoryUpload extends AppCompatActivity {
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
             }
-
         }
     }
 
-    private File createImageFile () throws IOException {
+    private File createImageFile() throws IOException {
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "IMG_" + timestamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-               imageFileName,".jpg",storageDir
-        );
+        File image = File.createTempFile(imageFileName,".jpg", storageDir);
 
         mCurrentPhotoPath = image.getAbsolutePath();
         return image;
@@ -230,10 +234,12 @@ public class StoryUpload extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     String storyURI =  dataSnapshot.child("URI").getValue(String.class);
                     String storyCaption = caption.getText().toString();
+
+                    Map<String, Object> childUpdates = new HashMap<>();
+
                     Story story = new Story(storyURI, storyLocation, storyCaption, new Date());
                     Map<String, Object> storyDetails = story.toMap();
 
-                    Map<String, Object> childUpdates = new HashMap<>();
                     childUpdates.put("/stories/" + storyKey, storyDetails);
                     childUpdates.put("/locations/" + keyLocationString, storyKey);
 
@@ -242,16 +248,17 @@ public class StoryUpload extends AppCompatActivity {
                         childUpdates.put("/users/" + username + "/stories/" + storyKey, locationString);
                     }
 
-                    /*if(storyCaption.contains("#")) {
-                        String hashTagPattern = "(#\\w+)";
+                    if(storyCaption.contains("#")) {
+                        String hashTagPattern = ("#(\\w+)");
 
                         Pattern p = Pattern.compile(hashTagPattern);
                         Matcher m = p.matcher(storyCaption);
+
                         while(m.find()){
                             String hashtag = m.group(1);
                             childUpdates.put("/hashtags/" + hashtag + "/" + storyKey, locationString);
                         }
-                    }*/
+                    }
 
                     mDataRef.updateChildren(childUpdates);
 
