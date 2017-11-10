@@ -176,9 +176,8 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
             mDataRef.child("stories").child(storyDetails.getString("key")).runTransaction(new Transaction.Handler() {
                 @Override
                 public Transaction.Result doTransaction(MutableData mutableData) {
-                    int votes = 0;
                     if (mutableData.getValue() != null) {
-                        votes = mutableData.child("Votes").getValue(Integer.class);
+                        int votes = mutableData.child("Votes").getValue(Integer.class);
                         if(mutableData.child("Upvoters").hasChild(getUsername())) {
                             votes--;
                             mutableData.child("Upvoters").child(getUsername()).setValue(null);
@@ -190,8 +189,9 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                             votes++;
                             mutableData.child("Upvoters").child(getUsername()).setValue(getUsername());
                         }
+                        mutableData.child("Votes").setValue(votes);
                     }
-                    mutableData.child("Votes").setValue(votes);
+
                     return Transaction.success(mutableData);
                 }
 
@@ -211,9 +211,8 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
             mDataRef.child("stories").child(storyDetails.getString("key")).runTransaction(new Transaction.Handler() {
                 @Override
                 public Transaction.Result doTransaction(MutableData mutableData) {
-                    int votes = 0;
                     if (mutableData.getValue() != null) {
-                        votes = mutableData.child("Votes").getValue(Integer.class);
+                        int votes = mutableData.child("Votes").getValue(Integer.class);
                         if(mutableData.child("Downvoters").hasChild(getUsername())) {
                             votes++;
                             mutableData.child("Downvoters").child(getUsername()).setValue(null);
@@ -225,8 +224,9 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                             votes--;
                             mutableData.child("Downvoters").child(getUsername()).setValue(getUsername());
                         }
+                        mutableData.child("Votes").setValue(votes);
                     }
-                    mutableData.child("Votes").setValue(votes);
+
                     return Transaction.success(mutableData);
                 }
 
