@@ -60,7 +60,11 @@
         </activity>
         <activity
             android:name="com.projectbored.app.MapsActivityCurrentPlace"
-            android:label="@string/title_activity_maps" />
+            android:label="@string/title_activity_maps" >
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
         <activity android:name="com.projectbored.app.StoryUpload" />
 
         <provider

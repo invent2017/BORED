@@ -18,6 +18,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CreateAccount extends AppCompatActivity {
     public static final String PREFS_NAME = "UserDetails";
@@ -67,23 +69,32 @@ public class CreateAccount extends AppCompatActivity {
             final String email = emailField.getText().toString();
             final String password = passwordField.getText().toString();
 
-            mDataRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.child(username).exists()) {
-                        Toast.makeText(CreateAccount.this, R.string.error_existing_username, Toast.LENGTH_SHORT).show();
-                    } else {
-                        addUser(username, email, password);
+            String emailPattern = ("\\w+@\\w+\\.\\w+");
+            Pattern pattern = Pattern.compile(emailPattern);
+            Matcher matcher = pattern.matcher(email);
+            if(matcher.matches()) {
+
+                mDataRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.child(username).exists()) {
+                            Toast.makeText(CreateAccount.this, R.string.error_existing_username, Toast.LENGTH_SHORT).show();
+                        } else {
+                            addUser(username, email, password);
+                        }
                     }
-                }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
 
-                }
-            });
+                    }
+                });
+                loggedIn = true;
+            } else {
+                Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
+            }
         }
-        loggedIn = true;
+
     }
 
     private void addUser(String username, String email, String password) {

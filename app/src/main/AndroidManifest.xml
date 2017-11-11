@@ -37,7 +37,10 @@
         </activity>
         <activity
             android:name=".MapsActivityCurrentPlace"
-            android:label="@string/title_activity_maps" />
+            android:label="@string/title_activity_maps">
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
+        </activity>
         <activity android:name=".StoryUpload" />
 
         <provider
