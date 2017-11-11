@@ -46,7 +46,7 @@ public class Startup extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     Intent browserIntent = new Intent(Intent.ACTION_VIEW,
-                                            Uri.parse("https://projectboredinc.wordpress.com/"));
+                                            Uri.parse("https://projectboredinc.wordpress.com/download/"));
                                     startActivity(browserIntent);
                                 }
                             })

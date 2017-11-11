@@ -14,7 +14,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -94,6 +93,33 @@ public class StoryUpload extends AppCompatActivity {
             uploadStoryData();
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(storyKey != null) {
+            mDataRef.child("uploads").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.hasChild(storyKey)) {
+                        String storyUri = dataSnapshot.child(storyKey).getValue(String.class);
+                        FirebaseStorage.getInstance().getReferenceFromUrl(storyUri).delete();
+                        dataSnapshot.child(storyKey).getRef().removeValue();
+
+                        finish();
+                    } else {
+                        finish();
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    finish();
+                }
+            });
+        } else {
+            finish();
+        }
     }
 
     private void dispatchTakePictureIntent() {
@@ -233,7 +259,7 @@ public class StoryUpload extends AppCompatActivity {
                     });
             builder.create().show();
         } else {
-            mDataRef.child("stories").child(storyKey).child("URI").setValue(PHOTO_URI.toString());
+            mDataRef.child("uploads").child(storyKey).setValue(PHOTO_URI.toString());
         }
     }
 
@@ -246,44 +272,48 @@ public class StoryUpload extends AppCompatActivity {
             final String locationString = Double.toString(storyLocation.getLatitude())
                                     + ","
                                     + Double.toString(storyLocation.getLongitude());
-            final String keyLocationString = locationString.replace(".", "d");    //keys in Firebase cannot contain ".", so replace with "d"
 
-            mDataRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
+            mDataRef.child("uploads").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    String storyURI =  dataSnapshot.child("URI").getValue(String.class);
-                    String storyCaption = caption.getText().toString();
+                    if(dataSnapshot.exists()) {
+                        String storyURI = dataSnapshot.getValue(String.class);
+                        String storyCaption = caption.getText().toString();
 
-                    Map<String, Object> childUpdates = new HashMap<>();
+                        Map<String, Object> childUpdates = new HashMap<>();
 
-                    Story story = new Story(storyURI, storyLocation, storyCaption, new Date());
-                    Map<String, Object> storyDetails = story.toMap();
+                        Story story = new Story(storyURI, storyLocation, storyCaption, new Date());
+                        Map<String, Object> storyDetails = story.toMap();
 
-                    childUpdates.put("/stories/" + storyKey, storyDetails);
-                    childUpdates.put("/locations/" + keyLocationString, storyKey);
+                        childUpdates.put("/stories/" + storyKey, storyDetails);
 
-                    if(storySettings.getBoolean("Logged in")){
-                        String username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
-                        childUpdates.put("/users/" + username + "/stories/" + storyKey, locationString);
-                    }
-
-                    if(storyCaption.contains("#")) {
-                        String hashTagPattern = ("#(\\w+)");
-
-                        Pattern p = Pattern.compile(hashTagPattern);
-                        Matcher m = p.matcher(storyCaption);
-
-                        while(m.find()){
-                            String hashtag = m.group(1);
-                            childUpdates.put("/hashtags/" + hashtag + "/" + storyKey, locationString);
+                        if (storySettings.getBoolean("Logged in")) {
+                            String username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
+                            childUpdates.put("/users/" + username + "/stories/" + storyKey, locationString);
                         }
+
+                        if (storyCaption.contains("#")) {
+                            String hashTagPattern = ("#(\\w+)");
+
+                            Pattern p = Pattern.compile(hashTagPattern);
+                            Matcher m = p.matcher(storyCaption);
+
+                            while (m.find()) {
+                                String hashtag = m.group(1);
+                                childUpdates.put("/hashtags/" + hashtag + "/" + storyKey, locationString);
+                            }
+                        }
+
+                        mDataRef.updateChildren(childUpdates);
+
+                        mDataRef.child("uploads").child(storyKey).removeValue();
+
+                        Toast.makeText(StoryUpload.this, "Story added!", Toast.LENGTH_SHORT).show();
+
+                        finish();
+                    } else {
+                        Toast.makeText(StoryUpload.this, "An error occurred. Please try again.", Toast.LENGTH_SHORT).show();
                     }
-
-                    mDataRef.updateChildren(childUpdates);
-
-                    Toast.makeText(StoryUpload.this, "Story added!", Toast.LENGTH_SHORT).show();
-
-                    finish();
                 }
 
                 @Override

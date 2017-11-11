@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -108,13 +109,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
-        hashtagSearch = (SearchView)findViewById(R.id.hashtag_search);
+        hashtagSearch = (SearchView) findViewById(R.id.hashtag_search);
         hashtagSearch.setOnSearchClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String query = hashtagSearch.getQuery().toString();
-                if(!query.equals("")) {
-                    if(query.contains("#")) {
+                if (!query.equals("")) {
+                    if (query.contains("#")) {
                         query = query.substring(1);
                     }
                     searchHashtags(query);
@@ -124,9 +125,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         hashtagSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                if(!query.equals("")) {
-                    if(query.contains("#")) {
-                       query = query.substring(1);
+                if (!query.equals("")) {
+                    if (query.contains("#")) {
+                        query = query.substring(1);
                     }
                     searchHashtags(query);
                 }
@@ -138,6 +139,37 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 return false;
             }
         });
+
+    }
+
+    private void handleIntent(Intent intent) {
+        String appLinkAction = intent.getAction();
+        Uri appLinkData = intent.getData();
+        if(Intent.ACTION_VIEW.equals(appLinkAction) && appLinkData != null) {
+            final String storyKey = appLinkData.getLastPathSegment();
+
+            mMap.clear();
+            mDataRef.child("stories").child(storyKey).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String[] locationArray = dataSnapshot.child("Location").getValue(String.class).split(",");
+                    LatLng storyPosition = new LatLng(Double.parseDouble(locationArray[0]),
+                            Double.parseDouble(locationArray[1]));
+
+                    Marker marker = mMap.addMarker(new MarkerOptions()
+                            .position(storyPosition)
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+                    marker.setTag(storyKey);
+
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(storyPosition));
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
 
     /**
@@ -288,6 +320,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
         //Load stories.
         getStories();
+
+        handleIntent(getIntent());
     }
 
     //Close app when back button is pressed, instead of returning to splash screen
@@ -476,20 +510,25 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     }
 
     public void getStories() {
-        mDataRef.child("locations").addValueEventListener(new ValueEventListener() {
+        mDataRef.child("stories").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.getChildren())
-                {
-                    String locationFromDatabase = ds.getKey();
-                    String locationString = locationFromDatabase.replace("d", ".");
-                    String [] locationArray = locationString.split(",");
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if(ds.exists() && ds.hasChild("Location")) {
+                        String storyKey = ds.getKey();
+                        String[] locationArray = ds.child("Location").getValue(String.class).split(",");
 
-                    Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
-                    storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
-                    storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
-
-                    displayStories(locationFromDatabase, storyLocation);
+                        Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
+                        storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
+                        storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
+                        if(mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 100){
+                            showNearbyStories(storyKey, storyLocation);
+                        } else {
+                            showFarStories(storyKey, storyLocation);
+                        }
+                    } else {
+                        Toast.makeText(MapsActivityCurrentPlace.this, "There are no stories.", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 
@@ -501,25 +540,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     }
 
-    public void displayStories(final String key, final Location storyLocation) {
-        mDataRef.child("locations").child(key).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String storyKey = dataSnapshot.getValue(String.class);
-                if(mLastKnownLocation != null &&
-                        mLastKnownLocation.distanceTo(storyLocation) <= 100){
-                    showNearbyStories(storyKey, storyLocation);
-                } else {
-                    showFarStories(storyKey, storyLocation);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
 
     /*public void showOwnStories(String username) {
         mDataRef.child("users").child(username).child("stories").addValueEventListener(new ValueEventListener() {
@@ -548,19 +568,19 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     public void showNearbyStories(final String storyKey, final Location storyLocation) {
         if(storyKey != null) {
-            mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            mDataRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists() && storyKey != null) {
                         Marker storyMarker;
                         boolean featured = false;
                         if (dataSnapshot.child("stories").child(storyKey).child("Featured").exists()) {
-                            featured = dataSnapshot.child("stories").child(storyKey).child("Featured").getValue(boolean.class);
+                            featured = dataSnapshot.child("Featured").getValue(boolean.class);
                         }
                         boolean isRead = false;
                         if (isLoggedIn()) {
                             String username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
-                            if (dataSnapshot.child("stories").child(storyKey).child("Viewers").child(username).exists()) {
+                            if (dataSnapshot.child("Viewers").child(username).exists()) {
                                 isRead = true;
                             }
                         }
@@ -598,16 +618,16 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     public void showFarStories(final String storyKey, final Location storyLocation) {
         if (storyKey != null) {
-            mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            mDataRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
                         Marker storyMarker;
-                        boolean featured = dataSnapshot.child("stories").child(storyKey).child("Featured").getValue(boolean.class);
+                        boolean featured = dataSnapshot.child("Featured").getValue(boolean.class);
                         boolean isRead = false;
                         if (isLoggedIn()) {
                             String username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
-                            if (dataSnapshot.child("stories").child(storyKey).child("Viewers").child(username).exists()) {
+                            if (dataSnapshot.child("Viewers").child(username).exists()) {
                                 isRead = true;
                             }
                         }

@@ -90,6 +90,7 @@ public class CreateAccount extends AppCompatActivity {
                     }
                 });
                 loggedIn = true;
+
             } else {
                 Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
             }
@@ -106,6 +107,8 @@ public class CreateAccount extends AppCompatActivity {
         mDataRef.updateChildren(childUpdates);
 
         storeLocalUserData(username, password);
+
+        Toast.makeText(this, "Logged in as" + username + ".", Toast.LENGTH_SHORT).show();
 
         Intent i = new Intent(this, MapsActivityCurrentPlace.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

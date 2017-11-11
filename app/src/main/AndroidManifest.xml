@@ -38,8 +38,20 @@
         <activity
             android:name=".MapsActivityCurrentPlace"
             android:label="@string/title_activity_maps">
-            <meta-data android:name="android.app.searchable"
-                android:resource="@xml/searchable"/>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="http"
+                    android:host="projectboredinc.wordpress.com"
+                    android:pathPrefix="/story/" />
+            </intent-filter>
         </activity>
         <activity android:name=".StoryUpload" />
 
