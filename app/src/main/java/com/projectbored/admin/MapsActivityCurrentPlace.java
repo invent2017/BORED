@@ -15,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -68,6 +70,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
 
+    private SearchView hashtagSearch;
+
     // Used for selecting the current place.
     //private final int mMaxEntries = 5;
     //private String[] mLikelyPlaceNames = new String[mMaxEntries];
@@ -101,6 +105,37 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 .addApi(Places.PLACE_DETECTION_API)
                 .build();
         mGoogleApiClient.connect();
+
+        hashtagSearch = (SearchView)findViewById(R.id.hashtag_search);
+        hashtagSearch.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String query = hashtagSearch.getQuery().toString();
+                if(!query.equals("")) {
+                    if(query.contains("#")) {
+                        query = query.substring(1);
+                    }
+                    searchHashtags(query);
+                }
+            }
+        });
+        hashtagSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if(!query.equals("")) {
+                    if(query.contains("#")) {
+                        query = query.substring(1);
+                    }
+                    searchHashtags(query);
+                }
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
     }
@@ -326,11 +361,35 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         updateLocationUI();
     }
 
-    /**
-     * Prompts the user to select the current place from a list of likely places, and shows the
-     * current place on the map - provided the user has granted location permission.
-     */
+    private void searchHashtags(String hashtag) {
 
+        mDataRef.child("hashtags").child(hashtag).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()) {
+                    mMap.clear();
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        String storyKey = ds.getKey();
+                        String[] locationArray = ds.getValue(String.class).split(",");
+                        LatLng storyPosition = new LatLng(Double.parseDouble(locationArray[0]),
+                                Double.parseDouble(locationArray[1]));
+
+                        Marker marker = mMap.addMarker(new MarkerOptions()
+                                .position(storyPosition)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+                        marker.setTag(storyKey);
+                    }
+                } else {
+                    Toast.makeText(MapsActivityCurrentPlace.this, "There are no stories with that hashtag.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 
 
     private void addStory() {

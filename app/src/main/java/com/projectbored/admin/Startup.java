@@ -53,12 +53,22 @@ public class Startup extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.child(username).exists()){
-                    if(dataSnapshot.child(username).child("Password").getValue(String.class).equals(password)) {
-                        Toast.makeText(Startup.this, "Logged in as " + username + "." , Toast.LENGTH_SHORT).show();
+                    if(dataSnapshot.child(username).child("Admin").getValue(boolean.class)) {
+                        if (dataSnapshot.child(username).child("Password").getValue(String.class).equals(password)) {
+                            Toast.makeText(Startup.this, "Logged in as " + username + ".", Toast.LENGTH_SHORT).show();
 
-                        Intent start = new Intent(Startup.this, MapsActivityCurrentPlace.class);
-                        start.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(start);
+                            Intent start = new Intent(Startup.this, MapsActivityCurrentPlace.class);
+                            start.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(start);
+                        } else {
+                            SharedPreferences.Editor editor = settings.edit();
+                            editor.putBoolean("Logged in", false);
+                            editor.remove("Username");
+                            editor.remove("Password");
+                            editor.apply();
+
+                            promptLogIn().create().show();
+                        }
                     } else {
                         SharedPreferences.Editor editor = settings.edit();
                         editor.putBoolean("Logged in", false);
@@ -66,11 +76,9 @@ public class Startup extends AppCompatActivity {
                         editor.remove("Password");
                         editor.apply();
 
-                        Toast.makeText(Startup.this, "Account settings have changed. Please log in again.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Startup.this, "You need to be an admin to use the admin version of the app.", Toast.LENGTH_SHORT).show();
 
-                        Intent returnToMap = new Intent(Startup.this, MapsActivityCurrentPlace.class);
-                        returnToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(returnToMap);
+                        promptLogIn().create().show();
                     }
                 } else {
                     SharedPreferences.Editor editor = settings.edit();
@@ -96,20 +104,12 @@ public class Startup extends AppCompatActivity {
 
     private AlertDialog.Builder promptLogIn() {
         AlertDialog.Builder logInPrompt = new AlertDialog.Builder(this);
-        logInPrompt.setMessage("Want to access bonus features? :)")
-                .setPositiveButton("Log In", new DialogInterface.OnClickListener() {
+        logInPrompt.setMessage("Please log in to continue.")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent logInIntent = new Intent(Startup.this, Login.class);
                         startActivity(logInIntent);
-                    }
-                })
-                .setNegativeButton("Later", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent start = new Intent(Startup.this, MapsActivityCurrentPlace.class);
-                        start.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(start);
                     }
                 });
 

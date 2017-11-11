@@ -37,7 +37,10 @@
         </activity>
         <activity
             android:name="com.projectbored.admin.MapsActivityCurrentPlace"
-            android:label="@string/title_activity_maps" />
+            android:label="@string/title_activity_maps">
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
+        </activity>
         <activity android:name="com.projectbored.admin.StoryUpload" />
 
         <provider
@@ -52,7 +55,6 @@
 
         <activity android:name="com.projectbored.admin.ShowStory" />
         <activity android:name="com.projectbored.admin.Login" />
-        <activity android:name="com.projectbored.admin.CreateAccount" />
         <activity android:name="com.projectbored.admin.Logout" />
         <activity android:name="com.projectbored.admin.StoryDeleter" />
         <activity android:name="com.projectbored.admin.UserProfile"></activity>

@@ -21,7 +21,6 @@ public class Login extends AppCompatActivity {
     private EditText usernameField;
     private EditText passwordField;
     private Button signInButton;
-    private Button promptSignUpButton;
 
     private DatabaseReference mDataRef;
 
@@ -40,15 +39,6 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 signIn();
-            }
-        });
-
-        promptSignUpButton = (Button)findViewById(R.id.signup_prompt_button);
-        promptSignUpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signUp = new Intent(Login.this, CreateAccount.class);
-                startActivity(signUp);
             }
         });
     }
@@ -72,16 +62,20 @@ public class Login extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if(dataSnapshot.child(username).exists()){
-                        if(dataSnapshot.child(username).child("Password").getValue(String.class).equals(password)) {
-                            storeLocalUserData(username, password);
+                        if(dataSnapshot.child(username).child("Admin").getValue(boolean.class)) {
+                            if (dataSnapshot.child(username).child("Password").getValue(String.class).equals(password)) {
+                                storeLocalUserData(username, password);
 
-                            Toast.makeText(Login.this, "Logged in as " + username + ".", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login.this, "Logged in as " + username + ".", Toast.LENGTH_SHORT).show();
 
-                            Intent i = new Intent(Login.this, MapsActivityCurrentPlace.class);
-                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(i);
+                                Intent i = new Intent(Login.this, MapsActivityCurrentPlace.class);
+                                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(i);
+                            } else {
+                                Toast.makeText(Login.this, R.string.error_incorrect_password, Toast.LENGTH_SHORT).show();
+                            }
                         } else {
-                            Toast.makeText(Login.this, R.string.error_incorrect_password, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "This user is not an admin.", Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Toast.makeText(Login.this, R.string.error_incorrect_username, Toast.LENGTH_SHORT).show();
