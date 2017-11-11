@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:2:1-63:12
-INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:2:1-63:12
-INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:2:1-63:12
-INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:2:1-63:12
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:2:1-75:12
+INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:2:1-75:12
+INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:2:1-75:12
+INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:2:1-75:12
 MERGED from [com.firebaseui:firebase-ui-storage:0.6.0] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\firebase-ui-storage-0.6.0.aar\3e36b9a75d9ea7bab487975ac7f370a4\AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:design:25.2.0] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\design-25.2.0.aar\aa3d10ad7243080e806b7ea26794c40f\AndroidManifest.xml:17:1-27:12
 MERGED from [com.google.android.gms:play-services:11.0.4] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\play-services-11.0.4.aar\c9755436369d839d5e878c16114c8ddd\AndroidManifest.xml:2:1-6:12
@@ -74,20 +74,20 @@ MERGED from [com.android.support:support-media-compat:25.2.0] C:\Users\LikHern\.
 MERGED from [com.android.support:palette-v7:25.2.0] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\palette-v7-25.2.0.aar\28aee87719241798706f62cabf8a9cf9\AndroidManifest.xml:17:1-25:12
 MERGED from [com.android.support:support-core-utils:25.2.0] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.2.0.aar\43df57b64260689ec89214675fc92c12\AndroidManifest.xml:17:1-27:12
 MERGED from [com.android.support:support-compat:25.2.0] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\support-compat-25.2.0.aar\b9db56cffc8357e5ab3280a59c53853f\AndroidManifest.xml:17:1-27:12
-INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:2:1-63:12
-INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:2:1-63:12
-INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:2:1-63:12
+INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:2:1-75:12
+INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:2:1-75:12
+INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:2:1-75:12
 	package
 		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:3:5-37
 		INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:2:1-63:12
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:2:1-75:12
 		INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:2:1-63:12
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:2:1-75:12
 		INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:2:11-69
@@ -120,7 +120,7 @@ ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\Andr
 	android:name
 		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:15:22-69
 application
-ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:17:5-61:19
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:17:5-73:19
 MERGED from [com.android.support:design:25.2.0] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\design-25.2.0.aar\aa3d10ad7243080e806b7ea26794c40f\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:design:25.2.0] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\design-25.2.0.aar\aa3d10ad7243080e806b7ea26794c40f\AndroidManifest.xml:25:5-20
 MERGED from [com.google.android.gms:play-services:11.0.4] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\play-services-11.0.4.aar\c9755436369d839d5e878c16114c8ddd\AndroidManifest.xml:5:5-20
@@ -274,57 +274,79 @@ ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\Andr
 	android:name
 		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:35:27-74
 activity#com.projectbored.admin.MapsActivityCurrentPlace
-ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:38:9-43:20
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:38:9-55:20
 	android:label
 		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:40:13-56
 	android:name
 		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:39:13-75
 meta-data#android.app.searchable
-ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:41:13-42:53
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:41:13-43:54
 	android:resource
-		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:42:17-51
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:43:17-51
 	android:name
-		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:41:24-61
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:42:17-54
+intent-filter#android.intent.action.VIEW+android.intent.category.BROWSABLE+android.intent.category.DEFAULT
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:44:13-54:29
+action#android.intent.action.VIEW
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:45:17-69
+	android:name
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:45:25-66
+category#android.intent.category.DEFAULT
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:47:17-76
+	android:name
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:47:27-73
+category#android.intent.category.BROWSABLE
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:48:17-78
+	android:name
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:48:27-75
+data
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:50:17-53:52
+	android:host
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:52:21-65
+	android:scheme
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:51:21-42
+	android:pathPrefix
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:53:21-49
 activity#com.projectbored.admin.StoryUpload
-ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:44:9-71
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:56:9-71
 	android:name
-		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:44:19-68
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:56:19-68
 provider#android.support.v4.content.FileProvider
-ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:46:9-54:20
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:58:9-66:20
 	android:grantUriPermissions
-		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:50:13-47
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:62:13-47
 	android:authorities
-		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:48:13-70
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:60:13-70
 	android:exported
-		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:49:13-37
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:61:13-37
 	android:name
-		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:47:13-67
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:59:13-67
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:51:13-53:54
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:63:13-65:54
 	android:resource
-		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:53:17-51
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:65:17-51
 	android:name
-		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:52:17-67
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:64:17-67
 activity#com.projectbored.admin.ShowStory
-ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:56:9-69
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:68:9-69
 	android:name
-		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:56:19-66
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:68:19-66
 activity#com.projectbored.admin.Login
-ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:57:9-65
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:69:9-65
 	android:name
-		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:57:19-62
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:69:19-62
 activity#com.projectbored.admin.Logout
-ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:58:9-66
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:70:9-66
 	android:name
-		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:58:19-63
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:70:19-63
 activity#com.projectbored.admin.StoryDeleter
-ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:59:9-72
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:71:9-72
 	android:name
-		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:59:19-69
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:71:19-69
 activity#com.projectbored.admin.UserProfile
-ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:60:9-80
+ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:72:9-80
 	android:name
-		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:60:19-68
+		ADDED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml:72:19-68
 uses-sdk
 INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED Admin\app\src\main\AndroidManifest.xml
@@ -573,10 +595,6 @@ action#com.google.android.gms.appinvite.ACTION_PREVIEW
 ADDED from [com.google.android.gms:play-services-appinvite:11.0.4] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\play-services-appinvite-11.0.4.aar\c9530508835d8fa3eccd5308c556fbc7\AndroidManifest.xml:22:17-89
 	android:name
 		ADDED from [com.google.android.gms:play-services-appinvite:11.0.4] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\play-services-appinvite-11.0.4.aar\c9530508835d8fa3eccd5308c556fbc7\AndroidManifest.xml:22:25-87
-category#android.intent.category.DEFAULT
-ADDED from [com.google.android.gms:play-services-appinvite:11.0.4] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\play-services-appinvite-11.0.4.aar\c9530508835d8fa3eccd5308c556fbc7\AndroidManifest.xml:23:17-75
-	android:name
-		ADDED from [com.google.android.gms:play-services-appinvite:11.0.4] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\play-services-appinvite-11.0.4.aar\c9530508835d8fa3eccd5308c556fbc7\AndroidManifest.xml:23:27-73
 activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
 ADDED from [com.google.android.gms:play-services-auth:11.0.4] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\play-services-auth-11.0.4.aar\a25e8e47fdca0b38037a34767ff6c034\AndroidManifest.xml:20:9-189
 	android:excludeFromRecents
@@ -647,20 +665,6 @@ ADDED from [com.google.android.gms:play-services-tagmanager-api:11.0.4] C:\Users
 		ADDED from [com.google.android.gms:play-services-tagmanager-api:11.0.4] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.0.4.aar\6fb90422fd289184833693c389d1596f\AndroidManifest.xml:25:94-117
 	android:name
 		ADDED from [com.google.android.gms:play-services-tagmanager-api:11.0.4] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.0.4.aar\6fb90422fd289184833693c389d1596f\AndroidManifest.xml:25:19-93
-intent-filter#android.intent.action.VIEW+android.intent.category.BROWSABLE+android.intent.category.DEFAULT
-ADDED from [com.google.android.gms:play-services-tagmanager-api:11.0.4] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.0.4.aar\6fb90422fd289184833693c389d1596f\AndroidManifest.xml:26:13-31:29
-data
-ADDED from [com.google.android.gms:play-services-tagmanager-api:11.0.4] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.0.4.aar\6fb90422fd289184833693c389d1596f\AndroidManifest.xml:27:17-71
-	android:scheme
-		ADDED from [com.google.android.gms:play-services-tagmanager-api:11.0.4] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.0.4.aar\6fb90422fd289184833693c389d1596f\AndroidManifest.xml:27:23-69
-action#android.intent.action.VIEW
-ADDED from [com.google.android.gms:play-services-tagmanager-api:11.0.4] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.0.4.aar\6fb90422fd289184833693c389d1596f\AndroidManifest.xml:28:17-68
-	android:name
-		ADDED from [com.google.android.gms:play-services-tagmanager-api:11.0.4] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.0.4.aar\6fb90422fd289184833693c389d1596f\AndroidManifest.xml:28:25-66
-category#android.intent.category.BROWSABLE
-ADDED from [com.google.android.gms:play-services-tagmanager-api:11.0.4] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.0.4.aar\6fb90422fd289184833693c389d1596f\AndroidManifest.xml:30:17-77
-	android:name
-		ADDED from [com.google.android.gms:play-services-tagmanager-api:11.0.4] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.0.4.aar\6fb90422fd289184833693c389d1596f\AndroidManifest.xml:30:27-75
 receiver#com.google.android.gms.measurement.AppMeasurementReceiver
 ADDED from [com.google.firebase:firebase-analytics:11.0.4] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.0.4.aar\634434325d9ee8a01b58b9d67ba539f4\AndroidManifest.xml:25:7-26:18
 MERGED from [com.google.firebase:firebase-analytics-impl:11.0.4] C:\Users\LikHern\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.0.4.aar\f26515e9239aacc06293f314207df7a9\AndroidManifest.xml:25:7-26:18

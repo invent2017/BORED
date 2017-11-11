@@ -41,9 +41,6 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     TextView storyCaption;
     Button reportStoryButton;
 
-    boolean upvoteClicked = false;
-    boolean downvoteClicked = false;
-
     int storyVotes;
     int storyViews;
 
@@ -244,9 +241,11 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         // this is the sharing code, it might not work -hy
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
+
+        String storyKey = storyDetails.getString("key");
         // i don't actually know what the subject or whatnot is so heh
         // need to add things to shareBody that links to the story or sth like that
-        String shareBody = "Check out this cool story on bored!";
+        String shareBody = "Check out this cool story on bored!\n" + "http://projectboredinc.wordpress.com/story/" + storyKey;
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Cool BORED! story");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));

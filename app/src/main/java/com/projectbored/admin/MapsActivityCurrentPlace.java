@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -81,7 +82,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     private DatabaseReference mDataRef;
 
-@Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -106,13 +107,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 .build();
         mGoogleApiClient.connect();
 
-        hashtagSearch = (SearchView)findViewById(R.id.hashtag_search);
+        hashtagSearch = (SearchView) findViewById(R.id.hashtag_search);
         hashtagSearch.setOnSearchClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String query = hashtagSearch.getQuery().toString();
-                if(!query.equals("")) {
-                    if(query.contains("#")) {
+                if (!query.equals("")) {
+                    if (query.contains("#")) {
                         query = query.substring(1);
                     }
                     searchHashtags(query);
@@ -122,8 +123,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         hashtagSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                if(!query.equals("")) {
-                    if(query.contains("#")) {
+                if (!query.equals("")) {
+                    if (query.contains("#")) {
                         query = query.substring(1);
                     }
                     searchHashtags(query);
@@ -137,8 +138,40 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             }
         });
 
-        mDataRef = FirebaseDatabase.getInstance().getReference();
+    mDataRef = FirebaseDatabase.getInstance().getReference();
+}
+
+    private void handleIntent(Intent intent) {
+        String appLinkAction = intent.getAction();
+        Uri appLinkData = intent.getData();
+        if(Intent.ACTION_VIEW.equals(appLinkAction) && appLinkData != null) {
+            final String storyKey = appLinkData.getLastPathSegment();
+
+            mMap.clear();
+            mDataRef.child("stories").child(storyKey).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String[] locationArray = dataSnapshot.child("Location").getValue(String.class).split(",");
+                    LatLng storyPosition = new LatLng(Double.parseDouble(locationArray[0]),
+                            Double.parseDouble(locationArray[1]));
+
+                    Marker marker = mMap.addMarker(new MarkerOptions()
+                            .position(storyPosition)
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+                    marker.setTag(storyKey);
+
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(storyPosition));
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
+
+
 
     /**
      * Saves the state of the map when the activity is paused.
@@ -230,6 +263,10 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             Intent logoutIntent = new Intent(this, Logout.class);
             startActivity(logoutIntent);
         }
+
+        /*if(item.getItemId() == R.id.option_clean_database) {
+            cleanDatabase();
+        }*/
         return true;
     }
 
@@ -290,6 +327,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
         //Load stories.
         getStories();
+
+        handleIntent(getIntent());
     }
 
     //Close app when back button is pressed, instead of returning to splash screen
@@ -470,20 +509,27 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     }
 
     public void getStories() {
-        mDataRef.child("locations").addValueEventListener(new ValueEventListener() {
+        mDataRef.child("stories").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.getChildren())
-                {
-                    String locationFromDatabase = ds.getKey();
-                    String locationString = locationFromDatabase.replace("d", ".");
-                    String [] locationArray = locationString.split(",");
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if(ds.exists() && ds.hasChild("Location")) {
+                        String storyKey = ds.getKey();
+                        String[] locationArray = ds.child("Location").getValue(String.class).split(",");
 
-                    Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
-                    storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
-                    storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
+                        Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
+                        storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
+                        storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
 
-                    displayStories(locationFromDatabase, storyLocation);
+                        boolean flagged = ds.child("Flagged").getValue(boolean.class);
+                        if(flagged){
+                            showFlaggedStories(storyKey, storyLocation);
+                        } else {
+                            showNormalStories(storyKey, storyLocation);
+                        }
+                    } else {
+                        Toast.makeText(MapsActivityCurrentPlace.this, "There are no stories.", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 
@@ -495,28 +541,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     }
 
-    public void displayStories(final String key, final Location storyLocation) {
-        mDataRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String storyKey = dataSnapshot.child("locations").child(key).getValue(String.class);
-                if(storyKey != null && dataSnapshot.child("stories").hasChild(storyKey)) {
-                    boolean flagged = dataSnapshot.child("stories").child(storyKey).child("Flagged").getValue(boolean.class);
-
-                    if (flagged) {
-                        showFlaggedStories(storyKey, storyLocation);
-                    } else {
-                        showNormalStories(storyKey, storyLocation);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
 
     /*public void showOwnStories(String username) {
         mDataRef.child("users").child(username).child("stories").addValueEventListener(new ValueEventListener() {
@@ -687,6 +711,28 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         String username = settings.getString("Username", "");
         return username;
+    }*/
+
+    /*private void cleanDatabase() {
+        mDataRef.child("stories").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if(ds.child("Location").hasChild("accuracy")) {
+                        Double latitude = ds.child("Location").child("latitude").getValue(Double.class);
+                        Double longitude = ds.child("Location").child("longitude").getValue(Double.class);
+
+                        String location = latitude.toString() + "," + longitude.toString();
+                        ds.child("Location").getRef().setValue(location);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }*/
 
 }

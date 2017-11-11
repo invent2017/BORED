@@ -57,10 +57,13 @@ public class StoryUpload extends AppCompatActivity {
 
     Bundle storySettings;
 
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+    static final int GALLERY_REQUEST = 2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.projectbored.admin.R.layout.activity_story_upload);
+        setContentView(R.layout.activity_story_upload);
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
@@ -80,19 +83,45 @@ public class StoryUpload extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(com.projectbored.admin.R.menu.add_story_menu, menu);
+        getMenuInflater().inflate(R.menu.add_story_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == com.projectbored.admin.R.id.option_upload_story) {
+        if (item.getItemId() == R.id.option_upload_story) {
             uploadStoryData();
         }
         return true;
     }
 
-    static final int REQUEST_IMAGE_CAPTURE = 1;
+    @Override
+    public void onBackPressed() {
+        if(storyKey != null) {
+            mDataRef.child("uploads").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.hasChild(storyKey)) {
+                        String storyUri = dataSnapshot.child(storyKey).getValue(String.class);
+                        FirebaseStorage.getInstance().getReferenceFromUrl(storyUri).delete();
+                        dataSnapshot.child(storyKey).getRef().removeValue();
+
+                        finish();
+                    } else {
+                        finish();
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    finish();
+                }
+            });
+        } else {
+            finish();
+        }
+    }
+
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
@@ -102,35 +131,57 @@ public class StoryUpload extends AppCompatActivity {
             }catch (IOException ex) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setMessage("Camera failed. Please try again later.")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent backToMap = new Intent(StoryUpload.this, MapsActivityCurrentPlace.class);
+                                backToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(backToMap);
+                            }
+                        });
                 builder.create().show();
             }
             if (photoFile != null) {
-                Uri photoUri = FileProvider.getUriForFile(this, "com.projectbored.app.fileprovider", photoFile);
+                Uri photoUri = FileProvider.getUriForFile(this, "com.projectbored.admin.fileprovider", photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
             }
         }
     }
 
-    static final int GALLERY_REQUEST = 2;
     private void galleryPickerIntent() {
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
         photoPickerIntent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(photoPickerIntent, "Select image"), GALLERY_REQUEST);
+
+        File photoFile = null;
+        try{
+            photoFile = createImageFile();
+        } catch (IOException ex) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Couldn't load image. Please try again later.")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent backToMap = new Intent(StoryUpload.this, MapsActivityCurrentPlace.class);
+                            backToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(backToMap);
+                        }
+                    });
+            builder.create().show();
+        }
+        if(photoFile != null) {
+            Uri photoUri = FileProvider.getUriForFile(this, "com.projectbored.admin.fileprovider", photoFile);
+            photoPickerIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
+            startActivityForResult(photoPickerIntent, GALLERY_REQUEST);
+        }
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-        //    Bundle extras= data.getExtras();
-        //    Bitmap imageBitmap = (Bitmap)extras.get("data");
-            ((ImageView) findViewById(com.projectbored.admin.R.id.story_image)).setImageBitmap(BitmapFactory.decodeFile(mCurrentPhotoPath));
+            //    Bundle extras= data.getExtras();
+            //    Bitmap imageBitmap = (Bitmap)extras.get("data");
+            ((ImageView) findViewById(R.id.story_image)).setImageBitmap(BitmapFactory.decodeFile(mCurrentPhotoPath));
             Uri file = Uri.fromFile(new File(mCurrentPhotoPath));
             uploadImage(file);
         } else if(requestCode == GALLERY_REQUEST && resultCode == RESULT_OK) {
@@ -138,26 +189,20 @@ public class StoryUpload extends AppCompatActivity {
                 Uri imageUri = data.getData();
                 InputStream imageStream = getContentResolver().openInputStream(imageUri);
                 Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-                ((ImageView) findViewById(com.projectbored.admin.R.id.story_image)).setImageBitmap(selectedImage);
+                ((ImageView) findViewById(R.id.story_image)).setImageBitmap(selectedImage);
                 uploadImage(imageUri);
             } catch (FileNotFoundException e) {
                 Toast.makeText(this, "Something went wrong. Story not uploaded.", Toast.LENGTH_SHORT).show();
-
-                Intent i = new Intent(this, MapsActivityCurrentPlace.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
+                finish();
             }
-
         }
     }
 
-    private File createImageFile () throws IOException {
+    private File createImageFile() throws IOException {
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "IMG_" + timestamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-               imageFileName,".jpg",storageDir
-        );
+        File image = File.createTempFile(imageFileName,".jpg", storageDir);
 
         mCurrentPhotoPath = image.getAbsolutePath();
         return image;
@@ -169,7 +214,11 @@ public class StoryUpload extends AppCompatActivity {
                 .setContentType("image/jpg")
                 .build();
 
-        UploadTask uploadTask = mStorageRef.child(file.getLastPathSegment()).putFile(file, metadata);
+        String imageFileName = file.getLastPathSegment();
+
+        //TBD: check if image with same name already exists
+
+        UploadTask uploadTask = mStorageRef.child(imageFileName).putFile(file, metadata);
 
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
@@ -193,6 +242,7 @@ public class StoryUpload extends AppCompatActivity {
             }
         });
     }
+
     private void uploadImageData(UploadTask.TaskSnapshot taskSnapshot) {
         final Uri PHOTO_URI = taskSnapshot.getMetadata().getDownloadUrl();
 
@@ -209,7 +259,7 @@ public class StoryUpload extends AppCompatActivity {
                     });
             builder.create().show();
         } else {
-            mDataRef.child("stories").child(storyKey).child("URI").setValue(PHOTO_URI.toString());
+            mDataRef.child("uploads").child(storyKey).setValue(PHOTO_URI.toString());
         }
     }
 
@@ -220,46 +270,50 @@ public class StoryUpload extends AppCompatActivity {
 
         if (storyLocation != null) {
             final String locationString = Double.toString(storyLocation.getLatitude())
-                                    + ","
-                                    + Double.toString(storyLocation.getLongitude());
-            final String keyLocationString = locationString.replace(".", "d");    //keys in Firebase cannot contain ".", so replace with "d"
+                    + ","
+                    + Double.toString(storyLocation.getLongitude());
 
-            mDataRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
+            mDataRef.child("uploads").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    String storyURI =  dataSnapshot.child("URI").getValue(String.class);
-                    String storyCaption = caption.getText().toString();
+                    if(dataSnapshot.exists()) {
+                        String storyURI = dataSnapshot.getValue(String.class);
+                        String storyCaption = caption.getText().toString();
 
-                    Map<String, Object> childUpdates = new HashMap<>();
+                        Map<String, Object> childUpdates = new HashMap<>();
 
-                    Story story = new Story(storyURI, storyLocation, storyCaption, new Date());
-                    Map<String, Object> storyDetails = story.toMap();
+                        Story story = new Story(storyURI, storyLocation, storyCaption, new Date());
+                        Map<String, Object> storyDetails = story.toMap();
 
-                    childUpdates.put("/stories/" + storyKey, storyDetails);
-                    childUpdates.put("/locations/" + keyLocationString, storyKey);
+                        childUpdates.put("/stories/" + storyKey, storyDetails);
 
-                    if(storySettings.getBoolean("Logged in")){
-                        String username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
-                        childUpdates.put("/users/" + username + "/stories/" + storyKey, locationString);
-                    }
-
-                    if(storyCaption.contains("#")) {
-                        String hashTagPattern = ("#(\\w+)");
-
-                        Pattern p = Pattern.compile(hashTagPattern);
-                        Matcher m = p.matcher(storyCaption);
-
-                        while(m.find()){
-                            String hashtag = m.group(1);
-                            childUpdates.put("/hashtags/" + hashtag + "/" + storyKey, locationString);
+                        if (storySettings.getBoolean("Logged in")) {
+                            String username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
+                            childUpdates.put("/users/" + username + "/stories/" + storyKey, locationString);
                         }
+
+                        if (storyCaption.contains("#")) {
+                            String hashTagPattern = ("#(\\w+)");
+
+                            Pattern p = Pattern.compile(hashTagPattern);
+                            Matcher m = p.matcher(storyCaption);
+
+                            while (m.find()) {
+                                String hashtag = m.group(1);
+                                childUpdates.put("/hashtags/" + hashtag + "/" + storyKey, locationString);
+                            }
+                        }
+
+                        mDataRef.updateChildren(childUpdates);
+
+                        mDataRef.child("uploads").child(storyKey).removeValue();
+
+                        Toast.makeText(StoryUpload.this, "Story added!", Toast.LENGTH_SHORT).show();
+
+                        finish();
+                    } else {
+                        Toast.makeText(StoryUpload.this, "An error occurred. Please try again.", Toast.LENGTH_SHORT).show();
                     }
-
-                    mDataRef.updateChildren(childUpdates);
-
-                    Toast.makeText(StoryUpload.this, "Story added!", Toast.LENGTH_SHORT).show();
-
-                    finish();
                 }
 
                 @Override
