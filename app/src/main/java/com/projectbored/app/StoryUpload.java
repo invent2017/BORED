@@ -33,15 +33,10 @@ import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import org.apache.commons.io.FileUtils;
-
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -132,7 +127,28 @@ public class StoryUpload extends AppCompatActivity {
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
         photoPickerIntent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(photoPickerIntent, GALLERY_REQUEST);
+
+        File photoFile = null;
+        try{
+            photoFile = createImageFile();
+        } catch (IOException ex) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Couldn't load image. Please try again later.")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent backToMap = new Intent(StoryUpload.this, MapsActivityCurrentPlace.class);
+                            backToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(backToMap);
+                        }
+                    });
+            builder.create().show();
+        }
+        if(photoFile != null) {
+            Uri photoUri = FileProvider.getUriForFile(this, "com.projectbored.app.fileprovider", photoFile);
+            photoPickerIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
+            startActivityForResult(photoPickerIntent, GALLERY_REQUEST);
+        }
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -172,7 +188,11 @@ public class StoryUpload extends AppCompatActivity {
                 .setContentType("image/jpg")
                 .build();
 
-        UploadTask uploadTask = mStorageRef.child(file.getLastPathSegment()).putFile(file, metadata);
+        String imageFileName = file.getLastPathSegment();
+
+        //TBD: check if image with same name already exists
+
+        UploadTask uploadTask = mStorageRef.child(imageFileName).putFile(file, metadata);
 
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
@@ -196,6 +216,7 @@ public class StoryUpload extends AppCompatActivity {
             }
         });
     }
+
     private void uploadImageData(UploadTask.TaskSnapshot taskSnapshot) {
         final Uri PHOTO_URI = taskSnapshot.getMetadata().getDownloadUrl();
 

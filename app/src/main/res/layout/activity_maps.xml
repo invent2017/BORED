@@ -4,4 +4,20 @@
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.projectbored.app.MapsActivityCurrentPlace" />
+    tools:context="com.projectbored.app.MapsActivityCurrentPlace">
+
+    <SearchView
+        android:id="@+id/hashtag_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.15"
+        android:ems="10"
+        android:gravity="top"
+        android:queryHint="@string/search_hashtags"
+        android:background="#ffffff"
+        android:imeOptions="actionSearch"/>
+</fragment>

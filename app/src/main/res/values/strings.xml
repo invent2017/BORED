@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">BORED!</string>
     <string name="title_activity_maps">BORED!</string>
+    <string name="search_hashtags">Search hashtags</string>
     <string name="retrievedstory">retrievedStory</string>
     <string name="textview">TextView</string>
     <string name="down_vote">down vote</string>
