@@ -83,14 +83,16 @@ public class StoryUpload extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(com.projectbored.app.R.menu.add_story_menu, menu);
+        getMenuInflater().inflate(R.menu.add_story_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == com.projectbored.app.R.id.option_upload_story) {
+        if (item.getItemId() == R.id.option_upload_story) {
             uploadStoryData();
+        } else if(item.getItemId() == R.id.option_change_image) {
+            changeImage();
         }
         return true;
     }
@@ -98,28 +100,10 @@ public class StoryUpload extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if(storyKey != null) {
-            mDataRef.child("uploads").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.hasChild(storyKey)) {
-                        String storyUri = dataSnapshot.child(storyKey).getValue(String.class);
-                        FirebaseStorage.getInstance().getReferenceFromUrl(storyUri).delete();
-                        dataSnapshot.child(storyKey).getRef().removeValue();
-
-                        finish();
-                    } else {
-                        finish();
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    finish();
-                }
-            });
-        } else {
-            finish();
+            deleteImage();
         }
+
+        finish();
     }
 
     private void dispatchTakePictureIntent() {
@@ -191,6 +175,7 @@ public class StoryUpload extends AppCompatActivity {
                 Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
                 ((ImageView) findViewById(R.id.story_image)).setImageBitmap(selectedImage);
                 uploadImage(imageUri);
+
             } catch (FileNotFoundException e) {
                 Toast.makeText(this, "Something went wrong. Story not uploaded.", Toast.LENGTH_SHORT).show();
                 finish();
@@ -209,6 +194,9 @@ public class StoryUpload extends AppCompatActivity {
     }
 
     private void uploadImage (Uri file) {
+
+        //String fileUri = file.toString();
+        //File imageFile = new File(fileUri);
 
         StorageMetadata metadata = new StorageMetadata.Builder()
                 .setContentType("image/jpg")
@@ -241,6 +229,7 @@ public class StoryUpload extends AppCompatActivity {
                 uploadImageData(taskSnapshot);
             }
         });
+
     }
 
     private void uploadImageData(UploadTask.TaskSnapshot taskSnapshot) {
@@ -337,5 +326,57 @@ public class StoryUpload extends AppCompatActivity {
             Toast.makeText(this, "An error occurred.", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    private void changeImage() {
+        if(storyKey != null){
+            deleteImage();
+        }
+
+        AlertDialog.Builder changeImagePrompt = new AlertDialog.Builder(this);
+        changeImagePrompt.setTitle(R.string.change_image)
+                .setItems(R.array.add_story_options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(which == 0) {
+                            Intent newStory = new Intent(StoryUpload.this, StoryUpload.class);
+                            storySettings.putBoolean("FromCamera", true);
+                            newStory.putExtras(storySettings);
+                            newStory.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+
+                            finish();
+
+                            startActivity(newStory);
+                        } else if(which == 1) {
+                            Intent newStory = new Intent(StoryUpload.this, StoryUpload.class);
+                            storySettings.putBoolean("FromCamera", false);
+                            newStory.putExtras(storySettings);
+                            newStory.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+
+                            finish();
+
+                            startActivity(newStory);
+                        }
+                    }
+                });
+        changeImagePrompt.create().show();
+    }
+
+    private void deleteImage() {
+        mDataRef.child("uploads").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChild(storyKey)) {
+                    String storyUri = dataSnapshot.child(storyKey).getValue(String.class);
+                    FirebaseStorage.getInstance().getReferenceFromUrl(storyUri).delete();
+                    dataSnapshot.child(storyKey).getRef().removeValue();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                finish();
+            }
+        });
     }
 }
