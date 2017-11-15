@@ -39,6 +39,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * An activity that displays a map showing the place at the device's current location.
  */
@@ -142,34 +145,30 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     }
 
-    private void handleIntent(Intent intent) {
-        String appLinkAction = intent.getAction();
-        Uri appLinkData = intent.getData();
-        if(Intent.ACTION_VIEW.equals(appLinkAction) && appLinkData != null) {
-            final String storyKey = appLinkData.getLastPathSegment();
+    private void handleIntent(Uri appLinkData) {
+        final String storyKey = appLinkData.getLastPathSegment();
 
-            mMap.clear();
-            mDataRef.child("stories").child(storyKey).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    String[] locationArray = dataSnapshot.child("Location").getValue(String.class).split(",");
-                    LatLng storyPosition = new LatLng(Double.parseDouble(locationArray[0]),
-                            Double.parseDouble(locationArray[1]));
+        mMap.clear();
+        mDataRef.child("stories").child(storyKey).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String[] locationArray = dataSnapshot.child("Location").getValue(String.class).split(",");
+                LatLng storyPosition = new LatLng(Double.parseDouble(locationArray[0]),
+                        Double.parseDouble(locationArray[1]));
 
-                    Marker marker = mMap.addMarker(new MarkerOptions()
-                            .position(storyPosition)
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
-                    marker.setTag(storyKey);
+                Marker marker = mMap.addMarker(new MarkerOptions()
+                        .position(storyPosition)
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+                marker.setTag(storyKey);
 
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(storyPosition));
-                }
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(storyPosition));
+            }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-                }
-            });
-        }
+            }
+        });
     }
 
     /**
@@ -230,13 +229,16 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem logInOption = menu.findItem(R.id.option_log_in);
         MenuItem logOutOption = menu.findItem(R.id.option_log_out);
+        MenuItem viewProfileOption = menu.findItem(R.id.option_manage_account);
 
         if(isLoggedIn()) {
             logInOption.setVisible(false);
             logOutOption.setVisible(true);
+            viewProfileOption.setVisible(true);
         } else {
             logInOption.setVisible(true);
             logOutOption.setVisible(false);
+            viewProfileOption.setVisible(false);
         }
         return true;
     }
@@ -257,6 +259,11 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         } else if(item.getItemId() == R.id.option_log_out) {
             Intent logoutIntent = new Intent(this, Logout.class);
             startActivity(logoutIntent);
+        } else if(item.getItemId() == R.id.option_reset_map) {
+            resetMap();
+        } else if(item.getItemId() == R.id.option_manage_account) {
+            Intent viewProfile = new Intent(this, UserProfile.class);
+            startActivity(viewProfile);
         }
         return true;
     }
@@ -318,10 +325,17 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
 
-        //Load stories.
-        getStories();
 
-        handleIntent(getIntent());
+        if(getIntent().getAction() != null) {
+            if (getIntent().getAction().equals(Intent.ACTION_VIEW) && getIntent().getData() != null) {
+                handleIntent(getIntent().getData());
+            } else {
+                getStories();
+            }
+        } else {
+            //Load stories.
+            getStories();
+        }
     }
 
     @Override
@@ -406,33 +420,40 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
      */
 
     private void searchHashtags(String hashtag) {
+        String legitInput= "\\w+";
+        Matcher matcher = Pattern.compile(legitInput).matcher(hashtag);
 
-        mDataRef.child("hashtags").child(hashtag).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()) {
-                    mMap.clear();
-                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        String storyKey = ds.getKey();
-                        String[] locationArray = ds.getValue(String.class).split(",");
-                        LatLng storyPosition = new LatLng(Double.parseDouble(locationArray[0]),
-                                Double.parseDouble(locationArray[1]));
+        if (matcher.matches()) {
 
-                        Marker marker = mMap.addMarker(new MarkerOptions()
-                                .position(storyPosition)
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
-                        marker.setTag(storyKey);
+            mDataRef.child("hashtags").child(hashtag).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        mMap.clear();
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            String storyKey = ds.getKey();
+                            String[] locationArray = ds.getValue(String.class).split(",");
+                            LatLng storyPosition = new LatLng(Double.parseDouble(locationArray[0]),
+                                    Double.parseDouble(locationArray[1]));
+
+                            Marker marker = mMap.addMarker(new MarkerOptions()
+                                    .position(storyPosition)
+                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+                            marker.setTag(storyKey);
+                        }
+                    } else {
+                        Toast.makeText(MapsActivityCurrentPlace.this, "There are no stories with that hashtag.", Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    Toast.makeText(MapsActivityCurrentPlace.this, "There are no stories with that hashtag.", Toast.LENGTH_SHORT).show();
                 }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+        } else {
+            Toast.makeText(this, "Hashtags may not contain spaces or non-word characters.", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
@@ -693,6 +714,11 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         intent.putExtras(storyDetails);
 
         startActivity(intent);
+    }
+
+    private void resetMap() {
+        mMap.clear();
+        getStories();
     }
 
     /*
