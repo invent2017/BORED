@@ -14,15 +14,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/option_manage_account"
+        android:title="@string/manage_account"
+        android:visible="false" />
+    <item
+        android:id="@+id/option_reset_map"
+        android:title="@string/reset_map"
+        app:showAsAction="always"/>
+    <item
         android:id="@+id/option_log_in"
         android:title="@string/action_sign_in"
-        android:visible="false"
-        app:showAsAction="always" />
+        android:visible="false" />
     <item
         android:id="@+id/option_log_out"
         android:title="@string/action_log_out"
-        android:visible="false"
-        app:showAsAction="always" />
+        android:visible="false" />
     <item
         android:id="@+id/option_add_story"
         android:title="@string/add_story"

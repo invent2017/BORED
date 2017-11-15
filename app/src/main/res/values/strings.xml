@@ -11,7 +11,9 @@
     <string name="Share">Share</string>
     <string name="nextonly">Next</string>
     <string name="change_image">Change Picture</string>
+    <string name="manage_account">My Profile</string>
     <string name="add_story">Add Story</string>
+    <string name="reset_map">Reset Map</string>
     <string name="map">Back to Map</string>
     <string name="delete">Delete story</string>
     <string name="caption">caption</string>

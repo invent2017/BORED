@@ -64,18 +64,23 @@ public class StoryUpload extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.projectbored.app.R.layout.activity_story_upload);
+
+        storySettings = getIntent().getExtras();
+
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
         caption = (EditText)findViewById(R.id.story_caption);
+        if(storySettings.getString("Caption") != null) {
+            caption.setText(storySettings.getString("Caption"));
+        }
 
-        storySettings = getIntent().getExtras();
 
         storyKey = mDataRef.child("stories").push().getKey();
 
         if(storySettings.getBoolean("FromCamera")){
             dispatchTakePictureIntent();
-        } else{
+        } else {
             galleryPickerIntent();
         }
 
@@ -204,7 +209,7 @@ public class StoryUpload extends AppCompatActivity {
 
         String imageFileName = file.getLastPathSegment();
 
-        //TBD: check if image with same name already exists
+        //TODO: check if image with same name already exists
 
         UploadTask uploadTask = mStorageRef.child(imageFileName).putFile(file, metadata);
 
@@ -341,6 +346,7 @@ public class StoryUpload extends AppCompatActivity {
                         if(which == 0) {
                             Intent newStory = new Intent(StoryUpload.this, StoryUpload.class);
                             storySettings.putBoolean("FromCamera", true);
+                            storySettings.putString("Caption", caption.getText().toString());
                             newStory.putExtras(storySettings);
                             newStory.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 
@@ -350,6 +356,7 @@ public class StoryUpload extends AppCompatActivity {
                         } else if(which == 1) {
                             Intent newStory = new Intent(StoryUpload.this, StoryUpload.class);
                             storySettings.putBoolean("FromCamera", false);
+                            storySettings.putString("Caption", caption.getText().toString());
                             newStory.putExtras(storySettings);
                             newStory.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 
