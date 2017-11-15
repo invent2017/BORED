@@ -15,9 +15,9 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:layout_weight="0.15"
+        android:background="#ffffff"
         android:ems="10"
         android:gravity="top"
-        android:queryHint="@string/search_hashtags"
-        android:background="#ffffff"
-        android:imeOptions="actionSearch"/>
+        android:imeOptions="actionSearch"
+        android:queryHint="@string/search_hashtags" />
 </fragment>

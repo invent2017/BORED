@@ -6,4 +6,202 @@
     android:layout_height="match_parent"
     tools:context="com.projectbored.app.UserProfile">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginStart="30dp"
+            android:gravity="center_vertical|center_horizontal|center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="username" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="email" />
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:id="@+id/overall_progress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:id="@+id/kilometers_covered_pair"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/kilometeres_covered"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="NUMBER" />
+
+                    <TextView
+                        android:id="@+id/kilometres_covered_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="kilometres covered" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/stories_read_pair"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/stories_read"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="NUMBER" />
+
+                    <TextView
+                        android:id="@+id/stories_read_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="stories viewed" />
+                </LinearLayout>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/stories_stats"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/stories_posted_pair"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/stories_posted"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="NUMBER" />
+
+                    <TextView
+                        android:id="@+id/stories_posted_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="stories posted" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/views_received_pair"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/views_received"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="NUMBER" />
+
+                    <TextView
+                        android:id="@+id/views_received_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="views received" />
+                </LinearLayout>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/upvotes_stats"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal|center">
+
+                <LinearLayout
+                    android:id="@+id/upvotes_given_pair"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/upvotes_given"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="NUMBER" />
+
+                    <TextView
+                        android:id="@+id/upvotes_given_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="upvotes given" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/upvotes_received_pair"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/upvotes_received"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="NUMBER" />
+
+                    <TextView
+                        android:id="@+id/upvotes_received_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="upvotes received" />
+                </LinearLayout>
+            </TableRow>
+
+        </TableLayout>
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

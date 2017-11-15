@@ -43,7 +43,7 @@ import com.google.firebase.database.ValueEventListener;
  * An activity that displays a map showing the place at the device's current location.
  */
 public class MapsActivityCurrentPlace extends AppCompatActivity
-        implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener,
+        implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnCameraChangeListener,
                 GoogleApiClient.ConnectionCallbacks,
                 GoogleApiClient.OnConnectionFailedListener {
 
@@ -59,7 +59,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     // A default location (Sydney, Australia) and default zoom to use when location permission is
     // not granted.
     private final LatLng mDefaultLocation = new LatLng(1.346313, 103.841332);
-    private static final int DEFAULT_ZOOM = 18;
+    private static final int DEFAULT_ZOOM = 19;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private boolean mLocationPermissionGranted;
 
@@ -322,6 +322,11 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         getStories();
 
         handleIntent(getIntent());
+    }
+
+    @Override
+    public void onCameraChange(CameraPosition change) {
+        getDeviceLocation();
     }
 
     //Close app when back button is pressed, instead of returning to splash screen
