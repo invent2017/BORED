@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,33 +20,37 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginStart="30dp"
-            android:gravity="center_vertical|center_horizontal|center"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="username" />
+                android:text="@string/username"
+                android:textColor="#F24970"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="email" />
+                android:text="@string/email"
+                android:textSize="15sp" />
         </LinearLayout>
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="344dp">
 
             <TableRow
                 android:id="@+id/overall_progress"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="10dp"
                 android:clipChildren="false"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/kilometers_covered_pair"
@@ -61,13 +66,14 @@
                         android:id="@+id/kilometeres_covered"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="NUMBER" />
+                        android:text="NUMBER"
+                        android:textSize="24sp" />
 
                     <TextView
                         android:id="@+id/kilometres_covered_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="kilometres covered" />
+                        android:text="@string/kilometres_covered" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -84,13 +90,14 @@
                         android:id="@+id/stories_read"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="NUMBER" />
+                        android:text="NUMBER"
+                        android:textSize="24sp" />
 
                     <TextView
                         android:id="@+id/stories_read_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="stories viewed" />
+                        android:text="@string/stories_viewed" />
                 </LinearLayout>
             </TableRow>
 
@@ -98,6 +105,7 @@
                 android:id="@+id/stories_stats"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="10dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -115,13 +123,14 @@
                         android:id="@+id/stories_posted"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="NUMBER" />
+                        android:text="NUMBER"
+                        android:textSize="24sp" />
 
                     <TextView
                         android:id="@+id/stories_posted_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="stories posted" />
+                        android:text="@string/stories_posted" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -138,13 +147,14 @@
                         android:id="@+id/views_received"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="NUMBER" />
+                        android:text="NUMBER"
+                        android:textSize="24sp" />
 
                     <TextView
                         android:id="@+id/views_received_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="views received" />
+                        android:text="@string/views_received" />
                 </LinearLayout>
             </TableRow>
 
@@ -152,6 +162,7 @@
                 android:id="@+id/upvotes_stats"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="10dp"
                 android:gravity="center_vertical|center_horizontal|center">
 
                 <LinearLayout
@@ -168,13 +179,14 @@
                         android:id="@+id/upvotes_given"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="NUMBER" />
+                        android:text="NUMBER"
+                        android:textSize="24sp" />
 
                     <TextView
                         android:id="@+id/upvotes_given_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="upvotes given" />
+                        android:text="@string/upvotes_given" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -191,17 +203,28 @@
                         android:id="@+id/upvotes_received"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="NUMBER" />
+                        android:text="NUMBER"
+                        android:textSize="24sp" />
 
                     <TextView
                         android:id="@+id/upvotes_received_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="upvotes received" />
+                        android:text="@string/upvotes_received" />
                 </LinearLayout>
+
             </TableRow>
 
         </TableLayout>
+
+        <TextView
+            android:id="@+id/user_end_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/user_end_message"
+            android:textColor="#F24970"
+            android:textSize="16sp" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

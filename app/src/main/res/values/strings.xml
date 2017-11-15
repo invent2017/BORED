@@ -38,4 +38,13 @@
     <string name="error_incorrect_password">This password is incorrect.</string>
     <string name="error_field_required">Please fill in all fields.</string>
     <string name="action_log_out">Log out</string>
+    <string name="username">username</string>
+    <string name="email">email</string>
+    <string name="kilometres_covered">kilometres covered</string>
+    <string name="stories_viewed">stories viewed</string>
+    <string name="stories_posted">stories posted</string>
+    <string name="views_received">views received</string>
+    <string name="upvotes_given">upvotes given</string>
+    <string name="upvotes_received">upvotes received</string>
+    <string name="user_end_message">keep on exploring the world! :)</string>
 </resources>
