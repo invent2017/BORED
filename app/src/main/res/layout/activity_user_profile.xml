@@ -18,30 +18,31 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginStart="30dp"
-            android:gravity="center"
+            android:layout_height="80dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
                 android:text="@string/username"
                 android:textColor="#F24970"
-                android:textSize="20sp" />
+                android:textSize="35sp" />
 
             <TextView
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="@string/email"
-                android:textSize="15sp" />
+                android:textSize="20sp" />
         </LinearLayout>
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="344dp">
+            android:layout_height="300dp">
 
             <TableRow
                 android:id="@+id/overall_progress"
@@ -308,7 +309,7 @@
             android:gravity="center"
             android:text="@string/user_end_message"
             android:textColor="#F24970"
-            android:textSize="16sp" />
+            android:textSize="21sp" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
