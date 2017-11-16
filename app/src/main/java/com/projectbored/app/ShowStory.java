@@ -141,6 +141,18 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         if(loggedIn){
             String username = getUsername();
             mDataRef.child("stories").child(storyKey).child("Viewers").child(username).setValue(username);
+            mDataRef.child("users").child(username).child("Views").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    int views = dataSnapshot.getValue(Integer.class);
+                    dataSnapshot.getRef().setValue(++views);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
         }
     }
 
@@ -181,6 +193,19 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
                 }
             });
+
+            mDataRef.child("users").child(getUsername()).child("Upvotes").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    int userVotes = dataSnapshot.getValue(Integer.class);
+                    dataSnapshot.getRef().setValue(++userVotes);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
         } else {
             Toast.makeText(this, "You must log in to upvote stories.", Toast.LENGTH_SHORT).show();
         }
@@ -216,6 +241,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
                 }
             });
+
         } else {
             Toast.makeText(this, "You must log in to downvote stories.", Toast.LENGTH_SHORT).show();
         }
