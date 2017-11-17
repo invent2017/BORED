@@ -46,7 +46,7 @@ import java.util.regex.Pattern;
  * An activity that displays a map showing the place at the device's current location.
  */
 public class MapsActivityCurrentPlace extends AppCompatActivity
-        implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnCameraChangeListener,
+        implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener,
                 GoogleApiClient.ConnectionCallbacks,
                 GoogleApiClient.OnConnectionFailedListener {
 
@@ -338,11 +338,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         }
     }
 
-    @Override
-    public void onCameraChange(CameraPosition change) {
-        getDeviceLocation();
-    }
-
     //Close app when back button is pressed, instead of returning to splash screen
     @Override
     public void onBackPressed() {
@@ -536,21 +531,79 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     }
 
     public void getStories() {
-        mDataRef.child("stories").addValueEventListener(new ValueEventListener() {
+        mDataRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    if(ds.exists() && ds.hasChild("Location")) {
-                        String storyKey = ds.getKey();
-                        String[] locationArray = ds.child("Location").getValue(String.class).split(",");
+                for (DataSnapshot ds : dataSnapshot.child("locations").getChildren()) {
+                    if(ds.exists()) {
+                        if(ds.getChildrenCount() == 1) {
+                            for (DataSnapshot dataSnapshot1 : ds.getChildren()) {
+                                if(dataSnapshot1.exists()) {
+                                    String storyKey = dataSnapshot1.getKey();
+                                    String[] locationArray = ds.getKey().replace('d', '.').split(",");
+                                    boolean featured = dataSnapshot1.getValue(boolean.class);
 
-                        Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
-                        storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
-                        storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
-                        if(mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 100){
-                            showNearbyStories(storyKey, storyLocation);
+                                    Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
+                                    storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
+                                    storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
+
+                                    boolean isRead = false;
+                                    if (isLoggedIn()) {
+                                        String username = getSharedPreferences(PREFS_NAME, 0)
+                                                .getString("Username", "");
+                                        if (dataSnapshot.child("stories").child(storyKey)
+                                                .child("Viewers").child(username).exists()) {
+                                            isRead = true;
+                                        }
+                                    }
+
+                                    Marker storyMarker;
+                                    if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 100) {
+
+                                        if(featured) {
+                                            storyMarker = mMap.addMarker(new MarkerOptions()
+                                                    .position(new LatLng(storyLocation.getLatitude(),
+                                                            storyLocation.getLongitude()))
+                                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                                            storyMarker.setTag(storyKey);
+                                        } else if(isRead) {
+                                            storyMarker = mMap.addMarker(new MarkerOptions()
+                                                    .position(new LatLng(storyLocation.getLatitude(),
+                                                            storyLocation.getLongitude()))
+                                                    .icon(BitmapDescriptorFactory.defaultMarker()));
+                                            storyMarker.setTag(storyKey);
+                                        } else {
+                                            storyMarker = mMap.addMarker(new MarkerOptions()
+                                                    .position(new LatLng(storyLocation.getLatitude(),
+                                                            storyLocation.getLongitude()))
+                                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
+                                            storyMarker.setTag(storyKey);
+                                        }
+                                    } else {
+
+                                        if(featured) {
+                                            storyMarker = mMap.addMarker(new MarkerOptions()
+                                                    .position(new LatLng(storyLocation.getLatitude(),
+                                                            storyLocation.getLongitude()))
+                                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+                                            storyMarker.setTag(storyKey);
+                                        } else if(isRead) {
+                                            storyMarker = mMap.addMarker(new MarkerOptions()
+                                                    .position(new LatLng(storyLocation.getLatitude(),
+                                                            storyLocation.getLongitude())));
+                                            storyMarker.setTag(storyKey);
+                                        } else {
+                                            storyMarker = mMap.addMarker(new MarkerOptions()
+                                                    .position(new LatLng(storyLocation.getLatitude(),
+                                                            storyLocation.getLongitude()))
+                                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
+                                            storyMarker.setTag(storyKey);
+                                        }
+                                    }
+                                }
+                            }
                         } else {
-                            showFarStories(storyKey, storyLocation);
+
                         }
                     } else {
                         Toast.makeText(MapsActivityCurrentPlace.this, "There are no stories.", Toast.LENGTH_SHORT).show();
@@ -592,7 +645,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         });
     }*/
 
-    public void showNearbyStories(final String storyKey, final Location storyLocation) {
+    /*public void showNearbyStories(final String storyKey, final Location storyLocation) {
         if(storyKey != null) {
             mDataRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -640,9 +693,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 }
             });
         }
-    }
+    }*/
 
-    public void showFarStories(final String storyKey, final Location storyLocation) {
+    /*public void showFarStories(final String storyKey, final Location storyLocation) {
         if (storyKey != null) {
             mDataRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -687,7 +740,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 }
             });
         }
-    }
+    }*/
 
 
     @Override
@@ -699,6 +752,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
         if(mLastKnownLocation.distanceTo(markerLocation) <= 100) {
             showStoryDetails(marker);
+        } else {
+            Toast.makeText(this, "You must be within 100 metres of the story to view it.", Toast.LENGTH_SHORT).show();
         }
         return true;
     }
@@ -787,6 +842,18 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
             // TODO: Why do you need the line below?
             // mLastKnownLocation = null;
+            AlertDialog.Builder locationPermissionPrompt = new AlertDialog.Builder(this)
+                    .setTitle(R.string.app_name)
+                    .setMessage("BORED! requires location permission to run.")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(MapsActivityCurrentPlace.this,
+                                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+                        }
+                    });
+            locationPermissionPrompt.create().show();
         }
     }
 

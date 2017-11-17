@@ -281,6 +281,10 @@ public class StoryUpload extends AppCompatActivity {
 
                         childUpdates.put("/stories/" + storyKey, storyDetails);
 
+                        String locationKey = Double.toString(storyLocation.getLatitude())
+                                + Double.toString(storyLocation.getLongitude()).replace('.', 'd');
+                        childUpdates.put("/locations/" + locationKey + "/" + storyKey, false);
+
                         if (storySettings.getBoolean("Logged in")) {
                             String username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
                             childUpdates.put("/users/" + username + "/stories/" + storyKey, locationString);
