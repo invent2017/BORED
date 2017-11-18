@@ -3,6 +3,7 @@
     package="com.projectbored.app">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <uses-feature android:name="android.hardware.camera2" />
 
@@ -27,14 +28,20 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDDI26HcgBs3lpWJz4lZn5Lo4TXy1QAlrc" />
+        <meta-data
+            android:name="android.app.default_searchable"
+            android:value=".MapsActivityCurrentPlace" />
 
-        <activity android:name=".Startup">
+        <activity
+            android:name=".Startup"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MapsActivityCurrentPlace"
             android:label="@string/title_activity_maps">
@@ -43,6 +50,7 @@
                 android:resource="@xml/searchable" />
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.SEARCH" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
@@ -53,6 +61,7 @@
                     android:pathPrefix="/story/" />
             </intent-filter>
         </activity>
+
         <activity android:name=".StoryUpload" />
 
         <provider
@@ -66,10 +75,21 @@
         </provider>
 
         <activity android:name=".ShowStory" />
-        <activity android:name=".Login" />
-        <activity android:name=".CreateAccount" />
-        <activity android:name=".Logout" />
-        <activity android:name=".StoryDeleter" />
+
+        <activity
+            android:name=".Login" />
+
+        <activity
+            android:name=".CreateAccount" />
+
+        <activity
+            android:name=".Logout"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <activity
+            android:name=".StoryDeleter"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
         <activity android:name=".UserProfile"></activity>
     </application>
 

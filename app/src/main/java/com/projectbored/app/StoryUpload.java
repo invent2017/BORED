@@ -11,9 +11,9 @@ import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -64,6 +64,8 @@ public class StoryUpload extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.projectbored.app.R.layout.activity_story_upload);
+
+        setTitle(R.string.add_story);
 
         storySettings = getIntent().getExtras();
 
@@ -281,8 +283,8 @@ public class StoryUpload extends AppCompatActivity {
 
                         childUpdates.put("/stories/" + storyKey, storyDetails);
 
-                        String locationKey = Double.toString(storyLocation.getLatitude())
-                                + Double.toString(storyLocation.getLongitude()).replace('.', 'd');
+                        String locationKey = (Double.toString(storyLocation.getLatitude()) + ","
+                                + Double.toString(storyLocation.getLongitude())).replace('.', 'd');
                         childUpdates.put("/locations/" + locationKey + "/" + storyKey, false);
 
                         if (storySettings.getBoolean("Logged in")) {

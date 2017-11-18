@@ -1,8 +1,7 @@
 package com.projectbored.app;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,8 +10,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.w3c.dom.Text;
 
 public class UserProfile extends AppCompatActivity {
     private static final String PREFS_NAME = "UserDetails";
@@ -27,6 +24,8 @@ public class UserProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+
+        setTitle("My Profile");
 
         usernameField = (TextView)findViewById(R.id.username);
         emailField = (TextView)findViewById(R.id.email);

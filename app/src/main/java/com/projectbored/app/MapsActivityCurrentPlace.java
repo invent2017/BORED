@@ -1,5 +1,7 @@
 package com.projectbored.app;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -9,15 +11,17 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.SearchView;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -74,7 +78,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
 
-    private SearchView hashtagSearch;
+    private FloatingActionButton addStoryButton;
 
     // Used for selecting the current place.
     //private final int mMaxEntries = 5;
@@ -112,63 +116,20 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
-        hashtagSearch = (SearchView) findViewById(R.id.hashtag_search);
-        hashtagSearch.setOnSearchClickListener(new View.OnClickListener() {
+        addStoryButton = (FloatingActionButton)findViewById(R.id.add_story_button);
+        addStoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                String query = hashtagSearch.getQuery().toString();
-                if (!query.equals("")) {
-                    if (query.contains("#")) {
-                        query = query.substring(1);
-                    }
-                    searchHashtags(query);
+            public void onClick(View view) {
+                if(mLastKnownLocation != null) {
+                    addStory();
+                } else {
+                    Toast.makeText(MapsActivityCurrentPlace.this,
+                            "Unable to get your location. Please check your location settings and try again.",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        hashtagSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                if (!query.equals("")) {
-                    if (query.contains("#")) {
-                        query = query.substring(1);
-                    }
-                    searchHashtags(query);
-                }
-                return true;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
-
-    }
-
-    private void handleIntent(Uri appLinkData) {
-        final String storyKey = appLinkData.getLastPathSegment();
-
-        mMap.clear();
-        mDataRef.child("stories").child(storyKey).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String[] locationArray = dataSnapshot.child("Location").getValue(String.class).split(",");
-                LatLng storyPosition = new LatLng(Double.parseDouble(locationArray[0]),
-                        Double.parseDouble(locationArray[1]));
-
-                Marker marker = mMap.addMarker(new MarkerOptions()
-                        .position(storyPosition)
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
-                marker.setTag(storyKey);
-
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(storyPosition));
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
     }
 
     /**
@@ -222,6 +183,58 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(com.projectbored.app.R.menu.current_place_menu, menu);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+       SearchManager searchManager =
+               (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+       final SearchView searchView =
+               (SearchView) menu.findItem(R.id.search_hashtags).getActionView();
+       searchView.setSearchableInfo(
+               searchManager.getSearchableInfo(getComponentName()));
+       searchView.setIconifiedByDefault(false);
+       searchView.setQueryHint("Hashtags...");
+       searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+           @Override
+           public boolean onQueryTextSubmit(String query) {
+               if (!query.equals("")) {
+                   if (query.contains("#")) {
+                       query = query.substring(1);
+                   }
+                   searchHashtags(query);
+                   //Hide keyboard
+                   View view = MapsActivityCurrentPlace.this.getCurrentFocus();
+                   if (view != null) {
+                       InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                       imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                   }
+               }
+               return true;
+           }
+
+           @Override
+           public boolean onQueryTextChange(String newText) {
+               return false;
+           }
+       });
+       searchView.setOnSearchClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               String query = searchView.getQuery().toString();
+               if (!query.equals("")) {
+                   if (query.contains("#")) {
+                       query = query.substring(1);
+                   }
+                   searchHashtags(query);
+                   //Hide keyboard
+                   View view = MapsActivityCurrentPlace.this.getCurrentFocus();
+                   if (view != null) {
+                       InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                       imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                   }
+               }
+           }
+       });
+
         return true;
         }
 
@@ -251,9 +264,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.option_add_story) {
-            addStory();
-        } else if (item.getItemId() == R.id.option_log_in) {
+        if (item.getItemId() == R.id.option_log_in) {
             Intent loginIntent = new Intent(this, Login.class);
             startActivity(loginIntent);
         } else if(item.getItemId() == R.id.option_log_out) {
@@ -328,7 +339,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
         if(getIntent().getAction() != null) {
             if (getIntent().getAction().equals(Intent.ACTION_VIEW) && getIntent().getData() != null) {
-                handleIntent(getIntent().getData());
+                showSelectedStory(getIntent().getData());
             } else {
                 getStories();
             }
@@ -413,6 +424,32 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
      * Prompts the user to select the current place from a list of likely places, and shows the
      * current place on the map - provided the user has granted location permission.
      */
+
+    private void showSelectedStory(Uri appLinkData) {
+        final String storyKey = appLinkData.getLastPathSegment();
+
+        mMap.clear();
+        mDataRef.child("stories").child(storyKey).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String[] locationArray = dataSnapshot.child("Location").getValue(String.class).split(",");
+                LatLng storyPosition = new LatLng(Double.parseDouble(locationArray[0]),
+                        Double.parseDouble(locationArray[1]));
+
+                Marker marker = mMap.addMarker(new MarkerOptions()
+                        .position(storyPosition)
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+                marker.setTag(storyKey);
+
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(storyPosition));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 
     private void searchHashtags(String hashtag) {
         String legitInput= "\\w+";

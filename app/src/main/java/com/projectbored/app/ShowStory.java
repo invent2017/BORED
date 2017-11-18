@@ -3,7 +3,6 @@ package com.projectbored.app;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.provider.ContactsContract;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -60,6 +59,8 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_story);
+
+        setTitle("Story");
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
