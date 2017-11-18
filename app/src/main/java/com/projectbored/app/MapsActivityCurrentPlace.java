@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
@@ -14,6 +15,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -78,7 +80,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
 
-    private FloatingActionButton addStoryButton;
+    private FloatingActionButton filterStoryButton,addStoryButton;
 
     // Used for selecting the current place.
     //private final int mMaxEntries = 5;
@@ -102,6 +104,12 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         // Retrieve the content view that renders the map.
         setContentView(com.projectbored.app.R.layout.activity_maps);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setLogo(R.mipmap.ic_launcher);
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+
+
         // Build the Play services client for use by the Fused Location Provider and the Places API.
         // Use the addApi() method to request the Google Places API and the Fused Location Provider.
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -115,6 +123,14 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         mGoogleApiClient.connect();
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
+
+        filterStoryButton = (FloatingActionButton)findViewById(R.id.filter_stories_button);
+        filterStoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         addStoryButton = (FloatingActionButton)findViewById(R.id.add_story_button);
         addStoryButton.setOnClickListener(new View.OnClickListener() {
