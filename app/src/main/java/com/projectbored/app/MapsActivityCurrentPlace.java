@@ -588,54 +588,16 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                     if (isLoggedIn()) {
                                         String username = getSharedPreferences(PREFS_NAME, 0)
                                                 .getString("Username", "");
-                                        if (dataSnapshot.child("stories").child(storyKey)
-                                                .child("Viewers").child(username).exists()) {
+                                        if (dataSnapshot.child("users").child(username)
+                                                .child("ReadStories").child(storyKey).exists()) {
                                             isRead = true;
                                         }
                                     }
 
-                                    Marker storyMarker;
                                     if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 100) {
-
-                                        if(featured) {
-                                            storyMarker = mMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(storyLocation.getLatitude(),
-                                                            storyLocation.getLongitude()))
-                                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-                                            storyMarker.setTag(storyKey);
-                                        } else if(isRead) {
-                                            storyMarker = mMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(storyLocation.getLatitude(),
-                                                            storyLocation.getLongitude()))
-                                                    .icon(BitmapDescriptorFactory.defaultMarker()));
-                                            storyMarker.setTag(storyKey);
-                                        } else {
-                                            storyMarker = mMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(storyLocation.getLatitude(),
-                                                            storyLocation.getLongitude()))
-                                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
-                                            storyMarker.setTag(storyKey);
-                                        }
+                                        showNearbyStories(storyKey, storyLocation, featured, isRead);
                                     } else {
-
-                                        if(featured) {
-                                            storyMarker = mMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(storyLocation.getLatitude(),
-                                                            storyLocation.getLongitude()))
-                                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-                                            storyMarker.setTag(storyKey);
-                                        } else if(isRead) {
-                                            storyMarker = mMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(storyLocation.getLatitude(),
-                                                            storyLocation.getLongitude())));
-                                            storyMarker.setTag(storyKey);
-                                        } else {
-                                            storyMarker = mMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(storyLocation.getLatitude(),
-                                                            storyLocation.getLongitude()))
-                                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
-                                            storyMarker.setTag(storyKey);
-                                        }
+                                        showFarStories(storyKey, storyLocation, featured, isRead);
                                     }
                                 }
                             }
@@ -682,102 +644,50 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         });
     }*/
 
-    /*public void showNearbyStories(final String storyKey, final Location storyLocation) {
-        if(storyKey != null) {
-            mDataRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists() && storyKey != null) {
-                        Marker storyMarker;
-                        boolean featured = false;
-                        if (dataSnapshot.child("stories").child(storyKey).child("Featured").exists()) {
-                            featured = dataSnapshot.child("Featured").getValue(boolean.class);
-                        }
-                        boolean isRead = false;
-                        if (isLoggedIn()) {
-                            String username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
-                            if (dataSnapshot.child("Viewers").child(username).exists()) {
-                                isRead = true;
-                            }
-                        }
-                        if (featured) {
-                            //Add a green marker. (Near, featured)
-                            storyMarker = mMap.addMarker(new MarkerOptions()
-                                    .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
-                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-                            storyMarker.setTag(storyKey);
-                        } else {
-                            if (isRead) {
-                                //Add a red marker. (Read, not featured)
-                                storyMarker = mMap.addMarker(new MarkerOptions()
-                                        .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
-                                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-                                storyMarker.setTag(storyKey);
-                            } else {
-                                //Add a yellow marker. (Near, not featured)
-                                storyMarker = mMap.addMarker(new MarkerOptions()
-                                        .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
-                                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
-                                storyMarker.setTag(storyKey);
-                            }
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
+    public void showNearbyStories(String storyKey, Location storyLocation, boolean featured, boolean isRead) {
+        Marker storyMarker;
+        if (featured) {
+            storyMarker = mMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(storyLocation.getLatitude(),
+                                storyLocation.getLongitude()))
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+            storyMarker.setTag(storyKey);
+        } else if (isRead) {
+            storyMarker = mMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(storyLocation.getLatitude(),
+                                storyLocation.getLongitude()))
+                        .icon(BitmapDescriptorFactory.defaultMarker()));
+            storyMarker.setTag(storyKey);
+        } else {
+            storyMarker = mMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(storyLocation.getLatitude(),
+                                storyLocation.getLongitude()))
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
+            storyMarker.setTag(storyKey);
         }
-    }*/
+    }
 
-    /*public void showFarStories(final String storyKey, final Location storyLocation) {
-        if (storyKey != null) {
-            mDataRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        Marker storyMarker;
-                        boolean featured = dataSnapshot.child("Featured").getValue(boolean.class);
-                        boolean isRead = false;
-                        if (isLoggedIn()) {
-                            String username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
-                            if (dataSnapshot.child("Viewers").child(username).exists()) {
-                                isRead = true;
-                            }
-                        }
-                        if (featured) {
-                            //Add a blue marker. (Far, featured)
-                            storyMarker = mMap.addMarker(new MarkerOptions()
-                                    .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
-                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-                            storyMarker.setTag(storyKey);
-                        } else {
-                            if (isRead) {
-                                //Add a red marker. (Read, not featured)
-                                storyMarker = mMap.addMarker(new MarkerOptions()
-                                        .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
-                                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-                                storyMarker.setTag(storyKey);
-                            } else {
-                                //Add a purple marker. (Far, not featured)
-                                storyMarker = mMap.addMarker(new MarkerOptions()
-                                        .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
-                                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
-                                storyMarker.setTag(storyKey);
-                            }
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
+    public void showFarStories(final String storyKey, final Location storyLocation, boolean featured, boolean isRead) {
+        Marker storyMarker;
+        if(featured) {
+            storyMarker = mMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(storyLocation.getLatitude(),
+                            storyLocation.getLongitude()))
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+            storyMarker.setTag(storyKey);
+        } else if(isRead) {
+            storyMarker = mMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(storyLocation.getLatitude(),
+                            storyLocation.getLongitude())));
+            storyMarker.setTag(storyKey);
+        } else {
+            storyMarker = mMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(storyLocation.getLatitude(),
+                            storyLocation.getLongitude()))
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
+            storyMarker.setTag(storyKey);
         }
-    }*/
+    }
 
 
     @Override

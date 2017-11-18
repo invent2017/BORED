@@ -29,69 +29,7 @@ public class Startup extends AppCompatActivity {
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
-        refreshDatabase();
-
         checkUpdates();
-    }
-
-    private void refreshDatabase() {
-
-        mDataRef.child("stories").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-        mDataRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    final String user = ds.getKey();
-
-                    for(DataSnapshot dataSnapshot1 : ds.child("stories").getChildren()) {
-                        final String storyKey = dataSnapshot1.getKey();
-
-                        mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                int views = dataSnapshot.child("users").child(user).child("Viewed").getValue(Integer.class);
-                                if(dataSnapshot.child("stories").child(storyKey).child("Views").getValue() != null) {
-                                    views += dataSnapshot.child("stories").child(storyKey).child("Views").getValue(Integer.class);
-                                }
-
-                                mDataRef.child("users").child(user).child("Viewed").setValue(views);
-
-                                int upvotes = 0;
-                                if(dataSnapshot.child("users").child(user).child("Upvoted").getValue(Integer.class) != null) {
-                                    upvotes = dataSnapshot.child("users").child(user).child("Upvoted").getValue(Integer.class);
-                                }
-                                if(dataSnapshot.child("stories").child(storyKey).child("Votes").getValue() != null) {
-                                    upvotes += dataSnapshot.child("stories").child(storyKey).child("Votes").getValue(Integer.class);
-                                }
-
-                                mDataRef.child("users").child(user).child("Upvoted").setValue(upvotes);
-                            }
-
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-
-                            }
-                        });
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
     }
 
     private void checkUpdates() {

@@ -51,21 +51,43 @@ public class UserProfile extends AppCompatActivity {
     private void loadFields() {
         usernameField.setText(username);
 
-        mDataRef.child("users").child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+        mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                emailField.setText(dataSnapshot.child("Email").getValue(String.class));
-                distanceNumber.setText(dataSnapshot.child("Distance").getValue(Integer.class).toString());
-                viewsNumber.setText(dataSnapshot.child("Views").getValue(Integer.class).toString());
+                emailField.setText(dataSnapshot.child("users").child(username).child("Email").getValue(String.class));
+                distanceNumber.setText(dataSnapshot.child("users").child(username)
+                                        .child("Distance").getValue(Integer.class).toString());
+
+                int views = 0;
+                for(DataSnapshot ds : dataSnapshot.child("users").child(username).child("ReadStories").getChildren()) {
+                    views++;
+                }
+                viewsNumber.setText(Integer.toString(views));
 
                 int stories = 0;
-                for(DataSnapshot ds : dataSnapshot.child("stories").getChildren()){
+                for(DataSnapshot ds : dataSnapshot.child("users").child(username).child("stories").getChildren()){
                     stories++;
                 }
                 storyNumber.setText(Integer.toString(stories));
-                viewedNumber.setText(dataSnapshot.child("Viewed").getValue(Integer.class).toString());
-                upvotesNumber.setText(dataSnapshot.child("Upvotes").getValue(Integer.class).toString());
-                upvotedNumber.setText(dataSnapshot.child("Upvoted").getValue(Integer.class).toString());
+
+                int viewed = 0;
+                int upvoted = 0;
+                for(DataSnapshot ds : dataSnapshot.child("users").child(username).child("stories").getChildren()) {
+                    String storyKey = ds.getKey();
+
+                    viewed = viewed + dataSnapshot.child("stories").child(storyKey).child("Views").getValue(Integer.class);
+                    upvoted = upvoted + dataSnapshot.child("stories").child(storyKey).child("Votes").getValue(Integer.class);
+                }
+                viewedNumber.setText(Integer.toString(viewed));
+                upvotedNumber.setText(Integer.toString(upvoted));
+
+                int upvotes = 0;
+                for(DataSnapshot ds : dataSnapshot.child("users").child(username).child("UpvotedStories").getChildren()) {
+                    upvotes++;
+                }
+                upvotesNumber.setText(Integer.toString(upvotes));
+
+
 
             }
 
@@ -75,6 +97,4 @@ public class UserProfile extends AppCompatActivity {
             }
         });
     }
-
-
 }

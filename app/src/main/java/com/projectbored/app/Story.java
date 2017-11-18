@@ -22,6 +22,8 @@ public class Story {
     private boolean featured;
     private boolean flagged;
 
+    private String user;
+
 
     public Story() {
 

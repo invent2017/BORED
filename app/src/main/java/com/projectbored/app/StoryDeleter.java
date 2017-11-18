@@ -88,7 +88,30 @@ public class StoryDeleter extends AppCompatActivity {
             }
         });
 
-        mStoryRef.child("users").child(username).child("stories").child(storyKey).removeValue();
+        mStoryRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                dataSnapshot.child(username).child("stories").child(storyKey).getRef().removeValue();
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if(ds.child("ReadStories").hasChild(storyKey)) {
+                        ds.child("ReadStories").child(storyKey).getRef().removeValue();
+                    }
+
+                    if(ds.child("DownvotedStories").hasChild(storyKey)) {
+                        ds.child("DownvotedStories").child(storyKey).getRef().removeValue();
+                    }
+
+                    if(ds.child("UpvotedStories").hasChild(storyKey)) {
+                        ds.child("UpvotedStories").child(storyKey).getRef().removeValue();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         mStoryRef.child("stories").child(storyKey).removeValue();
         mStoryRef.child("locations").child(keyLocationString).removeValue();
 
