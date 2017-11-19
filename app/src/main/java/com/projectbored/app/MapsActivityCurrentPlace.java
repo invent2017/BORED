@@ -82,7 +82,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
 
-    private FloatingActionButton filterStoryButton,addStoryButton,addEventButton;
+    private FloatingActionButton exploreButton,addStoryButton,addEventButton;
 
     // Used for selecting the current place.
     //private final int mMaxEntries = 5;
@@ -139,6 +139,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 }
             }
         });
+
+        exploreButton = (FloatingActionButton)findViewById(R.id.explore);
+        addEventButton = (FloatingActionButton)findViewById(R.id.add_event);
     }
 
     /**
