@@ -113,7 +113,7 @@ public class StoryDeleter extends AppCompatActivity {
             }
         });
         mStoryRef.child("stories").child(storyKey).removeValue();
-        mStoryRef.child("locations").child(keyLocationString).removeValue();
+        mStoryRef.child("locations").child(keyLocationString).child(storyKey).removeValue();
 
         Toast.makeText(this, "Story deleted.", Toast.LENGTH_SHORT).show();
 
