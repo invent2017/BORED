@@ -44,7 +44,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -84,7 +83,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     private static final String KEY_LOCATION = "location";
 
     private FloatingActionButton filterStoryButton,addStoryButton,addEventButton;
-    private ArrayList<Integer> selectedFilters;
 
     // Used for selecting the current place.
     //private final int mMaxEntries = 5;
@@ -275,9 +273,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.option_filter_stories){
-            filterStories();
-        } else if (item.getItemId() == R.id.option_log_in) {
+        if (item.getItemId() == R.id.option_log_in) {
             Intent loginIntent = new Intent(this, Login.class);
             startActivity(loginIntent);
         } else if(item.getItemId() == R.id.option_log_out) {
@@ -310,8 +306,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
                 if(mLastKnownLocation.distanceTo(markerLocation) <= 100) {
                     showStoryDetails(marker);
-                } else {
-                    Toast.makeText(MapsActivityCurrentPlace.this, "You must be within 100 metres of the story to view it.", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             }
@@ -503,207 +497,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         }
     }
 
-    private void filterStories() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Filter stories").setItems(R.array.filter_story_options, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int which) {
-                mMap.clear();
-
-                if(which == 0) {
-                    filterFeaturedStories();
-                } else if(which == 1) {
-                    if(isLoggedIn()) {
-                        filterUnreadStories(getSharedPreferences(PREFS_NAME, 0).getString("Username", ""));
-                    } else {
-                        Toast.makeText(MapsActivityCurrentPlace.this,
-                                "You must log in to use this filter.", Toast.LENGTH_SHORT).show();
-                    }
-                } else if(which == 2) {
-                    filterNearbyStories();
-                } else if(which == 3) {
-                    if(isLoggedIn()) {
-                        filterMyStories(getSharedPreferences(PREFS_NAME, 0).getString("Username", ""));
-                    } else {
-                        Toast.makeText(MapsActivityCurrentPlace.this,
-                                "You must log in to use this filter.", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-        });
-
-        builder.create().show();
-    }
-
-
-    private void filterFeaturedStories() {
-        mDataRef.child("locations").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    if(ds.exists()) {
-                        String[] locationArray = ds.getKey().replace('d', '.').split(",");
-                        Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
-                        storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
-                        storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
-
-                        if(ds.getChildrenCount() == 1) {
-                            for(DataSnapshot dataSnapshot1 : ds.getChildren()) {
-                                if(dataSnapshot1.exists()) {
-                                    String storyKey = dataSnapshot1.getKey();
-                                    boolean featured = dataSnapshot1.getValue(boolean.class);
-
-                                    if(featured) {
-                                        if(mLastKnownLocation.distanceTo(storyLocation) <= 100) {
-                                            Marker storyMarker = mMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
-                                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-                                            storyMarker.setTag(storyKey);
-                                        } else {
-                                            Marker storyMarker = mMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
-                                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-                                            storyMarker.setTag(storyKey);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    private void filterUnreadStories(final String username) {
-        mDataRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.child("locations").getChildren()) {
-                    if(ds.exists()) {
-                        String[] locationArray = ds.getKey().replace('d', '.').split(",");
-                        Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
-                        storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
-                        storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
-
-                        if(ds.getChildrenCount() == 1) {
-                            for (DataSnapshot dataSnapshot1 : ds.getChildren()) {
-                                if(dataSnapshot1.exists()) {
-                                    String storyKey = dataSnapshot1.getKey();
-                                    boolean isRead = false;
-                                    if (isLoggedIn()) {
-                                        if (dataSnapshot.child("users").child(username)
-                                                .child("ReadStories").child(storyKey).exists()) {
-                                            isRead = true;
-                                        }
-                                    }
-
-                                    if (!isRead) {
-                                        if(mLastKnownLocation.distanceTo(storyLocation) <= 100) {
-                                            Marker storyMarker = mMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
-                                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
-                                            storyMarker.setTag(storyKey);
-                                        } else {
-                                            Marker storyMarker = mMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
-                                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
-                                            storyMarker.setTag(storyKey);
-                                        }
-
-                                    }
-                                }
-                            }
-                        } else {
-
-                        }
-                    } else {
-                        Toast.makeText(MapsActivityCurrentPlace.this, "There are no stories.", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    private void filterNearbyStories() {
-        mDataRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.child("locations").getChildren()) {
-                    if(ds.exists()) {
-                        String[] locationArray = ds.getKey().replace('d', '.').split(",");
-                        Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
-                        storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
-                        storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
-
-                        if(ds.getChildrenCount() == 1) {
-                            for (DataSnapshot dataSnapshot1 : ds.getChildren()) {
-                                if(dataSnapshot1.exists()) {
-                                    String storyKey = dataSnapshot1.getKey();
-                                    boolean featured = dataSnapshot1.getValue(boolean.class);
-                                    boolean isRead = false;
-                                    if (isLoggedIn()) {
-                                        String username = getSharedPreferences(PREFS_NAME, 0)
-                                                .getString("Username", "");
-                                        if (dataSnapshot.child("users").child(username)
-                                                .child("ReadStories").child(storyKey).exists()) {
-                                            isRead = true;
-                                        }
-                                    }
-
-                                    if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 100) {
-                                        showNearbyStories(storyKey, storyLocation, featured, isRead);
-                                    }
-                                }
-                            }
-                        } else {
-
-                        }
-                    } else {
-                        Toast.makeText(MapsActivityCurrentPlace.this, "There are no stories.", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    private void filterMyStories(String username) {
-        mDataRef.child("users").child(username).child("stories").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    if(ds.exists()) {
-                        String storyKey = ds.getKey();
-
-                        String[] locationArray = ds.getValue(String.class).split(",");
-                        Marker storyMarker = mMap.addMarker(new MarkerOptions()
-                                .position(new LatLng(Double.parseDouble(locationArray[0]), Double.parseDouble(locationArray[1]))));
-                        storyMarker.setTag(storyKey);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
 
 
     private void addStory() {
@@ -789,16 +582,17 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.child("locations").getChildren()) {
                     if(ds.exists()) {
-                        String[] locationArray = ds.getKey().replace('d', '.').split(",");
-                        Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
-                        storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
-                        storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
-
                         if(ds.getChildrenCount() == 1) {
                             for (DataSnapshot dataSnapshot1 : ds.getChildren()) {
                                 if(dataSnapshot1.exists()) {
                                     String storyKey = dataSnapshot1.getKey();
+                                    String[] locationArray = ds.getKey().replace('d', '.').split(",");
                                     boolean featured = dataSnapshot1.getValue(boolean.class);
+
+                                    Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
+                                    storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
+                                    storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
+
                                     boolean isRead = false;
                                     if (isLoggedIn()) {
                                         String username = getSharedPreferences(PREFS_NAME, 0)

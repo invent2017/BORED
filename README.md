@@ -25,3 +25,6 @@ License
 -------
 
 - Don't do weird things to this without letting us know
+
+
+![alt text](https://preview.ibb.co/eDR7tR/posterfinal.png)
