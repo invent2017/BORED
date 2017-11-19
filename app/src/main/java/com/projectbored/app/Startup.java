@@ -29,34 +29,22 @@ public class Startup extends AppCompatActivity {
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
-        checkUpdates();
+        checkAppStatus();
     }
 
-    private void checkUpdates() {
-        final String versionName = BuildConfig.VERSION_NAME;
-        mDataRef.child("version").addListenerForSingleValueEvent(new ValueEventListener() {
+    private void checkAppStatus() {
+        mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(!(dataSnapshot.getValue(String.class).equals(versionName))) {
-                    AlertDialog.Builder updatePrompt = new AlertDialog.Builder(Startup.this);
-                    updatePrompt.setMessage("A new version of BORED! is available. Update?")
-                            .setPositiveButton("Update", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    Intent browserIntent = new Intent(Intent.ACTION_VIEW,
-                                            Uri.parse("https://projectboredinc.wordpress.com/download/"));
-                                    startActivity(browserIntent);
-                                }
-                            })
-                            .setNegativeButton("Later", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    getUserData();
-                                }
-                            });
-                    updatePrompt.create().show();
+                boolean underMaintenance = false;
+                if(dataSnapshot.child("maintenance").exists()) {
+                    underMaintenance = dataSnapshot.child("maintenance").getValue(boolean.class);
+                }
+                if(underMaintenance) {
+                    Toast.makeText(Startup.this, "BORED is currently under maintenance.", Toast.LENGTH_SHORT).show();
+                    Startup.this.finish();
                 } else {
-                    getUserData();
+                    checkUpdates(dataSnapshot);
                 }
             }
 
@@ -67,7 +55,55 @@ public class Startup extends AppCompatActivity {
         });
     }
 
-    private void getUserData() {
+    private void checkUpdates(final DataSnapshot dataSnapshot) {
+        final String versionName = BuildConfig.VERSION_NAME;
+        String[] versionDetailsArray = dataSnapshot.child("version").getValue(String.class).split(" ");
+        if(!(versionDetailsArray[0].equals(versionName))) {
+            AlertDialog.Builder updatePrompt = new AlertDialog.Builder(Startup.this);
+            boolean critical = false;
+            if(versionDetailsArray[1].equals("1")) {
+                critical = true;
+            }
+            if(critical) {
+                updatePrompt.setMessage("A new version of BORED! is available. Update?")
+                        .setPositiveButton("Update", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+                                        Uri.parse("https://projectboredinc.wordpress.com/download/"));
+                                startActivity(browserIntent);
+                            }
+                        })
+                        .setOnDismissListener(new DialogInterface.OnDismissListener() {
+                            @Override
+                            public void onDismiss(DialogInterface dialogInterface) {
+                                Startup.this.finish();
+                            }
+                        });
+            } else {
+                updatePrompt.setMessage("A new version of BORED! is available. Update?")
+                        .setPositiveButton("Update", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+                                        Uri.parse("https://projectboredinc.wordpress.com/download/"));
+                                startActivity(browserIntent);
+                            }
+                        })
+                        .setNegativeButton("Later", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                getUserData(dataSnapshot);
+                            }
+                        });
+            }
+            updatePrompt.create().show();
+        } else {
+            getUserData(dataSnapshot);
+        }
+    }
+
+    private void getUserData(DataSnapshot dataSnapshot) {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         loggedIn = settings.getBoolean("Logged in", false);
         if(!loggedIn){
@@ -76,7 +112,7 @@ public class Startup extends AppCompatActivity {
             String username = settings.getString("Username", "");
             String password = settings.getString("Password", "");
             //Toast.makeText(Startup.this, "Logged in as " + username + "." , Toast.LENGTH_LONG).show();
-            verifyAccount(settings, username, password);
+            verifyAccount(settings, username, password, dataSnapshot.child("users"));
 
             /*Intent start = new Intent(Startup.this, MapsActivityCurrentPlace.class);
             start.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -84,50 +120,40 @@ public class Startup extends AppCompatActivity {
         }
     }
 
-    private void verifyAccount(final SharedPreferences settings, final String username, final String password){
-        mDataRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.child(username).exists()){
-                    if(dataSnapshot.child(username).child("Password").getValue(String.class).equals(password)) {
-                        Toast.makeText(Startup.this, "Logged in as " + username + "." , Toast.LENGTH_SHORT).show();
+    private void verifyAccount(SharedPreferences settings, String username, String password, DataSnapshot dataSnapshot){
+        if(dataSnapshot.child(username).exists()){
+            if(dataSnapshot.child(username).child("Password").getValue(String.class).equals(password)) {
+                Toast.makeText(Startup.this, "Logged in as " + username + "." , Toast.LENGTH_SHORT).show();
 
-                        Intent start = new Intent(Startup.this, MapsActivityCurrentPlace.class);
-                        start.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(start);
-                    } else {
-                        SharedPreferences.Editor editor = settings.edit();
-                        editor.putBoolean("Logged in", false);
-                        editor.remove("Username");
-                        editor.remove("Password");
-                        editor.apply();
+                Intent start = new Intent(Startup.this, MapsActivityCurrentPlace.class);
+                start.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(start);
+            } else {
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putBoolean("Logged in", false);
+                editor.remove("Username");
+                editor.remove("Password");
+                editor.apply();
 
-                        Toast.makeText(Startup.this, "Account settings have changed. Please log in again.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Startup.this, "Account settings have changed. Please log in again.", Toast.LENGTH_SHORT).show();
 
-                        Intent returnToMap = new Intent(Startup.this, MapsActivityCurrentPlace.class);
-                        returnToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(returnToMap);
-                    }
-                } else {
-                    SharedPreferences.Editor editor = settings.edit();
-                    editor.putBoolean("Logged in", false);
-                    editor.remove("Username");
-                    editor.remove("Password");
-                    editor.apply();
-
-                    Toast.makeText(Startup.this, "Account settings have changed. Please log in again.", Toast.LENGTH_SHORT).show();
-
-                    Intent returnToMap = new Intent(Startup.this, MapsActivityCurrentPlace.class);
-                    returnToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(returnToMap);
-                }
+                Intent returnToMap = new Intent(Startup.this, MapsActivityCurrentPlace.class);
+                returnToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(returnToMap);
             }
+        } else {
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean("Logged in", false);
+            editor.remove("Username");
+            editor.remove("Password");
+            editor.apply();
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+            Toast.makeText(Startup.this, "Account settings have changed. Please log in again.", Toast.LENGTH_SHORT).show();
 
-            }
-        });
+            Intent returnToMap = new Intent(Startup.this, MapsActivityCurrentPlace.class);
+            returnToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(returnToMap);
+        }
     }
 
     private AlertDialog.Builder promptLogIn() {
