@@ -4,4 +4,11 @@
         <item>Camera</item>
         <item>Gallery</item>
     </string-array>
+
+    <string-array name="filter_story_options">
+        <item>Featured</item>
+        <item>Unread</item>
+        <item>Nearby</item>
+        <item>My stories</item>
+    </string-array>
 </resources>

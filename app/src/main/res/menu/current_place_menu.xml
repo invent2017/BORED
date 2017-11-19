@@ -21,6 +21,9 @@
         app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="collapseActionView|always" />
     <item
+        android:id="@+id/option_filter_stories"
+        android:title="@string/filter_stories" />
+    <item
         android:id="@+id/option_manage_account"
         android:title="@string/manage_account"
         android:visible="false" />
