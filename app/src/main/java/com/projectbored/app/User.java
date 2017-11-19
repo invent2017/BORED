@@ -30,10 +30,6 @@ public class User {
         this.email = email;
         this.password = password;
         admin = false;
-        views = 0;
-        viewed = 0;
-        upvotes = 0;
-        upvoted = 0;
     }
 
     public String getUsername() {
@@ -75,10 +71,6 @@ public class User {
         result.put("Email", email);
         result.put("Password", password);
         result.put("Admin", admin);
-        result.put("Views", views);
-        result.put("Viewed", viewed);
-        result.put("Upvotes", upvotes);
-        result.put("Upvoted", upvoted);
 
         return result;
     }

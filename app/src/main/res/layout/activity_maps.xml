@@ -25,16 +25,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            fab:fab_addButtonSize="mini"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
             fab:fab_addButtonColorNormal="#f14970"
             fab:fab_addButtonColorPressed="#d50132"
             fab:fab_addButtonPlusIconColor="#ffffff"
-            fab:fab_labelStyle="@style/menu_labels_style"
-            android:layout_marginBottom="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginEnd="20dp">
+            fab:fab_addButtonSize="mini"
+            fab:fab_labelStyle="@style/menu_labels_style">
 
             <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/explore"
@@ -42,29 +42,29 @@
                 android:layout_height="wrap_content"
                 fab:fab_colorNormal="#8647c7"
                 fab:fab_colorPressed="#540d9d"
+                fab:fab_icon="@drawable/compass"
                 fab:fab_size="mini"
-                fab:fab_title="Explore"
-                fab:fab_icon="@drawable/compass"/>
+                fab:fab_title="Explore" />
 
             <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/add_event"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 fab:fab_colorNormal="#c6f54a"
-                fab:fab_title="Add Event"
                 fab:fab_colorPressed="#9fdb01"
+                fab:fab_icon="@drawable/ic_fab_star"
                 fab:fab_size="mini"
-                fab:fab_icon="@drawable/ic_fab_star"/>
+                fab:fab_title="Add Event" />
 
             <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/add_story"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 fab:fab_colorNormal="#5ec4d3"
-                fab:fab_title="Add Story"
                 fab:fab_colorPressed="#52adba"
+                fab:fab_icon="@drawable/pen"
                 fab:fab_size="mini"
-                fab:fab_icon="@drawable/pen"/>
+                fab:fab_title="Add Story" />
 
         </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

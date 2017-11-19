@@ -407,13 +407,19 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
         }
 
-        // Set the map's camera position to the current location of the device.
-        if (mCameraPosition != null) {
-            mMap.moveCamera(CameraUpdateFactory.newCameraPosition(mCameraPosition));
-        } else {
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                    new LatLng(mLastKnownLocation.getLatitude(),
-                            mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
+        boolean opened = getIntent().getBooleanExtra("Opened", false);
+
+        if(!opened) {
+            // Set the map's camera position to the current location of the device.
+            if (mCameraPosition != null) {
+                mMap.moveCamera(CameraUpdateFactory.newCameraPosition(mCameraPosition));
+            } else {
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                        new LatLng(mLastKnownLocation.getLatitude(),
+                                mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
+            }
+
+            getIntent().putExtra("Opened", true);
         }
     }
 
