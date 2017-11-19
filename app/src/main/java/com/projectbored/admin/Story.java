@@ -128,7 +128,7 @@ public class Story {
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("URI", uri);
-        result.put("Location", location);
+        result.put("Location", locationString(location));
         result.put("Caption", caption);
         result.put("DateTime", dateTime);
         result.put("Votes", votes);
@@ -137,6 +137,15 @@ public class Story {
         result.put("Flagged", flagged);
 
         return result;
+    }
+
+    @Exclude
+    public String locationString(Location location) {
+        Double latitude = location.getLatitude();
+        Double longitude = location.getLongitude();
+
+        String storyLocation = latitude.toString() + "," + longitude.toString();
+        return storyLocation;
     }
 
 }

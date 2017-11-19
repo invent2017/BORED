@@ -8,6 +8,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -267,6 +268,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         /*if(item.getItemId() == R.id.option_clean_database) {
             cleanDatabase();
         }*/
+
         return true;
     }
 
@@ -714,17 +716,30 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     }*/
 
     /*private void cleanDatabase() {
-        mDataRef.child("stories").addListenerForSingleValueEvent(new ValueEventListener() {
+        mDataRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    if(ds.child("Location").hasChild("accuracy")) {
-                        Double latitude = ds.child("Location").child("latitude").getValue(Double.class);
-                        Double longitude = ds.child("Location").child("longitude").getValue(Double.class);
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    final String user = ds.getKey();
+                }
+            }
 
-                        String location = latitude.toString() + "," + longitude.toString();
-                        ds.child("Location").getRef().setValue(location);
-                    }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }*/
+
+    /*private void cleanDatabase() {
+        mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.child("stories").getChildren()) {
+                    ds.child("User").getRef().removeValue();
+                    ds.child("Viewers").getRef().removeValue();
+                    ds.child("Upvoters").getRef().removeValue();
+                    ds.child("Downvoters").getRef().removeValue();
                 }
             }
 

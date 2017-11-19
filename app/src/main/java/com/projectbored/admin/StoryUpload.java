@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -48,6 +49,7 @@ public class StoryUpload extends AppCompatActivity {
     private static final String PREFS_NAME = "UserDetails";
 
     EditText caption;
+    CheckBox featuredCheckBox;
 
     private StorageReference mStorageRef;
     private DatabaseReference mDataRef;
@@ -68,6 +70,7 @@ public class StoryUpload extends AppCompatActivity {
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
         caption = (EditText)findViewById(R.id.story_caption);
+        featuredCheckBox = (CheckBox)findViewById(R.id.featuredCheckBox);
 
         storySettings = getIntent().getExtras();
 
@@ -302,6 +305,16 @@ public class StoryUpload extends AppCompatActivity {
                                 String hashtag = m.group(1);
                                 childUpdates.put("/hashtags/" + hashtag + "/" + storyKey, locationString);
                             }
+                        }
+
+                        String locationKey = (Double.toString(storyLocation.getLatitude()) + ","
+                                + Double.toString(storyLocation.getLongitude())).replace('.', 'd');
+
+                        if(featuredCheckBox.isChecked()) {
+                            childUpdates.put("/stories/" + storyKey + "/Featured/", true);
+                            childUpdates.put("/locations/" + locationKey + "/" + storyKey, true);
+                        } else {
+                            childUpdates.put("/locations/" + locationKey + "/" + storyKey, false);
                         }
 
                         mDataRef.updateChildren(childUpdates);

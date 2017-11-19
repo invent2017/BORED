@@ -44,22 +44,31 @@
             android:ems="10"
             android:gravity="top"
             android:hint="@string/insert_caption_here"
-            android:lines="3"
+            android:lines="1"
             android:paddingTop="10dp" />
-<!--
-        <Button
-            android:id="@+id/uploadstory"
-            android:layout_width="match_parent"
+
+        <CheckBox
+            android:id="@+id/featuredCheckBox"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="0.05"
-            android:background="@drawareportbuttontton"
-            android:gravity="center_vertical"
-            android:text="@string/Share"
-            android:textAlignment="center"
-            android:textColor="#78695F"
-            android:textSize="16sp" />
--->
+            android:layout_weight="0.8"
+            android:text="@string/feature_story"
+            android:visibility="visible"
+            android:buttonTint="#000000" />
+        <!--
+                <Button
+                    android:id="@+id/uploadstory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="0.05"
+                    android:background="@drawareportbuttontton"
+                    android:gravity="center_vertical"
+                    android:text="@string/Share"
+                    android:textAlignment="center"
+                    android:textColor="#78695F"
+                    android:textSize="16sp" />
+        -->
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
