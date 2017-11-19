@@ -16,10 +16,10 @@
 
     <item
         android:id="@+id/search_hashtags"
+        android:icon="@drawable/search"
         android:title="@string/search_hashtags"
-        android:icon="@drawable/places_ic_search"
         app:actionViewClass="android.support.v7.widget.SearchView"
-        app:showAsAction="collapseActionView|always"/>
+        app:showAsAction="collapseActionView|always" />
     <item
         android:id="@+id/option_manage_account"
         android:title="@string/manage_account"

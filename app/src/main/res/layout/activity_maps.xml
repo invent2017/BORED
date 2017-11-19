@@ -13,31 +13,61 @@
         android:layout_height="match_parent"
         tools:context="com.projectbored.app.MapsActivityCurrentPlace" />
 
-    <LinearLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:fab="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:orientation="vertical">
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/filter_stories_button"
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/multiple_actions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginRight="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            fab:fab_addButtonSize="mini"
+            fab:fab_addButtonColorNormal="#f14970"
+            fab:fab_addButtonColorPressed="#d50132"
+            fab:fab_addButtonPlusIconColor="#ffffff"
+            fab:fab_labelStyle="@style/menu_labels_style"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp">
 
-            app:backgroundTint="?attr/colorPrimary"/>
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/explore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fab:fab_colorNormal="#8647c7"
+                fab:fab_colorPressed="#540d9d"
+                fab:fab_size="mini"
+                fab:fab_title="Explore"
+                fab:fab_icon="@drawable/compass"/>
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/add_story_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_margin="20dp"
-            android:src="@android:drawable/ic_menu_edit"
-            app:backgroundTint="?attr/colorPrimary" />
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/add_event"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fab:fab_colorNormal="#c6f54a"
+                fab:fab_title="Add Event"
+                fab:fab_colorPressed="#9fdb01"
+                fab:fab_size="mini"
+                fab:fab_icon="@drawable/ic_fab_star"/>
 
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/add_story"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fab:fab_colorNormal="#5ec4d3"
+                fab:fab_title="Add Story"
+                fab:fab_colorPressed="#52adba"
+                fab:fab_size="mini"
+                fab:fab_icon="@drawable/pen"/>
 
-    </LinearLayout>
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+    </RelativeLayout>
 
 </FrameLayout>

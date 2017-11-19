@@ -12,7 +12,6 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
@@ -48,6 +47,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
+
 /**
  * An activity that displays a map showing the place at the device's current location.
  */
@@ -80,7 +82,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
 
-    private FloatingActionButton filterStoryButton,addStoryButton;
+    private FloatingActionButton filterStoryButton,addStoryButton,addEventButton;
 
     // Used for selecting the current place.
     //private final int mMaxEntries = 5;
@@ -105,7 +107,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         setContentView(com.projectbored.app.R.layout.activity_maps);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setLogo(R.mipmap.ic_launcher);
+        actionBar.setLogo(R.drawable.whitebored);
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
@@ -124,15 +126,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
-        filterStoryButton = (FloatingActionButton)findViewById(R.id.filter_stories_button);
-        filterStoryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        addStoryButton = (FloatingActionButton)findViewById(R.id.add_story_button);
+        addStoryButton = (FloatingActionButton)findViewById(R.id.add_story);
         addStoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -145,7 +139,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 }
             }
         });
-
     }
 
     /**

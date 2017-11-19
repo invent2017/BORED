@@ -62,8 +62,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_story);
-
-        setTitle("Story");
+        setTitle("BORED!");
 
         storyDetails = getIntent().getExtras();
         STORY_KEY = storyDetails.getString("key");
