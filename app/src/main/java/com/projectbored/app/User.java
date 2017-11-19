@@ -16,10 +16,7 @@ public class User {
     private String email;
     private String password;
     private boolean admin;
-    private int views;
-    private int viewed;
-    private int upvotes;
-    private int upvoted;
+    private int distance;
 
     public User(){
 
@@ -30,6 +27,7 @@ public class User {
         this.email = email;
         this.password = password;
         admin = false;
+        distance = 0;
     }
 
     public String getUsername() {
@@ -71,6 +69,7 @@ public class User {
         result.put("Email", email);
         result.put("Password", password);
         result.put("Admin", admin);
+        result.put("Distance", distance);
 
         return result;
     }
