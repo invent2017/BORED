@@ -4,6 +4,7 @@
     <string name="search_hashtags">Search hashtags</string>
     <string name="filter_stories">Filter stories</string>
     <string name="retrievedstory">retrievedStory</string>
+    <string name="featured_story">Featured story!</string>
     <string name="textview">TextView</string>
     <string name="down_vote">down vote</string>
     <string name="up_vote">up vote</string>

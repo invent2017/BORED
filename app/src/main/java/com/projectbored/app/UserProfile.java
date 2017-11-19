@@ -59,32 +59,41 @@ public class UserProfile extends AppCompatActivity {
                                         .child("Distance").getValue(Integer.class).toString());
 
                 int views = 0;
-                for(DataSnapshot ds : dataSnapshot.child("users").child(username).child("ReadStories").getChildren()) {
-                    views++;
-                }
-                viewsNumber.setText(Integer.toString(views));
-
                 int stories = 0;
-                for(DataSnapshot ds : dataSnapshot.child("users").child(username).child("stories").getChildren()){
-                    stories++;
-                }
-                storyNumber.setText(Integer.toString(stories));
-
                 int viewed = 0;
                 int upvoted = 0;
-                for(DataSnapshot ds : dataSnapshot.child("users").child(username).child("stories").getChildren()) {
-                    String storyKey = ds.getKey();
+                int upvotes = 0;
 
-                    viewed = viewed + dataSnapshot.child("stories").child(storyKey).child("Views").getValue(Integer.class);
-                    upvoted = upvoted + dataSnapshot.child("stories").child(storyKey).child("Votes").getValue(Integer.class);
+                if(dataSnapshot.child("users").child(username).hasChild("stories")) {
+                    for(DataSnapshot ds : dataSnapshot.child("users").child(username).child("stories").getChildren()){
+                        stories++;
+                    }
+
+                    for(DataSnapshot ds : dataSnapshot.child("users").child(username).child("stories").getChildren()) {
+                        String storyKey = ds.getKey();
+
+                        viewed = viewed + dataSnapshot.child("stories").child(storyKey).child("Views").getValue(Integer.class);
+                        upvoted = upvoted + dataSnapshot.child("stories").child(storyKey).child("Votes").getValue(Integer.class);
+                    }
                 }
+
+                if(dataSnapshot.child("users").child(username).hasChild("ReadStories")) {
+                    for(DataSnapshot ds : dataSnapshot.child("users").child(username).child("ReadStories").getChildren()) {
+                        views++;
+                    }
+                }
+
+                if(dataSnapshot.child("users").child(username).hasChild("UpvotedStories")) {
+                    for(DataSnapshot ds : dataSnapshot.child("users").child(username).child("UpvotedStories").getChildren()) {
+                        upvotes++;
+                    }
+                }
+
+
+                viewsNumber.setText(Integer.toString(views));
+                storyNumber.setText(Integer.toString(stories));
                 viewedNumber.setText(Integer.toString(viewed));
                 upvotedNumber.setText(Integer.toString(upvoted));
-
-                int upvotes = 0;
-                for(DataSnapshot ds : dataSnapshot.child("users").child(username).child("UpvotedStories").getChildren()) {
-                    upvotes++;
-                }
                 upvotesNumber.setText(Integer.toString(upvotes));
 
 
