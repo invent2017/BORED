@@ -520,9 +520,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     }
 
     private void backToMap() {
-        Intent intent = new Intent(this, MapsActivityCurrentPlace.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+        finish();
     }
 
 }
