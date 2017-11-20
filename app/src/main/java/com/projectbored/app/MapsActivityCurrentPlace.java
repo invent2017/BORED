@@ -977,8 +977,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     }
 
     private void resetMap() {
-        mMap.clear();
-        getStories();
+        Intent reload = new Intent(this, MapsActivityCurrentPlace.class);
+        finish();
+        startActivity(reload);
     }
 
     /*
