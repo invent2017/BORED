@@ -159,9 +159,6 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
                     if(!(dataSnapshot.child("ReadStories").hasChild(storyKey))){
-                        int views = dataSnapshot.child("Views").getValue(Integer.class);
-                        dataSnapshot.child("Views").getRef().setValue(++views);
-
                         dataSnapshot.child("ReadStories").child(storyKey).getRef().setValue(storyKey);
                     }
                 }

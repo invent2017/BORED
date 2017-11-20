@@ -70,7 +70,7 @@ public class CreateAccount extends AppCompatActivity {
             final String email = emailField.getText().toString();
             final String password = passwordField.getText().toString();
 
-            String emailPattern = ("\\w+@\\w+\\.\\w+");
+            String emailPattern = ("\\S+@\\w+\\.\\w+");
             Pattern pattern = Pattern.compile(emailPattern);
             Matcher matcher = pattern.matcher(email);
             if(matcher.matches()) {
@@ -109,7 +109,7 @@ public class CreateAccount extends AppCompatActivity {
 
         storeLocalUserData(username, password);
 
-        Toast.makeText(this, "Logged in as" + username + ".", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Logged in as " + username + ".", Toast.LENGTH_SHORT).show();
 
         Intent i = new Intent(this, MapsActivityCurrentPlace.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

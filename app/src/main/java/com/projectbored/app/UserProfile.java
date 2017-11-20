@@ -67,9 +67,7 @@ public class UserProfile extends AppCompatActivity {
                 if(dataSnapshot.child("users").child(username).hasChild("stories")) {
                     for(DataSnapshot ds : dataSnapshot.child("users").child(username).child("stories").getChildren()){
                         stories++;
-                    }
 
-                    for(DataSnapshot ds : dataSnapshot.child("users").child(username).child("stories").getChildren()) {
                         String storyKey = ds.getKey();
 
                         viewed = viewed + dataSnapshot.child("stories").child(storyKey).child("Views").getValue(Integer.class);
