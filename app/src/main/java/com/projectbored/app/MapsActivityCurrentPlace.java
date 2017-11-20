@@ -127,8 +127,32 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
         exploreButton = (FloatingActionButton)findViewById(R.id.explore);
+        exploreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mLastKnownLocation != null) {
+                    exploreTrails();
+                } else {
+                    Toast.makeText(MapsActivityCurrentPlace.this,
+                            "Unable to get your location. Please check your location settings and try again.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         addEventButton = (FloatingActionButton)findViewById(R.id.add_event);
+        addEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mLastKnownLocation != null) {
+                    addEvent();
+                } else {
+                    Toast.makeText(MapsActivityCurrentPlace.this,
+                            "Unable to get your location. Please check your location settings and try again.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         addStoryButton = (FloatingActionButton)findViewById(R.id.add_story);
         addStoryButton.setOnClickListener(new View.OnClickListener() {
@@ -711,6 +735,17 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
             }
         });
+    }
+
+
+    private void exploreTrails() {
+        Intent intent = new Intent(MapsActivityCurrentPlace.this, Trails.class);
+        startActivity(intent);
+    }
+
+    private void addEvent() {
+        Intent intent = new Intent(MapsActivityCurrentPlace.this, EventUpload.class);
+        startActivity(intent);
     }
 
     private void addStory() {

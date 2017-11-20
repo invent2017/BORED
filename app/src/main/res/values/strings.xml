@@ -49,4 +49,7 @@
     <string name="upvotes_given">upvotes given</string>
     <string name="upvotes_received">upvotes received</string>
     <string name="user_end_message">keep on exploring the world! :)</string>
+    <string name="event_description">Type event description...</string>
+    <string name="time_picker_event">When does this event expire?</string>
+    <string name="create_event">Create Event</string>
 </resources>
