@@ -29,6 +29,12 @@ android {
     }
 }
 
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
 dependencies {
     implementation 'com.android.support:design:27.0.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -48,6 +54,9 @@ dependencies {
     compile 'com.google.firebase:firebase-database:10.0.1'
     compile 'com.firebaseui:firebase-ui-storage:0.6.0'
     compile 'com.getbase:floatingactionbutton:1.10.1'
+    compile 'com.github.vajro:MaterialDesignLibrary:1.6'
+    //compile 'com.github.navasmdc:MaterialDesign:1.5@aar'
+    compile 'com.ogaclejapan.smarttablayout:library:1.2.1@aar'
     testCompile 'junit:junit:4.12'
 }
 

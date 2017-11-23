@@ -83,10 +83,10 @@
             android:name=".StoryDeleter"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".UserProfile" />
-
         <activity android:name=".EventUpload" />
         <activity android:name=".ShowEvent" />
-        <activity android:name=".Trails"></activity>
+        <activity android:name=".Trails" />
+        <activity android:name=".Onboarding"></activity>
     </application>
 
 </manifest>

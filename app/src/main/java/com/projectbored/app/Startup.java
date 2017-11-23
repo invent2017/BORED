@@ -1,5 +1,6 @@
 package com.projectbored.app;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -30,6 +31,19 @@ public class Startup extends AppCompatActivity {
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
         checkAppStatus();
+
+        // Get the shared preferences
+        SharedPreferences preferences =  getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
+
+        // Check if onboarding_complete is false
+        if(!preferences.getBoolean("onboarding_complete",false)) {
+            // Start the onboarding Activity
+            Intent onboarding = new Intent(this, Onboarding.class);
+            startActivity(onboarding);
+
+            // Close the main Activity
+            finish();
+        }
     }
 
     private void checkAppStatus() {
