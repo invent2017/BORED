@@ -28,11 +28,28 @@ public class Onboarding extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboarding);
 
+        FragmentStatePagerAdapter adapter = new FragmentStatePagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                switch (position) {
+                    case 0 : return new OnboardingFragment1();
+                    case 1 : return new OnboardingFragment2();
+                    case 2 : return new OnboardingFragment3();
+                    default: return null;
+                }
+            }
+
+            @Override
+            public int getCount() {
+                return 3;
+            }
+        };
+
         pager = (ViewPager)findViewById(R.id.pager);
         pager.setAdapter(adapter);
-        indicator.setViewPager(pager);
-
         indicator = (SmartTabLayout)findViewById(R.id.indicator);
+
+        indicator.setViewPager(pager);
         indicator.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
@@ -69,24 +86,8 @@ public class Onboarding extends FragmentActivity {
                 }
             }
         });
+
     }
-
-    FragmentStatePagerAdapter adapter = new FragmentStatePagerAdapter(getSupportFragmentManager()) {
-        @Override
-        public Fragment getItem(int position) {
-            switch (position) {
-                case 0 : return new OnboardingFragment1();
-                case 1 : return new OnboardingFragment2();
-                case 2 : return new OnboardingFragment3();
-                default: return null;
-            }
-        }
-
-        @Override
-        public int getCount() {
-            return 3;
-        }
-    };
 
     private void finishOnboarding() {
 
@@ -96,16 +97,14 @@ public class Onboarding extends FragmentActivity {
         // Set onboarding_complete to true
         preferences.edit().putBoolean("onboarding_complete",true).apply();
 
+        /*
         // Launch the main Activity, called MainActivity
         Intent main = new Intent(this, MapsActivityCurrentPlace.class);
         startActivity(main);
+        */
 
         // Close the OnboardingActivity
         finish();
     }
-
-
-
-
 
 }

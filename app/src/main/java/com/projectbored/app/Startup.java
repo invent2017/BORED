@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -32,18 +33,6 @@ public class Startup extends AppCompatActivity {
 
         checkAppStatus();
 
-        // Get the shared preferences
-        SharedPreferences preferences =  getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
-
-        // Check if onboarding_complete is false
-        if(!preferences.getBoolean("onboarding_complete",false)) {
-            // Start the onboarding Activity
-            Intent onboarding = new Intent(this, Onboarding.class);
-            startActivity(onboarding);
-
-            // Close the main Activity
-            finish();
-        }
     }
 
     private void checkAppStatus() {
@@ -121,16 +110,33 @@ public class Startup extends AppCompatActivity {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         loggedIn = settings.getBoolean("Logged in", false);
         if(!loggedIn){
-            promptLogIn().create().show();
+
+            // Get the shared preferences
+            SharedPreferences preferences =  getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
+
+            // Check if onboarding_complete is false
+            if(!preferences.getBoolean("onboarding_complete",false)) {
+                // Start the onboarding Activity
+                Intent onboarding = new Intent(this, Onboarding.class);
+                startActivity(onboarding);
+
+                // Close the main Activity
+                finish();
+                Log.d("Onboarding","A");
+
+            }
+            else{
+                promptLogIn().create().show();}
+
         } else {
             String username = settings.getString("Username", "");
             String password = settings.getString("Password", "");
             //Toast.makeText(Startup.this, "Logged in as " + username + "." , Toast.LENGTH_LONG).show();
             verifyAccount(settings, username, password, dataSnapshot.child("users"));
 
-            /*Intent start = new Intent(Startup.this, MapsActivityCurrentPlace.class);
+            Intent start = new Intent(Startup.this, MapsActivityCurrentPlace.class);
             start.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(start);*/
+            startActivity(start);
         }
     }
 

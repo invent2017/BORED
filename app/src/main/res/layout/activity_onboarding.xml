@@ -30,14 +30,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:text="Skip" />
+                android:text="@string/skip" />
 
             <com.gc.materialdesign.views.ButtonFlat
                 android:id="@+id/next"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:text="Next" />
+                android:text="@string/next" />
 
         </LinearLayout>
 

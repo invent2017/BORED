@@ -52,4 +52,6 @@
     <string name="event_description">Type event description...</string>
     <string name="time_picker_event">When does this event expire?</string>
     <string name="create_event">Create Event</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
 </resources>
