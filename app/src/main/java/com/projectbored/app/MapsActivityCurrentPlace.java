@@ -44,6 +44,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -560,12 +564,73 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                         Toast.makeText(MapsActivityCurrentPlace.this,
                                 "You must log in to use this filter.", Toast.LENGTH_SHORT).show();
                     }
+                } else if(which ==4) {
+                    filterTodayStories();
                 }
             }
         });
 
         builder.create().show();
     }
+
+    private void filterTodayStories() {
+        mDataRef.child("locations").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if(ds.exists()) {
+                        String[] locationArray = ds.getKey().replace('d', '.').split(",");
+                        Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
+                        storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
+                        storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
+
+                        if(ds.getChildrenCount() == 1) {
+                            //supposed to compare date
+
+                            //gets User date here
+                            Date todayDate = Calendar.getInstance().getTime();
+
+                            //gets story date below
+                            for(DataSnapshot dataSnapshot1 : ds.getChildren()) {
+                                if(dataSnapshot1.exists()) {
+                                    String storyKey = dataSnapshot1.getKey();
+
+                                    // btw I added 1 to the story's day, that way it will be after the user's current day if it is on the same day as the user
+                                    int storyDay = 1+ dataSnapshot.child("DateTime").child("date").getValue(Integer.class);
+                                    int storyMonth = 1+ dataSnapshot.child("DateTime").child("month").getValue(Integer.class);
+                                    int storyYear = 1900 + dataSnapshot.child("DateTime").child("year").getValue(Integer.class);
+
+                                    StringBuilder storyD = new StringBuilder().append(storyDay).append("-").append(storyMonth).append("-").append(storyYear);
+                                    String storyDateString = storyD.toString();
+                                    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+
+                                    // my guess is that this thing doesn't parse because storyDay and storyMonth are not necessarily 2-digit so the sdf doesn't correspond
+                                    /*
+
+                                    Date storyDate = sdf.parse(storyDateString);
+
+                                    if (todayDate.after(storyDateString)) {
+                                        Marker storyMarker = mMap.addMarker(new MarkerOptions()
+                                                .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
+                                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+                                        storyMarker.setTag(storyKey);
+                                    }
+
+                                    */
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 
 
     private void filterFeaturedStories() {

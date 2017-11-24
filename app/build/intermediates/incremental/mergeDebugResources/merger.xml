@@ -2536,6 +2536,7 @@
         <item>Unread</item>
         <item>Nearby</item>
         <item>My stories</item>
+        <item>Today's stories</item>
     </string-array></file><file path="/Users/Drifter/android/bored/BORED/app/src/main/res/values/styles.xml" qualifiers=""><style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         
         <item name="colorPrimary">#5ec4d3</item>
