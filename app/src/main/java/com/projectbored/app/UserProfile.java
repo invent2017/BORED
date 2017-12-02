@@ -70,8 +70,10 @@ public class UserProfile extends AppCompatActivity {
 
                         String storyKey = ds.getKey();
 
-                        viewed = viewed + dataSnapshot.child("stories").child(storyKey).child("Views").getValue(Integer.class);
-                        upvoted = upvoted + dataSnapshot.child("stories").child(storyKey).child("Votes").getValue(Integer.class);
+                        if(dataSnapshot.child("stories").child(storyKey).exists()) {
+                            viewed = viewed + dataSnapshot.child("stories").child(storyKey).child("Views").getValue(Integer.class);
+                            upvoted = upvoted + dataSnapshot.child("stories").child(storyKey).child("Votes").getValue(Integer.class);
+                        }
                     }
                 }
 

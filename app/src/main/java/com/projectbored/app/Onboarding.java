@@ -17,6 +17,7 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout;
 // tutorial from https://code.tutsplus.com/tutorials/creating-onboarding-screens-for-android-apps--cms-24465
 
 public class Onboarding extends FragmentActivity {
+    private static final String PREFS_NAME = "UserDetails";
 
     ViewPager pager;
     SmartTabLayout indicator;
@@ -92,16 +93,16 @@ public class Onboarding extends FragmentActivity {
     private void finishOnboarding() {
 
         // Get the shared preferences
-        SharedPreferences preferences = getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences(PREFS_NAME, 0);
 
         // Set onboarding_complete to true
         preferences.edit().putBoolean("onboarding_complete",true).apply();
 
-        /*
-        // Launch the main Activity, called MainActivity
-        Intent main = new Intent(this, MapsActivityCurrentPlace.class);
-        startActivity(main);
-        */
+
+        Intent map = new Intent(this, MapsActivityCurrentPlace.class);
+        map.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(map);
+
 
         // Close the OnboardingActivity
         finish();

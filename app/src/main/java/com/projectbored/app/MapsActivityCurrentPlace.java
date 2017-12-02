@@ -738,6 +738,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     }
 
 
+
+
     private void exploreTrails() {
         Intent intent = new Intent(MapsActivityCurrentPlace.this, Trails.class);
         startActivity(intent);
@@ -831,17 +833,17 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.child("locations").getChildren()) {
                     if(ds.exists()) {
+
+                        String[] locationArray = ds.getKey().replace('d', '.').split(",");
+                        Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
+                        storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
+                        storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
+
                         if(ds.getChildrenCount() == 1) {
                             for (DataSnapshot dataSnapshot1 : ds.getChildren()) {
                                 if(dataSnapshot1.exists()) {
                                     String storyKey = dataSnapshot1.getKey();
-                                    String[] locationArray = ds.getKey().replace('d', '.').split(",");
                                     boolean featured = dataSnapshot1.getValue(boolean.class);
-
-                                    Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
-                                    storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
-                                    storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
-
                                     boolean isRead = false;
                                     if (isLoggedIn()) {
                                         String username = getSharedPreferences(PREFS_NAME, 0)
@@ -860,7 +862,30 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                 }
                             }
                         } else {
+                            StringBuilder storyKeys = new StringBuilder();
+                            for(DataSnapshot dataSnapshot1 : ds.getChildren()) {
+                                String storyKey = dataSnapshot1.getKey();
+                                if(storyKeys.toString().equals("")) {
+                                    storyKeys.append(storyKey);
+                                } else {
+                                    storyKeys.append(",").append(storyKey);
+                                }
+                            }
 
+                            boolean featured = false;
+                            for(DataSnapshot dataSnapshot1 : ds.getChildren()) {
+                                featured = dataSnapshot1.getValue(boolean.class);
+
+                                if(featured) {
+                                    break;
+                                }
+                            }
+
+                            if(mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 100) {
+                                showNearbyStories(storyKeys.toString(), storyLocation, featured, false);
+                            } else {
+                                showFarStories(storyKeys.toString(), storyLocation, featured, false);
+                            }
                         }
                     } else {
                         Toast.makeText(MapsActivityCurrentPlace.this, "There are no stories.", Toast.LENGTH_SHORT).show();
@@ -964,13 +989,21 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     }
 
     public void showStoryDetails(Marker marker) {
-        Intent intent = new Intent(this, ShowStory.class);
+        Intent intent = new Intent();
         String key = (String)marker.getTag();
+
+        if(key != null && key.contains(",")) {
+            intent = new Intent(this, ShowMultipleStories.class);
+        } else {
+            intent = new Intent(this, ShowStory.class);
+        }
+
+
         Bundle storyDetails = new Bundle();
         storyDetails.putString("key", key);
         storyDetails.putBoolean("Logged in", isLoggedIn());
-        storyDetails.putDouble("Latitude", marker.getPosition().latitude);
-        storyDetails.putDouble("Longitude", marker.getPosition().longitude);
+        //storyDetails.putDouble("Latitude", marker.getPosition().latitude);
+        //storyDetails.putDouble("Longitude", marker.getPosition().longitude);
         intent.putExtras(storyDetails);
 
         startActivity(intent);

@@ -89,7 +89,7 @@ public class Startup extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent browserIntent = new Intent(Intent.ACTION_VIEW,
-                                        Uri.parse("https://projectboredinc.wordpress.com/download/"));
+                                        Uri.parse("https://drive.google.com/uc?id=0B3A7kN7uEQ59WHRySkQ2SDB5aDA&export=download"));
                                 startActivity(browserIntent);
                             }
                         })
@@ -112,7 +112,7 @@ public class Startup extends AppCompatActivity {
         if(!loggedIn){
 
             // Get the shared preferences
-            SharedPreferences preferences =  getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
+            SharedPreferences preferences =  getSharedPreferences(PREFS_NAME, 0);
 
             // Check if onboarding_complete is false
             if(!preferences.getBoolean("onboarding_complete",false)) {
@@ -122,7 +122,7 @@ public class Startup extends AppCompatActivity {
 
                 // Close the main Activity
                 finish();
-                Log.d("Onboarding","A");
+                Log.d(Startup.class.getSimpleName(),"A");
 
             }
             else{

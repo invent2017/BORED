@@ -74,6 +74,7 @@
         </provider>
 
         <activity android:name=".ShowStory" />
+        <activity android:name=".ShowMultipleStories" />
         <activity android:name=".Login" />
         <activity android:name=".CreateAccount" />
         <activity

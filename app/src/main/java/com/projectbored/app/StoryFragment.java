@@ -3,13 +3,13 @@ package com.projectbored.app;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -28,14 +28,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.util.Calendar;
 import java.util.Locale;
 
-public class ShowStory extends AppCompatActivity {
-    Bundle storyDetails;
 
-    private static final String PREFS_NAME = "UserDetails";
-    private String STORY_KEY;
+public class StoryFragment extends Fragment {
+    String storyKey;
+
+    boolean loggedIn;
 
     ImageView imageView;
     ImageButton upVoteButton;
@@ -57,31 +56,30 @@ public class ShowStory extends AppCompatActivity {
 
     StorageReference mStorageRef;
 
-
-    boolean loggedIn;
-
-    // onCreate method here -hy
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_story);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setLogo(R.drawable.whitebored);
-        actionBar.setDisplayUseLogoEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
-
-        storyDetails = getIntent().getExtras();
-        STORY_KEY = storyDetails.getString("key");
+        Bundle storyDetails = getArguments();
+        storyKey = storyDetails.getString("key");
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
-        imageView = (ImageView)findViewById(R.id.imageView);
 
-        upVoteButton = (ImageButton)findViewById(R.id.upVoteButton);
+
+        loadStoryDetails(storyDetails);
+        loggedIn = storyDetails.getBoolean("Logged in");
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_show_story, container, false);
+        imageView = (ImageView)view.findViewById(R.id.imageView);
+
+        upVoteButton = (ImageButton)view.findViewById(R.id.upVoteButton);
         upVoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +87,7 @@ public class ShowStory extends AppCompatActivity {
             }
         });
 
-        downVoteButton = (ImageButton)findViewById(R.id.downVoteButton);
+        downVoteButton = (ImageButton)view.findViewById(R.id.downVoteButton);
         downVoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +95,7 @@ public class ShowStory extends AppCompatActivity {
             }
         });
 
-        shareButton = (ImageButton)findViewById(R.id.shareButton);
+        shareButton = (ImageButton)view.findViewById(R.id.shareButton);
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,14 +103,14 @@ public class ShowStory extends AppCompatActivity {
             }
         });
 
-        voteNumber = (TextView) findViewById(R.id.voteNumber);
-        viewNumber = (TextView) findViewById(R.id.viewNumber);
+        voteNumber = (TextView) view.findViewById(R.id.voteNumber);
+        viewNumber = (TextView) view.findViewById(R.id.viewNumber);
 
-        storyCaption = (TextView) findViewById(R.id.storyCaption);
-        featuredText = (TextView)findViewById(R.id.featuredText);
-        dateText = (TextView)findViewById(R.id.dateText);
+        storyCaption = (TextView) view.findViewById(R.id.storyCaption);
+        featuredText = (TextView)view.findViewById(R.id.featuredText);
+        dateText = (TextView)view.findViewById(R.id.dateText);
 
-        reportStoryButton = (Button) findViewById(R.id.reportstory);
+        reportStoryButton = (Button) view.findViewById(R.id.reportstory);
         reportStoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,18 +118,10 @@ public class ShowStory extends AppCompatActivity {
             }
         });
 
-        loadStoryDetails(storyDetails);
-        loggedIn = storyDetails.getBoolean("Logged in");
-
-
-        addView();
-
-        //trying to do emoji things
-
+        return view;
     }
 
     public void addView(){
-        final String storyKey = storyDetails.getString("key");
         DatabaseReference mStoryRef = FirebaseDatabase.getInstance().getReference().child("stories").child(storyKey).child("Views");
         mStoryRef.runTransaction(new Transaction.Handler() {
             @Override
@@ -174,48 +164,48 @@ public class ShowStory extends AppCompatActivity {
     // stuff the buttons do when clicked -hy
 
     public void reportStory(){
-        mDataRef.child("stories").child(STORY_KEY).child("Flagged").setValue(true);
-        Toast.makeText(this, "Story flagged.", Toast.LENGTH_SHORT).show();
-   }
+        mDataRef.child("stories").child(storyKey).child("Flagged").setValue(true);
+        Toast.makeText(getActivity(), "Story flagged.", Toast.LENGTH_SHORT).show();
+    }
 
     public void upVote(){
         if(loggedIn){
             mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.child("stories").child(STORY_KEY).getValue() != null) {
-                        int votes = dataSnapshot.child("stories").child(STORY_KEY)
+                    if (dataSnapshot.child("stories").child(storyKey).getValue() != null) {
+                        int votes = dataSnapshot.child("stories").child(storyKey)
                                 .child("Votes").getValue(Integer.class);
-                        if(dataSnapshot.child("stories").child(STORY_KEY)
+                        if(dataSnapshot.child("stories").child(storyKey)
                                 .child("Upvoters").hasChild(getUsername())) {
                             votes--;
-                            dataSnapshot.child("stories").child(STORY_KEY)
+                            dataSnapshot.child("stories").child(storyKey)
                                     .child("Upvoters").child(getUsername()).getRef().setValue(null);
 
                             dataSnapshot.child("users").child(getUsername()).child("UpvotedStories")
-                                    .child(STORY_KEY).getRef().setValue(null);
+                                    .child(storyKey).getRef().setValue(null);
 
-                        } else if(dataSnapshot.child("stories").child(STORY_KEY)
+                        } else if(dataSnapshot.child("stories").child(storyKey)
                                 .child("Downvoters").hasChild(getUsername())) {
                             votes = votes + 2;
-                            dataSnapshot.child("stories").child(STORY_KEY)
+                            dataSnapshot.child("stories").child(storyKey)
                                     .child("Downvoters").child(getUsername()).getRef().setValue(null);
-                            dataSnapshot.child("stories").child(STORY_KEY)
+                            dataSnapshot.child("stories").child(storyKey)
                                     .child("Upvoters").child(getUsername()).getRef().setValue(getUsername());
 
                             dataSnapshot.child("users").child(getUsername()).child("DownvotedStories")
-                                    .child(STORY_KEY).getRef().setValue(null);
+                                    .child(storyKey).getRef().setValue(null);
                             dataSnapshot.child("users").child(getUsername()).child("UpvotedStories")
-                                    .child(STORY_KEY).getRef().setValue(STORY_KEY);
+                                    .child(storyKey).getRef().setValue(storyKey);
                         } else {
                             votes++;
-                            dataSnapshot.child("stories").child(STORY_KEY)
+                            dataSnapshot.child("stories").child(storyKey)
                                     .child("Upvoters").child(getUsername()).getRef().setValue(getUsername());
 
                             dataSnapshot.child("users").child(getUsername()).child("UpvotedStories")
-                                    .child(STORY_KEY).getRef().setValue(STORY_KEY);
+                                    .child(storyKey).getRef().setValue(storyKey);
                         }
-                        dataSnapshot.child("stories").child(STORY_KEY).child("Votes").getRef().setValue(votes);
+                        dataSnapshot.child("stories").child(storyKey).child("Votes").getRef().setValue(votes);
                     }
                 }
 
@@ -226,7 +216,7 @@ public class ShowStory extends AppCompatActivity {
             });
 
         } else {
-            Toast.makeText(this, "You must log in to upvote stories.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "You must log in to upvote stories.", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -236,38 +226,38 @@ public class ShowStory extends AppCompatActivity {
             mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.child("stories").child(STORY_KEY).getValue() != null) {
-                        int votes = dataSnapshot.child("stories").child(STORY_KEY)
+                    if (dataSnapshot.child("stories").child(storyKey).getValue() != null) {
+                        int votes = dataSnapshot.child("stories").child(storyKey)
                                 .child("Votes").getValue(Integer.class);
-                        if(dataSnapshot.child("stories").child(STORY_KEY)
+                        if(dataSnapshot.child("stories").child(storyKey)
                                 .child("Downvoters").hasChild(getUsername())) {
                             votes++;
-                            dataSnapshot.child("stories").child(STORY_KEY).child("Downvoters")
+                            dataSnapshot.child("stories").child(storyKey).child("Downvoters")
                                     .child(getUsername()).getRef().setValue(null);
 
                             dataSnapshot.child("users").child(getUsername()).child("DownvotedStories")
-                                    .child(STORY_KEY).getRef().setValue(null);
-                        } else if(dataSnapshot.child("stories").child(STORY_KEY)
+                                    .child(storyKey).getRef().setValue(null);
+                        } else if(dataSnapshot.child("stories").child(storyKey)
                                 .child("Upvoters").hasChild(getUsername())) {
                             votes = votes - 2;
-                            dataSnapshot.child("stories").child(STORY_KEY).child("Upvoters")
+                            dataSnapshot.child("stories").child(storyKey).child("Upvoters")
                                     .child(getUsername()).getRef().setValue(null);
-                            dataSnapshot.child("stories").child(STORY_KEY).child("Downvoters")
+                            dataSnapshot.child("stories").child(storyKey).child("Downvoters")
                                     .child(getUsername()).getRef().setValue(getUsername());
 
                             dataSnapshot.child("users").child(getUsername()).child("UpvotedStories")
-                                    .child(STORY_KEY).getRef().setValue(null);
+                                    .child(storyKey).getRef().setValue(null);
                             dataSnapshot.child("users").child(getUsername()).child("DownvotedStories")
-                                    .child(STORY_KEY).getRef().setValue(STORY_KEY);
+                                    .child(storyKey).getRef().setValue(storyKey);
                         } else {
                             votes--;
-                            dataSnapshot.child("stories").child(STORY_KEY)
+                            dataSnapshot.child("stories").child(storyKey)
                                     .child("Downvoters").child(getUsername()).getRef().setValue(getUsername());
 
                             dataSnapshot.child("users").child(getUsername()).child("DownvotedStories")
-                                    .child(STORY_KEY).getRef().setValue(STORY_KEY);
+                                    .child(storyKey).getRef().setValue(storyKey);
                         }
-                        dataSnapshot.child("stories").child(STORY_KEY).child("Votes").getRef().setValue(votes);
+                        dataSnapshot.child("stories").child(storyKey).child("Votes").getRef().setValue(votes);
                     }
                 }
 
@@ -291,7 +281,7 @@ public class ShowStory extends AppCompatActivity {
             });
 
         } else {
-            Toast.makeText(this, "You must log in to downvote stories.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "You must log in to downvote stories.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -300,7 +290,6 @@ public class ShowStory extends AppCompatActivity {
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
 
-        String storyKey = storyDetails.getString("key");
         // i don't actually know what the subject or whatnot is so heh
         // need to add things to shareBody that links to the story or sth like that
         String shareBody = "Check out this cool story on bored!\n" + "http://projectboredinc.wordpress.com/story/" + storyKey;
@@ -328,57 +317,6 @@ public class ShowStory extends AppCompatActivity {
         }
     }
 
-    // creating the menu that launches backToMap method -hy
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.show_story_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        if(loggedIn) {
-            final MenuItem deleteStoryOption = menu.findItem(R.id.option_delete_story);
-            mDataRef.child("users").child(getUsername()).child("stories").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.hasChild(STORY_KEY)) {
-                        deleteStoryOption.setVisible(true);
-                    } else {
-                        deleteStoryOption.setVisible(false);
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-        }
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == com.projectbored.app.R.id.option_back_to_map) {
-            backToMap();
-        }
-
-        if(item.getItemId() == R.id.option_delete_story) {
-            deleteStory();
-        }
-        return true;
-    }
-
-    private void deleteStory(){
-        Intent delete = new Intent(getApplicationContext(), StoryDeleter.class);
-        storyDetails.putString("Username", getUsername());
-        delete.putExtras(storyDetails);
-        delete.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(delete);
-    }
-
 
     private void loadStoryDetails(Bundle storyDetails){
         final String storyKey = storyDetails.getString("key");
@@ -401,7 +339,7 @@ public class ShowStory extends AppCompatActivity {
                         StorageReference mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl(uri);
 
                         //Load story image into image view.
-                        Glide.with(ShowStory.this).using(new FirebaseImageLoader()).load(mStorageRef).into(imageView);
+                        Glide.with(getActivity()).using(new FirebaseImageLoader()).load(mStorageRef).into(imageView);
 
                         storyCaption.setText(caption);
                     }
@@ -459,7 +397,7 @@ public class ShowStory extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    Toast.makeText(ShowStory.this, "Failed to load story data.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Failed to load story data.", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -496,12 +434,12 @@ public class ShowStory extends AppCompatActivity {
 
 
         } else {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setMessage("Story does not exist.")
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Intent i  = new Intent(ShowStory.this, MapsActivityCurrentPlace.class);
+                            Intent i  = new Intent(getActivity(), MapsActivityCurrentPlace.class);
                             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(i);
                         }
@@ -515,12 +453,10 @@ public class ShowStory extends AppCompatActivity {
     }
 
     private String getUsername() {
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        return settings.getString("Username", "");
+        return getArguments().getString("username");
     }
 
-    private void backToMap() {
-        finish();
-    }
+
+
 
 }
