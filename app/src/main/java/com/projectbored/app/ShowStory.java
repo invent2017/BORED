@@ -389,74 +389,75 @@ public class ShowStory extends AppCompatActivity {
             mDataRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    String uri = dataSnapshot.child("URI").getValue(String.class);
-                    String caption = dataSnapshot.child("Caption").getValue(String.class);
-                    boolean isFeatured = dataSnapshot.child("Featured").getValue(boolean.class);
+                    if (dataSnapshot.exists()) {
+                        String uri = dataSnapshot.child("URI").getValue(String.class);
+                        String caption = dataSnapshot.child("Caption").getValue(String.class);
+                        boolean isFeatured = dataSnapshot.child("Featured").getValue(boolean.class);
 
-                    if(isFeatured) {
-                        featuredText.setText(R.string.featured_story);
+                        if (isFeatured) {
+                            featuredText.setText(R.string.featured_story);
+                        }
+
+                        if (uri != null && caption != null) {
+                            StorageReference mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl(uri);
+
+                            //Load story image into image view.
+                            Glide.with(ShowStory.this).using(new FirebaseImageLoader()).load(mStorageRef).into(imageView);
+
+                            storyCaption.setText(caption);
+                        }
+
+                        int storyDay = dataSnapshot.child("DateTime").child("date").getValue(Integer.class);
+                        int storyMonth = 1 + dataSnapshot.child("DateTime").child("month").getValue(Integer.class);
+                        int storyYear = 1900 + dataSnapshot.child("DateTime").child("year").getValue(Integer.class);
+
+                        String monthString = "";
+                        switch (storyMonth) {
+                            case 1:
+                                monthString = "January";
+                                break;
+                            case 2:
+                                monthString = "February";
+                                break;
+                            case 3:
+                                monthString = "March";
+                                break;
+                            case 4:
+                                monthString = "April";
+                                break;
+                            case 5:
+                                monthString = "May";
+                                break;
+                            case 6:
+                                monthString = "June";
+                                break;
+                            case 7:
+                                monthString = "July";
+                                break;
+                            case 8:
+                                monthString = "August";
+                                break;
+                            case 9:
+                                monthString = "September";
+                                break;
+                            case 10:
+                                monthString = "October";
+                                break;
+                            case 11:
+                                monthString = "November";
+                                break;
+                            case 12:
+                                monthString = "December";
+                                break;
+                        }
+
+                        StringBuilder storyDate = new StringBuilder().append(storyDay).append(" ")
+                                .append(monthString).append(" ").append(storyYear);
+                        dateText.setText(storyDate.toString());
+
+
                     }
-
-                    if(uri != null && caption != null){
-                        StorageReference mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl(uri);
-
-                        //Load story image into image view.
-                        Glide.with(ShowStory.this).using(new FirebaseImageLoader()).load(mStorageRef).into(imageView);
-
-                        storyCaption.setText(caption);
-                    }
-
-                    int storyDay = dataSnapshot.child("DateTime").child("date").getValue(Integer.class);
-                    int storyMonth = 1+ dataSnapshot.child("DateTime").child("month").getValue(Integer.class);
-                    int storyYear = 1900 + dataSnapshot.child("DateTime").child("year").getValue(Integer.class);
-
-                    String monthString = "";
-                    switch (storyMonth) {
-                        case 1:
-                            monthString = "January";
-                            break;
-                        case 2:
-                            monthString = "February";
-                            break;
-                        case 3:
-                            monthString = "March";
-                            break;
-                        case 4:
-                            monthString = "April";
-                            break;
-                        case 5:
-                            monthString = "May";
-                            break;
-                        case 6:
-                            monthString = "June";
-                            break;
-                        case 7:
-                            monthString = "July";
-                            break;
-                        case 8:
-                            monthString = "August";
-                            break;
-                        case 9:
-                            monthString = "September";
-                            break;
-                        case 10:
-                            monthString = "October";
-                            break;
-                        case 11:
-                            monthString = "November";
-                            break;
-                        case 12:
-                            monthString = "December";
-                            break;
-                    }
-
-                    StringBuilder storyDate = new StringBuilder().append(storyDay).append(" ")
-                            .append(monthString).append(" ").append(storyYear);
-                    dateText.setText(storyDate.toString());
-
-
                 }
-
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
                     Toast.makeText(ShowStory.this, "Failed to load story data.", Toast.LENGTH_SHORT).show();
