@@ -27,6 +27,11 @@ android {
             res.srcDirs = ['src/main/res', 'src/main/res/string']
         }
     }
+    externalNativeBuild {
+        cmake {
+            path 'CMakeLists.txt'
+        }
+    }
 }
 
 repositories {
@@ -61,3 +66,5 @@ dependencies {
 }
 
 apply plugin: 'com.google.gms.google-services'
+
+
