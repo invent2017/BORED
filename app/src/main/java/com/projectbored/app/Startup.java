@@ -110,8 +110,12 @@ public class Startup extends AppCompatActivity {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         loggedIn = settings.getBoolean("Logged in", false);
         if(!loggedIn){
+            Intent login = new Intent(this, Login.class);
+            startActivity(login);
 
-            // Get the shared preferences
+            finish();
+
+        } else {
             SharedPreferences preferences =  getSharedPreferences(PREFS_NAME, 0);
 
             // Check if onboarding_complete is false
@@ -122,21 +126,19 @@ public class Startup extends AppCompatActivity {
 
                 // Close the main Activity
                 finish();
-                Log.d(Startup.class.getSimpleName(),"A");
 
+            } else {
+                String username = settings.getString("Username", "");
+                String password = settings.getString("Password", "");
+                //Toast.makeText(Startup.this, "Logged in as " + username + "." , Toast.LENGTH_LONG).show();
+                verifyAccount(settings, username, password, dataSnapshot.child("users"));
+
+                Intent start = new Intent(Startup.this, MapsActivityCurrentPlace.class);
+                startActivity(start);
+
+                finish();
             }
-            else{
-                promptLogIn().create().show();}
 
-        } else {
-            String username = settings.getString("Username", "");
-            String password = settings.getString("Password", "");
-            //Toast.makeText(Startup.this, "Logged in as " + username + "." , Toast.LENGTH_LONG).show();
-            verifyAccount(settings, username, password, dataSnapshot.child("users"));
-
-            Intent start = new Intent(Startup.this, MapsActivityCurrentPlace.class);
-            start.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(start);
         }
     }
 
@@ -174,27 +176,5 @@ public class Startup extends AppCompatActivity {
             returnToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(returnToMap);
         }
-    }
-
-    private AlertDialog.Builder promptLogIn() {
-        AlertDialog.Builder logInPrompt = new AlertDialog.Builder(this);
-        logInPrompt.setMessage("Want to access bonus features? :)")
-                .setPositiveButton("Log In", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent logInIntent = new Intent(Startup.this, Login.class);
-                        startActivity(logInIntent);
-                    }
-                })
-                .setNegativeButton("Later", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent start = new Intent(Startup.this, MapsActivityCurrentPlace.class);
-                        start.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(start);
-                    }
-                });
-
-        return logInPrompt;
     }
 }

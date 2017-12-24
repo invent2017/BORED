@@ -279,24 +279,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         return true;
         }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        MenuItem logInOption = menu.findItem(R.id.option_log_in);
-        MenuItem logOutOption = menu.findItem(R.id.option_log_out);
-        MenuItem viewProfileOption = menu.findItem(R.id.option_manage_account);
-
-        if(isLoggedIn()) {
-            logInOption.setVisible(false);
-            logOutOption.setVisible(true);
-            viewProfileOption.setVisible(true);
-        } else {
-            logInOption.setVisible(true);
-            logOutOption.setVisible(false);
-            viewProfileOption.setVisible(false);
-        }
-        return true;
-    }
-
 
     /**
      * Handles a click on the menu option to get a place.
@@ -307,12 +289,10 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.option_filter_stories) {
             filterStories();
-        } else if (item.getItemId() == R.id.option_log_in) {
-            Intent loginIntent = new Intent(this, Login.class);
-            startActivity(loginIntent);
         } else if(item.getItemId() == R.id.option_log_out) {
             Intent logoutIntent = new Intent(this, Logout.class);
             startActivity(logoutIntent);
+            finish();
         } else if(item.getItemId() == R.id.option_reset_map) {
             resetMap();
         } else if(item.getItemId() == R.id.option_manage_account) {

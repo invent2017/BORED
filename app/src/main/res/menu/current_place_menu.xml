@@ -33,10 +33,6 @@
         android:icon="@drawable/quantum_ic_refresh_white_24"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/option_log_in"
-        android:title="@string/action_sign_in"
-        android:visible="false" />
-    <item
         android:id="@+id/option_log_out"
         android:title="@string/action_log_out"
         android:visible="false" />
