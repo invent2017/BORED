@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BORED!</string>
+    <string name="app_name">unBORED!</string>
     <string name="title_activity_maps">BORED!</string>
     <string name="search_hashtags">Search hashtags</string>
     <string name="filter_stories">Filter stories</string>

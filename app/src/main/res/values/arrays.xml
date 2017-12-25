@@ -12,4 +12,10 @@
         <item>My stories</item>
         <item>Today's stories</item>
     </string-array>
+
+    <string-array name="maps_drawer_options">
+        <item>My Profile</item>
+        <item>Log out</item>
+        <item>Filter stories</item>
+    </string-array>
 </resources>

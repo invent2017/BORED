@@ -87,7 +87,7 @@
         <activity android:name=".EventUpload" />
         <activity android:name=".ShowEvent" />
         <activity android:name=".Trails" />
-        <activity android:name=".Onboarding"></activity>
+        <activity android:name=".Onboarding" />
     </application>
 
 </manifest>

@@ -12,8 +12,10 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +25,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -87,6 +93,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     private static final String KEY_LOCATION = "location";
 
     private FloatingActionButton exploreButton,addStoryButton,addEventButton;
+    private TextView displayedUsername;
+    private DrawerLayout mDrawerLayout;
+    private NavigationView mNavigationView;
+    private ListView mDrawerList;
+    private String[] mDrawerItems;
+
+    private String username;
 
     // Used for selecting the current place.
     //private final int mMaxEntries = 5;
@@ -115,6 +128,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
+        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        mNavigationView = (NavigationView)findViewById(R.id.navigation);
+        mDrawerList = (ListView)findViewById(R.id.options_list);
+        mDrawerItems = getResources().getStringArray(R.array.maps_drawer_options);
+
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.item_row, mDrawerItems));
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         // Build the Play services client for use by the Fused Location Provider and the Places API.
         // Use the addApi() method to request the Google Places API and the Fused Location Provider.
@@ -129,6 +149,16 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         mGoogleApiClient.connect();
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
+
+        username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
+        if(username == null) {
+            Intent login = new Intent(this, Login.class);
+            startActivity(login);
+            finish();
+        } else {
+            displayedUsername = (TextView) findViewById(R.id.my_username);
+            displayedUsername.setText(username);
+        }
 
         exploreButton = (FloatingActionButton)findViewById(R.id.explore);
         exploreButton.setOnClickListener(new View.OnClickListener() {
@@ -287,19 +317,29 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.option_filter_stories) {
-            filterStories();
-        } else if(item.getItemId() == R.id.option_log_out) {
-            Intent logoutIntent = new Intent(this, Logout.class);
-            startActivity(logoutIntent);
-            finish();
-        } else if(item.getItemId() == R.id.option_reset_map) {
+        if(item.getItemId() == R.id.option_reset_map) {
             resetMap();
-        } else if(item.getItemId() == R.id.option_manage_account) {
-            Intent viewProfile = new Intent(this, UserProfile.class);
-            startActivity(viewProfile);
         }
         return true;
+    }
+
+    private void selectItem(int position) {
+        switch (position) {
+            case 0:
+                Intent viewProfile = new Intent(this, UserProfile.class);
+                startActivity(viewProfile);
+                break;
+            case 1:
+                Intent logoutIntent = new Intent(this, Logout.class);
+                startActivity(logoutIntent);
+                finish();
+                break;
+            case 2:
+                filterStories();
+                break;
+        }
+
+        mDrawerLayout.closeDrawer(mNavigationView);
     }
 
     /**
@@ -530,7 +570,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                     filterFeaturedStories();
                 } else if(which == 1) {
                     if(isLoggedIn()) {
-                        filterUnreadStories(getSharedPreferences(PREFS_NAME, 0).getString("Username", ""));
+                        filterUnreadStories(username);
                     } else {
                         Toast.makeText(MapsActivityCurrentPlace.this,
                                 "You must log in to use this filter.", Toast.LENGTH_SHORT).show();
@@ -539,7 +579,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                     filterNearbyStories();
                 } else if(which == 3) {
                     if(isLoggedIn()) {
-                        filterMyStories(getSharedPreferences(PREFS_NAME, 0).getString("Username", ""));
+                        filterMyStories(username);
                     } else {
                         Toast.makeText(MapsActivityCurrentPlace.this,
                                 "You must log in to use this filter.", Toast.LENGTH_SHORT).show();
@@ -712,8 +752,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                     boolean featured = dataSnapshot1.getValue(boolean.class);
                                     boolean isRead = false;
                                     if (isLoggedIn()) {
-                                        String username = getSharedPreferences(PREFS_NAME, 0)
-                                                .getString("Username", "");
                                         if (dataSnapshot.child("users").child(username)
                                                 .child("ReadStories").child(storyKey).exists()) {
                                             isRead = true;
@@ -873,8 +911,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                     boolean featured = dataSnapshot1.getValue(boolean.class);
                                     boolean isRead = false;
                                     if (isLoggedIn()) {
-                                        String username = getSharedPreferences(PREFS_NAME, 0)
-                                                .getString("Username", "");
                                         if (dataSnapshot.child("users").child(username)
                                                 .child("ReadStories").child(storyKey).exists()) {
                                             isRead = true;
@@ -1129,10 +1165,12 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         return loggedIn;
     }
 
-    /*private String getUsername() {
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        String username = settings.getString("Username", "");
-        return username;
-    }*/
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            selectItem(i);
+        }
+    }
 
 }
