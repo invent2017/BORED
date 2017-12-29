@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BORED.iml" filepath="$PROJECT_DIR$/BORED.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED\app\app.iml" filepath="C:\Users\LikHern\Desktop\RI\2017\INVENT\BORED\app\app.iml" />
     </modules>
   </component>
 </project>

@@ -56,8 +56,8 @@
                     android:id="@+id/add_event"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    fab:fab_colorNormal="#c6f54a"
-                    fab:fab_colorPressed="#9fdb01"
+                    fab:fab_colorNormal="#96ED48"
+                    fab:fab_colorPressed="#62CF01"
                     fab:fab_icon="@drawable/ic_fab_star"
                     fab:fab_size="mini"
                     fab:fab_title="Add Event" />
