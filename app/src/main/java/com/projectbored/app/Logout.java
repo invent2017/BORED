@@ -28,8 +28,9 @@ public class Logout extends AppCompatActivity {
 
         Toast.makeText(this, "Logged out.", Toast.LENGTH_SHORT).show();
 
-        Intent reload = new Intent(this, MapsActivityCurrentPlace.class);
-        reload.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(reload);
+        Intent login = new Intent(this, Login.class);
+        startActivity(login);
+
+        finish();
     }
 }

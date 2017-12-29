@@ -65,22 +65,7 @@
                     android:text="@string/caption"
                     android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/viewNumber"
-                    android:layout_width="40dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="0.01"
-                    android:gravity="right|center_vertical"
-                    android:text=" views" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="0.01"
-                    app:srcCompat="@drawable/eye" />
             </LinearLayout>
 
             <LinearLayout
@@ -97,6 +82,7 @@
                     android:id="@+id/reportstory"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
+                    android:layout_marginLeft="8dp"
                     android:layout_marginRight="2dp"
                     android:layout_marginTop="15dp"
                     android:layout_weight="1"
@@ -152,13 +138,38 @@
                     app:srcCompat="@drawable/share" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/dateText"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginBottom="15dp"
-                android:layout_weight="0.69" />
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/dateText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.69" />
+
+                <TextView
+                    android:id="@+id/viewNumber"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.01"
+                    android:gravity="right|center_vertical"
+                    android:text=" views" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="0.01"
+                    app:srcCompat="@drawable/eye" />
+            </LinearLayout>
+
+
         </LinearLayout>
 
     </ScrollView>

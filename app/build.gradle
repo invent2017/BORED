@@ -7,11 +7,10 @@ android {
         applicationId "com.projectbored.app"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0a"
+        versionCode 4
+        versionName "1.0.3a"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         resValue "string", "google_maps_key", (project.findProperty("GOOGLE_MAPS_API_KEY") ?: "")
-
         multiDexEnabled true
     }
     buildTypes {
@@ -23,12 +22,29 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    sourceSets { main { res.srcDirs = ['src/main/res', 'src/main/res/string'] } }
+    sourceSets {
+        main {
+            res.srcDirs = ['src/main/res', 'src/main/res/string']
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path 'CMakeLists.txt'
+        }
+    }
+}
+
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
 }
 
 dependencies {
     implementation 'com.android.support:design:27.0.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -43,18 +59,13 @@ dependencies {
     compile 'com.google.firebase:firebase-database:10.0.1'
     compile 'com.firebaseui:firebase-ui-storage:0.6.0'
     compile 'com.getbase:floatingactionbutton:1.10.1'
+    compile 'com.github.vajro:MaterialDesignLibrary:1.6'
+    //compile 'com.github.navasmdc:MaterialDesign:1.5@aar'
+    compile 'com.ogaclejapan.smarttablayout:library:1.2.1@aar'
     testCompile 'junit:junit:4.12'
 }
 
-
-
-
-
-
-
-
-
-
-
-
 apply plugin: 'com.google.gms.google-services'
+
+
+

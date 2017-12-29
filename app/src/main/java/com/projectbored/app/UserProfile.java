@@ -1,7 +1,12 @@
 package com.projectbored.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +21,7 @@ public class UserProfile extends AppCompatActivity {
 
     private TextView usernameField, emailField, distanceNumber, viewsNumber,
             storyNumber, viewedNumber, upvotesNumber, upvotedNumber;
+    private Button resetReadStoriesButton;
 
     private DatabaseReference mDataRef;
     private String username;
@@ -35,6 +41,13 @@ public class UserProfile extends AppCompatActivity {
         viewedNumber = (TextView)findViewById(R.id.views_received);
         upvotesNumber = (TextView)findViewById(R.id.upvotes_given);
         upvotedNumber = (TextView)findViewById(R.id.upvotes_received);
+        resetReadStoriesButton = (Button)findViewById(R.id.reset_read_stories_button);
+        resetReadStoriesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resetReadStories();
+            }
+        });
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
@@ -44,8 +57,29 @@ public class UserProfile extends AppCompatActivity {
             loadFields();
         } else {
             Toast.makeText(this, "You are not logged in.", Toast.LENGTH_SHORT).show();
+            Intent login = new Intent(this, Login.class);
+            login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(login);
+
             finish();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.user_profile_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(item.getItemId() == R.id.option_change_password) {
+            Intent changePassword = new Intent(this, ChangePassword.class);
+            startActivity(changePassword);
+        }
+
+        return true;
     }
 
     private void loadFields() {
@@ -67,13 +101,13 @@ public class UserProfile extends AppCompatActivity {
                 if(dataSnapshot.child("users").child(username).hasChild("stories")) {
                     for(DataSnapshot ds : dataSnapshot.child("users").child(username).child("stories").getChildren()){
                         stories++;
-                    }
 
-                    for(DataSnapshot ds : dataSnapshot.child("users").child(username).child("stories").getChildren()) {
                         String storyKey = ds.getKey();
 
-                        viewed = viewed + dataSnapshot.child("stories").child(storyKey).child("Views").getValue(Integer.class);
-                        upvoted = upvoted + dataSnapshot.child("stories").child(storyKey).child("Votes").getValue(Integer.class);
+                        if(dataSnapshot.child("stories").child(storyKey).exists()) {
+                            viewed = viewed + dataSnapshot.child("stories").child(storyKey).child("Views").getValue(Integer.class);
+                            upvoted = upvoted + dataSnapshot.child("stories").child(storyKey).child("Votes").getValue(Integer.class);
+                        }
                     }
                 }
 
@@ -89,15 +123,11 @@ public class UserProfile extends AppCompatActivity {
                     }
                 }
 
-
                 viewsNumber.setText(Integer.toString(views));
                 storyNumber.setText(Integer.toString(stories));
                 viewedNumber.setText(Integer.toString(viewed));
                 upvotedNumber.setText(Integer.toString(upvoted));
                 upvotesNumber.setText(Integer.toString(upvotes));
-
-
-
             }
 
             @Override
@@ -105,5 +135,10 @@ public class UserProfile extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void resetReadStories() {
+        mDataRef.child("users").child(username).child("ReadStories").removeValue();
+        Toast.makeText(this, "Your read stories have been reset.", Toast.LENGTH_SHORT).show();
     }
 }

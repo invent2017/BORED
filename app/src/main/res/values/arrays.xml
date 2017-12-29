@@ -6,9 +6,19 @@
     </string-array>
 
     <string-array name="filter_story_options">
-        <item>Featured</item>
-        <item>Unread</item>
         <item>Nearby</item>
         <item>My stories</item>
+        <item>Today's stories</item>
+    </string-array>
+
+    <string-array name="maps_drawer_options">
+        <item>My Profile</item>
+        <item>Log out</item>
+        <item>Filter stories</item>
+    </string-array>
+
+    <string-array name="event_date_options">
+        <item>Today</item>
+        <item>Tomorrow</item>
     </string-array>
 </resources>

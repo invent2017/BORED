@@ -57,9 +57,9 @@ public class Login extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent returnToMap = new Intent(this, MapsActivityCurrentPlace.class);
-        returnToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(returnToMap);
+        Intent closeApp = new Intent(Intent.ACTION_MAIN);
+        closeApp.addCategory(Intent.CATEGORY_HOME);
+        startActivity(closeApp);
     }
 
     private void signIn() {
@@ -80,8 +80,9 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(Login.this, "Logged in as " + username + ".", Toast.LENGTH_SHORT).show();
 
                             Intent i = new Intent(Login.this, MapsActivityCurrentPlace.class);
-                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(i);
+
+                            finish();
                         } else {
                             Toast.makeText(Login.this, R.string.error_incorrect_password, Toast.LENGTH_SHORT).show();
                         }

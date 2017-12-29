@@ -31,7 +31,7 @@ import com.google.firebase.storage.StorageReference;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class ShowStory extends AppCompatActivity implements View.OnClickListener {
+public class ShowStory extends AppCompatActivity {
     Bundle storyDetails;
 
     private static final String PREFS_NAME = "UserDetails";
@@ -131,8 +131,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     }
 
     public void addView(){
-        final String storyKey = storyDetails.getString("key");
-        DatabaseReference mStoryRef = FirebaseDatabase.getInstance().getReference().child("stories").child(storyKey).child("Views");
+        DatabaseReference mStoryRef = FirebaseDatabase.getInstance().getReference().child("stories").child(STORY_KEY).child("Views");
         mStoryRef.runTransaction(new Transaction.Handler() {
             @Override
             public Transaction.Result doTransaction(MutableData mutableData) {
@@ -158,11 +157,8 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    if(!(dataSnapshot.child("ReadStories").hasChild(storyKey))){
-                        int views = dataSnapshot.child("Views").getValue(Integer.class);
-                        dataSnapshot.child("Views").getRef().setValue(++views);
-
-                        dataSnapshot.child("ReadStories").child(storyKey).getRef().setValue(storyKey);
+                    if(!(dataSnapshot.child("ReadStories").hasChild(STORY_KEY))){
+                        dataSnapshot.child("ReadStories").child(STORY_KEY).getRef().setValue(STORY_KEY);
                     }
                 }
 
@@ -364,7 +360,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == com.projectbored.app.R.id.option_back_to_map) {
+        if (item.getItemId() == R.id.option_back_to_map) {
             backToMap();
         }
 
@@ -392,74 +388,33 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
             mDataRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    String uri = dataSnapshot.child("URI").getValue(String.class);
-                    String caption = dataSnapshot.child("Caption").getValue(String.class);
-                    boolean isFeatured = dataSnapshot.child("Featured").getValue(boolean.class);
+                    if (dataSnapshot.exists()) {
+                        String uri = dataSnapshot.child("URI").getValue(String.class);
+                        String caption = dataSnapshot.child("Caption").getValue(String.class);
+                        boolean isFeatured = dataSnapshot.child("Featured").getValue(boolean.class);
 
-                    if(isFeatured) {
-                        featuredText.setText(R.string.featured_story);
+                        if (isFeatured) {
+                            featuredText.setText(R.string.featured_story);
+                        }
+
+                        if (uri != null && caption != null) {
+                            StorageReference mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl(uri);
+
+                            //Load story image into image view.
+                            Glide.with(ShowStory.this).using(new FirebaseImageLoader()).load(mStorageRef).into(imageView);
+
+                            storyCaption.setText(caption);
+                        }
+
+                        int storyDay = dataSnapshot.child("DateTime").child("date").getValue(Integer.class);
+                        int storyMonth = 1 + dataSnapshot.child("DateTime").child("month").getValue(Integer.class);
+                        int storyYear = 1900 + dataSnapshot.child("DateTime").child("year").getValue(Integer.class);
+
+                        DateCreator storyDateCreator = new DateCreator(storyDay, storyMonth, storyYear);
+                        dateText.setText(storyDateCreator.getDateString());
+
                     }
-
-                    if(uri != null && caption != null){
-                        StorageReference mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl(uri);
-
-                        //Load story image into image view.
-                        Glide.with(ShowStory.this).using(new FirebaseImageLoader()).load(mStorageRef).into(imageView);
-
-                        storyCaption.setText(caption);
-                    }
-
-                    int storyDay = dataSnapshot.child("DateTime").child("date").getValue(Integer.class);
-                    int storyMonth = 1+ dataSnapshot.child("DateTime").child("month").getValue(Integer.class);
-                    int storyYear = 1900 + dataSnapshot.child("DateTime").child("year").getValue(Integer.class);
-
-                    String monthString = "";
-                    switch (storyMonth) {
-                        case 1:
-                            monthString = "January";
-                            break;
-                        case 2:
-                            monthString = "February";
-                            break;
-                        case 3:
-                            monthString = "March";
-                            break;
-                        case 4:
-                            monthString = "April";
-                            break;
-                        case 5:
-                            monthString = "May";
-                            break;
-                        case 6:
-                            monthString = "June";
-                            break;
-                        case 7:
-                            monthString = "July";
-                            break;
-                        case 8:
-                            monthString = "August";
-                            break;
-                        case 9:
-                            monthString = "September";
-                            break;
-                        case 10:
-                            monthString = "October";
-                            break;
-                        case 11:
-                            monthString = "November";
-                            break;
-                        case 12:
-                            monthString = "December";
-                            break;
-                    }
-
-                    StringBuilder storyDate = new StringBuilder().append(storyDay).append(" ")
-                            .append(monthString).append(" ").append(storyYear);
-                    dateText.setText(storyDate.toString());
-
-
                 }
-
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
                     Toast.makeText(ShowStory.this, "Failed to load story data.", Toast.LENGTH_SHORT).show();
@@ -523,9 +478,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     }
 
     private void backToMap() {
-        Intent intent = new Intent(this, MapsActivityCurrentPlace.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+        finish();
     }
 
 }

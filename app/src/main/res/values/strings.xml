@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BORED!</string>
+    <string name="app_name">unBORED!</string>
     <string name="title_activity_maps">BORED!</string>
     <string name="search_hashtags">Search hashtags</string>
     <string name="filter_stories">Filter stories</string>
@@ -14,9 +14,13 @@
     <string name="nextonly">Next</string>
     <string name="change_image">Change Picture</string>
     <string name="manage_account">My Profile</string>
+    <string name="reset_read_stories">Reset Read Stories</string>
     <string name="add_story">Add Story</string>
     <string name="reset_map">Reset Map</string>
     <string name="map">Back to Map</string>
+    <string name="bookmark_story">Bookmark</string>
+    <string name="bookmarked_stories">Bookmarked stories</string>
+    <string name="more_stories">Swipe for more stories here!</string>
     <string name="delete">Delete story</string>
     <string name="caption">caption</string>
     <string name="report"><b>Report</b></string>
@@ -28,6 +32,9 @@
     <string name="prompt_username">Username</string>
     <string name="prompt_email">Email address</string>
     <string name="prompt_password">Password</string>
+    <string name="prompt_old_password">Old Password</string>
+    <string name="prompt_new_password">New Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
     <string name="action_sign_in">Log in</string>
     <string name="prompt_sign_up">Don\'t have an account?</string>
     <string name="action_sign_up">Sign up</string>
@@ -35,10 +42,11 @@
     <string name="error_incorrect_username">This username does not exist.</string>
     <string name="error_existing_username">This username is already taken.</string>
     <string name="error_invalid_email">Please enter a valid email address.</string>
-    <string name="error_existing_email">An accounr with this email address already exists.</string>
+    <string name="error_existing_email">An account with this email address already exists.</string>
     <string name="error_invalid_password">This password is too short.</string>
     <string name="error_incorrect_password">This password is incorrect.</string>
     <string name="error_field_required">Please fill in all fields.</string>
+    <string name="change_password">Change Password</string>
     <string name="action_log_out">Log out</string>
     <string name="username">username</string>
     <string name="email">email</string>
@@ -49,4 +57,9 @@
     <string name="upvotes_given">upvotes given</string>
     <string name="upvotes_received">upvotes received</string>
     <string name="user_end_message">keep on exploring the world! :)</string>
+    <string name="event_description">Type event description...</string>
+    <string name="time_picker_event">When does this event expire?</string>
+    <string name="create_event">Create Event</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
 </resources>

@@ -12,8 +12,10 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +25,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -44,6 +50,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -83,6 +93,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     private static final String KEY_LOCATION = "location";
 
     private FloatingActionButton exploreButton,addStoryButton,addEventButton;
+    private TextView displayedUsername;
+    private DrawerLayout mDrawerLayout;
+    private NavigationView mNavigationView;
+    private ListView mDrawerList;
+    private String[] mDrawerItems;
+
+    private String username;
 
     // Used for selecting the current place.
     //private final int mMaxEntries = 5;
@@ -111,6 +128,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
+        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        mNavigationView = (NavigationView)findViewById(R.id.navigation);
+        mDrawerList = (ListView)findViewById(R.id.options_list);
+        mDrawerItems = getResources().getStringArray(R.array.maps_drawer_options);
+
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.item_row, mDrawerItems));
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         // Build the Play services client for use by the Fused Location Provider and the Places API.
         // Use the addApi() method to request the Google Places API and the Fused Location Provider.
@@ -126,9 +150,43 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
+        username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
+        if(username == null) {
+            Intent login = new Intent(this, Login.class);
+            startActivity(login);
+            finish();
+        } else {
+            displayedUsername = (TextView) findViewById(R.id.my_username);
+            displayedUsername.setText(username);
+        }
+
         exploreButton = (FloatingActionButton)findViewById(R.id.explore);
+        exploreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mLastKnownLocation != null) {
+                    exploreTrails();
+                } else {
+                    Toast.makeText(MapsActivityCurrentPlace.this,
+                            "Unable to get your location. Please check your location settings and try again.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         addEventButton = (FloatingActionButton)findViewById(R.id.add_event);
+        addEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mLastKnownLocation != null) {
+                    addEvent();
+                } else {
+                    Toast.makeText(MapsActivityCurrentPlace.this,
+                            "Unable to get your location. Please check your location settings and try again.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         addStoryButton = (FloatingActionButton)findViewById(R.id.add_story);
         addStoryButton.setOnClickListener(new View.OnClickListener() {
@@ -248,26 +306,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
            }
        });
 
-        return true;
-        }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        MenuItem logInOption = menu.findItem(R.id.option_log_in);
-        MenuItem logOutOption = menu.findItem(R.id.option_log_out);
-        MenuItem viewProfileOption = menu.findItem(R.id.option_manage_account);
-
-        if(isLoggedIn()) {
-            logInOption.setVisible(false);
-            logOutOption.setVisible(true);
-            viewProfileOption.setVisible(true);
-        } else {
-            logInOption.setVisible(true);
-            logOutOption.setVisible(false);
-            viewProfileOption.setVisible(false);
-        }
-        return true;
-    }
+       return true;
+   }
 
 
     /**
@@ -277,21 +317,29 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.option_filter_stories) {
-            filterStories();
-        } else if (item.getItemId() == R.id.option_log_in) {
-            Intent loginIntent = new Intent(this, Login.class);
-            startActivity(loginIntent);
-        } else if(item.getItemId() == R.id.option_log_out) {
-            Intent logoutIntent = new Intent(this, Logout.class);
-            startActivity(logoutIntent);
-        } else if(item.getItemId() == R.id.option_reset_map) {
+        if(item.getItemId() == R.id.option_reset_map) {
             resetMap();
-        } else if(item.getItemId() == R.id.option_manage_account) {
-            Intent viewProfile = new Intent(this, UserProfile.class);
-            startActivity(viewProfile);
         }
         return true;
+    }
+
+    private void selectItem(int position) {
+        switch (position) {
+            case 0:
+                Intent viewProfile = new Intent(this, UserProfile.class);
+                startActivity(viewProfile);
+                break;
+            case 1:
+                Intent logoutIntent = new Intent(this, Logout.class);
+                startActivity(logoutIntent);
+                finish();
+                break;
+            case 2:
+                filterStories();
+                break;
+        }
+
+        mDrawerLayout.closeDrawer(mNavigationView);
     }
 
     /**
@@ -519,23 +567,11 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 mMap.clear();
 
                 if(which == 0) {
-                    filterFeaturedStories();
-                } else if(which == 1) {
-                    if(isLoggedIn()) {
-                        filterUnreadStories(getSharedPreferences(PREFS_NAME, 0).getString("Username", ""));
-                    } else {
-                        Toast.makeText(MapsActivityCurrentPlace.this,
-                                "You must log in to use this filter.", Toast.LENGTH_SHORT).show();
-                    }
-                } else if(which == 2) {
                     filterNearbyStories();
-                } else if(which == 3) {
-                    if(isLoggedIn()) {
-                        filterMyStories(getSharedPreferences(PREFS_NAME, 0).getString("Username", ""));
-                    } else {
-                        Toast.makeText(MapsActivityCurrentPlace.this,
-                                "You must log in to use this filter.", Toast.LENGTH_SHORT).show();
-                    }
+                } else if(which == 1) {
+                    filterMyStories(username);
+                } else if(which == 2) {
+                    filterTodayStories();
                 }
             }
         });
@@ -543,8 +579,49 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         builder.create().show();
     }
 
+    private void filterTodayStories() {
+        mDataRef.child("stories").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if(ds.exists()) {
+                        String[] locationArray = ds.child("Location").getValue(String.class).split(",");
+                        Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
+                        storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
+                        storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
 
-    private void filterFeaturedStories() {
+
+                        //supposed to compare date
+
+                        //gets User date here
+                        long todayDate = new Date().getTime();
+
+                        //gets story date below
+
+                        String storyKey = ds.getKey();
+                        long storyDate = ds.child("DateTime").getValue(Date.class).getTime();
+
+                        if(todayDate - storyDate <= 86400000) {
+                            Marker storyMarker = mMap.addMarker(new MarkerOptions()
+                                    .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
+                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+                            storyMarker.setTag(storyKey);
+                        }
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+
+    /*private void filterFeaturedStories() {
         mDataRef.child("locations").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -586,9 +663,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
             }
         });
-    }
+    }*/
 
-    private void filterUnreadStories(final String username) {
+    /*private void filterUnreadStories(final String username) {
         mDataRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -641,7 +718,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
             }
         });
-    }
+    }*/
 
     private void filterNearbyStories() {
         mDataRef.addValueEventListener(new ValueEventListener() {
@@ -661,8 +738,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                     boolean featured = dataSnapshot1.getValue(boolean.class);
                                     boolean isRead = false;
                                     if (isLoggedIn()) {
-                                        String username = getSharedPreferences(PREFS_NAME, 0)
-                                                .getString("Username", "");
                                         if (dataSnapshot.child("users").child(username)
                                                 .child("ReadStories").child(storyKey).exists()) {
                                             isRead = true;
@@ -670,7 +745,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                     }
 
                                     if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 100) {
-                                        showNearbyStories(storyKey, storyLocation, featured, isRead);
+                                        showNearbyStories(storyKey, storyLocation, featured);
                                     }
                                 }
                             }
@@ -711,6 +786,24 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
             }
         });
+    }
+
+
+
+
+    private void exploreTrails() {
+        Intent intent = new Intent(MapsActivityCurrentPlace.this, Trails.class);
+        startActivity(intent);
+    }
+
+    private void addEvent() {
+        Intent intent = new Intent(MapsActivityCurrentPlace.this, EventUpload.class);
+
+        Bundle extras = new Bundle();
+        extras.putDouble("Latitude", mLastKnownLocation.getLatitude());
+        extras.putDouble("Longitude", mLastKnownLocation.getLongitude());
+        intent.putExtras(extras);
+        startActivity(intent);
     }
 
     private void addStory() {
@@ -796,36 +889,60 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.child("locations").getChildren()) {
                     if(ds.exists()) {
+
+                        String[] locationArray = ds.getKey().replace('d', '.').split(",");
+                        Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
+                        storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
+                        storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
+
                         if(ds.getChildrenCount() == 1) {
                             for (DataSnapshot dataSnapshot1 : ds.getChildren()) {
                                 if(dataSnapshot1.exists()) {
                                     String storyKey = dataSnapshot1.getKey();
-                                    String[] locationArray = ds.getKey().replace('d', '.').split(",");
                                     boolean featured = dataSnapshot1.getValue(boolean.class);
-
-                                    Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
-                                    storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
-                                    storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
-
                                     boolean isRead = false;
                                     if (isLoggedIn()) {
-                                        String username = getSharedPreferences(PREFS_NAME, 0)
-                                                .getString("Username", "");
                                         if (dataSnapshot.child("users").child(username)
                                                 .child("ReadStories").child(storyKey).exists()) {
                                             isRead = true;
                                         }
                                     }
 
-                                    if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 100) {
-                                        showNearbyStories(storyKey, storyLocation, featured, isRead);
-                                    } else {
-                                        showFarStories(storyKey, storyLocation, featured, isRead);
+
+                                    if(!isRead) {
+                                        if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 100) {
+                                            showNearbyStories(storyKey, storyLocation, featured);
+                                        } else {
+                                            showFarStories(storyKey, storyLocation, featured);
+                                        }
                                     }
                                 }
                             }
                         } else {
+                            StringBuilder storyKeys = new StringBuilder();
+                            for(DataSnapshot dataSnapshot1 : ds.getChildren()) {
+                                String storyKey = dataSnapshot1.getKey();
+                                if(storyKeys.toString().equals("")) {
+                                    storyKeys.append(storyKey);
+                                } else {
+                                    storyKeys.append(",").append(storyKey);
+                                }
+                            }
 
+                            boolean featured = false;
+                            for(DataSnapshot dataSnapshot1 : ds.getChildren()) {
+                                featured = dataSnapshot1.getValue(boolean.class);
+
+                                if(featured) {
+                                    break;
+                                }
+                            }
+
+                            if(mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 100) {
+                                showNearbyStories(storyKeys.toString(), storyLocation, featured);
+                            } else {
+                                showFarStories(storyKeys.toString(), storyLocation, featured);
+                            }
                         }
                     } else {
                         Toast.makeText(MapsActivityCurrentPlace.this, "There are no stories.", Toast.LENGTH_SHORT).show();
@@ -867,19 +984,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         });
     }*/
 
-    public void showNearbyStories(String storyKey, Location storyLocation, boolean featured, boolean isRead) {
+    public void showNearbyStories(String storyKey, Location storyLocation, boolean featured) {
         Marker storyMarker;
         if (featured) {
             storyMarker = mMap.addMarker(new MarkerOptions()
                         .position(new LatLng(storyLocation.getLatitude(),
                                 storyLocation.getLongitude()))
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-            storyMarker.setTag(storyKey);
-        } else if (isRead) {
-            storyMarker = mMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(storyLocation.getLatitude(),
-                                storyLocation.getLongitude()))
-                        .icon(BitmapDescriptorFactory.defaultMarker()));
             storyMarker.setTag(storyKey);
         } else {
             storyMarker = mMap.addMarker(new MarkerOptions()
@@ -890,18 +1001,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         }
     }
 
-    public void showFarStories(final String storyKey, final Location storyLocation, boolean featured, boolean isRead) {
+    public void showFarStories(final String storyKey, final Location storyLocation, boolean featured) {
         Marker storyMarker;
         if(featured) {
             storyMarker = mMap.addMarker(new MarkerOptions()
                     .position(new LatLng(storyLocation.getLatitude(),
                             storyLocation.getLongitude()))
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-            storyMarker.setTag(storyKey);
-        } else if(isRead) {
-            storyMarker = mMap.addMarker(new MarkerOptions()
-                    .position(new LatLng(storyLocation.getLatitude(),
-                            storyLocation.getLongitude())));
             storyMarker.setTag(storyKey);
         } else {
             storyMarker = mMap.addMarker(new MarkerOptions()
@@ -929,8 +1035,16 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     }
 
     public void showStoryDetails(Marker marker) {
-        Intent intent = new Intent(this, ShowStory.class);
+        Intent intent = new Intent();
         String key = (String)marker.getTag();
+
+        if(key != null && key.contains(",")) {
+            intent = new Intent(this, ShowMultipleStories.class);
+        } else {
+            intent = new Intent(this, ShowStory.class);
+        }
+
+
         Bundle storyDetails = new Bundle();
         storyDetails.putString("key", key);
         storyDetails.putBoolean("Logged in", isLoggedIn());
@@ -942,8 +1056,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     }
 
     private void resetMap() {
-        mMap.clear();
-        getStories();
+        Intent reload = new Intent(this, MapsActivityCurrentPlace.class);
+        finish();
+        startActivity(reload);
     }
 
     /*
@@ -1033,10 +1148,12 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         return loggedIn;
     }
 
-    /*private String getUsername() {
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        String username = settings.getString("Username", "");
-        return username;
-    }*/
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            selectItem(i);
+        }
+    }
 
 }

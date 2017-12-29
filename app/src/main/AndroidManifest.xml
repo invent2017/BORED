@@ -41,13 +41,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MapsActivityCurrentPlace"
             android:label="@string/title_activity_maps">
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
+
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.SEARCH" />
@@ -56,12 +56,11 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="http"
                     android:host="projectboredinc.wordpress.com"
-                    android:pathPrefix="/story/" />
+                    android:pathPrefix="/story/"
+                    android:scheme="http" />
             </intent-filter>
         </activity>
-
         <activity android:name=".StoryUpload" />
 
         <provider
@@ -75,22 +74,21 @@
         </provider>
 
         <activity android:name=".ShowStory" />
-
-        <activity
-            android:name=".Login" />
-
-        <activity
-            android:name=".CreateAccount" />
-
+        <activity android:name=".ShowMultipleStories" />
+        <activity android:name=".Login" />
+        <activity android:name=".CreateAccount" />
         <activity
             android:name=".Logout"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
         <activity
             android:name=".StoryDeleter"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
-        <activity android:name=".UserProfile"></activity>
+        <activity android:name=".UserProfile" />
+        <activity android:name=".EventUpload" />
+        <activity android:name=".ShowEvent" />
+        <activity android:name=".Trails" />
+        <activity android:name=".Onboarding" />
+        <activity android:name=".ChangePassword"></activity>
     </application>
 
 </manifest>
