@@ -32,6 +32,9 @@
     <string name="prompt_username">Username</string>
     <string name="prompt_email">Email address</string>
     <string name="prompt_password">Password</string>
+    <string name="prompt_old_password">Old Password</string>
+    <string name="prompt_new_password">New Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
     <string name="action_sign_in">Log in</string>
     <string name="prompt_sign_up">Don\'t have an account?</string>
     <string name="action_sign_up">Sign up</string>
@@ -39,10 +42,11 @@
     <string name="error_incorrect_username">This username does not exist.</string>
     <string name="error_existing_username">This username is already taken.</string>
     <string name="error_invalid_email">Please enter a valid email address.</string>
-    <string name="error_existing_email">An accounr with this email address already exists.</string>
+    <string name="error_existing_email">An account with this email address already exists.</string>
     <string name="error_invalid_password">This password is too short.</string>
     <string name="error_incorrect_password">This password is incorrect.</string>
     <string name="error_field_required">Please fill in all fields.</string>
+    <string name="change_password">Change Password</string>
     <string name="action_log_out">Log out</string>
     <string name="username">username</string>
     <string name="email">email</string>

@@ -1,7 +1,10 @@
 package com.projectbored.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -54,8 +57,29 @@ public class UserProfile extends AppCompatActivity {
             loadFields();
         } else {
             Toast.makeText(this, "You are not logged in.", Toast.LENGTH_SHORT).show();
+            Intent login = new Intent(this, Login.class);
+            login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(login);
+
             finish();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.user_profile_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(item.getItemId() == R.id.option_change_password) {
+            Intent changePassword = new Intent(this, ChangePassword.class);
+            startActivity(changePassword);
+        }
+
+        return true;
     }
 
     private void loadFields() {

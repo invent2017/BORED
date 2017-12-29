@@ -88,6 +88,7 @@
         <activity android:name=".ShowEvent" />
         <activity android:name=".Trails" />
         <activity android:name=".Onboarding" />
+        <activity android:name=".ChangePassword"></activity>
     </application>
 
 </manifest>
