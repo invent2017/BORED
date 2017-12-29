@@ -57,9 +57,9 @@ public class Login extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent returnToMap = new Intent(this, MapsActivityCurrentPlace.class);
-        returnToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(returnToMap);
+        Intent closeApp = new Intent(Intent.ACTION_MAIN);
+        closeApp.addCategory(Intent.CATEGORY_HOME);
+        startActivity(closeApp);
     }
 
     private void signIn() {

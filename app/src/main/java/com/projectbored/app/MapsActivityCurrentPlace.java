@@ -798,6 +798,11 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     private void addEvent() {
         Intent intent = new Intent(MapsActivityCurrentPlace.this, EventUpload.class);
+
+        Bundle extras = new Bundle();
+        extras.putDouble("Latitude", mLastKnownLocation.getLatitude());
+        extras.putDouble("Longitude", mLastKnownLocation.getLongitude());
+        intent.putExtras(extras);
         startActivity(intent);
     }
 

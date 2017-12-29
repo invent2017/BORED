@@ -99,15 +99,11 @@ public class UserProfile extends AppCompatActivity {
                     }
                 }
 
-
                 viewsNumber.setText(Integer.toString(views));
                 storyNumber.setText(Integer.toString(stories));
                 viewedNumber.setText(Integer.toString(viewed));
                 upvotedNumber.setText(Integer.toString(upvoted));
                 upvotesNumber.setText(Integer.toString(upvotes));
-
-
-
             }
 
             @Override
@@ -119,5 +115,6 @@ public class UserProfile extends AppCompatActivity {
 
     private void resetReadStories() {
         mDataRef.child("users").child(username).child("ReadStories").removeValue();
+        Toast.makeText(this, "Your read stories have been reset.", Toast.LENGTH_SHORT).show();
     }
 }

@@ -1,5 +1,8 @@
 package com.projectbored.app;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * Created by LikHern on 29/12/2017.
  */
@@ -13,6 +16,12 @@ public class DateCreator {
         this.day = day;
         this.month = month;
         this.year = year;
+    }
+
+    public DateCreator(Calendar calendar) {
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+        month = 1 + calendar.get(Calendar.MONTH);
+        year = calendar.get(Calendar.YEAR);
     }
 
     public String getDateString() {
