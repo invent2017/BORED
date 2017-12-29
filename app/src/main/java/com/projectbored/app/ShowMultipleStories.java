@@ -1,5 +1,6 @@
 package com.projectbored.app;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -9,9 +10,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class ShowMultipleStories extends AppCompatActivity {
     private static final String PREFS_NAME = "UserDetails";
     Bundle stories;
+    String username;
+
+    DatabaseReference mDataRef;
 
     ViewPager storiesPager;
     String[] storyKeys;
@@ -21,10 +31,29 @@ public class ShowMultipleStories extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_multiple_stories);
 
+        mDataRef = FirebaseDatabase.getInstance().getReference();
+        username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
+
         stories = getIntent().getExtras();
         storyKeys = stories.getString("key").split(",");
 
         storiesPager = (ViewPager)findViewById(R.id.stories_pager);
+        storiesPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                invalidateOptionsMenu();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         showStories();
     }
 
@@ -37,12 +66,50 @@ public class ShowMultipleStories extends AppCompatActivity {
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        final int storyPosition = storiesPager.getCurrentItem();
+        final MenuItem deleteStoryOption = menu.findItem(R.id.option_delete_story);
+        mDataRef.child("users").child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.child("stories").hasChild(storyKeys[storyPosition])) {
+                    deleteStoryOption.setVisible(true);
+                } else {
+                    deleteStoryOption.setVisible(false);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.option_back_to_map) {
             finish();
+        } else if(item.getItemId() == R.id.option_delete_story) {
+            deleteStory();
         }
 
         return true;
+    }
+
+    private void deleteStory() {
+        int storyPosition = storiesPager.getCurrentItem();
+        String storyKey = storyKeys[storyPosition];
+
+        Intent delete = new Intent(getApplicationContext(), StoryDeleter.class);
+        Bundle storyDetails = new Bundle();
+        storyDetails.putString("key", storyKey);
+        storyDetails.putString("Username", username);
+        delete.putExtras(storyDetails);
+        startActivity(delete);
+        finish();
     }
 
     private void showStories() {

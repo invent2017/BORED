@@ -29,11 +29,9 @@ public class StoryDeleter extends AppCompatActivity {
         setContentView(R.layout.activity_story_deleter);
 
         storyDetails = getIntent().getExtras();
+        getValues(storyDetails);
 
         mStoryRef = FirebaseDatabase.getInstance().getReference();
-
-        Bundle storyDetails = getIntent().getExtras();
-        getValues(storyDetails);
 
         deleteStory();
     }

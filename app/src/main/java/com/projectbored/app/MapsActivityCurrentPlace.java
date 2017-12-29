@@ -306,8 +306,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
            }
        });
 
-        return true;
-        }
+       return true;
+   }
 
 
     /**
