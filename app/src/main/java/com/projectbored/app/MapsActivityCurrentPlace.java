@@ -567,24 +567,10 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 mMap.clear();
 
                 if(which == 0) {
-                    filterFeaturedStories();
-                } else if(which == 1) {
-                    if(isLoggedIn()) {
-                        filterUnreadStories(username);
-                    } else {
-                        Toast.makeText(MapsActivityCurrentPlace.this,
-                                "You must log in to use this filter.", Toast.LENGTH_SHORT).show();
-                    }
-                } else if(which == 2) {
                     filterNearbyStories();
-                } else if(which == 3) {
-                    if(isLoggedIn()) {
-                        filterMyStories(username);
-                    } else {
-                        Toast.makeText(MapsActivityCurrentPlace.this,
-                                "You must log in to use this filter.", Toast.LENGTH_SHORT).show();
-                    }
-                } else if(which ==4) {
+                } else if(which == 1) {
+                    filterMyStories(username);
+                } else if(which == 2) {
                     filterTodayStories();
                 }
             }
@@ -635,7 +621,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
 
 
-    private void filterFeaturedStories() {
+    /*private void filterFeaturedStories() {
         mDataRef.child("locations").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -677,9 +663,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
             }
         });
-    }
+    }*/
 
-    private void filterUnreadStories(final String username) {
+    /*private void filterUnreadStories(final String username) {
         mDataRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -732,7 +718,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
             }
         });
-    }
+    }*/
 
     private void filterNearbyStories() {
         mDataRef.addValueEventListener(new ValueEventListener() {
@@ -759,7 +745,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                     }
 
                                     if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 100) {
-                                        showNearbyStories(storyKey, storyLocation, featured, isRead);
+                                        showNearbyStories(storyKey, storyLocation, featured);
                                     }
                                 }
                             }
@@ -917,10 +903,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                         }
                                     }
 
-                                    if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 100) {
-                                        showNearbyStories(storyKey, storyLocation, featured, isRead);
-                                    } else {
-                                        showFarStories(storyKey, storyLocation, featured, isRead);
+
+                                    if(!isRead) {
+                                        if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 100) {
+                                            showNearbyStories(storyKey, storyLocation, featured);
+                                        } else {
+                                            showFarStories(storyKey, storyLocation, featured);
+                                        }
                                     }
                                 }
                             }
@@ -945,9 +934,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                             }
 
                             if(mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 100) {
-                                showNearbyStories(storyKeys.toString(), storyLocation, featured, false);
+                                showNearbyStories(storyKeys.toString(), storyLocation, featured);
                             } else {
-                                showFarStories(storyKeys.toString(), storyLocation, featured, false);
+                                showFarStories(storyKeys.toString(), storyLocation, featured);
                             }
                         }
                     } else {
@@ -990,19 +979,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         });
     }*/
 
-    public void showNearbyStories(String storyKey, Location storyLocation, boolean featured, boolean isRead) {
+    public void showNearbyStories(String storyKey, Location storyLocation, boolean featured) {
         Marker storyMarker;
         if (featured) {
             storyMarker = mMap.addMarker(new MarkerOptions()
                         .position(new LatLng(storyLocation.getLatitude(),
                                 storyLocation.getLongitude()))
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-            storyMarker.setTag(storyKey);
-        } else if (isRead) {
-            storyMarker = mMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(storyLocation.getLatitude(),
-                                storyLocation.getLongitude()))
-                        .icon(BitmapDescriptorFactory.defaultMarker()));
             storyMarker.setTag(storyKey);
         } else {
             storyMarker = mMap.addMarker(new MarkerOptions()
@@ -1013,18 +996,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         }
     }
 
-    public void showFarStories(final String storyKey, final Location storyLocation, boolean featured, boolean isRead) {
+    public void showFarStories(final String storyKey, final Location storyLocation, boolean featured) {
         Marker storyMarker;
         if(featured) {
             storyMarker = mMap.addMarker(new MarkerOptions()
                     .position(new LatLng(storyLocation.getLatitude(),
                             storyLocation.getLongitude()))
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-            storyMarker.setTag(storyKey);
-        } else if(isRead) {
-            storyMarker = mMap.addMarker(new MarkerOptions()
-                    .position(new LatLng(storyLocation.getLatitude(),
-                            storyLocation.getLongitude())));
             storyMarker.setTag(storyKey);
         } else {
             storyMarker = mMap.addMarker(new MarkerOptions()

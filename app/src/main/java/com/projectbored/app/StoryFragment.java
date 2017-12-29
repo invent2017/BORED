@@ -28,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.Date;
 import java.util.Locale;
 
 
@@ -117,6 +118,8 @@ public class StoryFragment extends Fragment {
                 reportStory();
             }
         });
+
+        addView();
 
         return view;
     }
@@ -348,50 +351,8 @@ public class StoryFragment extends Fragment {
                     int storyMonth = 1+ dataSnapshot.child("DateTime").child("month").getValue(Integer.class);
                     int storyYear = 1900 + dataSnapshot.child("DateTime").child("year").getValue(Integer.class);
 
-                    String monthString = "";
-                    switch (storyMonth) {
-                        case 1:
-                            monthString = "January";
-                            break;
-                        case 2:
-                            monthString = "February";
-                            break;
-                        case 3:
-                            monthString = "March";
-                            break;
-                        case 4:
-                            monthString = "April";
-                            break;
-                        case 5:
-                            monthString = "May";
-                            break;
-                        case 6:
-                            monthString = "June";
-                            break;
-                        case 7:
-                            monthString = "July";
-                            break;
-                        case 8:
-                            monthString = "August";
-                            break;
-                        case 9:
-                            monthString = "September";
-                            break;
-                        case 10:
-                            monthString = "October";
-                            break;
-                        case 11:
-                            monthString = "November";
-                            break;
-                        case 12:
-                            monthString = "December";
-                            break;
-                    }
-
-                    StringBuilder storyDate = new StringBuilder().append(storyDay).append(" ")
-                            .append(monthString).append(" ").append(storyYear);
-                    dateText.setText(storyDate.toString());
-
+                    DateCreator storyDateCreator = new DateCreator(storyDay, storyMonth, storyYear);
+                    dateText.setText(storyDateCreator.getDateString());
 
                 }
 

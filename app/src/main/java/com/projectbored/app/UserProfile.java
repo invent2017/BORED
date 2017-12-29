@@ -2,6 +2,8 @@ package com.projectbored.app;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +18,7 @@ public class UserProfile extends AppCompatActivity {
 
     private TextView usernameField, emailField, distanceNumber, viewsNumber,
             storyNumber, viewedNumber, upvotesNumber, upvotedNumber;
+    private Button resetReadStoriesButton;
 
     private DatabaseReference mDataRef;
     private String username;
@@ -35,6 +38,13 @@ public class UserProfile extends AppCompatActivity {
         viewedNumber = (TextView)findViewById(R.id.views_received);
         upvotesNumber = (TextView)findViewById(R.id.upvotes_given);
         upvotedNumber = (TextView)findViewById(R.id.upvotes_received);
+        resetReadStoriesButton = (Button)findViewById(R.id.reset_read_stories_button);
+        resetReadStoriesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resetReadStories();
+            }
+        });
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
@@ -105,5 +115,9 @@ public class UserProfile extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void resetReadStories() {
+        mDataRef.child("users").child(username).child("ReadStories").removeValue();
     }
 }

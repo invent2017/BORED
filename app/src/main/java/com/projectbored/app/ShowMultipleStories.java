@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 
 public class ShowMultipleStories extends AppCompatActivity {
     private static final String PREFS_NAME = "UserDetails";
@@ -31,6 +32,15 @@ public class ShowMultipleStories extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.show_story_menu, menu);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.option_back_to_map) {
+            finish();
+        }
 
         return true;
     }
@@ -60,6 +70,7 @@ public class ShowMultipleStories extends AppCompatActivity {
                 }
                 return numStories;
             }
+
         };
 
         int numStories = 0;

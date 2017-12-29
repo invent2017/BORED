@@ -6,8 +6,6 @@
     </string-array>
 
     <string-array name="filter_story_options">
-        <item>Featured</item>
-        <item>Unread</item>
         <item>Nearby</item>
         <item>My stories</item>
         <item>Today's stories</item>
