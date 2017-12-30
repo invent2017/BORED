@@ -26,6 +26,8 @@ public class ChangePassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
 
+        setTitle("Change Password");
+
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
         oldPasswordText = (EditText)findViewById(R.id.old_password);

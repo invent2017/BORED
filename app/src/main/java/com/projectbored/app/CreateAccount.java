@@ -3,6 +3,7 @@ package com.projectbored.app;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -37,7 +38,10 @@ public class CreateAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
-        setTitle("Create Account");
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setLogo(R.drawable.whitebored);
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
