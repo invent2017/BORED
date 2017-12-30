@@ -247,11 +247,15 @@
             android:textSize="21sp" />
 
         <Button
-            android:id="@+id/reset_read_stories_button"
+            android:id="@+id/invite_friends_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/reset_read_stories" />
+            android:layout_marginTop="20dp"
+            android:background="@drawable/roundishbutton"
+            android:padding="8dp"
+            android:fontFamily="monospace"
+            android:text="@string/invite_friends"
+            android:textColor="#fafafa" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

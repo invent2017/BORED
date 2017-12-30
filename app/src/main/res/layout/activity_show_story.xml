@@ -30,7 +30,9 @@
                 android:id="@+id/featuredText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.69" />
+                android:layout_margin="2dp"
+                android:layout_weight="0.69"
+                android:gravity="center" />
 
             <ImageView
                 android:id="@+id/imageView"

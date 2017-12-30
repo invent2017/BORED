@@ -302,8 +302,8 @@ public class ShowStory extends AppCompatActivity {
         String storyKey = storyDetails.getString("key");
         // i don't actually know what the subject or whatnot is so heh
         // need to add things to shareBody that links to the story or sth like that
-        String shareBody = "Check out this cool story on bored!\n" + "http://projectboredinc.wordpress.com/story/" + storyKey;
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Cool BORED! story");
+        String shareBody = "Check out this cool story on unBORED!\n" + "http://projectboredinc.wordpress.com/story/" + storyKey;
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Cool unBORED! story");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }

@@ -21,7 +21,7 @@ public class UserProfile extends AppCompatActivity {
 
     private TextView usernameField, emailField, distanceNumber, viewsNumber,
             storyNumber, viewedNumber, upvotesNumber, upvotedNumber;
-    private Button resetReadStoriesButton;
+    private Button inviteFriendButton;
 
     private DatabaseReference mDataRef;
     private String username;
@@ -41,11 +41,11 @@ public class UserProfile extends AppCompatActivity {
         viewedNumber = (TextView)findViewById(R.id.views_received);
         upvotesNumber = (TextView)findViewById(R.id.upvotes_given);
         upvotedNumber = (TextView)findViewById(R.id.upvotes_received);
-        resetReadStoriesButton = (Button)findViewById(R.id.reset_read_stories_button);
-        resetReadStoriesButton.setOnClickListener(new View.OnClickListener() {
+        inviteFriendButton = (Button)findViewById(R.id.invite_friends_button);
+        inviteFriendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resetReadStories();
+                inviteFriend();
             }
         });
 
@@ -137,8 +137,14 @@ public class UserProfile extends AppCompatActivity {
         });
     }
 
-    private void resetReadStories() {
-        mDataRef.child("users").child(username).child("ReadStories").removeValue();
-        Toast.makeText(this, "Your read stories have been reset.", Toast.LENGTH_SHORT).show();
+    private void inviteFriend(){
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        String shareBody = "Check this out! I've found cool stuff with this app. I think you'll like it " + "https://projectboredinc.wordpress.com/download/";
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Cool unBORED!");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, "Share the fun with..."));
     }
+
+
 }

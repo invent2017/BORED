@@ -337,6 +337,15 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             case 2:
                 filterStories();
                 break;
+            case 3:
+                Toast.makeText(MapsActivityCurrentPlace.this, "Find FAQs on our website :)", Toast.LENGTH_SHORT).show();
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://projectboredinc.wordpress.com/faqs/"));
+                startActivity(browserIntent);
+                break;
+            case 4:
+                Intent contactUs = new Intent(this, ContactUs.class);
+                startActivity(contactUs);
+                break;
         }
 
         mDrawerLayout.closeDrawer(mNavigationView);
@@ -1157,3 +1166,47 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     }
 
 }
+
+
+/* Random Code for See Read Stories
+
+private void seeReadStories(final String username) {
+        mDataRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.child("locations").getChildren()) {
+                    if(ds.exists()) {
+                        String[] locationArray = ds.getKey().replace('d', '.').split(",");
+                        Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
+                        storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
+                        storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
+
+                        if(ds.getChildrenCount() == 1) {
+                            for (DataSnapshot dataSnapshot1 : ds.getChildren()) {
+                                if(dataSnapshot1.exists()) {
+                                    String storyKey = dataSnapshot1.getKey();
+                                    boolean isRead = false;
+                                    if (dataSnapshot.child("users").child(username)
+                                            .child("ReadStories").child(storyKey).exists()) {
+                                    }
+                                    if (!isRead) {
+                                        Marker storyMarker = mMap.addMarker(new MarkerOptions()
+                                                .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
+                                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+                                        storyMarker.setTag(storyKey);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+ */

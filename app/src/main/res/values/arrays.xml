@@ -15,10 +15,14 @@
         <item>My Profile</item>
         <item>Log out</item>
         <item>Filter stories</item>
+        <item>FAQs</item>
+        <item>Contact Us</item>
+
     </string-array>
 
     <string-array name="event_date_options">
         <item>Today</item>
         <item>Tomorrow</item>
     </string-array>
+
 </resources>

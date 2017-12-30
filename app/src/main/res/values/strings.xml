@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">unBORED!</string>
-    <string name="title_activity_maps">BORED!</string>
+    <string name="title_activity_maps">unBORED!</string>
     <string name="search_hashtags">Search hashtags</string>
     <string name="filter_stories">Filter stories</string>
     <string name="retrievedstory">retrievedStory</string>
@@ -14,7 +14,7 @@
     <string name="nextonly">Next</string>
     <string name="change_image">Change Picture</string>
     <string name="manage_account">My Profile</string>
-    <string name="reset_read_stories">Reset Read Stories</string>
+    <string name="see_read_stories">See All Read Stories</string>
     <string name="add_story">Add Story</string>
     <string name="reset_map">Reset Map</string>
     <string name="map">Back to Map</string>
@@ -28,7 +28,7 @@
     <string name="views"> views</string>
 
     <!-- Strings related to login -->
-    <string name="login_title">Welcome to BORED!</string>
+    <string name="login_title">Welcome to unBORED!</string>
     <string name="prompt_username">Username</string>
     <string name="prompt_email">Email address</string>
     <string name="prompt_password">Password</string>
@@ -50,6 +50,8 @@
     <string name="action_log_out">Log out</string>
     <string name="username">username</string>
     <string name="email">email</string>
+
+
     <string name="kilometres_covered">kilometres covered</string>
     <string name="stories_viewed">stories viewed</string>
     <string name="stories_posted">stories posted</string>
@@ -63,4 +65,5 @@
     <string name="skip">Skip</string>
     <string name="next">Next</string>
     <string name="no">No.</string>
+    <string name="invite_friends">Have a Friend who might Like this app? :)</string>
 </resources>

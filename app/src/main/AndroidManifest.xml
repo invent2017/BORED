@@ -88,7 +88,8 @@
         <activity android:name=".ShowEvent" />
         <activity android:name=".Trails" />
         <activity android:name=".Onboarding" />
-        <activity android:name=".ChangePassword"></activity>
+        <activity android:name=".ChangePassword" />
+        <activity android:name=".ContactUs"></activity>
     </application>
 
 </manifest>
