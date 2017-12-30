@@ -47,7 +47,7 @@ public class ChangePassword extends AppCompatActivity {
         final String newPassword1 = newPasswordText.getText().toString();
         final String newPassword2 = confirmNewPasswordText.getText().toString();
 
-        if(oldPassword == null || newPassword1 == null || newPassword2 == null) {
+        if(oldPassword.equals("") || newPassword1.equals("") || newPassword2.equals("")) {
             Toast.makeText(this, "Please fill in all fields.", Toast.LENGTH_SHORT).show();
 
         } else if(newPassword1.equals(newPassword2)) {
