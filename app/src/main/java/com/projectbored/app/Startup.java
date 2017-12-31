@@ -44,7 +44,7 @@ public class Startup extends AppCompatActivity {
                     underMaintenance = dataSnapshot.child("maintenance").getValue(boolean.class);
                 }
                 if(underMaintenance) {
-                    Toast.makeText(Startup.this, "BORED is currently under maintenance.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Startup.this, "unBORED is currently under maintenance.", Toast.LENGTH_SHORT).show();
                     Startup.this.finish();
                 } else {
                     checkUpdates(dataSnapshot);

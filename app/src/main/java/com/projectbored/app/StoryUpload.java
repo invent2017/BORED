@@ -48,7 +48,7 @@ public class StoryUpload extends AppCompatActivity {
     private static final String PREFS_NAME = "UserDetails";
 
     EditText caption;
-    EditText hashtag;
+    EditText hashtagBox;
 
     private StorageReference mStorageRef;
     private DatabaseReference mDataRef;
@@ -78,7 +78,7 @@ public class StoryUpload extends AppCompatActivity {
             caption.setText(storySettings.getString("Caption"));
         }
 
-        hashtag = findViewById(R.id.hashtags);
+        hashtagBox = findViewById(R.id.hashtags);
 
         storyKey = mDataRef.child("stories").push().getKey();
 
@@ -278,6 +278,21 @@ public class StoryUpload extends AppCompatActivity {
                         String storyURI = dataSnapshot.getValue(String.class);
                         String storyCaption = caption.getText().toString();
 
+                        String hashtagBoxText = hashtagBox.getText().toString();
+
+                        if(!hashtagBoxText.equals("")) {
+                            hashtagBoxText = hashtagBoxText.substring(1);
+                            String [] hashtags = hashtagBoxText.split("#");
+
+                            StringBuilder captionBuilder = new StringBuilder().append(storyCaption).append(" ");
+                            for(int i = 0; i < hashtags.length; i++) {
+                                hashtags[i] = hashtags[i].trim();
+                                captionBuilder.append("#").append(hashtags[i]);
+                            }
+
+                            storyCaption = captionBuilder.toString();
+                        }
+
                         Map<String, Object> childUpdates = new HashMap<>();
 
                         Story story = new Story(storyURI, storyLocation, storyCaption, new Date());
@@ -305,6 +320,8 @@ public class StoryUpload extends AppCompatActivity {
                                 childUpdates.put("/hashtags/" + hashtag + "/" + storyKey, locationString);
                             }
                         }
+
+
 
                         mDataRef.updateChildren(childUpdates);
 
