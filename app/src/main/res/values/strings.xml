@@ -10,6 +10,7 @@
     <string name="up_vote">up vote</string>
     <string name="share">share</string>
     <string name="insert_caption_here">Insert Caption Here</string>
+    <string name="insert_hashtag_here">#insert #hashtags #here</string>
     <string name="Share">Share</string>
     <string name="nextonly">Next</string>
     <string name="change_image">Change Picture</string>
@@ -66,8 +67,10 @@
     <string name="next">Next</string>
     <string name="no">No.</string>
     <string name="invite_friends">Have a Friend who might Like this app? :)</string>
+
+
     <string name="message">Message:</string>
     <string name="subject">Subject:</string>
     <string name="send">Send</string>
-    <string name="contact_message">Feel free to leave any feedback. :) We also welcome people to join our developers\' team. Check our FAQs for any queries. Any other message is fine as well~</string>
+    <string name="contact_message">Feel free to leave any feedback. :) We also welcome people to join our developers\' team.~ </string>
 </resources>

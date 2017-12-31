@@ -48,6 +48,7 @@ public class StoryUpload extends AppCompatActivity {
     private static final String PREFS_NAME = "UserDetails";
 
     EditText caption;
+    EditText hashtag;
 
     private StorageReference mStorageRef;
     private DatabaseReference mDataRef;
@@ -77,6 +78,7 @@ public class StoryUpload extends AppCompatActivity {
             caption.setText(storySettings.getString("Caption"));
         }
 
+        hashtag = findViewById(R.id.hashtags);
 
         storyKey = mDataRef.child("stories").push().getKey();
 
