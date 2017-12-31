@@ -18,7 +18,7 @@
         android:id="@+id/search_hashtags"
         android:icon="@drawable/search"
         android:title="@string/search_hashtags"
-        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:actionViewClass="com.projectbored.app.HashtagSearchBar"
         app:showAsAction="collapseActionView|always" />
 
     <item

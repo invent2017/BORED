@@ -1,11 +1,13 @@
 package com.projectbored.app;
 
 import android.app.SearchManager;
+import android.app.SearchableInfo;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
@@ -15,18 +17,24 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.text.method.KeyListener;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,14 +59,22 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+
+import static android.text.InputType.TYPE_CLASS_TEXT;
+import static android.view.KeyEvent.KEYCODE_ENTER;
+import static android.view.KeyEvent.KEYCODE_SEARCH;
+import static android.view.inputmethod.EditorInfo.IME_ACTION_DONE;
+import static android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH;
 
 /**
  * An activity that displays a map showing the place at the device's current location.
@@ -93,6 +109,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     private static final String KEY_LOCATION = "location";
 
     private FloatingActionButton exploreButton,addStoryButton,addEventButton;
+    private HashtagSearchBar searchView;
     private TextView displayedUsername;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
@@ -256,55 +273,10 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         getMenuInflater().inflate(com.projectbored.app.R.menu.current_place_menu, menu);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-       SearchManager searchManager =
-               (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-       final SearchView searchView =
-               (SearchView) menu.findItem(R.id.search_hashtags).getActionView();
-       searchView.setSearchableInfo(
-               searchManager.getSearchableInfo(getComponentName()));
-       searchView.setIconifiedByDefault(false);
-       searchView.setQueryHint("Hashtags...");
-       searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-           @Override
-           public boolean onQueryTextSubmit(String query) {
-               if (!query.equals("")) {
-                   if (query.contains("#")) {
-                       query = query.substring(1);
-                   }
-                   searchHashtags(query);
-                   //Hide keyboard
-                   View view = MapsActivityCurrentPlace.this.getCurrentFocus();
-                   if (view != null) {
-                       InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                       imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-                   }
-               }
-               return true;
-           }
+       searchView = (HashtagSearchBar) menu.findItem(R.id.search_hashtags).getActionView();;
+       initialiseSearch(searchView);
 
-           @Override
-           public boolean onQueryTextChange(String newText) {
-               return false;
-           }
-       });
-       searchView.setOnSearchClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               String query = searchView.getQuery().toString();
-               if (!query.equals("")) {
-                   if (query.contains("#")) {
-                       query = query.substring(1);
-                   }
-                   searchHashtags(query);
-                   //Hide keyboard
-                   View view = MapsActivityCurrentPlace.this.getCurrentFocus();
-                   if (view != null) {
-                       InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                       imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-                   }
-               }
-           }
-       });
+
 
        return true;
    }
@@ -500,10 +472,62 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         updateLocationUI();
     }
 
-    /**
-     * Prompts the user to select the current place from a list of likely places, and shows the
-     * current place on the map - provided the user has granted location permission.
-     */
+    private void initialiseSearch(final AutoCompleteTextView searchView) {
+        searchView.setHint("Hashtags...");
+        searchView.setInputType(TYPE_CLASS_TEXT);
+        searchView.setImeOptions(IME_ACTION_SEARCH);
+        searchView.setMaxLines(1);
+
+        mDataRef.child("hashtags").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                final ArrayList<String> popularHashtags = new ArrayList<>();
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if(ds.getChildrenCount() >= 2) {
+                        popularHashtags.add(ds.getKey());
+                    }
+                }
+
+                searchView.setAdapter(new ArrayAdapter<>(MapsActivityCurrentPlace.this,
+                        R.layout.suggestion_row, popularHashtags));
+
+
+                searchView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        String query = popularHashtags.get(i);
+                        searchHashtags(view, query);
+                    }
+                });
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        searchView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if(i == KEYCODE_SEARCH || i == KEYCODE_ENTER) {
+                    String query = searchView.getText().toString();
+                    if (!query.equals("")) {
+                        if (query.contains("#")) {
+                            query = query.substring(1);
+                        }
+                        searchHashtags(view, query);
+                    }
+
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+
+    }
 
     private void showSelectedStory(Uri appLinkData) {
         final String storyKey = appLinkData.getLastPathSegment();
@@ -531,12 +555,11 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         });
     }
 
-    private void searchHashtags(String hashtag) {
+    private void searchHashtags(final View view, String hashtag) {
         String legitInput= "\\w+";
         Matcher matcher = Pattern.compile(legitInput).matcher(hashtag);
 
         if (matcher.matches()) {
-
             mDataRef.child("hashtags").child(hashtag).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -552,6 +575,12 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                     .position(storyPosition)
                                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
                             marker.setTag(storyKey);
+
+                            //Hide keyboard
+                            if (view != null) {
+                                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                            }
                         }
                     } else {
                         Toast.makeText(MapsActivityCurrentPlace.this, "There are no stories with that hashtag.", Toast.LENGTH_SHORT).show();
