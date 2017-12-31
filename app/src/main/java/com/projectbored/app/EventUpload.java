@@ -107,17 +107,12 @@ public class EventUpload extends AppCompatActivity {
     }
 
     private void uploadEvent() {
-        Location eventLocation = new Location(LocationManager.GPS_PROVIDER);
-        eventLocation.setLatitude(eventSettings.getDouble("Latitude"));
-        eventLocation.setLongitude(eventSettings.getDouble("Longitude"));
-
+        Calendar timeNow = Calendar.getInstance();
         Calendar eventCalendar = Calendar.getInstance();
-        String eventDescription = descriptionField.getText().toString();
         int pos = spinner.getSelectedItemPosition();
         if(pos == 1) {
             eventCalendar.set(Calendar.DAY_OF_MONTH, 1 + eventCalendar.get(Calendar.DAY_OF_MONTH));
         }
-
         if (Build.VERSION.SDK_INT >= 23) {
             eventCalendar.set(Calendar.HOUR_OF_DAY, timePicker.getHour());
             eventCalendar.set(Calendar.MINUTE, timePicker.getMinute());
@@ -125,15 +120,28 @@ public class EventUpload extends AppCompatActivity {
             eventCalendar.set(Calendar.HOUR_OF_DAY, timePicker.getCurrentHour());
             eventCalendar.set(Calendar.MINUTE, timePicker.getCurrentMinute());
         }
-
         eventCalendar.set(Calendar.SECOND, 0);
 
-        Event event = new Event(eventDescription, eventCalendar.getTimeInMillis(), eventLocation);
-        String locationKey = event.getLocationString().replace('.', 'd');
-        mDataRef.child("events").child(eventKey).updateChildren(event.toMap());
-        mDataRef.child("locations").child(locationKey).child(eventKey).setValue(2);
+        if(timeNow.getTimeInMillis() >= eventCalendar.getTimeInMillis()) {
+            Toast.makeText(this, "Event has already expired.", Toast.LENGTH_SHORT).show();
 
-        Toast.makeText(this, "Event added!", Toast.LENGTH_SHORT).show();
-        finish();
+        } else {
+
+            Location eventLocation = new Location(LocationManager.GPS_PROVIDER);
+            eventLocation.setLatitude(eventSettings.getDouble("Latitude"));
+            eventLocation.setLongitude(eventSettings.getDouble("Longitude"));
+
+
+            String eventDescription = descriptionField.getText().toString();
+
+
+            Event event = new Event(eventDescription, eventCalendar.getTimeInMillis(), eventLocation);
+            String locationKey = event.getLocationString().replace('.', 'd');
+            mDataRef.child("events").child(eventKey).updateChildren(event.toMap());
+            mDataRef.child("locations").child(locationKey).child(eventKey).setValue(2);
+
+            Toast.makeText(this, "Event added!", Toast.LENGTH_SHORT).show();
+            finish();
+        }
     }
 }
