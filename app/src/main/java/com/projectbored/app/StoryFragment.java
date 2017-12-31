@@ -80,9 +80,9 @@ public class StoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_show_story, container, false);
-        imageView = (ImageView)view.findViewById(R.id.imageView);
+        imageView = view.findViewById(R.id.imageView);
 
-        upVoteButton = (ImageButton)view.findViewById(R.id.upVoteButton);
+        upVoteButton = view.findViewById(R.id.upVoteButton);
         upVoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +90,7 @@ public class StoryFragment extends Fragment {
             }
         });
 
-        downVoteButton = (ImageButton)view.findViewById(R.id.downVoteButton);
+        downVoteButton = view.findViewById(R.id.downVoteButton);
         downVoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,7 +98,7 @@ public class StoryFragment extends Fragment {
             }
         });
 
-        shareButton = (ImageButton)view.findViewById(R.id.shareButton);
+        shareButton = view.findViewById(R.id.shareButton);
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,14 +106,14 @@ public class StoryFragment extends Fragment {
             }
         });
 
-        voteNumber = (TextView) view.findViewById(R.id.voteNumber);
-        viewNumber = (TextView) view.findViewById(R.id.viewNumber);
+        voteNumber = view.findViewById(R.id.voteNumber);
+        viewNumber =  view.findViewById(R.id.viewNumber);
 
-        storyCaption = (TextView) view.findViewById(R.id.storyCaption);
-        featuredText = (TextView)view.findViewById(R.id.featuredText);
-        dateText = (TextView)view.findViewById(R.id.dateText);
+        storyCaption =  view.findViewById(R.id.storyCaption);
+        featuredText = view.findViewById(R.id.featuredText);
+        dateText = view.findViewById(R.id.dateText);
 
-        reportStoryButton = (Button) view.findViewById(R.id.reportstory);
+        reportStoryButton =  view.findViewById(R.id.reportstory);
         reportStoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

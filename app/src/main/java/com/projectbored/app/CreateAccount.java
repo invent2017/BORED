@@ -45,11 +45,11 @@ public class CreateAccount extends AppCompatActivity {
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
-        usernameField = (EditText)findViewById(R.id.signUpUsername);
-        emailField = (EditText)findViewById(R.id.signUpEmail);
-        passwordField = (EditText)findViewById(R.id.signUpPassword);
+        usernameField = findViewById(R.id.signUpUsername);
+        emailField = findViewById(R.id.signUpEmail);
+        passwordField = findViewById(R.id.signUpPassword);
 
-        signUpButton = (Button)findViewById(R.id.signup_button);
+        signUpButton = findViewById(R.id.signup_button);
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

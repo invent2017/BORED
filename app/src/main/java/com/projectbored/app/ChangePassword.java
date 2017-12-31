@@ -30,11 +30,11 @@ public class ChangePassword extends AppCompatActivity {
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
-        oldPasswordText = (EditText)findViewById(R.id.old_password);
-        newPasswordText = (EditText)findViewById(R.id.new_password);
-        confirmNewPasswordText = (EditText)findViewById(R.id.confirm_new_password);
+        oldPasswordText = findViewById(R.id.old_password);
+        newPasswordText = findViewById(R.id.new_password);
+        confirmNewPasswordText = findViewById(R.id.confirm_new_password);
 
-        changePasswordButton = (Button)findViewById(R.id.change_password_button);
+        changePasswordButton = findViewById(R.id.change_password_button);
         changePasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

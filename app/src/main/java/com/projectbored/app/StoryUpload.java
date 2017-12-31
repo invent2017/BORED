@@ -73,7 +73,7 @@ public class StoryUpload extends AppCompatActivity {
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
-        caption = (EditText)findViewById(R.id.story_caption);
+        caption = findViewById(R.id.story_caption);
         if(storySettings.getString("Caption") != null) {
             caption.setText(storySettings.getString("Caption"));
         }

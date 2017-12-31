@@ -79,9 +79,9 @@ public class ShowStory extends AppCompatActivity {
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
-        imageView = (ImageView)findViewById(R.id.imageView);
+        imageView = findViewById(R.id.imageView);
 
-        upVoteButton = (ImageButton)findViewById(R.id.upVoteButton);
+        upVoteButton = findViewById(R.id.upVoteButton);
         upVoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +89,7 @@ public class ShowStory extends AppCompatActivity {
             }
         });
 
-        downVoteButton = (ImageButton)findViewById(R.id.downVoteButton);
+        downVoteButton = findViewById(R.id.downVoteButton);
         downVoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +97,7 @@ public class ShowStory extends AppCompatActivity {
             }
         });
 
-        shareButton = (ImageButton)findViewById(R.id.shareButton);
+        shareButton = findViewById(R.id.shareButton);
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,14 +105,14 @@ public class ShowStory extends AppCompatActivity {
             }
         });
 
-        voteNumber = (TextView) findViewById(R.id.voteNumber);
-        viewNumber = (TextView) findViewById(R.id.viewNumber);
+        voteNumber = findViewById(R.id.voteNumber);
+        viewNumber = findViewById(R.id.viewNumber);
 
-        storyCaption = (TextView) findViewById(R.id.storyCaption);
-        featuredText = (TextView)findViewById(R.id.featuredText);
-        dateText = (TextView)findViewById(R.id.dateText);
+        storyCaption = findViewById(R.id.storyCaption);
+        featuredText = findViewById(R.id.featuredText);
+        dateText = findViewById(R.id.dateText);
 
-        reportStoryButton = (Button) findViewById(R.id.reportstory);
+        reportStoryButton =  findViewById(R.id.reportstory);
         reportStoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

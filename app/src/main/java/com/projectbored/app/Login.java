@@ -34,10 +34,10 @@ public class Login extends AppCompatActivity {
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
-        usernameField = (EditText)findViewById(R.id.signInUsername);
-        passwordField = (EditText)findViewById(R.id.signInPassword);
+        usernameField = findViewById(R.id.signInUsername);
+        passwordField = findViewById(R.id.signInPassword);
 
-        signInButton = (Button)findViewById(R.id.signin_button);
+        signInButton = findViewById(R.id.signin_button);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,7 +45,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        promptSignUpButton = (Button)findViewById(R.id.signup_prompt_button);
+        promptSignUpButton = findViewById(R.id.signup_prompt_button);
         promptSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
