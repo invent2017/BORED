@@ -15,5 +15,6 @@ public class ContactUs extends AppCompatActivity {
         actionBar.setLogo(R.drawable.whitebored);
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setDisplayShowTitleEnabled(false);
     }
 }
