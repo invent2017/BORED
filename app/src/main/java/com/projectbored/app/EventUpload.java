@@ -50,13 +50,13 @@ public class EventUpload extends AppCompatActivity {
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
-        descriptionField = (EditText)findViewById(R.id.event_description);
+        descriptionField = findViewById(R.id.event_description);
 
-        eventDateText = (TextView)findViewById(R.id.event_date_text);
+        eventDateText = findViewById(R.id.event_date_text);
 
-        timePicker = (TimePicker)findViewById(R.id.timePicker);
+        timePicker = findViewById(R.id.timePicker);
 
-        spinner = (Spinner)findViewById(R.id.spinner);
+        spinner = findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.event_date_options,
                 android.R.layout.simple_spinner_item);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

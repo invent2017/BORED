@@ -37,7 +37,7 @@ public class ShowMultipleStories extends AppCompatActivity {
         stories = getIntent().getExtras();
         storyKeys = stories.getString("key").split(",");
 
-        storiesPager = (ViewPager)findViewById(R.id.stories_pager);
+        storiesPager = findViewById(R.id.stories_pager);
         storiesPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

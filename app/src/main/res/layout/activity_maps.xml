@@ -98,16 +98,15 @@
                 android:layout_height="56dp"
                 android:orientation="vertical"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true">
 
                 <TextView
                     android:id="@+id/my_username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
                     android:textColor="#ffffff"
-                    android:text="Username"
+                    android:text="@string/username"
                     android:textSize="14sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -117,7 +116,7 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:src="@mipmap/ic_launcher"
-                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="38dp"
                 android:id="@+id/circleView" />
         </RelativeLayout>

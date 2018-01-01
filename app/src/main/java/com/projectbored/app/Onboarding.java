@@ -46,9 +46,9 @@ public class Onboarding extends FragmentActivity {
             }
         };
 
-        pager = (ViewPager)findViewById(R.id.pager);
+        pager = findViewById(R.id.pager);
         pager.setAdapter(adapter);
-        indicator = (SmartTabLayout)findViewById(R.id.indicator);
+        indicator = findViewById(R.id.indicator);
 
         indicator.setViewPager(pager);
         indicator.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
@@ -64,8 +64,8 @@ public class Onboarding extends FragmentActivity {
             }
         });
 
-        skip = (ButtonFlat)findViewById(R.id.skip);
-        next = (ButtonFlat)findViewById(R.id.next);
+        skip = findViewById(R.id.skip);
+        next = findViewById(R.id.next);
 
         skip.setOnClickListener(new View.OnClickListener() {
             @Override

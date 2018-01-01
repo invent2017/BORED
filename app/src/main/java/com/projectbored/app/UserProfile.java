@@ -33,15 +33,15 @@ public class UserProfile extends AppCompatActivity {
 
         setTitle("My Profile");
 
-        usernameField = (TextView)findViewById(R.id.username);
-        emailField = (TextView)findViewById(R.id.email);
-        distanceNumber = (TextView)findViewById(R.id.kilometeres_covered);
-        viewsNumber = (TextView)findViewById(R.id.stories_read);
-        storyNumber = (TextView)findViewById(R.id.stories_posted);
-        viewedNumber = (TextView)findViewById(R.id.views_received);
-        upvotesNumber = (TextView)findViewById(R.id.upvotes_given);
-        upvotedNumber = (TextView)findViewById(R.id.upvotes_received);
-        inviteFriendButton = (Button)findViewById(R.id.invite_friends_button);
+        usernameField = findViewById(R.id.username);
+        emailField = findViewById(R.id.email);
+        distanceNumber = findViewById(R.id.kilometeres_covered);
+        viewsNumber = findViewById(R.id.stories_read);
+        storyNumber = findViewById(R.id.stories_posted);
+        viewedNumber = findViewById(R.id.views_received);
+        upvotesNumber = findViewById(R.id.upvotes_given);
+        upvotedNumber = findViewById(R.id.upvotes_received);
+        inviteFriendButton = findViewById(R.id.invite_friends_button);
         inviteFriendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

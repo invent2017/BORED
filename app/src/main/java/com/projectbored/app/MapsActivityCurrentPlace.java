@@ -131,9 +131,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-        mNavigationView = (NavigationView)findViewById(R.id.navigation);
-        mDrawerList = (ListView)findViewById(R.id.options_list);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+        mNavigationView = findViewById(R.id.navigation);
+        mDrawerList = findViewById(R.id.options_list);
         mDrawerItems = getResources().getStringArray(R.array.maps_drawer_options);
 
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.item_row, mDrawerItems));
@@ -159,11 +159,11 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             startActivity(login);
             finish();
         } else {
-            displayedUsername = (TextView) findViewById(R.id.my_username);
+            displayedUsername =  findViewById(R.id.my_username);
             displayedUsername.setText(username);
         }
 
-        exploreButton = (FloatingActionButton)findViewById(R.id.explore);
+        exploreButton = findViewById(R.id.explore);
         exploreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -177,7 +177,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             }
         });
 
-        addEventButton = (FloatingActionButton)findViewById(R.id.add_event);
+        addEventButton = findViewById(R.id.add_event);
         addEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -191,7 +191,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             }
         });
 
-        addStoryButton = (FloatingActionButton)findViewById(R.id.add_story);
+        addStoryButton = findViewById(R.id.add_story);
         addStoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
