@@ -596,6 +596,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                     filterMyStories(username);
                 } else if(which == 2) {
                     filterTodayStories();
+                } else if(which == 3) {
+                    filterReadStories(username);
                 }
             }
         });
@@ -689,7 +691,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         });
     }*/
 
-    /*private void filterUnreadStories(final String username) {
+    private void filterReadStories(final String username) {
         mDataRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -712,7 +714,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                         }
                                     }
 
-                                    if (!isRead) {
+                                    if (isRead) {
                                         if(mLastKnownLocation.distanceTo(storyLocation) <= 100) {
                                             Marker storyMarker = mMap.addMarker(new MarkerOptions()
                                                     .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
@@ -732,7 +734,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
                         }
                     } else {
-                        Toast.makeText(MapsActivityCurrentPlace.this, "There are no stories.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MapsActivityCurrentPlace.this, "You have not read any stories.", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -742,7 +744,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
             }
         });
-    }*/
+    }
 
     private void filterNearbyStories() {
         mDataRef.addValueEventListener(new ValueEventListener() {

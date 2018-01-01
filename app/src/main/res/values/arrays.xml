@@ -9,6 +9,7 @@
         <item>Nearby</item>
         <item>My stories</item>
         <item>Today's stories</item>
+        <item>Read stories</item>
     </string-array>
 
     <string-array name="maps_drawer_options">
