@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.Intent;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -43,6 +44,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.internal.zzp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,6 +53,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -89,6 +92,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     // The geographical location where the device is currently located. That is, the last-known
     // location retrieved by the Fused Location Provider.
     private Location mLastKnownLocation;
+    private LocationManager locationManager;
 
     // Keys for storing activity state.
     private static final String KEY_CAMERA_POSITION = "camera_position";
@@ -103,6 +107,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     private String[] mDrawerItems;
 
     private String username;
+
+    private HashMap<String, Marker> markers = new HashMap<>();                      //leave in case we need to do something
 
     // Used for selecting the current place.
     //private final int mMaxEntries = 5;
@@ -150,6 +156,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 .addApi(Places.PLACE_DETECTION_API)
                 .build();
         mGoogleApiClient.connect();
+
+        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
@@ -362,6 +370,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         });
         */
 
+
+
         // Turn on the My Location layer and the related control on the map.
         updateLocationUI();
 
@@ -375,9 +385,17 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             } else {
                 getStories();
             }
-        } else {
-            //Load stories.
+        } else{
+            Bundle storyDetails = getIntent().getExtras();
+            String disappearingStory = storyDetails.getString("key");
+
             getStories();
+
+            if(disappearingStory != null) {
+                LatLng storyPosition = new LatLng(storyDetails.getDouble("Latitude"), storyDetails.getDouble("Longitude"));
+
+                mMap.addMarker(new MarkerOptions().position(storyPosition));
+            }
         }
     }
 
@@ -412,6 +430,30 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         if (mLocationPermissionGranted) {
             mLastKnownLocation = LocationServices.FusedLocationApi
                     .getLastLocation(mGoogleApiClient);
+
+            LocationListener locationListener = new LocationListener() {
+                @Override
+                public void onLocationChanged(Location location) {
+                    mLastKnownLocation = location;
+                }
+
+                @Override
+                public void onStatusChanged(String s, int i, Bundle bundle) {
+
+                }
+
+                @Override
+                public void onProviderEnabled(String s) {
+
+                }
+
+                @Override
+                public void onProviderDisabled(String s) {
+
+                }
+            };
+
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 0, locationListener);
         }
 
         if (mLastKnownLocation == null) {
@@ -734,7 +776,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
                         }
                     } else {
-                        Toast.makeText(MapsActivityCurrentPlace.this, "You have not read any stories.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MapsActivityCurrentPlace.this, "There are no stories.", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -984,32 +1026,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     }
 
-
-    /*public void showOwnStories(String username) {
-        mDataRef.child("users").child(username).child("stories").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.getChildren())
-                {
-                    String storyKey = ds.getValue(String.class);
-                    String locationFromDatabase = ds.getKey();
-                    String locationString = locationFromDatabase.replace("d", ".");
-                    String [] locationArray = locationString.split(",");
-
-                    LatLng storyLocation = new LatLng(Double.parseDouble(locationArray[0]), Double.parseDouble(locationArray[1]));
-
-                    Marker storyMarker = mMap.addMarker(new MarkerOptions().position(storyLocation));
-                    storyMarker.setTag(storyKey);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }*/
-
     public void showNearbyStories(String storyKey, Location storyLocation, boolean featured) {
         Marker storyMarker;
         if (featured) {
@@ -1018,12 +1034,16 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                 storyLocation.getLongitude()))
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
             storyMarker.setTag(storyKey);
+
+            markers.put(storyKey, storyMarker);
         } else {
             storyMarker = mMap.addMarker(new MarkerOptions()
                         .position(new LatLng(storyLocation.getLatitude(),
                                 storyLocation.getLongitude()))
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
             storyMarker.setTag(storyKey);
+
+            markers.put(storyKey, storyMarker);
         }
     }
 
@@ -1035,12 +1055,16 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                             storyLocation.getLongitude()))
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
             storyMarker.setTag(storyKey);
+
+            markers.put(storyKey, storyMarker);
         } else {
             storyMarker = mMap.addMarker(new MarkerOptions()
                     .position(new LatLng(storyLocation.getLatitude(),
                             storyLocation.getLongitude()))
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
             storyMarker.setTag(storyKey);
+
+            markers.put(storyKey, storyMarker);
         }
     }
 
@@ -1061,24 +1085,30 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     }
 
     public void showStoryDetails(Marker marker) {
-        Intent intent = new Intent();
+        Intent intent;
         String key = (String)marker.getTag();
 
-        if(key != null && key.contains(",")) {
-            intent = new Intent(this, ShowMultipleStories.class);
+        if(key == null) {
+            Toast.makeText(this, "You have already read this story.", Toast.LENGTH_SHORT).show();
+            marker.remove();
         } else {
-            intent = new Intent(this, ShowStory.class);
+
+            if (key != null && key.contains(",")) {
+                intent = new Intent(this, ShowMultipleStories.class);
+            } else {
+                intent = new Intent(this, ShowStory.class);
+            }
+
+
+            Bundle storyDetails = new Bundle();
+            storyDetails.putString("key", key);
+            storyDetails.putBoolean("Logged in", isLoggedIn());
+            storyDetails.putDouble("Latitude", marker.getPosition().latitude);
+            storyDetails.putDouble("Longitude", marker.getPosition().longitude);
+            intent.putExtras(storyDetails);
+
+            startActivity(intent);
         }
-
-
-        Bundle storyDetails = new Bundle();
-        storyDetails.putString("key", key);
-        storyDetails.putBoolean("Logged in", isLoggedIn());
-        storyDetails.putDouble("Latitude", marker.getPosition().latitude);
-        storyDetails.putDouble("Longitude", marker.getPosition().longitude);
-        intent.putExtras(storyDetails);
-
-        startActivity(intent);
     }
 
     private void resetMap() {
