@@ -459,7 +459,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     }
 
     private void initialiseSearch(final AutoCompleteTextView searchView) {
-        searchView.setHint("Hashtags...");
+        searchView.setHint("Hashtags...                     ");
         searchView.setInputType(TYPE_CLASS_TEXT);
         searchView.setImeOptions(IME_ACTION_SEARCH);
         searchView.setMaxLines(1);
