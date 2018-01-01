@@ -130,6 +130,11 @@ public class ShowStory extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        backToMap();
+    }
+
     public void addView(){
         DatabaseReference mStoryRef = FirebaseDatabase.getInstance().getReference().child("stories").child(STORY_KEY).child("Views");
         mStoryRef.runTransaction(new Transaction.Handler() {
@@ -478,6 +483,10 @@ public class ShowStory extends AppCompatActivity {
     }
 
     private void backToMap() {
+        Intent backtoMap = new Intent(this, MapsActivityCurrentPlace.class);
+        backtoMap.putExtras(storyDetails);
+        startActivity(backtoMap);
+
         finish();
     }
 

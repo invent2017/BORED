@@ -173,8 +173,9 @@ public class Startup extends AppCompatActivity {
             Toast.makeText(Startup.this, "Account settings have changed. Please log in again.", Toast.LENGTH_SHORT).show();
 
             Intent returnToMap = new Intent(Startup.this, MapsActivityCurrentPlace.class);
-            returnToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(returnToMap);
+
+            finish();
         }
     }
 }
