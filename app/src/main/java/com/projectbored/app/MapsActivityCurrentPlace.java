@@ -459,7 +459,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     }
 
     private void initialiseSearch(final AutoCompleteTextView searchView) {
-        searchView.setHint("Hashtags...                     ");
+        searchView.setHint("Search hashtags...                     ");
         searchView.setInputType(TYPE_CLASS_TEXT);
         searchView.setImeOptions(IME_ACTION_SEARCH);
         searchView.setMaxLines(1);
@@ -592,9 +592,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
                 if(which == 0) {
                     filterNearbyStories();
-                } else if(which == 1) {
-                    filterMyStories(username);
                 } else if(which == 2) {
+                    filterMyStories(username);
+                } else if(which == 1) {
                     filterTodayStories();
                 } else if(which == 3) {
                     filterReadStories(username);
