@@ -189,6 +189,8 @@ public class StoryUpload extends AppCompatActivity {
                 Toast.makeText(this, "Something went wrong. Story not uploaded.", Toast.LENGTH_SHORT).show();
                 finish();
             }
+        } else {
+            finish();
         }
     }
 
