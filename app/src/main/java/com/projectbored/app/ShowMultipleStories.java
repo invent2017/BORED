@@ -90,9 +90,7 @@ public class ShowMultipleStories extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.option_back_to_map) {
-            finish();
-        } else if(item.getItemId() == R.id.option_delete_story) {
+        if(item.getItemId() == R.id.option_delete_story) {
             deleteStory();
         }
 

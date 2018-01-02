@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/option_view_stories"
+        android:title="@string/my_stories" />
+    <item
         android:id="@+id/option_change_password"
-        android:title="@string/change_password"
-        android:visible="true"
-        app:showAsAction="always" />
+        android:title="@string/change_password" />
 </menu>

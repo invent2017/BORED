@@ -26,6 +26,7 @@ public class ContactUs extends AppCompatActivity {
         actionBar.setLogo(R.drawable.whitebored);
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setDisplayShowTitleEnabled(false);
 
         textSubject = findViewById(R.id.subject_input);
         textMessage = findViewById(R.id.message_input);

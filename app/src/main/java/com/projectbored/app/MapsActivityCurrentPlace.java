@@ -381,20 +381,23 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
         if(getIntent().getAction() != null) {
             if (getIntent().getAction().equals(Intent.ACTION_VIEW) && getIntent().getData() != null) {
-                showSelectedStory(getIntent().getData());
+                showSelectedStory(getIntent().getData().getLastPathSegment());
             } else {
                 getStories();
             }
-        } else{
+        } else {
             Bundle storyDetails = getIntent().getExtras();
-            String disappearingStory = storyDetails.getString("key");
+            if(storyDetails.getString("UserStory") != null) {
+                showSelectedStory(storyDetails.getString("UserStory"));
+            } else {
+                String disappearingStory = storyDetails.getString("key");
+                getStories();
 
-            getStories();
+                if (disappearingStory != null) {
+                    LatLng storyPosition = new LatLng(storyDetails.getDouble("Latitude"), storyDetails.getDouble("Longitude"));
 
-            if(disappearingStory != null) {
-                LatLng storyPosition = new LatLng(storyDetails.getDouble("Latitude"), storyDetails.getDouble("Longitude"));
-
-                mMap.addMarker(new MarkerOptions().position(storyPosition));
+                    mMap.addMarker(new MarkerOptions().position(storyPosition));
+                }
             }
         }
     }
@@ -557,8 +560,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     }
 
-    private void showSelectedStory(Uri appLinkData) {
-        final String storyKey = appLinkData.getLastPathSegment();
+    private void showSelectedStory(final String storyKey) {
 
         mMap.clear();
         mDataRef.child("stories").child(storyKey).addValueEventListener(new ValueEventListener() {

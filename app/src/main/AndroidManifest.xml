@@ -44,7 +44,6 @@
         <activity
             android:name=".MapsActivityCurrentPlace"
             android:label="@string/title_activity_maps">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.SEARCH" />
@@ -86,7 +85,8 @@
         <activity android:name=".Trails" />
         <activity android:name=".Onboarding" />
         <activity android:name=".ChangePassword" />
-        <activity android:name=".ContactUs"/>
+        <activity android:name=".ContactUs" />
+        <activity android:name=".UserStories"></activity>
     </application>
 
 </manifest>

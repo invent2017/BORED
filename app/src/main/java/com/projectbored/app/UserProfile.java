@@ -77,6 +77,9 @@ public class UserProfile extends AppCompatActivity {
         if(item.getItemId() == R.id.option_change_password) {
             Intent changePassword = new Intent(this, ChangePassword.class);
             startActivity(changePassword);
+        } else if(item.getItemId() == R.id.option_view_stories) {
+            Intent viewMyStories = new Intent(this, UserStories.class);
+            startActivity(viewMyStories);
         }
 
         return true;
