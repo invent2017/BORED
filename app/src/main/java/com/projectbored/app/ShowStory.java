@@ -328,6 +328,7 @@ public class ShowStory extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.show_story_menu, menu);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         return true;
     }
 

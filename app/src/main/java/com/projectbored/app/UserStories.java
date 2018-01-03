@@ -1,6 +1,7 @@
 package com.projectbored.app;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -25,6 +26,12 @@ public class UserStories extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_stories);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setLogo(R.drawable.whitebored);
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setDisplayShowTitleEnabled(false);
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
