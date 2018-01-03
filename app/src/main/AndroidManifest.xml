@@ -86,7 +86,8 @@
         <activity android:name=".Onboarding" />
         <activity android:name=".ChangePassword" />
         <activity android:name=".ContactUs" />
-        <activity android:name=".UserStories"></activity>
+        <activity android:name=".UserStories" />
+        <activity android:name=".BookmarkedStories"></activity>
     </application>
 
 </manifest>

@@ -14,7 +14,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class UserStories extends AppCompatActivity {
+public class BookmarkedStories extends AppCompatActivity {
     private static final String PREFS_NAME = "UserDetails";
     private String username;
 
@@ -25,7 +25,7 @@ public class UserStories extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_stories);
+        setContentView(R.layout.activity_bookmarked_stories);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setLogo(R.drawable.whitebored);
@@ -35,10 +35,10 @@ public class UserStories extends AppCompatActivity {
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
-        username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
-        storyList = (ListView) findViewById(R.id.story_list);
+        storyList = (ListView) findViewById(R.id.bookmarked_story_list);
+        username = getSharedPreferences(PREFS_NAME, 0).getString("Username","");
 
-        getUserStories();
+        getBookmarkedStories();
     }
 
     @Override
@@ -48,16 +48,17 @@ public class UserStories extends AppCompatActivity {
         finish();
     }
 
-    private void getUserStories() {
+    private void getBookmarkedStories() {
         mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<String> stories = new ArrayList<>();
-                for(DataSnapshot ds : dataSnapshot.child("users").child(username).child("stories").getChildren()) {
+                for(DataSnapshot ds : dataSnapshot.child("users").child(username).child("Bookmarked").getChildren()) {
                     stories.add(ds.getKey());
                 }
 
-                UserStoryListAdapter adapter = new UserStoryListAdapter(UserStories.this, stories, dataSnapshot.child("stories"));
+                BookmarkedStoryListAdapter adapter = new BookmarkedStoryListAdapter(BookmarkedStories.this,
+                        stories, dataSnapshot.child("stories"));
                 storyList.setAdapter(adapter);
             }
 

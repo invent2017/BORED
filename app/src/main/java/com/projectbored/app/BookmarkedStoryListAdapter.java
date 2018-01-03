@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -21,16 +20,16 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 
 /**
- * Created by LikHern on 2/1/2018.
+ * Created by LikHern on 3/1/2018.
  */
 
-public class StoryListAdapter extends BaseAdapter {
+public class BookmarkedStoryListAdapter extends BaseAdapter {
     private Activity context;
     private ArrayList<String> storyKeys;
 
     private DataSnapshot dataSnapshot;
 
-    public StoryListAdapter(Activity context, ArrayList<String> storyKeys, DataSnapshot dataSnapshot) {
+    public BookmarkedStoryListAdapter(Activity context, ArrayList<String> storyKeys, DataSnapshot dataSnapshot) {
         this.context = context;
         this.storyKeys = storyKeys;
         this.dataSnapshot = dataSnapshot;
@@ -40,7 +39,7 @@ public class StoryListAdapter extends BaseAdapter {
 
         public LinearLayout linearLayout;
         public ImageView imageView;
-        public TextView captionText, viewsNumber, votesNumber;
+        public TextView captionText;
     }
 
     @Override
@@ -61,17 +60,15 @@ public class StoryListAdapter extends BaseAdapter {
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
         if(view == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.story_list_row, viewGroup, false);
+            view = LayoutInflater.from(context).inflate(R.layout.bookmarked_story_row, viewGroup, false);
         }
 
         ViewHolder viewHolder = (ViewHolder) view.getTag();
         if(viewHolder == null) {
             viewHolder = new ViewHolder();
-            viewHolder.linearLayout = (LinearLayout)view.findViewById(R.id.story_row);
-            viewHolder.imageView = (ImageView) view.findViewById(R.id.my_story_image);
-            viewHolder.captionText = (TextView)view.findViewById(R.id.my_story_caption);
-            viewHolder.viewsNumber = (TextView)view.findViewById(R.id.views_number);
-            viewHolder.votesNumber = (TextView)view.findViewById(R.id.votes_number);
+            viewHolder.linearLayout = (LinearLayout)view.findViewById(R.id.bookmarked_story_row);
+            viewHolder.imageView = (ImageView) view.findViewById(R.id.bookmarked_story_image);
+            viewHolder.captionText = (TextView)view.findViewById(R.id.bookmarked_story_caption);
         }
 
         viewHolder.linearLayout.setOnClickListener(new View.OnClickListener() {
@@ -91,21 +88,14 @@ public class StoryListAdapter extends BaseAdapter {
         if(storyCaption == null) {
             viewHolder.captionText.setText("");
         } else {
-            if (storyCaption.length() > 12) {
-                storyCaption = storyCaption.substring(0, 8) + "...";
+            if (storyCaption.length() > 30) {
+                storyCaption = storyCaption.substring(0, 26) + "...";
             }
             viewHolder.captionText.setText(storyCaption);
         }
 
-        int views = dataSnapshot.child(storyKey).child("Views").getValue(Integer.class);
-        viewHolder.viewsNumber.setText(Integer.toString(views));
-
-        int votes = dataSnapshot.child(storyKey).child("Votes").getValue(Integer.class);
-        viewHolder.votesNumber.setText(Integer.toString(votes));
-
         return view;
     }
-
 
 
     private void showStoryDetails(String storyKey) {

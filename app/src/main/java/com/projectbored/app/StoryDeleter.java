@@ -91,6 +91,10 @@ public class StoryDeleter extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 dataSnapshot.child(username).child("stories").child(storyKey).getRef().removeValue();
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if(ds.child("Bookmarked").hasChild(storyKey)) {
+                        ds.child("Bookmarked").child(storyKey).getRef().removeValue();
+                    }
+
                     if(ds.child("ReadStories").hasChild(storyKey)) {
                         ds.child("ReadStories").child(storyKey).getRef().removeValue();
                     }

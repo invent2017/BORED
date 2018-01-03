@@ -566,16 +566,18 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         mDataRef.child("stories").child(storyKey).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String[] locationArray = dataSnapshot.child("Location").getValue(String.class).split(",");
-                LatLng storyPosition = new LatLng(Double.parseDouble(locationArray[0]),
-                        Double.parseDouble(locationArray[1]));
+                if(dataSnapshot != null) {
+                    String[] locationArray = dataSnapshot.child("Location").getValue(String.class).split(",");
+                    LatLng storyPosition = new LatLng(Double.parseDouble(locationArray[0]),
+                            Double.parseDouble(locationArray[1]));
 
-                Marker marker = mMap.addMarker(new MarkerOptions()
-                        .position(storyPosition)
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
-                marker.setTag(storyKey);
+                    Marker marker = mMap.addMarker(new MarkerOptions()
+                            .position(storyPosition)
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+                    marker.setTag(storyKey);
 
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(storyPosition));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(storyPosition));
+                }
             }
 
             @Override

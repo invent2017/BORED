@@ -339,13 +339,21 @@ public class ShowStory extends AppCompatActivity {
         }
 
         final MenuItem deleteStoryOption = menu.findItem(R.id.option_delete_story);
-        mDataRef.child("users").child(username).child("stories").addListenerForSingleValueEvent(new ValueEventListener() {
+        final MenuItem bookmarkStoryOption = menu.findItem(R.id.option_bookmark_story);
+        mDataRef.child("users").child(username).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.hasChild(STORY_KEY)) {
+                if(dataSnapshot.child("stories").hasChild(STORY_KEY)) {
                     deleteStoryOption.setVisible(true);
+                    bookmarkStoryOption.setVisible(false);
                 } else {
                     deleteStoryOption.setVisible(false);
+                    if(dataSnapshot.child("Bookmarked").hasChild(STORY_KEY)) {
+                        bookmarkStoryOption.setVisible(false);
+                    } else {
+                        bookmarkStoryOption.setVisible(true);
+                    }
+
                 }
             }
 
@@ -364,8 +372,18 @@ public class ShowStory extends AppCompatActivity {
             showStoryLocation(STORY_KEY);
         } else if(item.getItemId() == R.id.option_delete_story) {
             deleteStory();
+        } else if(item.getItemId() == R.id.option_bookmark_story) {
+            bookmarkStory();
         }
         return true;
+    }
+
+    private void bookmarkStory() {
+        String locationString = new StringBuilder().append(storyDetails.getDouble("Latitude"))
+                .append(",").append(storyDetails.getDouble("Longitude")).toString();
+        mDataRef.child("users").child(username).child("Bookmarked").child(STORY_KEY).setValue(locationString);
+
+        Toast.makeText(this, "Story bookmarked.", Toast.LENGTH_SHORT).show();
     }
 
     private void deleteStory(){

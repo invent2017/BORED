@@ -69,6 +69,7 @@ public class ShowMultipleStories extends AppCompatActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         final int storyPosition = storiesPager.getCurrentItem();
         final MenuItem deleteStoryOption = menu.findItem(R.id.option_delete_story);
+        final MenuItem bookmarkStoryOption = menu.findItem(R.id.option_bookmark_story);
         mDataRef.child("users").child(username).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -76,6 +77,11 @@ public class ShowMultipleStories extends AppCompatActivity {
                     deleteStoryOption.setVisible(true);
                 } else {
                     deleteStoryOption.setVisible(false);
+                    if(dataSnapshot.child("Bookmarked").hasChild(storyKeys[storyPosition])) {
+                        bookmarkStoryOption.setVisible(false);
+                    } else {
+                        bookmarkStoryOption.setVisible(true);
+                    }
                 }
             }
 

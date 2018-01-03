@@ -49,6 +49,7 @@ public class Startup extends AppCompatActivity {
                 } else {
                     checkUpdates(dataSnapshot);
                 }
+                //checkUpdates(dataSnapshot);
             }
 
             @Override
