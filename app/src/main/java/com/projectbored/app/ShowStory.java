@@ -31,7 +31,7 @@ import com.google.firebase.storage.StorageReference;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class ShowStory extends AppCompatActivity {
+public class ShowStory extends AppCompatActivity implements View.OnClickListener {
     Bundle storyDetails;
 
     private static final String PREFS_NAME = "UserDetails";
@@ -84,28 +84,16 @@ public class ShowStory extends AppCompatActivity {
         imageView = findViewById(R.id.imageView);
 
         upVoteButton = findViewById(R.id.upVoteButton);
-        upVoteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                upVote();
-            }
-        });
+        upVoteButton.setOnClickListener(this);
 
         downVoteButton = findViewById(R.id.downVoteButton);
-        downVoteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                downVote();
-            }
-        });
+        downVoteButton.setOnClickListener(this);
 
         shareButton = findViewById(R.id.shareButton);
-        shareButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                shareFunction();
-            }
-        });
+        shareButton.setOnClickListener(this);
+
+        reportStoryButton =  findViewById(R.id.reportstory);
+        reportStoryButton.setOnClickListener(this);
 
         voteNumber = findViewById(R.id.voteNumber);
         viewNumber = findViewById(R.id.viewNumber);
@@ -113,14 +101,6 @@ public class ShowStory extends AppCompatActivity {
         storyCaption = findViewById(R.id.storyCaption);
         featuredText = findViewById(R.id.featuredText);
         dateText = findViewById(R.id.dateText);
-
-        reportStoryButton =  findViewById(R.id.reportstory);
-        reportStoryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                reportStory();
-            }
-        });
 
         loadStoryDetails(storyDetails);
 
@@ -306,20 +286,20 @@ public class ShowStory extends AppCompatActivity {
 
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.upVoteButton: {
+            case R.id.upVoteButton:
                 upVote();
                 break;
-            }
-
-            case R.id.downVoteButton: {
+            case R.id.downVoteButton:
                 downVote();
                 break;
-            }
-
-            case R.id.shareButton: {
+            case R.id.shareButton:
                 shareFunction();
                 break;
-            }
+            case R.id.reportstory:
+                reportStory();
+                break;
+            default:
+                throw new RuntimeException("Don't click this.");
         }
     }
 
