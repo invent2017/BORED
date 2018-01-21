@@ -110,9 +110,17 @@ public class UserStoryListAdapter extends BaseAdapter {
     private void showStoryDetails(String storyKey) {
         Intent showDetails = new Intent(context, ShowStory.class);
         Bundle details = new Bundle();
+        String[] locationArray = getStoryLocation(storyKey);
         details.putString("key", storyKey);
         details.putBoolean("FromProfile", true);
+        details.putDouble("Latitude", Double.parseDouble(locationArray[0]));
+        details.putDouble("Longitude", Double.parseDouble(locationArray[1]));
         showDetails.putExtras(details);
         context.startActivity(showDetails);
+    }
+
+    private String[] getStoryLocation(String storyKey) {
+        String location = dataSnapshot.child(storyKey).child("Location").getValue(String.class);
+        return location.split(",");
     }
 }

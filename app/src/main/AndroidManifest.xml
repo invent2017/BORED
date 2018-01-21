@@ -87,7 +87,8 @@
         <activity android:name=".ChangePassword" />
         <activity android:name=".ContactUs" />
         <activity android:name=".UserStories" />
-        <activity android:name=".BookmarkedStories"></activity>
+        <activity android:name=".BookmarkedStories" />
+        <activity android:name=".ViewEvent"></activity>
     </application>
 
 </manifest>

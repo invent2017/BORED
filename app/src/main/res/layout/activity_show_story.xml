@@ -141,7 +141,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -169,6 +168,21 @@
                     app:srcCompat="@drawable/eye" />
             </LinearLayout>
 
+            <ListView
+                android:id="@+id/comments_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp">
+
+            </ListView>
+
+            <EditText
+                android:id="@+id/comment_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/comment_prompt"
+                android:inputType="text"
+                android:imeOptions="actionSend"/>
 
         </LinearLayout>
 

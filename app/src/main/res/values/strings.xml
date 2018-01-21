@@ -27,6 +27,11 @@
     <string name="report"><b>Report</b></string>
     <string name="title_activity_login">Sign in</string>
     <string name="view_on_map">View on map</string>
+    <string name="comment_prompt">Comment...</string>
+    <string name="event_expires">Event expires:</string>
+    <string name="event_image">Event image</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
 
     <!-- Strings related to login -->
     <string name="login_title">Welcome to unBORED!</string>

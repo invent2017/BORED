@@ -7,12 +7,19 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,8 +35,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Map;
+
+import static android.view.KeyEvent.KEYCODE_ENTER;
+import static android.view.inputmethod.EditorInfo.IME_ACTION_SEND;
 
 public class ShowStory extends AppCompatActivity {
     Bundle storyDetails;
@@ -37,6 +49,8 @@ public class ShowStory extends AppCompatActivity {
     private static final String PREFS_NAME = "UserDetails";
     private String STORY_KEY;
     private String username;
+
+    ArrayList<String> comments;
 
     ImageView imageView;
     ImageButton upVoteButton;
@@ -48,6 +62,8 @@ public class ShowStory extends AppCompatActivity {
     TextView featuredText;
     TextView dateText;
     Button reportStoryButton;
+    ListView commentsList;
+    EditText commentInput;
 
     int storyVotes;
     int storyViews;
@@ -76,6 +92,8 @@ public class ShowStory extends AppCompatActivity {
         if(username.equals("")){
             logout();
         }
+
+        comments = new ArrayList<>();
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
@@ -114,6 +132,34 @@ public class ShowStory extends AppCompatActivity {
         featuredText = findViewById(R.id.featuredText);
         dateText = findViewById(R.id.dateText);
 
+        commentsList = findViewById(R.id.comments_list);
+        setCommentsListHeight(commentsList);
+        commentsList.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                view.getParent().requestDisallowInterceptTouchEvent(false);
+                return false;
+            }
+        });
+        loadComments();
+
+        commentInput = findViewById(R.id.comment_text);
+        commentInput.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if(i == IME_ACTION_SEND || i == KEYCODE_ENTER) {
+                    String commentString = commentInput.getText().toString().trim();
+                    if(!commentString.equals("")) {
+                        postComment(commentString);
+                    }
+
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+
         reportStoryButton =  findViewById(R.id.reportstory);
         reportStoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,6 +175,59 @@ public class ShowStory extends AppCompatActivity {
 
         //trying to do emoji things
 
+    }
+
+    public void postComment(String commentString) {
+        Comment comment = new Comment(username, STORY_KEY, commentString);
+        Map<String, Object> commentDetails = comment.toMap();
+        String commentKey = mDataRef.push().getKey();
+        mDataRef.child("comments").child(STORY_KEY).child(commentKey).setValue(commentDetails);
+        commentInput.setText("");
+
+        comments.add(commentString);
+    }
+
+
+    public void loadComments() {
+
+        mDataRef.child("comments").child(STORY_KEY).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    comments.add(ds.child("String").getValue(String.class));
+                }
+                ArrayAdapter adapter = new ArrayAdapter<>(ShowStory.this, R.layout.comment_row, comments);
+                commentsList.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    public static void setCommentsListHeight(ListView commentsList) {
+        ListAdapter adapter = commentsList.getAdapter();
+        if(adapter != null) {
+            int listWidth = View.MeasureSpec.makeMeasureSpec(commentsList.getWidth(), View.MeasureSpec.UNSPECIFIED);
+            int listHeight = 0;
+            View listItem = null;
+            for(int i = 0; i < adapter.getCount(); i++) {
+                listItem = adapter.getView(i, listItem, commentsList);
+                if(i == 0) {
+                    listItem.setLayoutParams(new ViewGroup.LayoutParams(listWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
+                }
+
+                listItem.measure(listWidth, View.MeasureSpec.UNSPECIFIED);
+                listHeight += listItem.getMeasuredHeight();
+            }
+            ViewGroup.LayoutParams params = commentsList.getLayoutParams();
+            params.height = listHeight + (commentsList.getDividerHeight() * (adapter.getCount() - 1));
+            commentsList.setLayoutParams(params);
+        }
     }
 
     @Override
@@ -384,6 +483,7 @@ public class ShowStory extends AppCompatActivity {
         mDataRef.child("users").child(username).child("Bookmarked").child(STORY_KEY).setValue(locationString);
 
         Toast.makeText(this, "Story bookmarked.", Toast.LENGTH_SHORT).show();
+        invalidateOptionsMenu();
     }
 
     private void deleteStory(){
