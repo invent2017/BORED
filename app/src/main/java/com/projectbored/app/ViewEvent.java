@@ -1,21 +1,16 @@
 package com.projectbored.app;
 
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.bumptech.glide.Glide;
-import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.Calendar;
 
@@ -43,8 +38,6 @@ public class ViewEvent extends AppCompatActivity {
         timeView = findViewById(R.id.event_time);
         timeView.setEnabled(false);
         imageView = findViewById(R.id.event_image);
-
-        loadEventDetails();
     }
 
     private void loadEventDetails() {
@@ -68,16 +61,8 @@ public class ViewEvent extends AppCompatActivity {
                 } else {
                     dateText.setText(R.string.today);
                 }
-                if(Build.VERSION.SDK_INT >= 23) {
-                    timeView.setHour(eventTime.get(Calendar.HOUR_OF_DAY));
-                    timeView.setMinute(eventTime.get(Calendar.MINUTE));
-                } else {
-                    timeView.setCurrentHour(eventTime.get(Calendar.HOUR_OF_DAY));
-                    timeView.setCurrentMinute(eventTime.get(Calendar.MINUTE));
-                }
+                
 
-                StorageReference mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl(imageUri);
-                Glide.with(ViewEvent.this).using(new FirebaseImageLoader()).load(mStorageRef).into(imageView);
 
             }
 
