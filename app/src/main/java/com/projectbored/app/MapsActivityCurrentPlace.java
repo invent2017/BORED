@@ -333,10 +333,10 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 markerLocation.setLatitude(markerPosition.latitude);
                 markerLocation.setLongitude(markerPosition.longitude);
 
-                if(mLastKnownLocation.distanceTo(markerLocation) <= 100) {
+                if(mLastKnownLocation.distanceTo(markerLocation) <= 500) {
                     showStoryDetails(marker);
                 } else {
-                    Toast.makeText(MapsActivityCurrentPlace.this, "You must be within 100 metres of the story to view it.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MapsActivityCurrentPlace.this, "You must be within 500 metres of the story to view it.", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             }
@@ -1102,7 +1102,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             } else {
                 intent = new Intent(this, ShowStory.class);
             }
-
 
             Bundle storyDetails = new Bundle();
             storyDetails.putString("key", key);
