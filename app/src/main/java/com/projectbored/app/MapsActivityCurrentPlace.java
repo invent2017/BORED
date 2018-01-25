@@ -296,21 +296,21 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 startActivity(viewProfile);
                 break;
             case 1:
-                Intent logoutIntent = new Intent(this, Logout.class);
-                startActivity(logoutIntent);
-                finish();
-                break;
-            case 2:
                 filterStories();
                 break;
-            case 3:
+            case 2:
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://projectboredinc.wordpress.com/faqs/"));
                 Toast.makeText(MapsActivityCurrentPlace.this, "Find FAQs on our website :)", Toast.LENGTH_SHORT).show();
                 startActivity(browserIntent);
                 break;
-            case 4:
+            case 3:
                 Intent contactUs = new Intent(this, ContactUs.class);
                 startActivity(contactUs);
+                break;
+            case 4:
+                Intent logoutIntent = new Intent(this, Logout.class);
+                startActivity(logoutIntent);
+                finish();
                 break;
         }
 

@@ -14,10 +14,10 @@
 
     <string-array name="maps_drawer_options">
         <item>My Profile</item>
-        <item>Log out</item>
         <item>Filter stories</item>
         <item>FAQs</item>
         <item>Contact Us</item>
+        <item>Log out</item>
 
     </string-array>
 

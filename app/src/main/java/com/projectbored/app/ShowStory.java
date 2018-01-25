@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -125,7 +126,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         commentsList.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                view.getParent().requestDisallowInterceptTouchEvent(false);
+                view.getParent().requestDisallowInterceptTouchEvent(true);
                 return false;
             }
         });
@@ -189,24 +190,24 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     }
 
     public static void setCommentsListHeight(ListView commentsList) {
-        ListAdapter adapter = commentsList.getAdapter();
-        if(adapter != null) {
-            int listWidth = View.MeasureSpec.makeMeasureSpec(commentsList.getWidth(), View.MeasureSpec.UNSPECIFIED);
-            int listHeight = 0;
-            View listItem = null;
-            for(int i = 0; i < adapter.getCount(); i++) {
-                listItem = adapter.getView(i, listItem, commentsList);
-                if(i == 0) {
-                    listItem.setLayoutParams(new ViewGroup.LayoutParams(listWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
-                }
+        ListAdapter listAdapter = commentsList.getAdapter();
+        if (listAdapter == null)
+            return;
 
-                listItem.measure(listWidth, View.MeasureSpec.UNSPECIFIED);
-                listHeight += listItem.getMeasuredHeight();
-            }
-            ViewGroup.LayoutParams params = commentsList.getLayoutParams();
-            params.height = listHeight + (commentsList.getDividerHeight() * (adapter.getCount() - 1));
-            commentsList.setLayoutParams(params);
+        int desiredWidth = View.MeasureSpec.makeMeasureSpec(commentsList.getWidth(), View.MeasureSpec.UNSPECIFIED);
+        int totalHeight = 0;
+        View view = null;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            view = listAdapter.getView(i, view, commentsList);
+            if (i == 0)
+                view.setLayoutParams(new ViewGroup.LayoutParams(desiredWidth, AbsListView.LayoutParams.WRAP_CONTENT));
+
+            view.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += view.getMeasuredHeight();
         }
+        ViewGroup.LayoutParams params = commentsList.getLayoutParams();
+        params.height = totalHeight + (commentsList.getDividerHeight() * (listAdapter.getCount() - 1));
+        commentsList.setLayoutParams(params);
     }
 
     @Override
