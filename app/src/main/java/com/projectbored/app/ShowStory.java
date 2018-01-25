@@ -163,8 +163,6 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         String commentKey = mDataRef.push().getKey();
         mDataRef.child("comments").child(STORY_KEY).child(commentKey).setValue(commentDetails);
         commentInput.setText("");
-
-        comments.add(commentString);
     }
 
 
@@ -419,6 +417,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     public boolean onPrepareOptionsMenu(Menu menu) {
         if(getIntent().getExtras().getBoolean("FromProfile", false)) {
             menu.findItem(R.id.option_view_on_map).setVisible(true);
+            menu.findItem(R.id.option_back_to_map).setVisible(false);
         }
 
         final MenuItem deleteStoryOption = menu.findItem(R.id.option_delete_story);
@@ -457,6 +456,8 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
             deleteStory();
         } else if(item.getItemId() == R.id.option_bookmark_story) {
             bookmarkStory();
+        } else if(item.getItemId() == R.id.option_back_to_map) {
+            finish();
         }
         return true;
     }

@@ -43,8 +43,6 @@ public class BookmarkedStories extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent backToMap = new Intent(this, MapsActivityCurrentPlace.class);
-        startActivity(backToMap);
         finish();
     }
 

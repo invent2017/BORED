@@ -35,9 +35,9 @@ import java.util.Locale;
 
 
 public class StoryFragment extends Fragment {
-    String storyKey;
 
-    boolean loggedIn;
+    String storyKey;
+    String username;
 
     ImageView imageView;
     ImageButton upVoteButton;
@@ -65,6 +65,7 @@ public class StoryFragment extends Fragment {
 
         Bundle storyDetails = getArguments();
         storyKey = storyDetails.getString("key");
+        username = getUsername();
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
@@ -73,7 +74,6 @@ public class StoryFragment extends Fragment {
 
 
         loadStoryDetails(storyDetails);
-        loggedIn = storyDetails.getBoolean("Logged in");
     }
 
     @Nullable
@@ -152,23 +152,21 @@ public class StoryFragment extends Fragment {
             }
         });
 
-        if(loggedIn){
-            String username = getUsername();
-            mDataRef.child("users").child(username).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+        mDataRef.child("users").child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    if(!(dataSnapshot.child("ReadStories").hasChild(storyKey))){
-                        dataSnapshot.child("ReadStories").child(storyKey).getRef().setValue(storyKey);
-                    }
+                if(!(dataSnapshot.child("ReadStories").hasChild(storyKey))){
+                    dataSnapshot.child("ReadStories").child(storyKey).getRef().setValue(storyKey);
                 }
+            }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-                }
-            });
-        }
+            }
+        });
+
     }
 
     // stuff the buttons do when clicked -hy
@@ -179,120 +177,97 @@ public class StoryFragment extends Fragment {
     }
 
     public void upVote(){
-        if(loggedIn){
-            mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.child("stories").child(storyKey).getValue() != null) {
-                        int votes = dataSnapshot.child("stories").child(storyKey)
-                                .child("Votes").getValue(Integer.class);
-                        if(dataSnapshot.child("stories").child(storyKey)
-                                .child("Upvoters").hasChild(getUsername())) {
-                            votes--;
-                            dataSnapshot.child("stories").child(storyKey)
-                                    .child("Upvoters").child(getUsername()).getRef().setValue(null);
+        mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child("stories").child(storyKey).getValue() != null) {
+                    int votes = dataSnapshot.child("stories").child(storyKey)
+                            .child("Votes").getValue(Integer.class);
+                    if(dataSnapshot.child("stories").child(storyKey)
+                            .child("Upvoters").hasChild(getUsername())) {
+                        votes--;
+                        dataSnapshot.child("stories").child(storyKey)
+                                .child("Upvoters").child(getUsername()).getRef().setValue(null);
 
-                            dataSnapshot.child("users").child(getUsername()).child("UpvotedStories")
-                                    .child(storyKey).getRef().setValue(null);
+                        dataSnapshot.child("users").child(getUsername()).child("UpvotedStories")
+                                .child(storyKey).getRef().setValue(null);
 
-                        } else if(dataSnapshot.child("stories").child(storyKey)
-                                .child("Downvoters").hasChild(getUsername())) {
-                            votes = votes + 2;
-                            dataSnapshot.child("stories").child(storyKey)
-                                    .child("Downvoters").child(getUsername()).getRef().setValue(null);
-                            dataSnapshot.child("stories").child(storyKey)
-                                    .child("Upvoters").child(getUsername()).getRef().setValue(getUsername());
+                    } else if(dataSnapshot.child("stories").child(storyKey)
+                            .child("Downvoters").hasChild(getUsername())) {
+                        votes = votes + 2;
+                        dataSnapshot.child("stories").child(storyKey)
+                                .child("Downvoters").child(getUsername()).getRef().setValue(null);
+                        dataSnapshot.child("stories").child(storyKey)
+                                .child("Upvoters").child(getUsername()).getRef().setValue(getUsername());
 
-                            dataSnapshot.child("users").child(getUsername()).child("DownvotedStories")
-                                    .child(storyKey).getRef().setValue(null);
-                            dataSnapshot.child("users").child(getUsername()).child("UpvotedStories")
-                                    .child(storyKey).getRef().setValue(storyKey);
-                        } else {
-                            votes++;
-                            dataSnapshot.child("stories").child(storyKey)
-                                    .child("Upvoters").child(getUsername()).getRef().setValue(getUsername());
+                        dataSnapshot.child("users").child(getUsername()).child("DownvotedStories")
+                                .child(storyKey).getRef().setValue(null);
+                        dataSnapshot.child("users").child(getUsername()).child("UpvotedStories")
+                                .child(storyKey).getRef().setValue(storyKey);
+                    } else {
+                        votes++;
+                        dataSnapshot.child("stories").child(storyKey)
+                                .child("Upvoters").child(getUsername()).getRef().setValue(getUsername());
 
-                            dataSnapshot.child("users").child(getUsername()).child("UpvotedStories")
-                                    .child(storyKey).getRef().setValue(storyKey);
-                        }
-                        dataSnapshot.child("stories").child(storyKey).child("Votes").getRef().setValue(votes);
+                        dataSnapshot.child("users").child(getUsername()).child("UpvotedStories")
+                                .child(storyKey).getRef().setValue(storyKey);
                     }
+                    dataSnapshot.child("stories").child(storyKey).child("Votes").getRef().setValue(votes);
                 }
+            }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-                }
-            });
-
-        } else {
-            Toast.makeText(getActivity(), "You must log in to upvote stories.", Toast.LENGTH_SHORT).show();
-        }
+            }
+        });
 
     }
 
     public void downVote(){
-        if(loggedIn){
-            mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.child("stories").child(storyKey).getValue() != null) {
-                        int votes = dataSnapshot.child("stories").child(storyKey)
-                                .child("Votes").getValue(Integer.class);
-                        if(dataSnapshot.child("stories").child(storyKey)
-                                .child("Downvoters").hasChild(getUsername())) {
-                            votes++;
-                            dataSnapshot.child("stories").child(storyKey).child("Downvoters")
-                                    .child(getUsername()).getRef().setValue(null);
+        mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child("stories").child(storyKey).getValue() != null) {
+                    int votes = dataSnapshot.child("stories").child(storyKey)
+                            .child("Votes").getValue(Integer.class);
+                    if(dataSnapshot.child("stories").child(storyKey)
+                            .child("Downvoters").hasChild(getUsername())) {
+                        votes++;
+                        dataSnapshot.child("stories").child(storyKey).child("Downvoters")
+                                .child(getUsername()).getRef().setValue(null);
 
-                            dataSnapshot.child("users").child(getUsername()).child("DownvotedStories")
-                                    .child(storyKey).getRef().setValue(null);
-                        } else if(dataSnapshot.child("stories").child(storyKey)
-                                .child("Upvoters").hasChild(getUsername())) {
-                            votes = votes - 2;
-                            dataSnapshot.child("stories").child(storyKey).child("Upvoters")
-                                    .child(getUsername()).getRef().setValue(null);
-                            dataSnapshot.child("stories").child(storyKey).child("Downvoters")
-                                    .child(getUsername()).getRef().setValue(getUsername());
+                        dataSnapshot.child("users").child(getUsername()).child("DownvotedStories")
+                                .child(storyKey).getRef().setValue(null);
+                    } else if(dataSnapshot.child("stories").child(storyKey)
+                            .child("Upvoters").hasChild(getUsername())) {
+                        votes = votes - 2;
+                        dataSnapshot.child("stories").child(storyKey).child("Upvoters")
+                                .child(getUsername()).getRef().setValue(null);
+                        dataSnapshot.child("stories").child(storyKey).child("Downvoters")
+                                .child(getUsername()).getRef().setValue(getUsername());
 
-                            dataSnapshot.child("users").child(getUsername()).child("UpvotedStories")
-                                    .child(storyKey).getRef().setValue(null);
-                            dataSnapshot.child("users").child(getUsername()).child("DownvotedStories")
-                                    .child(storyKey).getRef().setValue(storyKey);
-                        } else {
-                            votes--;
-                            dataSnapshot.child("stories").child(storyKey)
-                                    .child("Downvoters").child(getUsername()).getRef().setValue(getUsername());
+                        dataSnapshot.child("users").child(getUsername()).child("UpvotedStories")
+                                .child(storyKey).getRef().setValue(null);
+                        dataSnapshot.child("users").child(getUsername()).child("DownvotedStories")
+                                .child(storyKey).getRef().setValue(storyKey);
+                    } else {
+                        votes--;
+                        dataSnapshot.child("stories").child(storyKey)
+                                .child("Downvoters").child(getUsername()).getRef().setValue(getUsername());
 
-                            dataSnapshot.child("users").child(getUsername()).child("DownvotedStories")
-                                    .child(storyKey).getRef().setValue(storyKey);
-                        }
-                        dataSnapshot.child("stories").child(storyKey).child("Votes").getRef().setValue(votes);
+                        dataSnapshot.child("users").child(getUsername()).child("DownvotedStories")
+                                .child(storyKey).getRef().setValue(storyKey);
                     }
+                    dataSnapshot.child("stories").child(storyKey).child("Votes").getRef().setValue(votes);
                 }
+            }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-                }
-            });
-            mDataRef.runTransaction(new Transaction.Handler() {
-                @Override
-                public Transaction.Result doTransaction(MutableData mutableData) {
-
-
-                    return Transaction.success(mutableData);
-                }
-
-                @Override
-                public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
-
-                }
-            });
-
-        } else {
-            Toast.makeText(getActivity(), "You must log in to downvote stories.", Toast.LENGTH_SHORT).show();
-        }
+            }
+        });
     }
 
     public void shareFunction(){
@@ -414,10 +389,6 @@ public class StoryFragment extends Fragment {
                     });
             builder.create();
         }
-    }
-
-    private void updateVotes() {
-        mVotesRef.setValue(storyVotes);
     }
 
     private String getUsername() {
