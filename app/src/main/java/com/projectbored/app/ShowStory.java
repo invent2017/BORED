@@ -64,7 +64,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     TextView dateText;
     Button reportStoryButton;
     ListView commentsList;
-    UnselectableEditText commentInput;
+    EditText commentInput;
 
     int storyVotes;
     int storyViews;
@@ -163,8 +163,6 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         String commentKey = mDataRef.push().getKey();
         mDataRef.child("comments").child(STORY_KEY).child(commentKey).setValue(commentDetails);
         commentInput.setText("");
-
-        comments.add(commentString);
     }
 
 
