@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">unBORED!</string>
-    <string name="title_activity_maps">unBORED!</string>
+    <string name="app_name">See GO</string>
+    <string name="title_activity_maps">See GO</string>
     <string name="search_hashtags">Search hashtags</string>
     <string name="filter_stories">Filter stories</string>
     <string name="retrievedstory">retrievedStory</string>
@@ -34,7 +34,7 @@
     <string name="tomorrow">Tomorrow</string>
 
     <!-- Strings related to login -->
-    <string name="login_title">Welcome to unBORED!</string>
+    <string name="login_title">Welcome to See GO!</string>
     <string name="prompt_username">Username</string>
     <string name="prompt_email">Email address</string>
     <string name="prompt_password">Password</string>

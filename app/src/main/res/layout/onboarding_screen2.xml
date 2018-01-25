@@ -8,15 +8,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Temporary Second Screen!"
-        android:textSize="48sp"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        android:text="See the world"
+        android:textSize="48sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:layout_marginTop="20dp"
-        android:text="Well, we'll see if this works hmm."/>
+        android:text="Hunt and plant precious moments."/>
 
 </LinearLayout>

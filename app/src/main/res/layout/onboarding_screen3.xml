@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
     android:gravity="center_horizontal">
@@ -8,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Last Page!"
+        android:text="Let's GO!"
         android:textSize="48sp"
         android:layout_marginTop="50dp"/>
 
@@ -17,6 +18,13 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:layout_marginTop="20dp"
-        android:text="Hope you're not sick of me yet."/>
+        android:text="Notice the good things."/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_marginTop="8dp"
+        android:text="Be your better person."/>
 
 </LinearLayout>

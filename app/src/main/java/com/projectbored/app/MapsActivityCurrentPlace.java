@@ -300,7 +300,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 break;
             case 2:
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://projectboredinc.wordpress.com/faqs/"));
-                Toast.makeText(MapsActivityCurrentPlace.this, "Find FAQs on our website :)", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MapsActivityCurrentPlace.this, "redirecting to FAQs on our website", Toast.LENGTH_SHORT).show();
                 startActivity(browserIntent);
                 break;
             case 3:
