@@ -69,7 +69,7 @@ import static android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH;
  * An activity that displays a map showing the place at the device's current location.
  */
 public class MapsActivityCurrentPlace extends AppCompatActivity
-        implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener,
+        implements OnMapReadyCallback,
                 GoogleApiClient.ConnectionCallbacks,
                 GoogleApiClient.OnConnectionFailedListener {
 
@@ -336,7 +336,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 if(mLastKnownLocation.distanceTo(markerLocation) <= 500) {
                     showStoryDetails(marker);
                 } else {
-                    Toast.makeText(MapsActivityCurrentPlace.this, "You must be within 500 metres of the story to view it.", Toast.LENGTH_SHORT).show();
+                    HashtagChecker hashtagChecker = new HashtagChecker((String)marker.getTag());
+                    String hashtags = hashtagChecker.getHashtags();
+                    if(hashtags != null) {
+                        Toast.makeText(MapsActivityCurrentPlace.this, hashtags, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MapsActivityCurrentPlace.this, "This story does not have any hashtags.", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 return true;
             }
@@ -807,17 +813,10 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                             for (DataSnapshot dataSnapshot1 : ds.getChildren()) {
                                 if(dataSnapshot1.exists()) {
                                     String storyKey = dataSnapshot1.getKey();
-                                    boolean featured = dataSnapshot1.getValue(boolean.class);
-                                    boolean isRead = false;
-                                    if (isLoggedIn()) {
-                                        if (dataSnapshot.child("users").child(username)
-                                                .child("ReadStories").child(storyKey).exists()) {
-                                            isRead = true;
-                                        }
-                                    }
+                                    int type = dataSnapshot1.getValue(Integer.class);
 
                                     if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 100) {
-                                        showNearbyStories(storyKey, storyLocation, featured);
+                                        showNearbyStories(storyKey, storyLocation, type);
                                     }
                                 }
                             }
@@ -971,7 +970,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                             for (DataSnapshot dataSnapshot1 : ds.getChildren()) {
                                 if(dataSnapshot1.exists()) {
                                     String storyKey = dataSnapshot1.getKey();
-                                    boolean featured = dataSnapshot1.getValue(boolean.class);
+                                    int type = dataSnapshot1.getValue(Integer.class);
                                     boolean isRead = false;
                                     if (isLoggedIn()) {
                                         if (dataSnapshot.child("users").child(username)
@@ -983,9 +982,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
                                     if(!isRead) {
                                         if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 100) {
-                                            showNearbyStories(storyKey, storyLocation, featured);
+                                            showNearbyStories(storyKey, storyLocation, type);
                                         } else {
-                                            showFarStories(storyKey, storyLocation, featured);
+                                            showFarStories(storyKey, storyLocation, type);
                                         }
                                     }
                                 }
@@ -993,27 +992,29 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                         } else {
                             StringBuilder storyKeys = new StringBuilder();
                             for(DataSnapshot dataSnapshot1 : ds.getChildren()) {
-                                String storyKey = dataSnapshot1.getKey();
-                                if(storyKeys.toString().equals("")) {
-                                    storyKeys.append(storyKey);
-                                } else {
-                                    storyKeys.append(",").append(storyKey);
+                                if(dataSnapshot1.getValue(Integer.class) == 0) {
+                                    String storyKey = dataSnapshot1.getKey();
+                                    if (storyKeys.toString().equals("")) {
+                                        storyKeys.append(storyKey);
+                                    } else {
+                                        storyKeys.append(",").append(storyKey);
+                                    }
                                 }
                             }
 
-                            boolean featured = false;
+                            /*boolean featured = false;
                             for(DataSnapshot dataSnapshot1 : ds.getChildren()) {
                                 featured = dataSnapshot1.getValue(boolean.class);
 
                                 if(featured) {
                                     break;
                                 }
-                            }
+                            }*/
 
                             if(mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 100) {
-                                showNearbyStories(storyKeys.toString(), storyLocation, featured);
+                                showNearbyStories(storyKeys.toString(), storyLocation, 0);
                             } else {
-                                showFarStories(storyKeys.toString(), storyLocation, featured);
+                                showFarStories(storyKeys.toString(), storyLocation, 0);
                             }
                         }
                     } else {
@@ -1030,14 +1031,14 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     }
 
-    public void showNearbyStories(String storyKey, Location storyLocation, boolean featured) {
+    public void showNearbyStories(String storyKey, Location storyLocation, int type) {
         Marker storyMarker;
-        if (featured) {
+        if (type == 2) {
             storyMarker = mMap.addMarker(new MarkerOptions()
                         .position(new LatLng(storyLocation.getLatitude(),
                                 storyLocation.getLongitude()))
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-            storyMarker.setTag(storyKey);
+            storyMarker.setTag(storyKey + "/" + "2");
 
             markers.put(storyKey, storyMarker);
         } else {
@@ -1045,20 +1046,20 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                         .position(new LatLng(storyLocation.getLatitude(),
                                 storyLocation.getLongitude()))
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
-            storyMarker.setTag(storyKey);
+            storyMarker.setTag(storyKey + "/" + 0);
 
             markers.put(storyKey, storyMarker);
         }
     }
 
-    public void showFarStories(final String storyKey, final Location storyLocation, boolean featured) {
+    public void showFarStories(final String storyKey, final Location storyLocation, int type) {
         Marker storyMarker;
-        if(featured) {
+        if(type == 2) {
             storyMarker = mMap.addMarker(new MarkerOptions()
                     .position(new LatLng(storyLocation.getLatitude(),
                             storyLocation.getLongitude()))
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-            storyMarker.setTag(storyKey);
+            storyMarker.setTag(storyKey + "/" + 2);
 
             markers.put(storyKey, storyMarker);
         } else {
@@ -1066,31 +1067,19 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                     .position(new LatLng(storyLocation.getLatitude(),
                             storyLocation.getLongitude()))
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
-            storyMarker.setTag(storyKey);
+            storyMarker.setTag(storyKey + "/" + 0);
 
             markers.put(storyKey, storyMarker);
         }
     }
 
-
-    @Override
-    public boolean onMarkerClick(Marker marker){
-        LatLng markerPosition = marker.getPosition();
-        Location markerLocation = new Location(LocationManager.GPS_PROVIDER);
-        markerLocation.setLatitude(markerPosition.latitude);
-        markerLocation.setLongitude(markerPosition.longitude);
-
-        if(mLastKnownLocation.distanceTo(markerLocation) <= 100) {
-            showStoryDetails(marker);
-        } else {
-            Toast.makeText(this, "You must be within 100 metres of the story to view it.", Toast.LENGTH_SHORT).show();
-        }
-        return true;
-    }
-
     public void showStoryDetails(Marker marker) {
         Intent intent;
-        String key = (String)marker.getTag();
+        String info = (String)marker.getTag();
+        String[] storyInfo = info.split("/");
+
+        String key = storyInfo[0];
+        int type = Integer.parseInt(storyInfo[1]);
 
         if(key == null) {
             Toast.makeText(this, "You have already read this story.", Toast.LENGTH_SHORT).show();
@@ -1100,7 +1089,18 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             if (key != null && key.contains(",")) {
                 intent = new Intent(this, ShowMultipleStories.class);
             } else {
-                intent = new Intent(this, ShowStory.class);
+                switch(type) {
+                    case 0:
+                        intent = new Intent(this, ShowStory.class);
+                        break;
+                    case 2:
+                        intent = new Intent(this, ViewEvent.class);
+                        break;
+
+                    default:
+                        intent = new Intent(this, ShowStory.class);
+                }
+
             }
 
             Bundle storyDetails = new Bundle();

@@ -6,11 +6,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.Calendar;
 
@@ -38,6 +42,8 @@ public class ViewEvent extends AppCompatActivity {
         timeView = findViewById(R.id.event_time);
         timeView.setEnabled(false);
         imageView = findViewById(R.id.event_image);
+
+        loadEventDetails();
     }
 
     private void loadEventDetails() {
@@ -61,8 +67,9 @@ public class ViewEvent extends AppCompatActivity {
                 } else {
                     dateText.setText(R.string.today);
                 }
-                
 
+                StorageReference mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl(imageUri);
+                Glide.with(ViewEvent.this).using(new FirebaseImageLoader()).load(mStorageRef).into(imageView);
 
             }
 
