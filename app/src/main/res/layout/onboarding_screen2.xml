@@ -9,14 +9,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="See the world"
-        android:textSize="48sp" />
+        android:text="See the Real World!"
+        android:textSize="40sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:textSize="26sp"
         android:layout_marginTop="20dp"
-        android:text="Hunt and plant precious moments."/>
+        android:text="Hunt and plant"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="26sp"
+        android:layout_marginTop="8dp"
+        android:text="precious moments."/>
 
 </LinearLayout>
