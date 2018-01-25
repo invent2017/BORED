@@ -21,4 +21,11 @@
         android:icon="@android:drawable/ic_menu_save"
         android:title="@string/bookmark_story"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/option_back_to_map"
+        android:icon="@android:drawable/ic_dialog_map"
+        android:title="@string/view_on_map"
+        android:visible="true"
+        app:showAsAction="always" />
 </menu>
