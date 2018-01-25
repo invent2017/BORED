@@ -42,6 +42,7 @@ public class CreateAccount extends AppCompatActivity {
         actionBar.setLogo(R.drawable.whitebored);
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setTitle("");
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
@@ -60,9 +61,9 @@ public class CreateAccount extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent returnToMap = new Intent(this, MapsActivityCurrentPlace.class);
-        returnToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(returnToMap);
+        Intent goLogin = new Intent(this, Login.class);
+        startActivity(goLogin);
+        finish();
     }
 
     private void signUp() {

@@ -18,7 +18,7 @@
 
     <item
         android:id="@+id/option_bookmark_story"
-        android:icon="@android:drawable/ic_menu_save"
+        android:icon="@drawable/white_bkmark"
         android:title="@string/bookmark_story"
         app:showAsAction="always" />
 </menu>
