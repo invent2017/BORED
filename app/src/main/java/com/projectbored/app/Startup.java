@@ -73,7 +73,7 @@ public class Startup extends AppCompatActivity {
                 critical = true;
             }
             if(critical) {
-                updatePrompt.setMessage("A new version of BORED! is available.")
+                updatePrompt.setMessage("A new version of See GO is available.")
                         .setPositiveButton("Update", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -89,7 +89,7 @@ public class Startup extends AppCompatActivity {
                             }
                         });
             } else {
-                updatePrompt.setMessage("A new version of BORED! is available. Update?")
+                updatePrompt.setMessage("A new version of See GO is available. Update?")
                         .setPositiveButton("Update", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
