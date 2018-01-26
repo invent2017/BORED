@@ -118,6 +118,9 @@ public class Startup extends AppCompatActivity {
             long timeNow = Calendar.getInstance().getTimeInMillis();
 
             if(timeNow >= expiryTime) {
+                String key = ds.getKey();
+                String location = ds.child("Location").getValue(String.class).replace('.', 'd');
+                mDataRef.child("locations").child(location).child(key).removeValue();
                 ds.getRef().removeValue();
             }
         }
