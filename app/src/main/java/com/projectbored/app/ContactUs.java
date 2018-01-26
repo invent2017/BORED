@@ -1,5 +1,6 @@
 package com.projectbored.app;
 
+import android.net.Uri;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,9 @@ public class ContactUs extends AppCompatActivity {
 
     EditText textSubject;
     EditText textMessage;
+    Button surveyButton;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,15 @@ public class ContactUs extends AppCompatActivity {
 
         textSubject = findViewById(R.id.subject_input);
         textMessage = findViewById(R.id.message_input);
+
+        surveyButton = findViewById(R.id.button2);
+        surveyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://goo.gl/forms/S9FgEdln0jWBfqCr2"));
+                    startActivity(browserIntent);
+            }
+        });
     }
 
     @Override

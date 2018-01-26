@@ -190,7 +190,10 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 if(mLastKnownLocation != null) {
-                    addEvent();
+                    Toast.makeText(MapsActivityCurrentPlace.this,
+                            "Coming VERY soon ;)",
+                            Toast.LENGTH_SHORT).show();
+                    /*addEvent();*/
                 } else {
                     Toast.makeText(MapsActivityCurrentPlace.this,
                             "Unable to get your location. Please check your location settings and try again.",
@@ -341,7 +344,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                     if(hashtags != null) {
                         Toast.makeText(MapsActivityCurrentPlace.this, hashtags, Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(MapsActivityCurrentPlace.this, "This story does not have any hashtags.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MapsActivityCurrentPlace.this, "You have to be within 500m to view this story.", Toast.LENGTH_SHORT).show();
                     }
                 }
                 return true;
@@ -981,7 +984,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
 
                                     if(!isRead) {
-                                        if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 100) {
+                                        if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 500) {
                                             showNearbyStories(storyKey, storyLocation, type);
                                         } else {
                                             showFarStories(storyKey, storyLocation, type);

@@ -252,10 +252,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/roundishbutton"
+            android:fontFamily="sans-serif"
             android:padding="8dp"
-            android:fontFamily="monospace"
             android:text="@string/invite_friends"
-            android:textColor="#fafafa" />
+            android:textColor="#fafafa"
+            android:textStyle="bold" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -15,6 +15,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Take a Survey instead" />
+
         <TextView
             android:id="@+id/textView6"
             android:layout_width="match_parent"
@@ -23,7 +29,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginTop="10dp"
-            android:fontFamily="monospace"
+            android:fontFamily="sans-serif-condensed"
             android:gravity="center_horizontal|clip_vertical"
             android:text="@string/contact_message"
             android:textColor="@android:color/holo_green_dark" />
