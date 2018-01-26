@@ -17,6 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
+
 public class Startup extends AppCompatActivity {
     private static final String PREFS_NAME = "UserDetails";
 
@@ -59,6 +61,8 @@ public class Startup extends AppCompatActivity {
         });
     }
 
+
+
     private void checkUpdates(final DataSnapshot dataSnapshot) {
         final String versionName = BuildConfig.VERSION_NAME;
         String[] versionDetailsArray = dataSnapshot.child("version").getValue(String.class).split(" ");
@@ -69,7 +73,7 @@ public class Startup extends AppCompatActivity {
                 critical = true;
             }
             if(critical) {
-                updatePrompt.setMessage("A new version of BORED! is available. Update?")
+                updatePrompt.setMessage("A new version of BORED! is available.")
                         .setPositiveButton("Update", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -97,14 +101,28 @@ public class Startup extends AppCompatActivity {
                         .setNegativeButton("Later", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                getUserData(dataSnapshot);
+                                checkEvents(dataSnapshot);
                             }
                         });
             }
             updatePrompt.create().show();
         } else {
-            getUserData(dataSnapshot);
+            checkEvents(dataSnapshot);
         }
+    }
+
+    private void checkEvents(DataSnapshot dataSnapshot) {
+
+        for(DataSnapshot ds : dataSnapshot.child("events").getChildren()) {
+            long expiryTime = ds.child("ExpiryTime").getValue(Long.class);
+            long timeNow = Calendar.getInstance().getTimeInMillis();
+
+            if(timeNow >= expiryTime) {
+                ds.getRef().removeValue();
+            }
+        }
+
+        getUserData(dataSnapshot);
     }
 
     private void getUserData(DataSnapshot dataSnapshot) {

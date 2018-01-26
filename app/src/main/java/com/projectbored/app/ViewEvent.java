@@ -24,7 +24,7 @@ public class ViewEvent extends AppCompatActivity {
     private DatabaseReference mDataRef;
     private TextView titleText, descriptionText, dateText;
     private TimePicker timeView;
-    private ImageView imageView;
+    //private ImageView imageView;
 
 
     @Override
@@ -41,7 +41,7 @@ public class ViewEvent extends AppCompatActivity {
         dateText = findViewById(R.id.date_text);
         timeView = findViewById(R.id.event_time);
         timeView.setEnabled(false);
-        imageView = findViewById(R.id.event_image);
+        //imageView = findViewById(R.id.event_image);
 
         loadEventDetails();
     }
@@ -68,8 +68,8 @@ public class ViewEvent extends AppCompatActivity {
                     dateText.setText(R.string.today);
                 }
 
-                StorageReference mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl(imageUri);
-                Glide.with(ViewEvent.this).using(new FirebaseImageLoader()).load(mStorageRef).into(imageView);
+                //StorageReference mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl(imageUri);
+                //Glide.with(ViewEvent.this).using(new FirebaseImageLoader()).load(mStorageRef).into(imageView);
 
             }
 

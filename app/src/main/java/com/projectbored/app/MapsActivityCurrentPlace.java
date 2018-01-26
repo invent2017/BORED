@@ -190,10 +190,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 if(mLastKnownLocation != null) {
-                    Toast.makeText(MapsActivityCurrentPlace.this,
-                            "Coming VERY soon ;)",
-                            Toast.LENGTH_SHORT).show();
-                    /*addEvent();*/
+                    addEvent();
+
                 } else {
                     Toast.makeText(MapsActivityCurrentPlace.this,
                             "Unable to get your location. Please check your location settings and try again.",
