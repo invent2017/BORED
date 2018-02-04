@@ -3,6 +3,7 @@ package com.projectbored.app;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -23,7 +24,7 @@ public class ViewEvent extends AppCompatActivity {
 
     private DatabaseReference mDataRef;
     private TextView titleText, descriptionText, dateText;
-    private TimePicker timeView;
+    private TextView timeView;
     //private ImageView imageView;
 
 
@@ -40,7 +41,6 @@ public class ViewEvent extends AppCompatActivity {
         descriptionText = findViewById(R.id.event_description);
         dateText = findViewById(R.id.date_text);
         timeView = findViewById(R.id.event_time);
-        timeView.setEnabled(false);
         //imageView = findViewById(R.id.event_image);
 
         loadEventDetails();
@@ -53,12 +53,34 @@ public class ViewEvent extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String eventTitle = dataSnapshot.child("Title").getValue(String.class);
                 String eventDescription = dataSnapshot.child("Description").getValue(String.class);
-                String imageUri = dataSnapshot.child("URI").getValue(String.class);
-                long eventTimeMillis = dataSnapshot.child("Expires").getValue(Long.class);
+                //String imageUri = dataSnapshot.child("URI").getValue(String.class);
+                long eventTimeMillis = dataSnapshot.child("ExpiryTime").getValue(Long.class);
 
                 Calendar timeNow = Calendar.getInstance();
                 Calendar eventTime = Calendar.getInstance();
                 eventTime.setTimeInMillis(eventTimeMillis);
+
+                int expiryHour = eventTime.get(Calendar.HOUR_OF_DAY);
+                String expiryTime;
+                if(expiryHour < 12) {
+                    expiryTime = new StringBuilder()
+                            .append(expiryHour).append(":")
+                            .append(eventTime.get(Calendar.MINUTE)).append(" A.M.").toString();
+                } else {
+                    if(expiryHour == 12) {
+                        expiryTime = new StringBuilder()
+                                .append(expiryHour).append(":")
+                                .append(eventTime.get(Calendar.MINUTE)).append(" P.M.").toString();
+                    } else {
+                        expiryTime = new StringBuilder()
+                                .append(expiryHour - 12).append(":")
+                                .append(eventTime.get(Calendar.MINUTE)).append(" P.M.").toString();
+                    }
+                }
+
+
+
+                timeView.setText(expiryTime);
 
                 titleText.setText(eventTitle);
                 descriptionText.setText(eventDescription);

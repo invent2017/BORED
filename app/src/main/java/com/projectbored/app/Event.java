@@ -10,11 +10,13 @@ import java.util.Map;
  */
 
 public class Event {
+    private String title;
     private String description;
     private long expiryTime;
     private String location;
 
-    public Event(String description, long expiryTime, Location location) {
+    public Event(String title, String description, long expiryTime, Location location) {
+        this.title = title;
         this.description = description;
         this.expiryTime = expiryTime;
         this.location = Double.toString(location.getLatitude()) + "," + Double.toString(location.getLongitude());
@@ -26,6 +28,7 @@ public class Event {
 
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
+        result.put("Title", title);
         result.put("Description", description);
         result.put("ExpiryTime", expiryTime);
         result.put("Location", location);

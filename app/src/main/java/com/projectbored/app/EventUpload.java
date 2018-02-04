@@ -28,7 +28,7 @@ public class EventUpload extends AppCompatActivity {
 
     String eventKey;
 
-    private EditText descriptionField;
+    private EditText titleField, descriptionField;
     private TextView eventDateText;
     private Spinner spinner;
     private TimePicker timePicker;
@@ -50,6 +50,7 @@ public class EventUpload extends AppCompatActivity {
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
+        titleField = findViewById(R.id.event_title);
         descriptionField = findViewById(R.id.event_description);
 
         eventDateText = findViewById(R.id.event_date_text);
@@ -131,11 +132,10 @@ public class EventUpload extends AppCompatActivity {
             eventLocation.setLatitude(eventSettings.getDouble("Latitude"));
             eventLocation.setLongitude(eventSettings.getDouble("Longitude"));
 
-
+            String eventTitle = titleField.getText().toString();
             String eventDescription = descriptionField.getText().toString();
 
-
-            Event event = new Event(eventDescription, eventCalendar.getTimeInMillis(), eventLocation);
+            Event event = new Event(eventTitle, eventDescription, eventCalendar.getTimeInMillis(), eventLocation);
             String locationKey = event.getLocationString().replace('.', 'd');
             mDataRef.child("events").child(eventKey).updateChildren(event.toMap());
             mDataRef.child("locations").child(locationKey).child(eventKey).setValue(2);
