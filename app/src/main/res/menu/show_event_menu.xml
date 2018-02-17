@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/option_delete_event"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="@string/delete"
+        android:visible="false"/>
+
+    <item
+        android:id="@+id/option_back_to_map"
+        android:icon="@android:drawable/ic_dialog_map"
+        android:title="@string/view_on_map"
+        android:visible="true" />
+</menu>

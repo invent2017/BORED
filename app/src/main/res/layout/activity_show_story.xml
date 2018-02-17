@@ -141,7 +141,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="2dp">
 
                 <TextView
                     android:id="@+id/dateText"
@@ -162,8 +163,8 @@
                     android:layout_width="30dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="2dp"
                     android:layout_marginEnd="10dp"
+                    android:layout_marginStart="2dp"
                     android:layout_weight="0.01"
                     app:srcCompat="@drawable/eye" />
             </LinearLayout>
