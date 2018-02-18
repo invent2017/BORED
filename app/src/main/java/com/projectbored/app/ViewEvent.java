@@ -1,7 +1,10 @@
 package com.projectbored.app;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextClock;
 import android.widget.TextView;
@@ -35,6 +38,11 @@ public class ViewEvent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_event);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setLogo(R.drawable.whitebored);
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
         titleText = findViewById(R.id.event_title);
@@ -44,6 +52,24 @@ public class ViewEvent extends AppCompatActivity {
         //imageView = findViewById(R.id.event_image);
 
         loadEventDetails();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.show_event_menu, menu);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.option_back_to_map) {
+            finish();
+        }
+        /*else if (item.getItemId() == R.id.option_delete_event) {
+            deleteEvent();
+        }*/
+        return true;
     }
 
     private void loadEventDetails() {
