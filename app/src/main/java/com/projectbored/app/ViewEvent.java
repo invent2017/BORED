@@ -86,27 +86,7 @@ public class ViewEvent extends AppCompatActivity {
                 Calendar eventTime = Calendar.getInstance();
                 eventTime.setTimeInMillis(eventTimeMillis);
 
-                int expiryHour = eventTime.get(Calendar.HOUR_OF_DAY);
-                String expiryTime;
-                if(expiryHour < 12) {
-                    expiryTime = new StringBuilder()
-                            .append(expiryHour).append(":")
-                            .append(eventTime.get(Calendar.MINUTE)).append(" A.M.").toString();
-                } else {
-                    if(expiryHour == 12) {
-                        expiryTime = new StringBuilder()
-                                .append(expiryHour).append(":")
-                                .append(eventTime.get(Calendar.MINUTE)).append(" P.M.").toString();
-                    } else {
-                        expiryTime = new StringBuilder()
-                                .append(expiryHour - 12).append(":")
-                                .append(eventTime.get(Calendar.MINUTE)).append(" P.M.").toString();
-                    }
-                }
-
-
-
-                timeView.setText(expiryTime);
+                timeView.setText(new TimeStringGenerator(eventTimeMillis).getTimeString());
 
                 titleText.setText(eventTitle);
                 descriptionText.setText(eventDescription);

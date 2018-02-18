@@ -337,13 +337,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 if(mLastKnownLocation.distanceTo(markerLocation) <= 500) {
                     showStoryDetails(marker);
                 } else {
-                    /*HashtagChecker hashtagChecker = new HashtagChecker((String)marker.getTag());
-                    String hashtags = hashtagChecker.getHashtags();*/
-                    String hashtags = (String)marker.getTag();
+                    HashtagChecker hashtagChecker = new HashtagChecker((String)marker.getTag());
+                    String hashtags = hashtagChecker.getHashtags();
+
                     if(hashtags != null) {
-                        Toast.makeText(MapsActivityCurrentPlace.this, "This squawk contains "+hashtags, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MapsActivityCurrentPlace.this, "This squawk contains "+ hashtags, Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(MapsActivityCurrentPlace.this, "You have to be within 500m to view this story.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MapsActivityCurrentPlace.this, "This squawk does not have any hashtags.", Toast.LENGTH_SHORT).show();
                     }
                 }
                 return true;

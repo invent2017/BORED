@@ -12,8 +12,8 @@ import java.util.regex.Pattern;
 
 public class HashtagChecker {
 
-    String storyKey;
-    StringBuilder hashtags = new StringBuilder();
+    private String storyKey;
+    private StringBuilder hashtags = new StringBuilder();
     DatabaseReference mDataRef = FirebaseDatabase.getInstance().getReference().child("stories");
 
     public HashtagChecker(String storyKey) {
@@ -25,13 +25,17 @@ public class HashtagChecker {
         mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String hashtagPattern = "#\\w+";
+                String hashtagPattern = ("(#\\w+)");
                 String storyCaption = dataSnapshot.child(storyKey).child("Caption").getValue(String.class);
 
                 if(storyCaption != null) {
                     Matcher matcher = Pattern.compile(hashtagPattern).matcher(storyCaption);
                     while (matcher.find()) {
-                        hashtags.append(matcher.group());
+                        if(hashtags.length() == 0) {
+                            hashtags.append(matcher.group(1));
+                        } else {
+                            hashtags.append(", " + matcher.group(1));
+                        }
                     }
                 }
             }
