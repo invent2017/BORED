@@ -1,5 +1,6 @@
 package com.projectbored.app;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +22,17 @@ public class ChangePassword extends AppCompatActivity {
     private EditText oldPasswordText, newPasswordText, confirmNewPasswordText;
     private Button changePasswordButton;
 
+    public static class SingleToast {
+
+        private static Toast mToast;
+
+        public static void show(Context context, String text, int duration) {
+            if (mToast != null) mToast.cancel();
+            mToast = Toast.makeText(context, text, duration);
+            mToast.show();
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +53,7 @@ public class ChangePassword extends AppCompatActivity {
                 changePassword();
             }
         });
+
     }
 
     private void changePassword() {
@@ -50,7 +63,7 @@ public class ChangePassword extends AppCompatActivity {
         final String newPassword2 = confirmNewPasswordText.getText().toString();
 
         if(oldPassword.equals("") || newPassword1.equals("") || newPassword2.equals("")) {
-            Toast.makeText(this, "Please fill in all fields.", Toast.LENGTH_SHORT).show();
+            SingleToast.show(this, "Please fill in all fields.", Toast.LENGTH_SHORT);
 
         } else if(newPassword1.equals(newPassword2)) {
             mDataRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -60,18 +73,18 @@ public class ChangePassword extends AppCompatActivity {
                         String existingPassword = dataSnapshot.child(username).child("Password").getValue(String.class);
                         if(oldPassword.equals(existingPassword)) {
                             dataSnapshot.child(username).child("Password").getRef().setValue(newPassword1);
-                            Toast.makeText(ChangePassword.this, "Your password was successfully changed.",
-                                    Toast.LENGTH_SHORT).show();
+                            SingleToast.show(ChangePassword.this, "Your password was successfully changed.",
+                                    Toast.LENGTH_SHORT);
                             finish();
                         } else {
-                            Toast.makeText(ChangePassword.this, "Incorrect password.", Toast.LENGTH_SHORT).show();
+                            SingleToast.show(ChangePassword.this, "Incorrect password.", Toast.LENGTH_SHORT);
                         }
 
                     } else {
                         Intent loginAgain = new Intent(ChangePassword.this, Login.class);
                         loginAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-                        Toast.makeText(ChangePassword.this, "An error occurred. Please log in again.", Toast.LENGTH_SHORT).show();
+                        SingleToast.show(ChangePassword.this, "An error occurred. Please log in again.", Toast.LENGTH_SHORT);
                         startActivity(loginAgain);
 
                         finish();
@@ -84,7 +97,9 @@ public class ChangePassword extends AppCompatActivity {
                 }
             });
         } else {
-            Toast.makeText(this, "Passwords entered do not match.", Toast.LENGTH_SHORT).show();
+            SingleToast.show(this, "Passwords entered do not match.", Toast.LENGTH_SHORT);
         }
     }
+
+
 }

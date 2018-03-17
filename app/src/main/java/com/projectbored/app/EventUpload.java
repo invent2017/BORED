@@ -1,5 +1,6 @@
 package com.projectbored.app;
 
+import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
@@ -124,7 +125,7 @@ public class EventUpload extends AppCompatActivity {
         eventCalendar.set(Calendar.SECOND, 0);
 
         if(timeNow.getTimeInMillis() >= eventCalendar.getTimeInMillis()) {
-            Toast.makeText(this, "Event has already expired.", Toast.LENGTH_SHORT).show();
+            SingleToast.show(this, "Event has already expired.", Toast.LENGTH_SHORT);
 
         } else {
 
@@ -142,6 +143,17 @@ public class EventUpload extends AppCompatActivity {
 
             Toast.makeText(this, "Event added!", Toast.LENGTH_SHORT).show();
             finish();
+        }
+    }
+
+    public static class SingleToast {
+
+        private static Toast mToast;
+
+        public static void show(Context context, String text, int duration) {
+            if (mToast != null) mToast.cancel();
+            mToast = Toast.makeText(context, text, duration);
+            mToast.show();
         }
     }
 }

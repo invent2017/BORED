@@ -50,7 +50,7 @@
                     fab:fab_colorPressed="#540d9d"
                     fab:fab_icon="@drawable/ic_fab_star"
                     fab:fab_size="mini"
-                    fab:fab_title="Squawk Blast" />
+                    fab:fab_title="Multi-Squawk" />
 
                 <com.getbase.floatingactionbutton.FloatingActionButton
                     android:id="@+id/add_event"
@@ -70,7 +70,7 @@
                     fab:fab_colorPressed="#52adba"
                     fab:fab_icon="@drawable/pen"
                     fab:fab_size="mini"
-                    fab:fab_title="Squawk (Add Story)" />
+                    fab:fab_title="Add Squawk" />
 
             </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

@@ -1,5 +1,6 @@
 package com.projectbored.app;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -255,7 +256,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
     public void reportStory(){
         mDataRef.child("stories").child(STORY_KEY).child("Flagged").setValue(true);
-        Toast.makeText(this, "Story flagged.", Toast.LENGTH_SHORT).show();
+        SingleToast.show(this, "Story flagged.", Toast.LENGTH_SHORT);
    }
 
     public void upVote(){
@@ -467,7 +468,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                 .append(",").append(storyDetails.getDouble("Longitude")).toString();
         mDataRef.child("users").child(username).child("Bookmarked").child(STORY_KEY).setValue(locationString);
 
-        Toast.makeText(this, "Story bookmarked.", Toast.LENGTH_SHORT).show();
+        SingleToast.show(this, "Story bookmarked.", Toast.LENGTH_SHORT);
         invalidateOptionsMenu();
     }
 
@@ -597,6 +598,17 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         startActivity(showLocation);
 
         finish();
+    }
+
+    public static class SingleToast {
+
+        private static Toast mToast;
+
+        public static void show(Context context, String text, int duration) {
+            if (mToast != null) mToast.cancel();
+            mToast = Toast.makeText(context, text, duration);
+            mToast.show();
+        }
     }
 
 }

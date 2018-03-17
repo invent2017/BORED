@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 27
@@ -62,6 +63,10 @@ dependencies {
     compile 'com.github.vajro:MaterialDesignLibrary:1.6'
     //compile 'com.github.navasmdc:MaterialDesign:1.5@aar'
     compile 'com.ogaclejapan.smarttablayout:library:1.2.1@aar'
+
+    //Crashlytics
+    compile 'com.crashlytics.sdk.android:crashlytics:2.9.1'
+
     testCompile 'junit:junit:4.12'
 }
 

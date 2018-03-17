@@ -178,9 +178,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 if(mLastKnownLocation != null) {
                     exploreTrails();
                 } else {
-                    Toast.makeText(MapsActivityCurrentPlace.this,
+                    SingleToast.show(MapsActivityCurrentPlace.this,
                             "Unable to get your location. Please check your location settings and try again.",
-                            Toast.LENGTH_SHORT).show();
+                            Toast.LENGTH_SHORT);
                 }
             }
         });
@@ -193,9 +193,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                     addEvent();
 
                 } else {
-                    Toast.makeText(MapsActivityCurrentPlace.this,
+                    SingleToast.show(MapsActivityCurrentPlace.this,
                             "Unable to get your location. Please check your location settings and try again.",
-                            Toast.LENGTH_SHORT).show();
+                            Toast.LENGTH_SHORT);
                 }
             }
         });
@@ -207,9 +207,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 if(mLastKnownLocation != null) {
                     addStory();
                 } else {
-                    Toast.makeText(MapsActivityCurrentPlace.this,
+                    SingleToast.show(MapsActivityCurrentPlace.this,
                             "Unable to get your location. Please check your location settings and try again.",
-                            Toast.LENGTH_SHORT).show();
+                            Toast.LENGTH_SHORT);
                 }
             }
         });
@@ -301,7 +301,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 break;
             case 2:
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://projectboredinc.wordpress.com/faqs/"));
-                Toast.makeText(MapsActivityCurrentPlace.this, "redirecting to FAQs on our website", Toast.LENGTH_SHORT).show();
+                SingleToast.show(MapsActivityCurrentPlace.this, "redirecting to FAQs on our website", Toast.LENGTH_SHORT);
                 startActivity(browserIntent);
                 break;
             case 3:
@@ -341,9 +341,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                     String hashtags = hashtagChecker.getHashtags();
 
                     if(hashtags != null) {
-                        Toast.makeText(MapsActivityCurrentPlace.this, "This squawk contains "+ hashtags, Toast.LENGTH_SHORT).show();
+                        SingleToast.show(MapsActivityCurrentPlace.this, "This squawk contains "+ hashtags, Toast.LENGTH_SHORT);
                     } else {
-                        Toast.makeText(MapsActivityCurrentPlace.this, "This squawk does not have any hashtags.", Toast.LENGTH_SHORT).show();
+                        SingleToast.show(MapsActivityCurrentPlace.this, "This squawk does not have any hashtags.", Toast.LENGTH_SHORT);
                     }
                 }
                 return true;
@@ -623,7 +623,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                             }
                         }
                     } else {
-                        Toast.makeText(MapsActivityCurrentPlace.this, "There are no stories with that hashtag.", Toast.LENGTH_SHORT).show();
+                        SingleToast.show(MapsActivityCurrentPlace.this, "There are no stories with that hashtag.", Toast.LENGTH_SHORT);
                     }
                 }
 
@@ -633,7 +633,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 }
             });
         } else {
-            Toast.makeText(this, "Hashtags may not contain spaces or non-word characters.", Toast.LENGTH_SHORT).show();
+            SingleToast.show(this, "Hashtags may not contain spaces or non-word characters.", Toast.LENGTH_SHORT);
         }
     }
 
@@ -788,7 +788,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
                         }
                     } else {
-                        Toast.makeText(MapsActivityCurrentPlace.this, "There are no stories.", Toast.LENGTH_SHORT).show();
+                        SingleToast.show(MapsActivityCurrentPlace.this, "There are no stories.", Toast.LENGTH_SHORT);
                     }
                 }
             }
@@ -826,7 +826,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
                         }
                     } else {
-                        Toast.makeText(MapsActivityCurrentPlace.this, "There are no stories.", Toast.LENGTH_SHORT).show();
+                        SingleToast.show(MapsActivityCurrentPlace.this, "There are no stories.", Toast.LENGTH_SHORT);
                     }
                 }
             }
@@ -1020,14 +1020,14 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                             }
                         }
                     } else {
-                        Toast.makeText(MapsActivityCurrentPlace.this, "There are no stories.", Toast.LENGTH_SHORT).show();
+                        SingleToast.show(MapsActivityCurrentPlace.this, "There are no stories.", Toast.LENGTH_SHORT);
                     }
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(MapsActivityCurrentPlace.this, "Failed to load stories.", Toast.LENGTH_SHORT).show();
+                SingleToast.show(MapsActivityCurrentPlace.this, "Failed to load stories.", Toast.LENGTH_SHORT);
             }
         });
 
@@ -1084,7 +1084,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         int type = Integer.parseInt(storyInfo[1]);
 
         if(key == null) {
-            Toast.makeText(this, "You have already read this story.", Toast.LENGTH_SHORT).show();
+            SingleToast.show(this, "You have already read this story.", Toast.LENGTH_SHORT);
             marker.remove();
         } else {
 
@@ -1214,6 +1214,17 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             selectItem(i);
+        }
+    }
+
+    public static class SingleToast {
+
+        private static Toast mToast;
+
+        public static void show(Context context, String text, int duration) {
+            if (mToast != null) mToast.cancel();
+            mToast = Toast.makeText(context, text, duration);
+            mToast.show();
         }
     }
 
