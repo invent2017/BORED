@@ -88,6 +88,10 @@
         <activity android:name=".UserStories" />
         <activity android:name=".BookmarkedStories" />
         <activity android:name=".ViewEvent"></activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="99b6567a311795acfabe5a3d549e6727b3ab56eb" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

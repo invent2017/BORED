@@ -6,6 +6,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,16 +26,18 @@ public class HashtagChecker {
         mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String hashtagPattern = ("(#\\w+)");
+                String hashtagPattern = "(#\\w+)";
                 String storyCaption = dataSnapshot.child(storyKey).child("Caption").getValue(String.class);
 
                 if(storyCaption != null) {
-                    Matcher matcher = Pattern.compile(hashtagPattern).matcher(storyCaption);
+                    Pattern pattern = Pattern.compile(hashtagPattern);
+                    Matcher matcher = pattern.matcher(storyCaption);
+
                     while (matcher.find()) {
                         if(hashtags.length() == 0) {
                             hashtags.append(matcher.group(1));
                         } else {
-                            hashtags.append(", " + matcher.group(1));
+                            hashtags.append(", ").append(matcher.group(1));
                         }
                     }
                 }
@@ -45,6 +48,7 @@ public class HashtagChecker {
 
             }
         });
+
 
         String hashtagsList = hashtags.toString();
         if(hashtagsList.equals("")) {

@@ -337,11 +337,14 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 if(mLastKnownLocation.distanceTo(markerLocation) <= 500) {
                     showStoryDetails(marker);
                 } else {
-                    HashtagChecker hashtagChecker = new HashtagChecker((String)marker.getTag());
+                    String storyKey = (String)marker.getTag();
+                    storyKey = storyKey.substring(0,20).trim();
+
+                    HashtagChecker hashtagChecker = new HashtagChecker(storyKey);
                     String hashtags = hashtagChecker.getHashtags();
 
                     if(hashtags != null) {
-                        SingleToast.show(MapsActivityCurrentPlace.this, "This squawk contains "+ hashtags, Toast.LENGTH_SHORT);
+                        SingleToast.show(MapsActivityCurrentPlace.this, "This squawk contains \n" + hashtags, Toast.LENGTH_SHORT);
                     } else {
                         SingleToast.show(MapsActivityCurrentPlace.this, "This squawk does not have any hashtags.", Toast.LENGTH_SHORT);
                     }
