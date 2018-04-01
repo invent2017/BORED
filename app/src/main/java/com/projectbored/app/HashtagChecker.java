@@ -49,7 +49,6 @@ public class HashtagChecker {
             }
         });
 
-
         String hashtagsList = hashtags.toString();
         if(hashtagsList.equals("")) {
             hashtagsList = null;

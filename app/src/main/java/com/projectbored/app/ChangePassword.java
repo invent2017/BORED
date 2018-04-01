@@ -57,7 +57,7 @@ public class ChangePassword extends AppCompatActivity {
     }
 
     private void changePassword() {
-        final String username = getSharedPreferences(PREFS_NAME, 0).getString("username", "");
+        final String username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
         final String oldPassword = oldPasswordText.getText().toString();
         final String newPassword1 = newPasswordText.getText().toString();
         final String newPassword2 = confirmNewPasswordText.getText().toString();

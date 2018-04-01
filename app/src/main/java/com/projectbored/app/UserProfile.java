@@ -46,8 +46,7 @@ public class UserProfile extends AppCompatActivity {
         inviteFriendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://projectboredinc.wordpress.com/faqs/"));
-                startActivity(browserIntent);
+                inviteFriend();
             }
         });
 

@@ -2,7 +2,7 @@
     <string name="app_name">See GO</string>
     <string name="title_activity_maps">See GO</string>
     <string name="search_hashtags">Search hashtags</string>
-    <string name="filter_stories">Filter stories</string>
+    <string name="filter_stories">Filter squawks</string>
     <string name="retrievedstory">retrievedStory</string>
     <string name="featured_story">Featured story!</string>
     <string name="textview">TextView</string>
@@ -15,13 +15,13 @@
     <string name="nextonly">Squawk</string>
     <string name="change_image">Change Picture</string>
     <string name="manage_account">My Profile</string>
-    <string name="see_read_stories">See All Read Stories</string>
+    <string name="see_read_stories">See All Read Squawks</string>
     <string name="add_story">Add Story</string>
     <string name="reset_map">Reset Map</string>
     <string name="map">Back to Map</string>
     <string name="bookmark_story">Bookmark</string>
-    <string name="bookmarked_stories">Bookmarked stories</string>
-    <string name="more_stories">Swipe for more stories here!</string>
+    <string name="bookmarked_stories">Bookmarked squarks</string>
+    <string name="more_stories">Swipe for more squawks here!</string>
     <string name="delete">Delete story</string>
     <string name="caption">caption</string>
     <string name="report"><b>Report</b></string>
@@ -59,8 +59,8 @@
 
 
     <string name="kilometres_covered">kilometres covered</string>
-    <string name="stories_viewed">stories viewed</string>
-    <string name="stories_posted">stories posted</string>
+    <string name="stories_viewed">squawks found</string>
+    <string name="stories_posted">times squawked</string>
     <string name="views_received">views received</string>
     <string name="upvotes_given">upvotes given</string>
     <string name="upvotes_received">upvotes received</string>
@@ -72,8 +72,8 @@
     <string name="skip">Skip</string>
     <string name="next">Next</string>
     <string name="no">No.</string>
-    <string name="my_stories">My stories</string>
-    <string name="invite_friends">Have a Friend who might Like this app?</string>
+    <string name="my_stories">My squawks</string>
+    <string name="invite_friends">Share See GO with friends!</string>
 
 
     <string name="message">Message:</string>

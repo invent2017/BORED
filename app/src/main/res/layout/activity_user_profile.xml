@@ -14,9 +14,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/relativeLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="8dp">
 
             <TextView
@@ -27,216 +28,233 @@
                 android:gravity="center"
                 android:text="@string/username"
                 android:textColor="#F24970"
-                android:textSize="35sp" />
+                android:textSize="35sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/username"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:text="@string/email"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/username" />
 
             <ImageView
                 android:id="@+id/stories"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_below="@+id/email"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/email"
                 app:srcCompat="@drawable/stories" />
 
             <TextView
                 android:id="@+id/stories_read"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/stories"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_toEndOf="@+id/stories"
                 android:layout_weight="1"
                 android:text="@string/no"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/stories"
+                app:layout_constraintStart_toEndOf="@+id/stories" />
 
             <TextView
                 android:id="@+id/stories_viewed_text"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/stories_read"
                 android:layout_margin="8dp"
-                android:layout_toRightOf="@+id/stories_read"
-                android:text="@string/stories_viewed" />
+                android:text="@string/stories_viewed"
+                app:layout_constraintBaseline_toBaselineOf="@+id/stories_read"
+                app:layout_constraintLeft_toRightOf="@+id/stories_read" />
 
             <ImageView
                 android:id="@+id/walk"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_below="@+id/stories"
                 android:layout_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/stories"
                 app:srcCompat="@drawable/man_walk" />
 
             <TextView
                 android:id="@+id/kilometeres_covered"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/walk"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_toRightOf="@+id/walk"
                 android:layout_weight="1"
                 android:text="@string/no"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/walk"
+                app:layout_constraintLeft_toRightOf="@+id/walk" />
 
             <TextView
                 android:id="@+id/kilometres_covered_text"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/kilometeres_covered"
                 android:layout_margin="8dp"
-                android:layout_toRightOf="@+id/kilometeres_covered"
-                android:text="@string/kilometres_covered" />
+                android:text="@string/kilometres_covered"
+                app:layout_constraintBaseline_toBaselineOf="@+id/kilometeres_covered"
+                app:layout_constraintLeft_toRightOf="@+id/kilometeres_covered" />
 
             <ImageView
                 android:id="@+id/upload"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_below="@+id/walk"
                 android:layout_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/walk"
                 app:srcCompat="@drawable/upload" />
 
             <TextView
                 android:id="@+id/stories_posted"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/upload"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_toRightOf="@+id/upload"
                 android:layout_weight="1"
                 android:text="@string/no"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/upload"
+                app:layout_constraintLeft_toRightOf="@+id/upload" />
 
             <TextView
                 android:id="@+id/stories_posted_text"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/stories_posted"
                 android:layout_margin="8dp"
-                android:layout_toRightOf="@+id/stories_posted"
-                android:text="@string/stories_posted" />
+                android:text="@string/stories_posted"
+                app:layout_constraintBaseline_toBaselineOf="@+id/stories_posted"
+                app:layout_constraintLeft_toRightOf="@+id/stories_posted" />
 
             <TextView
                 android:id="@+id/views_received"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/green_eye"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_toRightOf="@+id/green_eye"
                 android:layout_weight="1"
                 android:text="@string/no"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/green_eye"
+                app:layout_constraintLeft_toRightOf="@+id/green_eye" />
 
             <TextView
                 android:id="@+id/views_received_text"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/green_eye"
                 android:layout_margin="8dp"
-                android:layout_toRightOf="@+id/views_received"
-                android:text="@string/views_received" />
+                android:text="@string/views_received"
+                app:layout_constraintBaseline_toBaselineOf="@+id/views_received"
+                app:layout_constraintLeft_toRightOf="@+id/views_received" />
 
             <ImageView
                 android:id="@+id/green_eye"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_below="@+id/upload"
                 android:layout_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/upload"
                 app:srcCompat="@drawable/green_eye" />
 
             <ImageView
                 android:id="@+id/like"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_below="@+id/green_eye"
                 android:layout_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/green_eye"
                 app:srcCompat="@drawable/like" />
 
             <TextView
                 android:id="@+id/upvotes_given"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/like"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_toRightOf="@+id/like"
                 android:layout_weight="1"
                 android:text="@string/no"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/like"
+                app:layout_constraintLeft_toRightOf="@+id/like" />
 
             <TextView
                 android:id="@+id/upvotes_given_text"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/like"
                 android:layout_margin="8dp"
-                android:layout_toRightOf="@+id/upvotes_given"
-                android:text="@string/upvotes_given" />
+                android:text="@string/upvotes_given"
+                app:layout_constraintBaseline_toBaselineOf="@+id/upvotes_given"
+                app:layout_constraintLeft_toRightOf="@+id/upvotes_given" />
 
             <TextView
                 android:id="@+id/upvotes_received"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/give_likes"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_toRightOf="@+id/give_likes"
                 android:layout_weight="1"
                 android:text="@string/no"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/give_likes"
+                app:layout_constraintLeft_toRightOf="@+id/give_likes" />
 
             <ImageView
                 android:id="@+id/give_likes"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_below="@+id/like"
                 android:layout_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/like"
                 app:srcCompat="@drawable/get_likes" />
 
             <TextView
                 android:id="@+id/upvotes_received_text"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/give_likes"
                 android:layout_margin="8dp"
-                android:layout_toRightOf="@+id/views_received"
-                android:text="@string/upvotes_received" />
+                android:text="@string/upvotes_received"
+                app:layout_constraintBaseline_toBaselineOf="@+id/upvotes_received"
+                app:layout_constraintLeft_toRightOf="@+id/views_received" />
 
             <TextView
                 android:id="@+id/user_end_message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/give_likes"
                 android:layout_margin="10dp"
                 android:gravity="center"
                 android:text="@string/user_end_message"
                 android:textColor="#F24970"
-                android:textSize="21sp" />
+                android:textSize="21sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/give_likes" />
 
             <Button
                 android:id="@+id/invite_friends_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/user_end_message"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
                 android:layout_margin="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="48dp"
                 android:background="@drawable/roundishbutton"
                 android:fontFamily="sans-serif"
                 android:padding="8dp"
                 android:text="@string/invite_friends"
                 android:textColor="#fafafa"
-                android:textStyle="bold" />
-        </RelativeLayout>
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/user_end_message"
+                app:layout_constraintVertical_bias="1.0" />
+        </android.support.constraint.ConstraintLayout>
 
     </ScrollView>
 

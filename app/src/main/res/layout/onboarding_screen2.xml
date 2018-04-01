@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="See the Real World!"
+        android:text="The World is Your canvas"
         android:textSize="40sp" />
 
     <TextView

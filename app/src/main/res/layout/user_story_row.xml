@@ -29,12 +29,12 @@
         android:layout_weight="1"/>
 
     <ImageView
-        android:contentDescription="@string/views"
-        android:layout_width="wrap_content"
+        android:layout_width="20dp"
         android:layout_height="match_parent"
         android:layout_gravity="right|bottom"
         android:layout_margin="12dp"
-        android:src="@android:drawable/ic_menu_view"/>
+        android:contentDescription="@string/views"
+        android:src="@drawable/eye" />
 
     <TextView
         android:id="@+id/views_number"
