@@ -328,7 +328,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
-            public boolean onMarkerClick(Marker marker) {
+            public boolean onMarkerClick(final Marker marker) {
                 LatLng markerPosition = marker.getPosition();
                 Location markerLocation = new Location(LocationManager.GPS_PROVIDER);
                 markerLocation.setLatitude(markerPosition.latitude);
@@ -337,17 +337,29 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 if(mLastKnownLocation.distanceTo(markerLocation) <= 500) {
                     showStoryDetails(marker);
                 } else {
-                    String storyKey = (String)marker.getTag();
-                    storyKey = storyKey.substring(0,20).trim();
+                    mDataRef.child("stories").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            String storyKey = (String)marker.getTag();
+                            storyKey = storyKey.split("/")[0];
 
-                    HashtagChecker hashtagChecker = new HashtagChecker(storyKey);
-                    String hashtags = hashtagChecker.getHashtags();
+                            HashtagChecker hashtagChecker = new HashtagChecker(storyKey, dataSnapshot);
+                            String hashtags = hashtagChecker.getHashtags();
 
-                    if(hashtags != null) {
-                        SingleToast.show(MapsActivityCurrentPlace.this, "This squawk contains \n" + hashtags, Toast.LENGTH_SHORT);
-                    } else {
-                        SingleToast.show(MapsActivityCurrentPlace.this, "This squawk does not have any hashtags.", Toast.LENGTH_SHORT);
-                    }
+                            if(hashtags != null) {
+                                SingleToast.show(MapsActivityCurrentPlace.this, "This squawk contains \n" + hashtags, Toast.LENGTH_SHORT);
+                            } else {
+                                SingleToast.show(MapsActivityCurrentPlace.this, "This squawk does not have any hashtags.", Toast.LENGTH_SHORT);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+
                 }
                 return true;
             }

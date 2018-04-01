@@ -14,40 +14,32 @@ import java.util.regex.Pattern;
 public class HashtagChecker {
 
     private String storyKey;
+    private String storyCaption;
     private StringBuilder hashtags = new StringBuilder();
-    DatabaseReference mDataRef = FirebaseDatabase.getInstance().getReference().child("stories");
+    DataSnapshot dataSnapshot;
 
-    public HashtagChecker(String storyKey) {
+    public HashtagChecker(String storyKey, DataSnapshot dataSnapshot) {
         this.storyKey = storyKey;
+        this.dataSnapshot = dataSnapshot;
     }
 
     public String getHashtags() {
 
-        mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String hashtagPattern = "(#\\w+)";
-                String storyCaption = dataSnapshot.child(storyKey).child("Caption").getValue(String.class);
+        storyCaption = dataSnapshot.child(storyKey).child("Caption").getValue(String.class);
 
-                if(storyCaption != null) {
-                    Pattern pattern = Pattern.compile(hashtagPattern);
-                    Matcher matcher = pattern.matcher(storyCaption);
+        String hashtagPattern = "(#\\w+)";
+        if(storyCaption != null) {
+            Pattern pattern = Pattern.compile(hashtagPattern);
+            Matcher matcher = pattern.matcher(storyCaption);
 
-                    while (matcher.find()) {
-                        if(hashtags.length() == 0) {
-                            hashtags.append(matcher.group(1));
-                        } else {
-                            hashtags.append(", ").append(matcher.group(1));
-                        }
-                    }
+            while (matcher.find()) {
+                if(hashtags.length() == 0) {
+                    hashtags.append(matcher.group(1));
+                } else {
+                    hashtags.append(", ").append(matcher.group(1));
                 }
             }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        }
 
         String hashtagsList = hashtags.toString();
         if(hashtagsList.equals("")) {
