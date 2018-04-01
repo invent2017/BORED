@@ -44,7 +44,6 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.internal.zzp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -58,7 +57,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import static android.text.InputType.TYPE_CLASS_TEXT;
 import static android.view.KeyEvent.KEYCODE_ENTER;
@@ -176,7 +174,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 if(mLastKnownLocation != null) {
-                    exploreTrails();
+                    multiSquawk();
                 } else {
                     SingleToast.show(MapsActivityCurrentPlace.this,
                             "Unable to get your location. Please check your location settings and try again.",
@@ -877,10 +875,12 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     }
 
 
-
-
-    private void exploreTrails() {
-        Intent intent = new Intent(MapsActivityCurrentPlace.this, Trails.class);
+    private void multiSquawk() {
+        Intent intent = new Intent(MapsActivityCurrentPlace.this, MultiSquawk.class);
+        Bundle storySettings = new Bundle();
+        storySettings.putBoolean("FromCamera", false);
+        storySettings.putBoolean("Logged in", isLoggedIn());
+        intent.putExtras(storySettings);
         startActivity(intent);
     }
 

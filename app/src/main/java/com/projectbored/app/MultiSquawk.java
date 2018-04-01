@@ -6,14 +6,16 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationManager;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.content.FileProvider;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
-import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -43,7 +45,8 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class StoryUpload extends AppCompatActivity {
+public class MultiSquawk extends AppCompatActivity {
+
     //private static final String TAG = ShowStory.class.getSimpleName();  //for debugging purposes
     private static final String PREFS_NAME = "UserDetails";
 
@@ -58,13 +61,18 @@ public class StoryUpload extends AppCompatActivity {
 
     Bundle storySettings;
 
-    static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int GALLERY_REQUEST = 2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.projectbored.app.R.layout.activity_story_upload);
+        setContentView(R.layout.activity_multisquawk);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setLogo(R.drawable.whitebored);
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
 
         setTitle(R.string.add_story);
 
@@ -87,7 +95,6 @@ public class StoryUpload extends AppCompatActivity {
         } else {
             galleryPickerIntent();
         }
-
     }
 
     @Override
@@ -101,7 +108,7 @@ public class StoryUpload extends AppCompatActivity {
         if (item.getItemId() == R.id.option_upload_story) {
             uploadStoryData();
         } else if(item.getItemId() == R.id.option_change_image) {
-            changeImage();
+            //nothing: changeImage();
         }
         return true;
     }
@@ -116,30 +123,7 @@ public class StoryUpload extends AppCompatActivity {
     }
 
     private void dispatchTakePictureIntent() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            File photoFile = null;
-            try{
-                photoFile = createImageFile();
-            }catch (IOException ex) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("Camera failed. Please try again later.")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent backToMap = new Intent(StoryUpload.this, MapsActivityCurrentPlace.class);
-                        backToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(backToMap);
-                    }
-                });
-                builder.create().show();
-            }
-            if (photoFile != null) {
-                Uri photoUri = FileProvider.getUriForFile(this, "com.projectbored.app.fileprovider", photoFile);
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-            }
-        }
+        //nothing
     }
 
     private void galleryPickerIntent() {
@@ -156,7 +140,7 @@ public class StoryUpload extends AppCompatActivity {
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Intent backToMap = new Intent(StoryUpload.this, MapsActivityCurrentPlace.class);
+                            Intent backToMap = new Intent(MultiSquawk.this, MapsActivityCurrentPlace.class);
                             backToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(backToMap);
                         }
@@ -171,13 +155,7 @@ public class StoryUpload extends AppCompatActivity {
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-        //    Bundle extras= data.getExtras();
-        //    Bitmap imageBitmap = (Bitmap)extras.get("data");
-            ((ImageView) findViewById(com.projectbored.app.R.id.story_image)).setImageBitmap(BitmapFactory.decodeFile(mCurrentPhotoPath));
-            Uri file = Uri.fromFile(new File(mCurrentPhotoPath));
-            uploadImage(file);
-        } else if(requestCode == GALLERY_REQUEST && resultCode == RESULT_OK) {
+        if(requestCode == GALLERY_REQUEST && resultCode == RESULT_OK) {
             try {
                 Uri imageUri = data.getData();
                 InputStream imageStream = getContentResolver().openInputStream(imageUri);
@@ -227,7 +205,7 @@ public class StoryUpload extends AppCompatActivity {
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent i = new Intent(StoryUpload.this, MapsActivityCurrentPlace.class);
+                                Intent i = new Intent(MultiSquawk.this, MapsActivityCurrentPlace.class);
                                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(i);
                             }
@@ -252,7 +230,7 @@ public class StoryUpload extends AppCompatActivity {
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Intent i = new Intent(StoryUpload.this, MapsActivityCurrentPlace.class);
+                            Intent i = new Intent(MultiSquawk.this, MapsActivityCurrentPlace.class);
                             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(i);
                         }
@@ -269,9 +247,10 @@ public class StoryUpload extends AppCompatActivity {
         storyLocation.setLongitude(storySettings.getDouble("Longitude"));
 
         if (storyLocation != null) {
+            //TODO: add location info things from exif (can ref https://developer.android.com/reference/android/media/ExifInterface.html)
             final String locationString = Double.toString(storyLocation.getLatitude())
-                                    + ","
-                                    + Double.toString(storyLocation.getLongitude());
+                    + ","
+                    + Double.toString(storyLocation.getLongitude());
 
             mDataRef.child("uploads").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -329,11 +308,11 @@ public class StoryUpload extends AppCompatActivity {
 
                         mDataRef.child("uploads").child(storyKey).removeValue();
 
-                        Toast.makeText(StoryUpload.this, "Story added!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MultiSquawk.this, "Story added!", Toast.LENGTH_SHORT).show();
 
                         finish();
                     } else {
-                        Toast.makeText(StoryUpload.this, "An error occurred. Please try again.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MultiSquawk.this, "An error occurred. Please try again.", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -344,7 +323,7 @@ public class StoryUpload extends AppCompatActivity {
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    Intent i = new Intent(StoryUpload.this, MapsActivityCurrentPlace.class);
+                                    Intent i = new Intent(MultiSquawk.this, MapsActivityCurrentPlace.class);
                                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(i);
                                 }
@@ -358,42 +337,6 @@ public class StoryUpload extends AppCompatActivity {
             Toast.makeText(this, "An error occurred.", Toast.LENGTH_SHORT).show();
         }
 
-    }
-
-    private void changeImage() {
-        if(storyKey != null){
-            deleteImage();
-        }
-
-        AlertDialog.Builder changeImagePrompt = new AlertDialog.Builder(this);
-        changeImagePrompt.setTitle(R.string.change_image)
-                .setItems(R.array.add_story_options, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if(which == 0) {
-                            Intent newStory = new Intent(StoryUpload.this, StoryUpload.class);
-                            storySettings.putBoolean("FromCamera", true);
-                            storySettings.putString("Caption", caption.getText().toString());
-                            newStory.putExtras(storySettings);
-                            newStory.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-
-                            finish();
-
-                            startActivity(newStory);
-                        } else if(which == 1) {
-                            Intent newStory = new Intent(StoryUpload.this, StoryUpload.class);
-                            storySettings.putBoolean("FromCamera", false);
-                            storySettings.putString("Caption", caption.getText().toString());
-                            newStory.putExtras(storySettings);
-                            newStory.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-
-                            finish();
-
-                            startActivity(newStory);
-                        }
-                    }
-                });
-        changeImagePrompt.create().show();
     }
 
     private void deleteImage() {
@@ -413,5 +356,78 @@ public class StoryUpload extends AppCompatActivity {
             }
         });
     }
+
+
+    public class geoDegree {
+        private boolean valid = false;
+        Float Latitude, Longitude;
+        geoDegree(ExifInterface exif){
+            String attrLATITUDE = exif.getAttribute(ExifInterface.TAG_GPS_LATITUDE);
+            String attrLATITUDE_REF = exif.getAttribute(ExifInterface.TAG_GPS_LATITUDE_REF);
+            String attrLONGITUDE = exif.getAttribute(ExifInterface.TAG_GPS_LONGITUDE);
+            String attrLONGITUDE_REF = exif.getAttribute(ExifInterface.TAG_GPS_LONGITUDE_REF);
+
+            if((attrLATITUDE !=null)
+                    && (attrLATITUDE_REF !=null)
+                    && (attrLONGITUDE != null)
+                    && (attrLONGITUDE_REF !=null))
+            {
+                valid = true;
+
+                if(attrLATITUDE_REF.equals("N")){
+                    Latitude = convertToDegree(attrLATITUDE);
+                }
+                else{
+                    Latitude = 0 - convertToDegree(attrLATITUDE);
+                }
+
+                if(attrLONGITUDE_REF.equals("E")){
+                    Longitude = convertToDegree(attrLONGITUDE);
+                }
+                else{
+                    Longitude = 0 - convertToDegree(attrLONGITUDE);
+                }
+
+            }
+        };
+
+        final public String gpsString = String.valueOf(Latitude) + ", " + String.valueOf(Longitude);
+
+        private Float convertToDegree(String stringDMS){
+            Float result = null;
+            String[] DMS = stringDMS.split(",", 3);
+
+            String[] stringD = DMS[0].split("/", 2);
+            Double D0 = new Double(stringD[0]);
+            Double D1 = new Double(stringD[1]);
+            Double FloatD = D0/D1;
+
+            String[] stringM = DMS[1].split("/", 2);
+            Double M0 = new Double(stringM[0]);
+            Double M1 = new Double(stringM[1]);
+            Double FloatM = M0/M1;
+
+            String[] stringS = DMS[2].split("/", 2);
+            Double S0 = new Double(stringS[0]);
+            Double S1 = new Double(stringS[1]);
+            Double FloatS = S0/S1;
+
+            result = new Float(FloatD + (FloatM/60) + (FloatS/3600));
+
+            return result;
+
+        };
+
+        public int getLatitudeE6(){
+            return (int)(Latitude*1000000);
+        }
+
+        public int getLongitudeE6(){
+            return (int)(Longitude*1000000);
+        }
+
+    }
+
+
 
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal|center"
-    tools:context="com.projectbored.app.Trails">
+    tools:context="com.projectbored.app.MultiSquawk">
 
     <TextView
         android:id="@+id/textView4"
