@@ -7,16 +7,81 @@
     android:layout_gravity="center_horizontal|center"
     tools:context="com.projectbored.app.MultiSquawk">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:fontFamily="sans-serif-condensed"
-        android:padding="30dp"
-        android:text="Hello! You've found the Easter Egg :o This function is still under development. In fact, you'd probably notice a few of the app's features are still under development. Still, we hope you'll stay with us to see us through all our progress~ Thank you. Have a good day :) "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            android:weightSum="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/story_image"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0.8"
+                android:contentDescription="image to be uploaded"
+                app:srcCompat="@drawable/cast_abc_scrubber_control_off_mtrl_alpha" />
+
+            <EditText
+                android:id="@+id/story_caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginEnd="7dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0.15"
+                android:ems="10"
+                android:gravity="top"
+                android:hint="@string/insert_caption_here"
+                android:lines="3"
+                android:paddingTop="10dp" />
+
+            <EditText
+                android:id="@+id/hashtags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="7dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginStart="7dp"
+                android:layout_weight="0.05"
+                android:ems="10"
+                android:hint="@string/insert_hashtag_here" />
+            <!--
+                <Button
+                    android:id="@+id/uploadstory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="0.05"
+                    android:background="@drawareportbuttontton"
+                    android:gravity="center_vertical"
+                    android:text="@string/Share"
+                    android:textAlignment="center"
+                    android:textColor="#78695F"
+                    android:textSize="16sp" />
+        -->
+        </LinearLayout>
+
+    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>
