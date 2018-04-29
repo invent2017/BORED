@@ -65,7 +65,14 @@ import static android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH;
 
 /**
  * An activity that displays a map showing the place at the device's current location.
+ * Features included:
+ * Get stories (colour-coded)
+ * Filter stories: hashtag, read, nearby, today
+ * Add-to-map actions: Add story, add event, multisquawk
+ * Other actions: view profile, FAQs, contact us, log out
  */
+
+
 public class MapsActivityCurrentPlace extends AppCompatActivity
         implements OnMapReadyCallback,
                 GoogleApiClient.ConnectionCallbacks,
@@ -80,15 +87,14 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     // The entry point to Google Play services, used by the Places API and Fused Location Provider.
     private GoogleApiClient mGoogleApiClient;
 
-    // A default location (Sydney, Australia) and default zoom to use when location permission is
-    // not granted.
+    // A default location (Sydney, Australia) and default zoom to use when location permission is not granted.
     private final LatLng mDefaultLocation = new LatLng(1.346313, 103.841332);
     private static final int DEFAULT_ZOOM = 19;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private boolean mLocationPermissionGranted;
 
-    // The geographical location where the device is currently located. That is, the last-known
-    // location retrieved by the Fused Location Provider.
+    /** The geographical location where the device is currently located. That is, the last-known
+    location retrieved by the Fused Location Provider. */
     private Location mLastKnownLocation;
     private LocationManager locationManager;
 
@@ -106,8 +112,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     private String username;
 
-    private HashMap<String, Marker> markers = new HashMap<>();                      //leave in case we need to do something
+    private HashMap<String, Marker> markers = new HashMap<>();
 
+    //leave in case we need to do something
     // Used for selecting the current place.
     //private final int mMaxEntries = 5;
     //private String[] mLikelyPlaceNames = new String[mMaxEntries];
@@ -169,6 +176,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             displayedUsername.setText(username);
         }
 
+        // Triggers MultiSquawk where pictures are uploaded using geotags instead of current location
         exploreButton = findViewById(R.id.explore);
         exploreButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,6 +191,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             }
         });
 
+        // Triggers AddEvent where stories expire and indicate activities rather than passive scenes
         addEventButton = findViewById(R.id.add_event);
         addEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -198,6 +207,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             }
         });
 
+        //Triggers AddStory were stories are added using user's location
         addStoryButton = findViewById(R.id.add_story);
         addStoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -260,7 +270,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
      * @param menu The options menu.
      * @return Boolean.
      */
-
    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(com.projectbored.app.R.menu.current_place_menu, menu);
@@ -269,11 +278,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
        searchView = (HashtagSearchBar) menu.findItem(R.id.search_hashtags).getActionView();;
        initialiseSearch(searchView);
 
-
-
        return true;
    }
-
 
     /**
      * Handles a click on the menu option to get a place.
@@ -288,6 +294,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         return true;
     }
 
+    /** Profile drawer with various options
+     * case 0: view profile
+     * case 1: filter stories
+     * case 2: FAQs
+     * case 3: contact us
+     * case 4: log out
+     */
     private void selectItem(int position) {
         switch (position) {
             case 0:
@@ -391,8 +404,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         });
         */
 
-
-
         // Turn on the My Location layer and the related control on the map.
         updateLocationUI();
 
@@ -400,6 +411,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         getDeviceLocation();
 
 
+        // Displays stories on the map: showing all stories or filtered stories
         if(getIntent().getAction() != null) {
             if (getIntent().getAction().equals(Intent.ACTION_VIEW) && getIntent().getData() != null) {
                 showSelectedStory(getIntent().getData().getLastPathSegment());
@@ -423,7 +435,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         }
     }
 
-    //Close app when back button is pressed, instead of returning to splash screen
+    //Closes app when back button is pressed, instead of returning to splash screen
     @Override
     public void onBackPressed() {
         Intent closeApp = new Intent(Intent.ACTION_MAIN);
@@ -449,6 +461,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                     new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
                     PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
         }
+
         // Get the best and most recent location of the device, which may be null in rare
         // cases when a location is not available.
         if (mLocationPermissionGranted) {
@@ -524,6 +537,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         updateLocationUI();
     }
 
+    //Hashtag search bar
     private void initialiseSearch(final AutoCompleteTextView searchView) {
         searchView.setHint("Search hashtags...                     ");
         searchView.setInputType(TYPE_CLASS_TEXT);
@@ -581,32 +595,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     }
 
-    private void showSelectedStory(final String storyKey) {
-
-        mMap.clear();
-        mDataRef.child("stories").child(storyKey).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot != null) {
-                    String[] locationArray = dataSnapshot.child("Location").getValue(String.class).split(",");
-                    LatLng storyPosition = new LatLng(Double.parseDouble(locationArray[0]),
-                            Double.parseDouble(locationArray[1]));
-
-                    Marker marker = mMap.addMarker(new MarkerOptions()
-                            .position(storyPosition)
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
-                    marker.setTag(storyKey);
-
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(storyPosition));
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
 
     private void searchHashtags(final View view, String hashtag) {
         String legitInput= "\\w+";
@@ -650,6 +638,35 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         }
     }
 
+    // Method for only showing stories with the indicated characteristics
+    private void showSelectedStory(final String storyKey) {
+
+        mMap.clear();
+        mDataRef.child("stories").child(storyKey).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot != null) {
+                    String[] locationArray = dataSnapshot.child("Location").getValue(String.class).split(",");
+                    LatLng storyPosition = new LatLng(Double.parseDouble(locationArray[0]),
+                            Double.parseDouble(locationArray[1]));
+
+                    Marker marker = mMap.addMarker(new MarkerOptions()
+                            .position(storyPosition)
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+                    marker.setTag(storyKey);
+
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(storyPosition));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    // Filter Stories choice
     private void filterStories() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Filter stories").setItems(R.array.filter_story_options, new DialogInterface.OnClickListener() {
@@ -672,6 +689,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         builder.create().show();
     }
 
+    // Only stories posted within 24h will be shown
     private void filterTodayStories() {
         mDataRef.child("stories").addValueEventListener(new ValueEventListener() {
             @Override
@@ -698,7 +716,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                             Marker storyMarker = mMap.addMarker(new MarkerOptions()
                                     .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
                                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
-                            storyMarker.setTag(storyKey);
+                            storyMarker.setTag(storyKey+ "/"+ 0);
                         }
 
                     }
@@ -711,8 +729,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             }
         });
     }
-
-
 
     /*private void filterFeaturedStories() {
         mDataRef.child("locations").addValueEventListener(new ValueEventListener() {
@@ -758,6 +774,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         });
     }*/
 
+    // Only stories the user has read will be shown
     private void filterReadStories(final String username) {
         mDataRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -782,16 +799,16 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                     }
 
                                     if (isRead) {
-                                        if(mLastKnownLocation.distanceTo(storyLocation) <= 100) {
+                                        if(mLastKnownLocation.distanceTo(storyLocation) <= 500) {
                                             Marker storyMarker = mMap.addMarker(new MarkerOptions()
                                                     .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
                                                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
-                                            storyMarker.setTag(storyKey);
+                                            storyMarker.setTag(storyKey+ "/"+ 0);
                                         } else {
                                             Marker storyMarker = mMap.addMarker(new MarkerOptions()
                                                     .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
                                                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
-                                            storyMarker.setTag(storyKey);
+                                            storyMarker.setTag(storyKey+ "/"+ 0);
                                         }
 
                                     }
@@ -813,6 +830,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         });
     }
 
+    // Stories withing clicking distance (500m) will be shown
     private void filterNearbyStories() {
         mDataRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -830,7 +848,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                     String storyKey = dataSnapshot1.getKey();
                                     int type = dataSnapshot1.getValue(Integer.class);
 
-                                    if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 100) {
+                                    if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 500) {
                                         showNearbyStories(storyKey, storyLocation, type);
                                     }
                                 }
@@ -851,8 +869,10 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         });
     }
 
-    private void filterMyStories(String username) {
+    // Stories the user has posted will be shown
+    private void filterMyStories(final String username) {
         mDataRef.child("users").child(username).child("stories").addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
@@ -862,7 +882,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                         String[] locationArray = ds.getValue(String.class).split(",");
                         Marker storyMarker = mMap.addMarker(new MarkerOptions()
                                 .position(new LatLng(Double.parseDouble(locationArray[0]), Double.parseDouble(locationArray[1]))));
-                        storyMarker.setTag(storyKey);
+                        storyMarker.setTag(storyKey + "/"+ 0);
                     }
                 }
             }
@@ -875,6 +895,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     }
 
 
+    // Bundles necessary information and then opens multiSquawk activity
     private void multiSquawk() {
         Intent intent = new Intent(MapsActivityCurrentPlace.this, MultiSquawk.class);
         Bundle storySettings = new Bundle();
@@ -884,6 +905,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         startActivity(intent);
     }
 
+    // Bundles necessary information and then opens addEvent activity
     private void addEvent() {
         Intent intent = new Intent(MapsActivityCurrentPlace.this, EventUpload.class);
 
@@ -894,6 +916,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         startActivity(intent);
     }
 
+    // Bundles necessary information and then opens addStory activity
     private void addStory() {
         AlertDialog.Builder storyPrompt = new AlertDialog.Builder(this);
         storyPrompt.setTitle(R.string.add_story)
@@ -971,8 +994,11 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         } */
     }
 
+    // Displays all stories on map. Nearby stories are defined at 500m.
     public void getStories() {
         mDataRef.addValueEventListener(new ValueEventListener() {
+
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.child("locations").getChildren()) {
@@ -1028,26 +1054,31 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                 }
                             }*/
 
-                            if(mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 100) {
+                            if(mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 500) {
                                 showNearbyStories(storyKeys.toString(), storyLocation, 0);
                             } else {
                                 showFarStories(storyKeys.toString(), storyLocation, 0);
                             }
                         }
                     } else {
-                        SingleToast.show(MapsActivityCurrentPlace.this, "There are no stories.", Toast.LENGTH_SHORT);
+                        SingleToast.show(MapsActivityCurrentPlace.this, "There are no squawks.", Toast.LENGTH_SHORT);
                     }
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                SingleToast.show(MapsActivityCurrentPlace.this, "Failed to load stories.", Toast.LENGTH_SHORT);
+                SingleToast.show(MapsActivityCurrentPlace.this, "Failed to load squawks.", Toast.LENGTH_SHORT);
             }
         });
 
     }
 
+    // following two methods determine marker colours based on user location
+    // Nearby read: Yellow
+    // Nearby unread: Green
+    // Far read: Blue
+    // Far unread: Purple
     public void showNearbyStories(String storyKey, Location storyLocation, int type) {
         Marker storyMarker;
         if (type == 2) {
@@ -1090,47 +1121,56 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         }
     }
 
+    // Opens story details in new activity
     public void showStoryDetails(Marker marker) {
         Intent intent;
         String info = (String)marker.getTag();
-        String[] storyInfo = info.split("/");
+        if(info != null){
+            String[] storyInfo = info.split("/");
+            String key = storyInfo[0];
+            int type = Integer.parseInt(storyInfo[1]);
 
-        String key = storyInfo[0];
-        int type = Integer.parseInt(storyInfo[1]);
-
-        if(key == null) {
-            SingleToast.show(this, "You have already read this story.", Toast.LENGTH_SHORT);
-            marker.remove();
-        } else {
-
-            if (key != null && key.contains(",")) {
-                intent = new Intent(this, ShowMultipleStories.class);
+            if(key == null) {
+                SingleToast.show(this, "You have already read this squawk.", Toast.LENGTH_SHORT);
+                marker.remove();
             } else {
-                switch(type) {
-                    case 0:
-                        intent = new Intent(this, ShowStory.class);
-                        break;
-                    case 2:
-                        intent = new Intent(this, ViewEvent.class);
-                        break;
 
-                    default:
-                        intent = new Intent(this, ShowStory.class);
+                //Checks what type of squawk is contained.
+                // 0: Story
+                // 2: Event
+                if (key != null && key.contains(",")) {
+                    intent = new Intent(this, ShowMultipleStories.class);
+                } else {
+                    switch(type) {
+                        case 0:
+                            intent = new Intent(this, ShowStory.class);
+                            break;
+                        case 2:
+                            intent = new Intent(this, ViewEvent.class);
+                            break;
+
+                        default:
+                            intent = new Intent(this, ShowStory.class);
+                    }
+
                 }
 
+                Bundle storyDetails = new Bundle();
+                storyDetails.putString("key", key);
+                storyDetails.putBoolean("Logged in", isLoggedIn());
+                storyDetails.putDouble("Latitude", marker.getPosition().latitude);
+                storyDetails.putDouble("Longitude", marker.getPosition().longitude);
+                intent.putExtras(storyDetails);
+
+                startActivity(intent);
             }
-
-            Bundle storyDetails = new Bundle();
-            storyDetails.putString("key", key);
-            storyDetails.putBoolean("Logged in", isLoggedIn());
-            storyDetails.putDouble("Latitude", marker.getPosition().latitude);
-            storyDetails.putDouble("Longitude", marker.getPosition().longitude);
-            intent.putExtras(storyDetails);
-
-            startActivity(intent);
+        } else
+        {
+            SingleToast.show(this, "Squawk has been deleted. Please refresh map.", Toast.LENGTH_SHORT);
         }
     }
 
+    // Map is reset to the current location and all markers will be shown
     private void resetMap() {
         Intent reload = new Intent(this, MapsActivityCurrentPlace.class);
         finish();
@@ -1218,6 +1258,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         }
     }
 
+    // Checks if user is logged in
     private boolean isLoggedIn() {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         boolean loggedIn = settings.getBoolean("Logged in", false);
@@ -1232,6 +1273,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         }
     }
 
+    // Toast method helps to reduce toast accumulation
     public static class SingleToast {
 
         private static Toast mToast;
