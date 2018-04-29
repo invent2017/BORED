@@ -615,7 +615,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                             Marker marker = mMap.addMarker(new MarkerOptions()
                                     .position(storyPosition)
                                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
-                            marker.setTag(storyKey);
+                            marker.setTag(storyKey + "/" +0);
 
                             //Hide keyboard
                             if (view != null) {
@@ -653,7 +653,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                     Marker marker = mMap.addMarker(new MarkerOptions()
                             .position(storyPosition)
                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
-                    marker.setTag(storyKey);
+                    marker.setTag(storyKey + "/" + 0);
 
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(storyPosition));
                 }
