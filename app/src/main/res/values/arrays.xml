@@ -7,9 +7,9 @@
 
     <string-array name="filter_story_options">
         <item>Nearby</item>
-        <item>Today's stories</item>
-        <item>My stories</item>
-        <item>Read stories</item>
+        <item>Today's squawks</item>
+        <item>My squawks</item>
+        <item>Read squawks</item>
     </string-array>
 
     <string-array name="maps_drawer_options">
