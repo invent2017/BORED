@@ -19,7 +19,8 @@
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Take a Survey instead" />
+            android:background="@drawable/lessimptroundishbutton"
+            android:text="@string/take_a_survey" />
 
         <TextView
             android:id="@+id/textView6"
