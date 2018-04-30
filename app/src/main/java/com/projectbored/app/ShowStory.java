@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -97,6 +98,10 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         actionBar.setLogo(R.drawable.whitebored);
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
+
+        // Prevents keyboard from automoatically appearing
+        // also did focusableInTouchMode in layout to prevent activity from automatically scrolling
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         storyDetails = getIntent().getExtras();
         STORY_KEY = storyDetails.getString("key");
@@ -355,12 +360,20 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     // Macro-structure on what happens when buttons are clicked
     public void onClick(View v) {
         switch (v.getId()) {
+            // RAWR TEST See if the button disappears and appears accordingly
+            // and test Toast (after old toast)
             case R.id.upVoteButton:
                 upVote();
+                // SingleToast.show(this, "You upvoted this squawk.", Toast.LENGTH_SHORT);
+                //upVoteButton.setVisibility(View.GONE);
+                //downVoteButton.setVisibility(View.VISIBLE);
                 break;
 
             case R.id.downVoteButton:
                 downVote();
+                // SingleToast.show(this, "You downvoted this squawk.", Toast.LENGTH_SHORT);
+                //upVoteButton.setVisibility(View.VISIBLE);
+                // downVoteButton.setVisibility(View.GONE);
                 break;
 
             case R.id.shareButton:
@@ -390,9 +403,14 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                 if (dataSnapshot.child("stories").child(STORY_KEY).getValue() != null) {
                     int votes = dataSnapshot.child("stories").child(STORY_KEY)
                             .child("Votes").getValue(Integer.class);
+
+                    // If you have already upvoted before
                     if(dataSnapshot.child("stories").child(STORY_KEY)
                             .child("Upvoters").hasChild(username)) {
+
+                        // removes your upvote if upvoted before
                         votes--;
+                        // SingleToast.show(this, "You withdrew your upvote for this squawk.", Toast.LENGTH_SHORT);
                         dataSnapshot.child("stories").child(STORY_KEY)
                                 .child("Upvoters").child(username).getRef().setValue(null);
 
@@ -401,7 +419,10 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
                     } else if(dataSnapshot.child("stories").child(STORY_KEY)
                             .child("Downvoters").hasChild(username)) {
+
+                        // changes from downvote to upvote
                         votes = votes + 2;
+                        // SingleToast.show(this, "You changed your downvote and upvoted this squawk.", Toast.LENGTH_SHORT);
                         dataSnapshot.child("stories").child(STORY_KEY)
                                 .child("Downvoters").child(username).getRef().setValue(null);
                         dataSnapshot.child("stories").child(STORY_KEY)
@@ -412,7 +433,10 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                         dataSnapshot.child("users").child(username).child("UpvotedStories")
                                 .child(STORY_KEY).getRef().setValue(STORY_KEY);
                     } else {
+
+                        // upvotes
                         votes++;
+                        // SingleToast.show(this, "You upvoted this squawk.", Toast.LENGTH_SHORT);
                         dataSnapshot.child("stories").child(STORY_KEY)
                                 .child("Upvoters").child(username).getRef().setValue(username);
 
@@ -442,7 +466,12 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                             .child("Votes").getValue(Integer.class);
                     if(dataSnapshot.child("stories").child(STORY_KEY)
                             .child("Downvoters").hasChild(username)) {
+
+                        // removes downvote if downvoted before
+                        // RAWR TEST test this out (see how this works??
                         votes++;
+                        Context context = getApplicationContext();
+                        SingleToast.show(context, "You withdrew your downvote for this squawk.", Toast.LENGTH_SHORT);
                         dataSnapshot.child("stories").child(STORY_KEY).child("Downvoters")
                                 .child(username).getRef().setValue(null);
 
@@ -450,7 +479,10 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                                 .child(STORY_KEY).getRef().setValue(null);
                     } else if(dataSnapshot.child("stories").child(STORY_KEY)
                             .child("Upvoters").hasChild(username)) {
+
+                        // changes upvote to downvote
                         votes = votes - 2;
+                        // SingleToast.show(this, "You changed your upvote and downvoted this squawk.", Toast.LENGTH_SHORT);
                         dataSnapshot.child("stories").child(STORY_KEY).child("Upvoters")
                                 .child(username).getRef().setValue(null);
                         dataSnapshot.child("stories").child(STORY_KEY).child("Downvoters")
@@ -462,6 +494,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                                 .child(STORY_KEY).getRef().setValue(STORY_KEY);
                     } else {
                         votes--;
+                        // SingleToast.show(this, "You downvoted this squawk.", Toast.LENGTH_SHORT);
                         dataSnapshot.child("stories").child(STORY_KEY)
                                 .child("Downvoters").child(username).getRef().setValue(username);
 
@@ -526,6 +559,8 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         return true;
     }
 
+    // Determines visibility of menu depending on circumstances
+    // (e.g. bookmarked? user's own story)
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         if(getIntent().getExtras().getBoolean("FromProfile", false)) {
@@ -593,6 +628,8 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         delete.putExtras(storyDetails);
         delete.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(delete);
+        // RAWR Test Finish
+        finish();
     }
 
     // Code for bookmarking story

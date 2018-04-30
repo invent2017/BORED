@@ -66,7 +66,9 @@ public class StoryDeleter extends AppCompatActivity {
 
                 Intent backToMap = new Intent(StoryDeleter.this, MapsActivityCurrentPlace.class);
                 backToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(backToMap);
+                // startActivity(backToMap);
+                // RAWR Test: finish() vs startActivity
+                finish();
             }
         });
 
@@ -119,7 +121,7 @@ public class StoryDeleter extends AppCompatActivity {
         mStoryRef.child("stories").child(storyKey).removeValue();
         mStoryRef.child("locations").child(keyLocationString).child(storyKey).removeValue();
 
-        Toast.makeText(this, "Story deleted.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Squawk deleted.", Toast.LENGTH_SHORT).show();
 
         Intent backToMap = new Intent(this, MapsActivityCurrentPlace.class);
         backToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
