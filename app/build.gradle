@@ -53,31 +53,31 @@ repositories {
 
 dependencies {
     implementation 'com.android.support:design:27.0.0'
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:27.0.0'
-    compile 'com.android.support:design:27.0.0'
-    compile 'com.android.support:mediarouter-v7:27.0.0'
-    compile 'com.android.support:palette-v7:27.0.0'
-    compile 'com.google.android.gms:play-services:11.6.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.google.firebase:firebase-storage:10.0.1'
-    compile 'com.google.firebase:firebase-auth:10.0.1'
-    compile 'com.google.firebase:firebase-database:10.0.1'
-    compile 'com.firebaseui:firebase-ui-storage:0.6.0'
-    compile 'com.getbase:floatingactionbutton:1.10.1'
-    compile 'com.github.vajro:MaterialDesignLibrary:1.6'
-    //compile 'com.github.navasmdc:MaterialDesign:1.5@aar'
-    compile 'com.ogaclejapan.smarttablayout:library:1.2.1@aar'
+    implementation 'com.android.support:appcompat-v7:27.0.0'
+    implementation 'com.android.support:design:27.0.0'
+    implementation 'com.android.support:mediarouter-v7:27.0.0'
+    implementation 'com.android.support:palette-v7:27.0.0'
+    implementation 'com.google.android.gms:play-services:11.6.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.google.firebase:firebase-storage:10.0.1'
+    implementation 'com.google.firebase:firebase-auth:10.0.1'
+    implementation 'com.google.firebase:firebase-database:10.0.1'
+    implementation 'com.firebaseui:firebase-ui-storage:0.6.0'
+    implementation 'com.getbase:floatingactionbutton:1.10.1'
+    implementation 'com.github.vajro:MaterialDesignLibrary:1.6'
+    //implementation 'com.github.navasmdc:MaterialDesign:1.5@aar'
+    implementation 'com.ogaclejapan.smarttablayout:library:1.2.1@aar'
 
     //Crashlytics
-    compile 'com.crashlytics.sdk.android:crashlytics:2.9.1'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.1'
 
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 }
 
 apply plugin: 'com.google.gms.google-services'
