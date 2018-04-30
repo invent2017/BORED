@@ -532,7 +532,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     // Pressing back moves story back to map
     @Override
     public void onBackPressed() {
-        backToMap();
+        finish();
     }
 
     // creating the menu that includes the following methods
