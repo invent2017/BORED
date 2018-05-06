@@ -1037,10 +1037,21 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                             for(DataSnapshot dataSnapshot1 : ds.getChildren()) {
                                 if(dataSnapshot1.getValue(Integer.class) == 0) {
                                     String storyKey = dataSnapshot1.getKey();
-                                    if (storyKeys.toString().equals("")) {
-                                        storyKeys.append(storyKey);
-                                    } else {
-                                        storyKeys.append(",").append(storyKey);
+
+                                    boolean isRead = false;
+                                    if (isLoggedIn()) {
+                                        if (dataSnapshot.child("users").child(username)
+                                                .child("ReadStories").child(storyKey).exists()) {
+                                            isRead = true;
+                                        }
+                                    }
+
+                                    if(!isRead) {
+                                        if (storyKeys.toString().equals("")) {
+                                            storyKeys.append(storyKey);
+                                        } else {
+                                            storyKeys.append(",").append(storyKey);
+                                        }
                                     }
                                 }
                             }
@@ -1054,10 +1065,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                 }
                             }*/
 
-                            if(mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 500) {
-                                showNearbyStories(storyKeys.toString(), storyLocation, 0);
-                            } else {
-                                showFarStories(storyKeys.toString(), storyLocation, 0);
+                            if(!storyKeys.toString().equals("")) {
+
+                                if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 500) {
+                                    showNearbyStories(storyKeys.toString(), storyLocation, 0);
+                                } else {
+                                    showFarStories(storyKeys.toString(), storyLocation, 0);
+                                }
                             }
                         }
                     } else {
