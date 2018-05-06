@@ -253,7 +253,6 @@ public class MultiSquawk extends AppCompatActivity {
         String photoUri = storySettings.getString("PHOTO_URI");
         final Location storyLocation = new Location(readGeoTagImage(photoUri));
 
-        if (storyLocation != null) {
             final String locationString = Double.toString(storyLocation.getLatitude())
                     + ","
                     + Double.toString(storyLocation.getLongitude());
@@ -337,11 +336,6 @@ public class MultiSquawk extends AppCompatActivity {
                     builder.create().show();
                 }
             });
-
-
-        } else {
-            Toast.makeText(this, "An error occurred.", Toast.LENGTH_SHORT).show();
-        }
 
     }
 
