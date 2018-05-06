@@ -335,6 +335,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
             }
         });
 
+        // Makes story read for user
         mDataRef.child("users").child(username).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -523,8 +524,8 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         sharingIntent.setType("text/plain");
 
         String storyKey = storyDetails.getString("key");
-        String shareBody = "Check out this cool story on unBORED!\n" + "http://projectboredinc.wordpress.com/story/" + storyKey;
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Cool unBORED! story");
+        String shareBody = "Check out this cool story on See GO!\n" + "http://projectboredinc.wordpress.com/story/" + storyKey;
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Cool See GO squawk");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }

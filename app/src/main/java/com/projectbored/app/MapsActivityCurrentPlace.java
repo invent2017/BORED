@@ -1259,7 +1259,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             // mLastKnownLocation = null;
             AlertDialog.Builder locationPermissionPrompt = new AlertDialog.Builder(this)
                     .setTitle(R.string.app_name)
-                    .setMessage("BORED! requires location permission to run.")
+                    .setMessage("See GO requires location permission to run.")
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
