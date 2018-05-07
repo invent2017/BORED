@@ -123,6 +123,8 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
         downVoteButton = findViewById(R.id.downVoteButton);
         downVoteButton.setOnClickListener(this);
+        // RAWR Test: No downvote
+        downVoteButton.setVisibility(View.INVISIBLE);
 
         shareButton = findViewById(R.id.shareButton);
         shareButton.setOnClickListener(this);

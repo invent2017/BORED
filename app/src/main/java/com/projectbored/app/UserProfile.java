@@ -96,8 +96,8 @@ public class UserProfile extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 emailField.setText(dataSnapshot.child("users").child(username).child("Email").getValue(String.class));
-                distanceNumber.setText(dataSnapshot.child("users").child(username)
-                                        .child("Distance").getValue(Integer.class).toString());
+                //distanceNumber.setText(dataSnapshot.child("users").child(username)
+                                        //.child("Distance").getValue(Integer.class).toString());
 
                 int views = 0;
                 int stories = 0;
