@@ -361,17 +361,17 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     // Macro-structure on what happens when buttons are clicked
     public void onClick(View v) {
         switch (v.getId()) {
-            // Button disappears and appears accordingly to indicate if you have voted or not
+            // Button disappears and appears accordingly to indicate if you have voted or not (REMOVED FOR NOW)
             case R.id.upVoteButton:
                 upVote();
-                upVoteButton.setVisibility(View.INVISIBLE);
-                downVoteButton.setVisibility(View.VISIBLE);
+                //upVoteButton.setVisibility(View.INVISIBLE);
+                //downVoteButton.setVisibility(View.VISIBLE);
                 break;
 
             case R.id.downVoteButton:
                 downVote();
-                upVoteButton.setVisibility(View.VISIBLE);
-                downVoteButton.setVisibility(View.INVISIBLE);
+                //upVoteButton.setVisibility(View.VISIBLE);
+                //downVoteButton.setVisibility(View.INVISIBLE);
                 break;
 
             case R.id.shareButton:

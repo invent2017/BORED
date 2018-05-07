@@ -4,7 +4,7 @@
     <string name="search_hashtags">Search hashtags</string>
     <string name="filter_stories">Filter squawks</string>
     <string name="retrievedstory">retrievedStory</string>
-    <string name="featured_story">Featured story!</string>
+    <string name="featured_story">Featured squawk!</string>
     <string name="textview">TextView</string>
     <string name="down_vote">down vote</string>
     <string name="up_vote">up vote</string>
@@ -16,13 +16,13 @@
     <string name="change_image">Change Picture</string>
     <string name="manage_account">My Profile</string>
     <string name="see_read_stories">See All Read Squawks</string>
-    <string name="add_story">Add Story</string>
+    <string name="add_story">Add Squawk</string>
     <string name="reset_map">Reset Map</string>
     <string name="map">Back to Map</string>
     <string name="bookmark_story">Bookmark</string>
     <string name="bookmarked_stories">Bookmarked squawks</string>
     <string name="more_stories">Swipe for more squawks here!</string>
-    <string name="delete">Delete story</string>
+    <string name="delete">Delete squawk</string>
     <string name="caption">caption</string>
     <string name="report"><b>Report</b></string>
     <string name="title_activity_login">Sign in</string>
