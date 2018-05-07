@@ -48,13 +48,13 @@
 
     <ImageView
         android:id="@+id/onboarding1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
-        app:srcCompat="@drawable/onboarding2"
         app:layout_constraintBottom_toBottomOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="@+id/vertical_guideline"
         app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline"/>
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        app:srcCompat="@drawable/onboarding2" />
 
 </android.support.constraint.ConstraintLayout>
