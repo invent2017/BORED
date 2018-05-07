@@ -6,32 +6,6 @@
     android:layout_height="match_parent"
     android:layout_gravity="center">
 
-
-
-
-    <!-- <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="The World is Your canvas"
-        android:textSize="40sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="26sp"
-        android:layout_marginTop="20dp"
-        android:text="Hunt and plant"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="26sp"
-        android:layout_marginTop="8dp"
-        android:text="precious moments."/>
-
-        -->
-
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
         android:layout_width="match_parent"

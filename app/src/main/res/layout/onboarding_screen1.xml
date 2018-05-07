@@ -6,24 +6,6 @@
     android:layout_height="match_parent"
     android:layout_gravity="center">
 
-    <!--
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome!"
-        android:textSize="48sp"
-        android:layout_marginTop="50dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:layout_marginTop="20dp"
-        android:text="You seem to be a new user."/>
-
-     -->
-
-
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
         android:layout_width="match_parent"

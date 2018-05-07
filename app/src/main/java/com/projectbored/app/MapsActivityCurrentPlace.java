@@ -310,15 +310,14 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             case 1:
                 filterStories();
                 break;
-
-                // RAWR TEST
-
             case 2:
                 Intent viewMyStories = new Intent(this, UserStories.class);
                 startActivity(viewMyStories);
+                break;
             case 3:
                 Intent viewBookmarkedStories = new Intent(this, BookmarkedStories.class);
                 startActivity(viewBookmarkedStories);
+                break;
             case 4:
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://projectboredinc.wordpress.com/faqs/"));
                 SingleToast.show(MapsActivityCurrentPlace.this, "redirecting to FAQs on our website", Toast.LENGTH_SHORT);
