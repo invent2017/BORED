@@ -15,8 +15,10 @@
     <string-array name="maps_drawer_options">
         <item>My Profile</item>
         <item>Filter Map</item>
+        <item>My Squawks</item>
+        <item>Bookmarked Squawks</item>
         <item>FAQs</item>
-        <item>Contact Us</item>
+        <item>Feedback</item>
         <item>Log out</item>
 
     </string-array>
