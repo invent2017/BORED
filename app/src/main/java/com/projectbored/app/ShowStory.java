@@ -621,7 +621,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         delete.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(delete);
         // RAWR Test Finish
-        finish();
+        //finish();
     }
 
     // Code for bookmarking story
