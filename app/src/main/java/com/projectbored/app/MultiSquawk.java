@@ -375,6 +375,7 @@ public class MultiSquawk extends AppCompatActivity {
 
         } catch (IOException e) {
             e.printStackTrace();
+            Toast.makeText(this, "An error occured.", Toast.LENGTH_SHORT).show();
         }
         return loc;
     }
