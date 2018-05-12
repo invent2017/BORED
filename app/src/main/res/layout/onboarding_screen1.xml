@@ -30,6 +30,6 @@
         app:layout_constraintEnd_toEndOf="@+id/vertical_guideline"
         app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
         app:layout_constraintTop_toTopOf="@+id/guideline"
-        app:srcCompat="@drawable/onboarding1" />
+        android:src="@drawable/onboarding1" />
 
 </android.support.constraint.ConstraintLayout>
