@@ -99,9 +99,9 @@ public class Onboarding extends FragmentActivity {
         preferences.edit().putBoolean("onboarding_complete",true).apply();
 
 
-        Intent map = new Intent(this, MapsActivityCurrentPlace.class);
-        map.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(map);
+        Intent login = new Intent(this, Login.class);
+        //map.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(login);
 
 
         // Close the OnboardingActivity

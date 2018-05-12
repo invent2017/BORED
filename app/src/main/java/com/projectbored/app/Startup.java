@@ -21,6 +21,15 @@ import com.google.firebase.database.ValueEventListener;
 import io.fabric.sdk.android.Fabric;
 import java.util.Calendar;
 
+/**
+ * Startup Code (works in following flow):
+ * 1. Checks for app maintenance and updates
+ * 2. Removes expired events
+ * 3. Checks if onboarding has been completed (if false, user --> onboarding --> Login)
+ * 4. Checks if logged in
+ * 5. Opens MapsActivityCurrentPlace if logged in
+ */
+
 public class Startup extends AppCompatActivity {
     private static final String PREFS_NAME = "UserDetails";
 
@@ -40,6 +49,7 @@ public class Startup extends AppCompatActivity {
 
     }
 
+    // Checks app for updates or maintenance
     private void checkAppStatus() {
         mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -54,7 +64,6 @@ public class Startup extends AppCompatActivity {
                 } else {
                     checkUpdates(dataSnapshot);
                 }
-                //checkUpdates(dataSnapshot);
             }
 
             @Override
@@ -64,8 +73,9 @@ public class Startup extends AppCompatActivity {
         });
     }
 
-
-
+    // Check app for updates
+    // 1: force update
+    // else: choice to update
     private void checkUpdates(final DataSnapshot dataSnapshot) {
         final String versionName = BuildConfig.VERSION_NAME;
         String[] versionDetailsArray = dataSnapshot.child("version").getValue(String.class).split(" ");
@@ -114,6 +124,7 @@ public class Startup extends AppCompatActivity {
         }
     }
 
+    // removes expired events (in Startup instead of MapsActvitiy due to certain errors)
     private void checkEvents(DataSnapshot dataSnapshot) {
 
         for(DataSnapshot ds : dataSnapshot.child("events").getChildren()) {
@@ -131,25 +142,28 @@ public class Startup extends AppCompatActivity {
         getUserData(dataSnapshot);
     }
 
+    // Checks log-in and onboarding using SharedPreferences
     private void getUserData(DataSnapshot dataSnapshot) {
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        loggedIn = settings.getBoolean("Logged in", false);
-        if(!loggedIn){
-            Intent login = new Intent(this, Login.class);
-            startActivity(login);
+        SharedPreferences preferences =  getSharedPreferences(PREFS_NAME, 0);
 
+        // Check if onboarding has been completed
+        if(!preferences.getBoolean("onboarding_complete",false)) {
+            // Start the onboarding Activity
+            Intent onboarding = new Intent(this, Onboarding.class);
+            startActivity(onboarding);
+
+            // Close the Startup activity
             finish();
 
         } else {
-            SharedPreferences preferences =  getSharedPreferences(PREFS_NAME, 0);
 
-            // Check if onboarding_complete is false
-            if(!preferences.getBoolean("onboarding_complete",false)) {
-                // Start the onboarding Activity
-                Intent onboarding = new Intent(this, Onboarding.class);
-                startActivity(onboarding);
+            // If onboarding has been completed, check for logged in
+            SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+            loggedIn = settings.getBoolean("Logged in", false);
+            if(!loggedIn){
+                Intent login = new Intent(this, Login.class);
+                startActivity(login);
 
-                // Close the main Activity
                 finish();
 
             } else {
@@ -167,6 +181,7 @@ public class Startup extends AppCompatActivity {
         }
     }
 
+    // verify log-in
     private void verifyAccount(SharedPreferences settings, String username, String password, DataSnapshot dataSnapshot){
         if(dataSnapshot.child(username).exists()){
             if(dataSnapshot.child(username).child("Password").getValue(String.class).equals(password)) {
