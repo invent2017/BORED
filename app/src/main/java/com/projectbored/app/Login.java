@@ -55,6 +55,7 @@ public class Login extends AppCompatActivity {
         });
     }
 
+    // If you press back the app closes
     @Override
     public void onBackPressed() {
         Intent closeApp = new Intent(Intent.ACTION_MAIN);
@@ -62,6 +63,7 @@ public class Login extends AppCompatActivity {
         startActivity(closeApp);
     }
 
+    // Sign in process: Username, Password
     private void signIn() {
         if(usernameField.getText().toString().trim().isEmpty() || passwordField.getText().toString().trim().isEmpty())
         {
@@ -99,6 +101,7 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    // Local database things so you remain signed in unless you sign out
     private void storeLocalUserData(String username, String password) {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();

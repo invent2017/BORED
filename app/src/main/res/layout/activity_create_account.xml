@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="8dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:orientation="vertical"
@@ -25,7 +26,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="20dp"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="casual"
             android:text="@string/login_title"
             android:textAlignment="center"
             android:textSize="36sp" />
@@ -35,41 +36,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"
             android:ems="10"
-            android:fontFamily="monospace"
+            android:fontFamily="sans-serif"
             android:hint="@string/prompt_username"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textColorHint="#87adbf" />
 
         <EditText
             android:id="@+id/signUpEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
             android:ems="10"
-            android:fontFamily="monospace"
+            android:fontFamily="sans-serif"
             android:hint="@string/prompt_email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textAlignment="center"
+            android:textColorHint="#87adbf" />
 
         <EditText
             android:id="@+id/signUpPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
             android:ems="10"
-            android:fontFamily="monospace"
+            android:fontFamily="sans-serif"
             android:hint="@string/prompt_password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textAlignment="center"
+            android:textColorHint="#87adbf" />
 
         <Button
             android:id="@+id/signup_button"
-            android:layout_width="200dp"
+            android:layout_width="250dp"
             android:layout_height="30dp"
             android:layout_gravity="center_horizontal"
             android:layout_margin="8dp"

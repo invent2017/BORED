@@ -27,7 +27,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="20dp"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="casual"
             android:text="@string/login_title"
             android:textAlignment="center"
             android:textSize="36sp" />
@@ -36,23 +36,31 @@
             android:id="@+id/signInUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
             android:ems="10"
-            android:fontFamily="monospace"
+            android:fontFamily="sans-serif"
             android:hint="@string/prompt_username"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textColorHint="#87adbf" />
 
         <EditText
             android:id="@+id/signInPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
             android:ems="10"
-            android:fontFamily="monospace"
+            android:fontFamily="sans-serif"
             android:hint="@string/prompt_password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textAlignment="center"
+            android:textColorHint="#87adbf" />
 
         <Button
             android:id="@+id/signin_button"
@@ -62,6 +70,7 @@
             android:layout_marginBottom="13dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginTop="3dp"
             android:background="@drawable/lessimptroundishbutton"
             android:text="@string/action_sign_in"
             android:textColor="#fafafa" />

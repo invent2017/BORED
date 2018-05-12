@@ -29,6 +29,8 @@ public class Onboarding extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboarding);
 
+        // the cases refer to the different pages
+
         FragmentStatePagerAdapter adapter = new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
@@ -90,6 +92,7 @@ public class Onboarding extends FragmentActivity {
 
     }
 
+    // Finishes onboarding and lets you not see it again
     private void finishOnboarding() {
 
         // Get the shared preferences

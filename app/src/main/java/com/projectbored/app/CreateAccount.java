@@ -59,6 +59,7 @@ public class CreateAccount extends AppCompatActivity {
         });
     }
 
+    // If you press back, you go back to Log In
     @Override
     public void onBackPressed() {
         Intent goLogin = new Intent(this, Login.class);
@@ -66,6 +67,7 @@ public class CreateAccount extends AppCompatActivity {
         finish();
     }
 
+    // Code to sign you up: needs username, email, password
     private void signUp() {
         if(usernameField.getText().toString().trim().isEmpty() || emailField.getText().toString().trim().isEmpty() || passwordField.getText().toString().trim().isEmpty())
         {
@@ -75,6 +77,7 @@ public class CreateAccount extends AppCompatActivity {
             final String email = emailField.getText().toString();
             final String password = passwordField.getText().toString();
 
+            // checks that you key in an email
             String emailPattern = ("\\S+@\\w+\\.\\w+");
             Pattern pattern = Pattern.compile(emailPattern);
             Matcher matcher = pattern.matcher(email);
@@ -104,6 +107,7 @@ public class CreateAccount extends AppCompatActivity {
 
     }
 
+    // Adds user to Firebase
     private void addUser(String username, String email, String password) {
         User user = new User(username, email, password);
         Map<String, Object> userDetails = user.toMap();
@@ -121,6 +125,7 @@ public class CreateAccount extends AppCompatActivity {
         startActivity(i);
     }
 
+    // Local database things so you remain signed in unless you sign out
     private void storeLocalUserData(String username, String password) {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
