@@ -9,10 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -91,6 +93,21 @@ public class EventUpload extends AppCompatActivity {
 
             }
         });
+
+        ScrollView scroll = (ScrollView)findViewById(R.id.scrollView1);
+        scroll.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (titleField.hasFocus()) {
+                    titleField.clearFocus();
+                } else if (descriptionField.hasFocus()) {
+                    descriptionField.clearFocus();
+                }
+                return false;
+            }
+        });
+
     }
 
     @Override
