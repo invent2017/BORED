@@ -420,26 +420,16 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
 
         // Displays stories on the map: showing all stories or filtered stories
+
         if(getIntent().getAction() != null) {
             if (getIntent().getAction().equals(Intent.ACTION_VIEW) && getIntent().getData() != null) {
                 showSelectedStory(getIntent().getData().getLastPathSegment());
             } else {
                 getStories();
             }
+
         } else {
-            Bundle storyDetails = getIntent().getExtras();
-            if(storyDetails.getString("UserStory") != null) {
-                showSelectedStory(storyDetails.getString("UserStory"));
-            } else {
-                String disappearingStory = storyDetails.getString("key");
-                getStories();
-
-                if (disappearingStory != null) {
-                    LatLng storyPosition = new LatLng(storyDetails.getDouble("Latitude"), storyDetails.getDouble("Longitude"));
-
-                    mMap.addMarker(new MarkerOptions().position(storyPosition));
-                }
-            }
+            getStories();
         }
     }
 
@@ -460,68 +450,71 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
          * device. The result of the permission request is handled by a callback,
          * onRequestPermissionsResult.
          */
-        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
-                android.Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            mLocationPermissionGranted = true;
-        } else {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
-        }
+        if(mLastKnownLocation != null) {
+            if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                    android.Manifest.permission.ACCESS_FINE_LOCATION)
+                    == PackageManager.PERMISSION_GRANTED) {
+                mLocationPermissionGranted = true;
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                        PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+            }
 
-        // Get the best and most recent location of the device, which may be null in rare
-        // cases when a location is not available.
-        if (mLocationPermissionGranted) {
-            mLastKnownLocation = LocationServices.FusedLocationApi
-                    .getLastLocation(mGoogleApiClient);
+            // Get the best and most recent location of the device, which may be null in rare
+            // cases when a location is not available.
+            if (mLocationPermissionGranted) {
+                mLastKnownLocation = LocationServices.FusedLocationApi
+                        .getLastLocation(mGoogleApiClient);
 
-            LocationListener locationListener = new LocationListener() {
-                @Override
-                public void onLocationChanged(Location location) {
-                    mLastKnownLocation = location;
-                }
+                LocationListener locationListener = new LocationListener() {
+                    @Override
+                    public void onLocationChanged(Location location) {
+                        mLastKnownLocation = location;
+                    }
 
-                @Override
-                public void onStatusChanged(String s, int i, Bundle bundle) {
+                    @Override
+                    public void onStatusChanged(String s, int i, Bundle bundle) {
 
-                }
+                    }
 
-                @Override
-                public void onProviderEnabled(String s) {
+                    @Override
+                    public void onProviderEnabled(String s) {
 
-                }
+                    }
 
-                @Override
-                public void onProviderDisabled(String s) {
+                    @Override
+                    public void onProviderDisabled(String s) {
 
-                }
-            };
+                    }
+                };
 
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 0, locationListener);
-        }
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 0, locationListener);
+            }
 
-        if (mLastKnownLocation == null) {
+        /*if (mLastKnownLocation == null) {
             Log.d(TAG, "Current location is null. Using defaults.");
             mLastKnownLocation = new Location(LocationManager.GPS_PROVIDER);
             mLastKnownLocation.setLatitude(mDefaultLocation.latitude);
             mLastKnownLocation.setLongitude(mDefaultLocation.longitude);
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
-        }
+        }*/
 
-        boolean opened = getIntent().getBooleanExtra("Opened", false);
+            boolean opened = getIntent().getBooleanExtra("Opened", false);
 
-        if(!opened) {
-            // Set the map's camera position to the current location of the device.
-            if (mCameraPosition != null) {
-                mMap.moveCamera(CameraUpdateFactory.newCameraPosition(mCameraPosition));
-            } else {
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                        new LatLng(mLastKnownLocation.getLatitude(),
-                                mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
+            if (!opened) {
+                // Set the map's camera position to the current location of the device.
+                if (mCameraPosition != null) {
+                    mMap.moveCamera(CameraUpdateFactory.newCameraPosition(mCameraPosition));
+
+
+                } else {
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                            new LatLng(mLastKnownLocation.getLatitude(),
+                                    mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
+                }
+                getIntent().putExtra("Opened", true);
             }
-
-            getIntent().putExtra("Opened", true);
         }
     }
 
@@ -539,10 +532,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     mLocationPermissionGranted = true;
+                    resetMap();  //refresh map to show location
+
+                    updateLocationUI();
                 }
             }
         }
-        updateLocationUI();
+
     }
 
     //Hashtag search bar
@@ -1260,20 +1256,21 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         if (mLocationPermissionGranted) {
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(true);
+            mLastKnownLocation = LocationServices.FusedLocationApi
+                    .getLastLocation(mGoogleApiClient);
+
         } else {
             mMap.setMyLocationEnabled(false);
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
-            // TODO: Why do you need the line below?
-            // mLastKnownLocation = null;
+
+            mLastKnownLocation = null;
             AlertDialog.Builder locationPermissionPrompt = new AlertDialog.Builder(this)
                     .setTitle(R.string.app_name)
                     .setMessage("See GO requires location permission to run.")
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            ActivityCompat.requestPermissions(MapsActivityCurrentPlace.this,
-                                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+                            updateLocationUI();
                         }
                     });
             locationPermissionPrompt.create().show();

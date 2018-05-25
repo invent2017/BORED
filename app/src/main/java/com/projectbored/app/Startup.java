@@ -148,7 +148,7 @@ public class Startup extends AppCompatActivity {
 
         // Check if onboarding has been completed
         if(!preferences.getBoolean("onboarding_complete",false)) {
-            // Start the onboarding Activity
+            // Stsart the onboarding Activity
             Intent onboarding = new Intent(this, Onboarding.class);
             startActivity(onboarding);
 

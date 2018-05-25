@@ -40,7 +40,7 @@ public class TimeStringGenerator {
                  if(minute < 10) {
                      timeString = new StringBuilder().append(hour).append(":0").append(minute).append(" P.M.").toString();
                  } else {
-                     timeString = new StringBuilder().append(hour).append("0").append(minute).append(" P.M.").toString();
+                     timeString = new StringBuilder().append(hour).append(":").append(minute).append(" P.M.").toString();
                  }
              }
          }

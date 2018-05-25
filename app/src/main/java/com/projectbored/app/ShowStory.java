@@ -643,7 +643,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
     private void backToMap() {
         Intent backtoMap = new Intent(this, MapsActivityCurrentPlace.class);
-        backtoMap.putExtras(storyDetails);
+        //backtoMap.putExtras(storyDetails);
         startActivity(backtoMap);
 
         finish();
