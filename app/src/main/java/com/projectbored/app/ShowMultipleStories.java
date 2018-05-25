@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -96,11 +97,28 @@ public class ShowMultipleStories extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.option_delete_story) {
+        if(item.getItemId() == R.id.option_view_on_map) {
+            showStoryLocation(storyKeys[storiesPager.getCurrentItem()]);
+        } else if(item.getItemId() == R.id.option_delete_story) {
             deleteStory();
+        } else if(item.getItemId() == R.id.option_bookmark_story) {
+            bookmarkStory();
+        } else if(item.getItemId() == R.id.option_back_to_map) {
+            finish();
         }
 
         return true;
+    }
+
+    // Code for showing story location on map
+    private void showStoryLocation(String storyKey) {
+        Intent showLocation = new Intent(this, MapsActivityCurrentPlace.class);
+        Bundle details = new Bundle();
+        details.putString("UserStory", storyKey);
+        showLocation.putExtras(details);
+        startActivity(showLocation);
+
+        finish();
     }
 
     private void deleteStory() {
@@ -114,6 +132,17 @@ public class ShowMultipleStories extends AppCompatActivity {
         delete.putExtras(storyDetails);
         startActivity(delete);
         finish();
+    }
+
+    // Code for bookmarking story
+    private void bookmarkStory() {
+        String locationString = new StringBuilder().append(stories.getDouble("Latitude"))
+                .append(",").append(stories.getDouble("Longitude")).toString();
+        mDataRef.child("users").child(username).child("Bookmarked")
+                .child(storyKeys[storiesPager.getCurrentItem()]).setValue(locationString);
+
+        ShowStory.SingleToast.show(this, "Story bookmarked.", Toast.LENGTH_SHORT);
+        invalidateOptionsMenu();
     }
 
     private void showStories() {
