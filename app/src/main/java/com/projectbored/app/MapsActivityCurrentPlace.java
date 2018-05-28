@@ -51,6 +51,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -71,7 +72,6 @@ import static android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH;
  * Add-to-map actions: Add story, add event, multisquawk
  * Other actions: view profile, FAQs, contact us, log out
  */
-
 
 public class MapsActivityCurrentPlace extends AppCompatActivity
         implements OnMapReadyCallback,
@@ -112,8 +112,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     private String username;
 
-    private HashMap<String, Marker> markers = new HashMap<>();
-
     //leave in case we need to do something
     // Used for selecting the current place.
     //private final int mMaxEntries = 5;
@@ -123,6 +121,9 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     //private LatLng[] mLikelyPlaceLatLngs = new LatLng[mMaxEntries];
 
     private DatabaseReference mDataRef;
+    private ValueEventListener storyListener;
+
+    private boolean isMapLoaded;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -221,6 +222,105 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 }
             }
         });
+    }
+
+    /*@Override
+    protected void onResume() {
+        if(isMapLoaded) {
+            resetMap();
+        }
+        super.onResume();
+    }*/
+
+    //Created a ValueEventListener object so it can be detached
+    private void initialiseDatabaseListener() {
+        storyListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.child("locations").getChildren()) {
+                    if(ds.exists()) {
+
+                        String[] locationArray = ds.getKey().replace('d', '.').split(",");
+                        Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
+                        storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
+                        storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
+
+                        if(ds.getChildrenCount() == 1) {
+                            for (DataSnapshot dataSnapshot1 : ds.getChildren()) {
+                                if(dataSnapshot1.exists()) {
+                                    String storyKey = dataSnapshot1.getKey();
+                                    int type = dataSnapshot1.getValue(Integer.class);
+                                    boolean isRead = false;
+                                    if (isLoggedIn()) {
+                                        if (dataSnapshot.child("users").child(username)
+                                                .child("ReadStories").child(storyKey).exists()) {
+                                            isRead = true;
+                                        }
+                                    }
+
+
+                                    if(!isRead) {
+                                        if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 500) {
+                                            showNearbyStories(storyKey, storyLocation, type);
+                                        } else {
+                                            showFarStories(storyKey, storyLocation, type);
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            StringBuilder storyKeys = new StringBuilder();
+                            for(DataSnapshot dataSnapshot1 : ds.getChildren()) {
+                                if(dataSnapshot1.getValue(Integer.class) == 0) {
+                                    String storyKey = dataSnapshot1.getKey();
+
+                                    boolean isRead = false;
+                                    if (isLoggedIn()) {
+                                        if (dataSnapshot.child("users").child(username)
+                                                .child("ReadStories").child(storyKey).exists()) {
+                                            isRead = true;
+                                        }
+                                    }
+
+                                    if(!isRead) {
+                                        if (storyKeys.toString().equals("")) {
+                                            storyKeys.append(storyKey);
+                                        } else {
+                                            storyKeys.append(",").append(storyKey);
+                                        }
+                                    }
+                                }
+                            }
+
+                            /*boolean featured = false;
+                            for(DataSnapshot dataSnapshot1 : ds.getChildren()) {
+                                featured = dataSnapshot1.getValue(boolean.class);
+
+                                if(featured) {
+                                    break;
+                                }
+                            }*/
+
+                            if(!storyKeys.toString().equals("")) {
+
+                                if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 500) {
+                                    showNearbyStories(storyKeys.toString(), storyLocation, 0);
+                                } else {
+                                    showFarStories(storyKeys.toString(), storyLocation, 0);
+                                }
+                            }
+                        }
+                    } else {
+                        SingleToast.show(MapsActivityCurrentPlace.this, "There are no squawks.", Toast.LENGTH_SHORT);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                SingleToast.show(MapsActivityCurrentPlace.this, "Failed to load squawks.", Toast.LENGTH_SHORT);
+            }
+        };
     }
 
     /**
@@ -425,12 +525,16 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             if (getIntent().getAction().equals(Intent.ACTION_VIEW) && getIntent().getData() != null) {
                 showSelectedStory(getIntent().getData().getLastPathSegment());
             } else {
+                initialiseDatabaseListener();
                 getStories();
             }
 
         } else {
+            initialiseDatabaseListener();
             getStories();
         }
+
+        isMapLoaded = true;
     }
 
     //Closes app when back button is pressed, instead of returning to splash screen
@@ -695,6 +799,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     // Only stories posted within 24h will be shown
     private void filterTodayStories() {
+        mDataRef.removeEventListener(storyListener);
         mDataRef.child("stories").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -725,6 +830,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
                     }
                 }
+                mDataRef.removeEventListener(this);
             }
 
             @Override
@@ -780,6 +886,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     // Only stories the user has read will be shown
     private void filterReadStories(final String username) {
+        mDataRef.removeEventListener(storyListener);
         mDataRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -819,12 +926,46 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                 }
                             }
                         } else {
+                            StringBuilder storyKeys = new StringBuilder();
+                            for(DataSnapshot dataSnapshot1 : ds.getChildren()) {
+                                if(dataSnapshot1.getValue(Integer.class) == 0) {
+                                    String storyKey = dataSnapshot1.getKey();
 
+                                    boolean isRead = false;
+                                    if (isLoggedIn()) {
+                                        if (dataSnapshot.child("users").child(username)
+                                                .child("ReadStories").child(storyKey).exists()) {
+                                            isRead = true;
+                                        }
+                                    }
+
+                                    if(isRead) {
+                                        if (storyKeys.toString().equals("")) {
+                                            storyKeys.append(storyKey);
+                                        } else {
+                                            storyKeys.append(",").append(storyKey);
+                                        }
+                                    }
+                                }
+                            }
+
+                            if(mLastKnownLocation.distanceTo(storyLocation) <= 500) {
+                                Marker storyMarker = mMap.addMarker(new MarkerOptions()
+                                        .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
+                                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
+                                storyMarker.setTag(storyKeys.toString()+ "/"+ 0);
+                            } else {
+                                Marker storyMarker = mMap.addMarker(new MarkerOptions()
+                                        .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
+                                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
+                                storyMarker.setTag(storyKeys+ "/"+ 0);
+                            }
                         }
                     } else {
                         SingleToast.show(MapsActivityCurrentPlace.this, "There are no stories.", Toast.LENGTH_SHORT);
                     }
                 }
+                mDataRef.removeEventListener(this);
             }
 
             @Override
@@ -836,6 +977,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     // Stories withing clicking distance (500m) will be shown
     private void filterNearbyStories() {
+        mDataRef.removeEventListener(storyListener);
         mDataRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -858,12 +1000,29 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                 }
                             }
                         } else {
+                            StringBuilder storyKeys = new StringBuilder();
+                            for(DataSnapshot dataSnapshot1 : ds.getChildren()) {
+                                if(dataSnapshot1.getValue(Integer.class) == 0) {
+                                    String storyKey = dataSnapshot1.getKey();
 
+                                    if (storyKeys.toString().equals("")) {
+                                        storyKeys.append(storyKey);
+                                    } else {
+                                        storyKeys.append(",").append(storyKey);
+                                    }
+
+                                }
+                            }
+
+                            if(mLastKnownLocation.distanceTo(storyLocation) <= 500) {
+                                showNearbyStories(storyKeys.toString(), storyLocation, 0);
+                            }
                         }
                     } else {
                         SingleToast.show(MapsActivityCurrentPlace.this, "There are no stories.", Toast.LENGTH_SHORT);
                     }
                 }
+                mDataRef.removeEventListener(this);
             }
 
             @Override
@@ -875,6 +1034,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     // Stories the user has posted will be shown
     private void filterMyStories(final String username) {
+        mDataRef.removeEventListener(storyListener);
         mDataRef.child("users").child(username).child("stories").addValueEventListener(new ValueEventListener() {
 
             @Override
@@ -889,6 +1049,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                         storyMarker.setTag(storyKey + "/"+ 0);
                     }
                 }
+
+                mDataRef.removeEventListener(this);
             }
 
             @Override
@@ -1000,103 +1162,15 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     // Displays all stories on map. Nearby stories are defined at 500m.
     public void getStories() {
-        mDataRef.addValueEventListener(new ValueEventListener() {
-
-
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.child("locations").getChildren()) {
-                    if(ds.exists()) {
-
-                        String[] locationArray = ds.getKey().replace('d', '.').split(",");
-                        Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
-                        storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
-                        storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
-
-                        if(ds.getChildrenCount() == 1) {
-                            for (DataSnapshot dataSnapshot1 : ds.getChildren()) {
-                                if(dataSnapshot1.exists()) {
-                                    String storyKey = dataSnapshot1.getKey();
-                                    int type = dataSnapshot1.getValue(Integer.class);
-                                    boolean isRead = false;
-                                    if (isLoggedIn()) {
-                                        if (dataSnapshot.child("users").child(username)
-                                                .child("ReadStories").child(storyKey).exists()) {
-                                            isRead = true;
-                                        }
-                                    }
-
-
-                                    if(!isRead) {
-                                        if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 500) {
-                                            showNearbyStories(storyKey, storyLocation, type);
-                                        } else {
-                                            showFarStories(storyKey, storyLocation, type);
-                                        }
-                                    }
-                                }
-                            }
-                        } else {
-                            StringBuilder storyKeys = new StringBuilder();
-                            for(DataSnapshot dataSnapshot1 : ds.getChildren()) {
-                                if(dataSnapshot1.getValue(Integer.class) == 0) {
-                                    String storyKey = dataSnapshot1.getKey();
-
-                                    boolean isRead = false;
-                                    if (isLoggedIn()) {
-                                        if (dataSnapshot.child("users").child(username)
-                                                .child("ReadStories").child(storyKey).exists()) {
-                                            isRead = true;
-                                        }
-                                    }
-
-                                    if(!isRead) {
-                                        if (storyKeys.toString().equals("")) {
-                                            storyKeys.append(storyKey);
-                                        } else {
-                                            storyKeys.append(",").append(storyKey);
-                                        }
-                                    }
-                                }
-                            }
-
-                            /*boolean featured = false;
-                            for(DataSnapshot dataSnapshot1 : ds.getChildren()) {
-                                featured = dataSnapshot1.getValue(boolean.class);
-
-                                if(featured) {
-                                    break;
-                                }
-                            }*/
-
-                            if(!storyKeys.toString().equals("")) {
-
-                                if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 500) {
-                                    showNearbyStories(storyKeys.toString(), storyLocation, 0);
-                                } else {
-                                    showFarStories(storyKeys.toString(), storyLocation, 0);
-                                }
-                            }
-                        }
-                    } else {
-                        SingleToast.show(MapsActivityCurrentPlace.this, "There are no squawks.", Toast.LENGTH_SHORT);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                SingleToast.show(MapsActivityCurrentPlace.this, "Failed to load squawks.", Toast.LENGTH_SHORT);
-            }
-        });
+        mDataRef.addValueEventListener(storyListener);
 
     }
 
     // following two methods determine marker colours based on user location
-    // Nearby read: Yellow
-    // Nearby unread: Green
-    // Far read: Blue
-    // Far unread: Purple
+    // Nearby story: Yellow
+    // Nearby event: Green
+    // Far event: Blue
+    // Far story: Purple
     public void showNearbyStories(String storyKey, Location storyLocation, int type) {
         Marker storyMarker;
         if (type == 2) {
@@ -1105,16 +1179,12 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                 storyLocation.getLongitude()))
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
             storyMarker.setTag(storyKey + "/" + "2");
-
-            markers.put(storyKey, storyMarker);
         } else {
             storyMarker = mMap.addMarker(new MarkerOptions()
                         .position(new LatLng(storyLocation.getLatitude(),
                                 storyLocation.getLongitude()))
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
             storyMarker.setTag(storyKey + "/" + 0);
-
-            markers.put(storyKey, storyMarker);
         }
     }
 
@@ -1126,16 +1196,12 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                             storyLocation.getLongitude()))
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
             storyMarker.setTag(storyKey + "/" + 2);
-
-            markers.put(storyKey, storyMarker);
         } else {
             storyMarker = mMap.addMarker(new MarkerOptions()
                     .position(new LatLng(storyLocation.getLatitude(),
                             storyLocation.getLongitude()))
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
             storyMarker.setTag(storyKey + "/" + 0);
-
-            markers.put(storyKey, storyMarker);
         }
     }
 
@@ -1190,6 +1256,22 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     // Map is reset to the current location and all markers will be shown
     private void resetMap() {
+        if(storyListener != null) {
+            mDataRef.removeEventListener(storyListener);
+        }
+        mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                checkEvents(dataSnapshot);
+                mDataRef.removeEventListener(this);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         Intent reload = new Intent(this, MapsActivityCurrentPlace.class);
         finish();
         startActivity(reload);
@@ -1301,6 +1383,21 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             if (mToast != null) mToast.cancel();
             mToast = Toast.makeText(context, text, duration);
             mToast.show();
+        }
+    }
+
+    private void checkEvents(DataSnapshot dataSnapshot) {
+
+        for(DataSnapshot ds : dataSnapshot.child("events").getChildren()) {
+            long expiryTime = ds.child("ExpiryTime").getValue(Long.class);
+            long timeNow = Calendar.getInstance().getTimeInMillis();
+
+            if(timeNow >= expiryTime) {
+                String key = ds.getKey();
+                String location = ds.child("Location").getValue(String.class).replace('.', 'd');
+                mDataRef.child("locations").child(location).child(key).removeValue();
+                ds.getRef().removeValue();
+            }
         }
     }
 

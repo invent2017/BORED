@@ -63,6 +63,7 @@ public class Startup extends AppCompatActivity {
                     Startup.this.finish();
                 } else {
                     checkUpdates(dataSnapshot);
+                    mDataRef.removeEventListener(this);
                 }
             }
 
@@ -91,7 +92,7 @@ public class Startup extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent browserIntent = new Intent(Intent.ACTION_VIEW,
-                                        Uri.parse("https://drive.google.com/uc?id=0B3A7kN7uEQ59WHRySkQ2SDB5aDA&export=download"));
+                                        Uri.parse("https://play.google.com/store/apps/details?id=com.projectbored.app"));
                                 startActivity(browserIntent);
                             }
                         })
@@ -107,7 +108,7 @@ public class Startup extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent browserIntent = new Intent(Intent.ACTION_VIEW,
-                                        Uri.parse("https://drive.google.com/uc?id=0B3A7kN7uEQ59WHRySkQ2SDB5aDA&export=download"));
+                                        Uri.parse("https://play.google.com/store/apps/details?id=com.projectbored.app"));
                                 startActivity(browserIntent);
                             }
                         })
@@ -191,29 +192,18 @@ public class Startup extends AppCompatActivity {
                 start.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(start);
             } else {
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putBoolean("Logged in", false);
-                editor.remove("Username");
-                editor.remove("Password");
-                editor.apply();
-
                 Toast.makeText(Startup.this, "Account settings have changed. Please log in again.", Toast.LENGTH_SHORT).show();
 
-                Intent returnToMap = new Intent(Startup.this, MapsActivityCurrentPlace.class);
-                returnToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(returnToMap);
+                Intent logout = new Intent(Startup.this, Logout.class);
+                logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(logout);
             }
         } else {
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putBoolean("Logged in", false);
-            editor.remove("Username");
-            editor.remove("Password");
-            editor.apply();
-
             Toast.makeText(Startup.this, "Account settings have changed. Please log in again.", Toast.LENGTH_SHORT).show();
 
-            Intent returnToMap = new Intent(Startup.this, MapsActivityCurrentPlace.class);
-            startActivity(returnToMap);
+            Intent logout = new Intent(Startup.this, Logout.class);
+            logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(logout);
 
             finish();
         }

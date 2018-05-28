@@ -641,13 +641,13 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         mVotesRef.setValue(storyVotes);
     }
 
-    private void backToMap() {
+    /*private void backToMap() {
         Intent backtoMap = new Intent(this, MapsActivityCurrentPlace.class);
         //backtoMap.putExtras(storyDetails);
         startActivity(backtoMap);
 
         finish();
-    }
+    }*/
 
     private void logout() {
         Intent logout = new Intent(this, Logout.class);
