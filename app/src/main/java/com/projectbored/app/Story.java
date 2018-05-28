@@ -15,6 +15,7 @@ public class Story {
     private String uri;
     private Location location;
     private String caption;
+    private String keywords;
     private Date dateTime;
     private int votes;
     private int views;
@@ -40,10 +41,11 @@ public class Story {
         flagged = false;
     }
 
-    public Story (String uri, Location location, String caption, Date dateTime) {
+    public Story (String uri, Location location, String caption, String keywords, Date dateTime) {
         this.uri = uri;
         this.location = location;
         this.caption = caption;
+        this.keywords = keywords;
         this.dateTime = dateTime;
         votes = 0;
         views = 0;
@@ -132,6 +134,7 @@ public class Story {
         result.put("URI", uri);
         result.put("Location", locationString(location));
         result.put("Caption", caption);
+        result.put("Keywords", keywords);
         result.put("DateTime", dateTime);
         result.put("Votes", votes);
         result.put("Views",views);

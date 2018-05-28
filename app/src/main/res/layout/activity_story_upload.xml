@@ -54,7 +54,7 @@
                 android:paddingTop="10dp" />
 
             <EditText
-                android:id="@+id/hashtags"
+                android:id="@+id/keywords"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="7dp"
@@ -63,7 +63,8 @@
                 android:layout_marginStart="7dp"
                 android:layout_weight="0.05"
                 android:ems="10"
-                android:hint="@string/insert_hashtag_here" />
+                android:hint="@string/insert_keywords_here"
+                android:maxLength="80"/>
             <!--
                 <Button
                     android:id="@+id/uploadstory"

@@ -48,7 +48,7 @@ public class StoryUpload extends AppCompatActivity {
     private static final String PREFS_NAME = "UserDetails";
 
     EditText caption;
-    EditText hashtagBox;
+    EditText keywordsBox;
 
     private StorageReference mStorageRef;
     private DatabaseReference mDataRef;
@@ -78,7 +78,7 @@ public class StoryUpload extends AppCompatActivity {
             caption.setText(storySettings.getString("Caption"));
         }
 
-        hashtagBox = findViewById(R.id.hashtags);
+        keywordsBox = findViewById(R.id.keywords);
 
         storyKey = mDataRef.child("stories").push().getKey();
 
@@ -279,25 +279,11 @@ public class StoryUpload extends AppCompatActivity {
                     if(dataSnapshot.exists()) {
                         String storyURI = dataSnapshot.getValue(String.class);
                         String storyCaption = caption.getText().toString();
-
-                        String hashtagBoxText = hashtagBox.getText().toString();
-
-                        if(!hashtagBoxText.equals("")) {
-                            hashtagBoxText = hashtagBoxText.substring(1);
-                            String [] hashtags = hashtagBoxText.split("#");
-
-                            StringBuilder captionBuilder = new StringBuilder().append(storyCaption).append(" ");
-                            for(int i = 0; i < hashtags.length; i++) {
-                                hashtags[i] = hashtags[i].trim();
-                                captionBuilder.append("#").append(hashtags[i]);
-                            }
-
-                            storyCaption = captionBuilder.toString();
-                        }
+                        String keywords = keywordsBox.getText().toString();
 
                         Map<String, Object> childUpdates = new HashMap<>();
 
-                        Story story = new Story(storyURI, storyLocation, storyCaption, new Date());
+                        Story story = new Story(storyURI, storyLocation, storyCaption, keywords, new Date());
                         Map<String, Object> storyDetails = story.toMap();
 
                         childUpdates.put("/stories/" + storyKey, storyDetails);

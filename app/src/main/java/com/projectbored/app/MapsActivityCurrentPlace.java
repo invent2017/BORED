@@ -53,7 +53,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -123,7 +122,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     private DatabaseReference mDataRef;
     private ValueEventListener storyListener;
 
-    private boolean isMapLoaded;
+    //private boolean isMapLoaded;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -448,38 +447,30 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(final Marker marker) {
-                LatLng markerPosition = marker.getPosition();
-                Location markerLocation = new Location(LocationManager.GPS_PROVIDER);
-                markerLocation.setLatitude(markerPosition.latitude);
-                markerLocation.setLongitude(markerPosition.longitude);
+                mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        LatLng markerPosition = marker.getPosition();
+                        Location markerLocation = new Location(LocationManager.GPS_PROVIDER);
+                        markerLocation.setLatitude(markerPosition.latitude);
+                        markerLocation.setLongitude(markerPosition.longitude);
 
-                if(mLastKnownLocation.distanceTo(markerLocation) <= 500) {
-                    showStoryDetails(marker);
-                } else {
-                    mDataRef.child("stories").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            String storyKey = (String)marker.getTag();
-                            storyKey = storyKey.split("/")[0];
-
-                            HashtagChecker hashtagChecker = new HashtagChecker(storyKey, dataSnapshot);
-                            String hashtags = hashtagChecker.getHashtags();
-
-                            if(hashtags != null) {
-                                SingleToast.show(MapsActivityCurrentPlace.this, "This squawk contains \n" + hashtags, Toast.LENGTH_SHORT);
-                            } else {
-                                SingleToast.show(MapsActivityCurrentPlace.this, "This squawk does not have any hashtags.", Toast.LENGTH_SHORT);
-                            }
+                        int markerDistance = Math.round(mLastKnownLocation.distanceTo(markerLocation));
+                        if(markerDistance <= 500) {
+                            nearMarkerClicked(marker, dataSnapshot, markerDistance);
+                        } else {
+                            farMarkerClicked(marker, dataSnapshot, markerDistance);
                         }
 
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
+                        mDataRef.removeEventListener(this);
+                    }
 
-                        }
-                    });
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
 
+                    }
+                });
 
-                }
                 return true;
             }
         });
@@ -534,7 +525,91 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             getStories();
         }
 
-        isMapLoaded = true;
+        //isMapLoaded = true;
+    }
+
+    private void nearMarkerClicked(Marker marker, DataSnapshot dataSnapshot, int markerDistance) {
+        String[] storyDetails = ((String)marker.getTag()).split("/");
+        String storyKey = storyDetails[0];
+        int type = Integer.parseInt(storyDetails[1]);
+
+        switch (type) {
+            case 0:
+                if(storyKey.contains(",")) {
+                    showStoryDetails(marker);
+
+                } else {
+                    if (dataSnapshot.child("users").child(username).child("ReadStories").child(storyKey).exists()) {
+                        showStoryDetails(marker);
+
+                    } else {
+                        String keywords = dataSnapshot.child("stories").child(storyKey).child("Keywords").getValue(String.class);
+                        if (keywords == null) {
+                            Toast.makeText(this,
+                                    "There is a squwawk in " + markerDistance + " metres. Tap again to open!",
+                                    Toast.LENGTH_SHORT).show();
+                            mDataRef.child("users").child("username").child("ReadStories").child(storyKey).setValue(storyKey);
+                        } else {
+                            Toast.makeText(this,
+                                    "In " + markerDistance + "metres, a squawk contains " + keywords + ". Tap again to open!",
+                                    Toast.LENGTH_SHORT).show();
+                            mDataRef.child("users").child("username").child("ReadStories").child(storyKey).setValue(storyKey);
+                        }
+                    }
+                }
+
+                break;
+            case 2:
+                showStoryDetails(marker);
+                break;
+        }
+        if(marker.getTag().toString().contains(",")) {
+
+
+        } else {
+
+        }
+    }
+
+    private void farMarkerClicked(Marker marker, DataSnapshot dataSnapshot, int markerDistance) {
+        String[] storyDetails = ((String)marker.getTag()).split("/");
+        String storyKey = storyDetails[0];
+        int type = Integer.parseInt(storyDetails[1]);
+
+        switch (type) {
+            case 0:
+                if(storyKey.contains(",")) {
+                    Toast.makeText(this,
+                            "In " + markerDistance + " metres, there are multiple squawks.",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    String keywords = dataSnapshot.child("stories").child(storyKey).child("Keywords").getValue(String.class);
+                    if (keywords == null) {
+                        Toast.makeText(this,
+                                "There is a squwawk in " + markerDistance + " metres.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this,
+                                "In " + markerDistance + "metres, a squawk contains " + keywords + ".",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }
+                break;
+            case 2:
+                if(storyKey.contains(",")) {
+                    Toast.makeText(this,
+                            "In " + markerDistance + " metres, there are multiple events.",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    long timeNow = Calendar.getInstance().getTimeInMillis();
+                    long expiryTime = dataSnapshot.child("events").child(storyKey).child("ExpiryTime").getValue(Long.class);
+                    String timeToExpiry = new TimeDifferenceGenerator(timeNow, expiryTime).getDifference();
+
+                    Toast.makeText(this, "There is an event in " + markerDistance + " metres, expiring in"
+                                    + timeToExpiry + " from now.",
+                            Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
     }
 
     //Closes app when back button is pressed, instead of returning to splash screen
