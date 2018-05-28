@@ -5,10 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
@@ -23,17 +26,25 @@ import com.google.firebase.storage.StorageReference;
 import java.util.Calendar;
 
 public class ViewEvent extends AppCompatActivity {
+    private static final String PREFS_NAME = "UserDetails";
+
     Bundle eventDetails;
+    private String eventKey;
+    private String username;
 
     private DatabaseReference mDataRef;
     private TextView titleText, descriptionText, dateText;
     private TextView timeView;
     //private ImageView imageView;
+    private Button interestedButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
+
         eventDetails = getIntent().getExtras();
+        getEventKey();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_event);
@@ -50,6 +61,18 @@ public class ViewEvent extends AppCompatActivity {
         dateText = findViewById(R.id.date_text);
         timeView = findViewById(R.id.event_time);
         //imageView = findViewById(R.id.event_image);
+        interestedButton = findViewById(R.id.interested_button);
+        interestedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDataRef.child("users").child(username).child("EventsNotInterested").child(eventKey).removeValue();
+                mDataRef.child("users").child(username).child("EventsInterested").child(eventKey).setValue(true);
+
+                //TODO: Should we allow event creators to customise this message?
+                Toast.makeText(ViewEvent.this, "Thank you for your participation in this event!",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
 
         loadEventDetails();
     }
@@ -72,8 +95,11 @@ public class ViewEvent extends AppCompatActivity {
         return true;
     }
 
+    private void getEventKey() {
+        eventKey = eventDetails.getString("key");
+    }
+
     private void loadEventDetails() {
-        String eventKey = eventDetails.getString("key");
         mDataRef.child("events").child(eventKey).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

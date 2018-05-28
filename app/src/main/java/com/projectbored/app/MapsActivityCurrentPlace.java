@@ -250,15 +250,21 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                     String storyKey = dataSnapshot1.getKey();
                                     int type = dataSnapshot1.getValue(Integer.class);
                                     boolean isRead = false;
+                                    boolean isNotInterested = false;
                                     if (isLoggedIn()) {
                                         if (dataSnapshot.child("users").child(username)
-                                                .child("ReadStories").child(storyKey).exists()) {
+                                                .child("ReadStories").hasChild(storyKey)) {
                                             isRead = true;
+                                        } else if(dataSnapshot.child("users").child(username)
+                                                .child("EventsNotInterested").hasChild(storyKey)) {
+                                            isNotInterested = true;
                                         }
                                     }
 
 
-                                    if(!isRead) {
+                                    if(isRead || isNotInterested) {
+
+                                    } else {
                                         if (mLastKnownLocation != null && mLastKnownLocation.distanceTo(storyLocation) <= 500) {
                                             showNearbyStories(storyKey, storyLocation, type);
                                         } else {
@@ -539,7 +545,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                     showStoryDetails(marker);
 
                 } else {
-                    if (dataSnapshot.child("users").child(username).child("ReadStories").child(storyKey).exists()) {
+                    if (dataSnapshot.child("users").child(username).child("ReadStories").hasChild(storyKey)) {
                         showStoryDetails(marker);
 
                     } else {
@@ -552,7 +558,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                         } else {
                             Toast.makeText(this,
                                     "In " + markerDistance + "metres, a squawk contains " + keywords + ". Tap again to open!",
-                                    Toast.LENGTH_SHORT).show();
+                                    Toast.LENGTH_LONG).show();
                             mDataRef.child("users").child("username").child("ReadStories").child(storyKey).setValue(storyKey);
                         }
                     }
@@ -560,14 +566,38 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
                 break;
             case 2:
-                showStoryDetails(marker);
+                if(dataSnapshot.child("users").child(username).child("EventsInterested").hasChild(storyKey)) {
+                    showStoryDetails(marker);
+                } else {
+                    if(storyKey.contains(",")) {
+                        showStoryDetails(marker);
+                    } else {
+                        if(dataSnapshot.child("users").child(username).child("EventsNotInterested").hasChild(storyKey)){
+                            showStoryDetails(marker);
+                        } else {
+                            String eventTitle = dataSnapshot.child("events").child(storyKey).child("Title").getValue(String.class);
+                            long timeNow = Calendar.getInstance().getTimeInMillis();
+                            long expiryTime = dataSnapshot.child("events").child(storyKey)
+                                    .child("ExpiryTime").getValue(Long.class);
+                            String timeToExpiry = new TimeDifferenceGenerator(timeNow, expiryTime).getDifference();
+
+                            if (eventTitle == null) {
+                                Toast.makeText(this, "There is an event in " + markerDistance + " metres," +
+                                                " expiring in " + timeToExpiry + " from now. Tap again to open!",
+                                        Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(this, "There is an event, " + eventTitle + "," +
+                                                " in " + markerDistance + " metres," +
+                                                " expiring in " + timeToExpiry + " from now. Tap again to open!",
+                                        Toast.LENGTH_LONG).show();
+                            }
+
+                            mDataRef.child("users").child(username).child("EventsNotInterested")
+                                    .child(storyKey).setValue(false);
+                        }
+                    }
+                }
                 break;
-        }
-        if(marker.getTag().toString().contains(",")) {
-
-
-        } else {
-
         }
     }
 
@@ -594,19 +624,28 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                     }
                 }
                 break;
+
             case 2:
                 if(storyKey.contains(",")) {
                     Toast.makeText(this,
                             "In " + markerDistance + " metres, there are multiple events.",
                             Toast.LENGTH_SHORT).show();
                 } else {
+                    String eventTitle = dataSnapshot.child("events").child(storyKey).child("Title").getValue(String.class);
                     long timeNow = Calendar.getInstance().getTimeInMillis();
                     long expiryTime = dataSnapshot.child("events").child(storyKey).child("ExpiryTime").getValue(Long.class);
                     String timeToExpiry = new TimeDifferenceGenerator(timeNow, expiryTime).getDifference();
 
-                    Toast.makeText(this, "There is an event in " + markerDistance + " metres, expiring in"
-                                    + timeToExpiry + " from now.",
-                            Toast.LENGTH_SHORT).show();
+                    if(eventTitle == null) {
+                        Toast.makeText(this, "There is an event in " + markerDistance + " metres, expiring in "
+                                        + timeToExpiry + " from now.",
+                                Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(this, "There is an event, " + eventTitle +"," +
+                                        " in " + markerDistance + " metres," +
+                                        " expiring in " + timeToExpiry + " from now.",
+                                Toast.LENGTH_LONG).show();
+                    }
                 }
                 break;
         }

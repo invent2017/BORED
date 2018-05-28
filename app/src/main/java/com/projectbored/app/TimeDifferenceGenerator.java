@@ -14,14 +14,14 @@ public class TimeDifferenceGenerator {
 
     public String getDifference() {
         long difference = Math.abs(time1 - time2);
-        Calendar differenceCalendar = Calendar.getInstance();
-        differenceCalendar.setTimeInMillis(difference);
 
-        int days = differenceCalendar.get(Calendar.DAY_OF_YEAR);
-        int hours = differenceCalendar.get(Calendar.HOUR);
-        int minutes = differenceCalendar.get(Calendar.MINUTE);
+        int days = (int)(difference/86400000);
+        difference = difference - (days * 86400000);
+        int hours = (int)(difference/3600000);
+        difference = difference - (hours * 3600000);
+        int minutes = (int)(difference/60000);
 
-        String differenceString = days + " days, " + hours + " hours, and " + minutes + "minutes" ;
+        String differenceString = days + " days, " + hours + " hours, and " + minutes + " minutes" ;
         return differenceString;
     }
 }

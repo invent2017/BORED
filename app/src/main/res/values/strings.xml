@@ -32,6 +32,7 @@
     <string name="event_image">Event image</string>
     <string name="today">Today</string>
     <string name="tomorrow">Tomorrow</string>
+    <string name="event_interested">I\'m interested!</string>
 
     <!-- Strings related to login -->
     <string name="login_title">Welcome to See GO</string>
