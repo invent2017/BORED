@@ -453,33 +453,42 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(final Marker marker) {
-                mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        LatLng markerPosition = marker.getPosition();
-                        Location markerLocation = new Location(LocationManager.GPS_PROVIDER);
-                        markerLocation.setLatitude(markerPosition.latitude);
-                        markerLocation.setLongitude(markerPosition.longitude);
+                if(mLastKnownLocation == null) {
+                    Toast.makeText(MapsActivityCurrentPlace.this,
+                            "Unable to get your location. Please check your location settings and refresh the map.",
+                            Toast.LENGTH_LONG).show();
 
-                        int markerDistance = Math.round(mLastKnownLocation.distanceTo(markerLocation));
-                        if(markerDistance <= 500) {
-                            nearMarkerClicked(marker, dataSnapshot, markerDistance);
-                        } else {
-                            farMarkerClicked(marker, dataSnapshot, markerDistance);
+                } else {
+
+                    mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            LatLng markerPosition = marker.getPosition();
+                            Location markerLocation = new Location(LocationManager.GPS_PROVIDER);
+                            markerLocation.setLatitude(markerPosition.latitude);
+                            markerLocation.setLongitude(markerPosition.longitude);
+
+                            int markerDistance = Math.round(mLastKnownLocation.distanceTo(markerLocation));
+                            if (markerDistance <= 500) {
+                                nearMarkerClicked(marker, dataSnapshot, markerDistance);
+                            } else {
+                                farMarkerClicked(marker, dataSnapshot, markerDistance);
+                            }
+
+                            mDataRef.removeEventListener(this);
                         }
 
-                        mDataRef.removeEventListener(this);
-                    }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
+                        }
+                    });
+                }
 
                 return true;
             }
         });
+
 
         // Use a custom info window adapter to handle multiple lines of text in the
         // info window contents.
