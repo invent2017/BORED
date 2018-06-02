@@ -554,7 +554,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                     showStoryDetails(marker);
 
                 } else {
-                    if (dataSnapshot.child("users").child(username).child("ReadStories").hasChild(storyKey)) {
+                    if (dataSnapshot.child("users").child(username).child("IgnoredStories").hasChild(storyKey)) {
                         showStoryDetails(marker);
 
                     } else {
@@ -563,12 +563,12 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                             Toast.makeText(this,
                                     "There is a squwawk in " + markerDistance + " metres. Tap again to open!",
                                     Toast.LENGTH_SHORT).show();
-                            mDataRef.child("users").child("username").child("ReadStories").child(storyKey).setValue(storyKey);
+                            mDataRef.child("users").child(username).child("IgnoredStories").child(storyKey).setValue(storyKey);
                         } else {
                             Toast.makeText(this,
                                     "In " + markerDistance + "metres, a squawk contains " + keywords + ". Tap again to open!",
                                     Toast.LENGTH_LONG).show();
-                            mDataRef.child("users").child("username").child("ReadStories").child(storyKey).setValue(storyKey);
+                            mDataRef.child("users").child(username).child("IgnoredStories").child(storyKey).setValue(storyKey);
                         }
                     }
                 }
