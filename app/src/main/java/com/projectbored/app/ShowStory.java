@@ -74,7 +74,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     TextView storyCaption;
     TextView featuredText;
     TextView dateText;
-    Button reportStoryButton;
+    ImageButton reportStoryButton;
     ListView commentsList;
     EditText commentInput;
 
