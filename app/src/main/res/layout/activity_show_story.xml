@@ -106,12 +106,12 @@
                 android:id="@+id/viewNumber"
                 android:layout_width="35dp"
                 android:layout_height="19dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="8dp"
                 android:gravity="end|center_vertical"
                 android:text="@string/views"
                 app:layout_constraintEnd_toStartOf="@+id/imageView3"
-                app:layout_constraintTop_toBottomOf="@+id/downVoteButton" />
+                app:layout_constraintTop_toBottomOf="@+id/shareButton" />
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -119,10 +119,10 @@
                 android:layout_height="15dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintBottom_toTopOf="@+id/comment_text"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/downVoteButton"
+                app:layout_constraintTop_toBottomOf="@+id/shareButton"
                 app:srcCompat="@drawable/eye" />
 
 
