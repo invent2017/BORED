@@ -413,7 +413,16 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 startActivity(viewProfile);
                 break;
             case 1:
-                filterStories();
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Filter stories").setItems(R.array.filter_story_options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        filterStories(which);
+                    }
+                });
+
+                builder.create().show();
+
                 break;
             case 2:
                 Intent viewMyStories = new Intent(this, UserStories.class);
@@ -785,15 +794,18 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                     }
                 }
 
-                searchView.setAdapter(new ArrayAdapter<>(MapsActivityCurrentPlace.this,
-                        R.layout.suggestion_row, popularHashtags));
+                searchView.setAdapter(new SearchAdapter(MapsActivityCurrentPlace.this, popularHashtags));
 
 
                 searchView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        String query = popularHashtags.get(i);
-                        searchHashtags(view, query);
+                        if(i > 0 && i < 5) {
+                            filterStories(i - 1);
+                        } else if(i > 5) {
+                            String query = popularHashtags.get(i - 6);
+                            searchHashtags(view, query);
+                        }
                     }
                 });
 
@@ -898,26 +910,20 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     }
 
     // Filter Stories choice
-    private void filterStories() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Filter stories").setItems(R.array.filter_story_options, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int which) {
-                mMap.clear();
+    private void filterStories(int which) {
+        mMap.clear();
 
-                if(which == 0) {
-                    filterNearbyStories();
-                } else if(which == 2) {
-                    filterMyStories(username);
-                } else if(which == 1) {
-                    filterTodayStories();
-                } else if(which == 3) {
-                    filterReadStories(username);
-                }
-            }
-        });
+        if(which == 0) {
+            filterNearbyStories();
+        } else if(which == 1) {
+            filterTodayStories();
+        } else if(which == 2) {
+            filterMyStories(username);
+        }  else if(which == 3) {
+            filterReadStories(username);
+        }
 
-        builder.create().show();
+
     }
 
     // Only stories posted within 24h will be shown
