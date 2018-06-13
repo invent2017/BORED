@@ -638,7 +638,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                     } else {
                         Toast.makeText(this,
                                 "In " + markerDistance + "metres, a squawk contains " + keywords + ".",
-                                Toast.LENGTH_SHORT).show();
+                                Toast.LENGTH_LONG).show();
                     }
                 }
                 break;
@@ -1427,7 +1427,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                                 .title(mLikelyPlaceNames[which])
                                 .position(markerLatLng)
                                 .snippet(markerSnippet));
-
+f
                         // Position the map's camera at the location of the marker.
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerLatLng,
                                 DEFAULT_ZOOM));
