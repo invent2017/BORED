@@ -137,7 +137,23 @@ public class Startup extends AppCompatActivity {
                 String location = ds.child("Location").getValue(String.class).replace('.', 'd');
                 mDataRef.child("locations").child(location).child(key).removeValue();
                 ds.getRef().removeValue();
+
+                for(DataSnapshot dataSnapshot1 : dataSnapshot.child("users").getChildren()) {
+                    for(DataSnapshot dataSnapshot2 : dataSnapshot1.child("EventsInterested").getChildren()) {
+                        if(key.equals(dataSnapshot2.getKey())) {
+                            dataSnapshot2.getRef().removeValue();
+                        }
+                    }
+
+                    for(DataSnapshot dataSnapshot2 : dataSnapshot1.child("EventsNotInterested").getChildren()) {
+                        if(key.equals(dataSnapshot2.getKey())) {
+                            dataSnapshot2.getRef().removeValue();
+                        }
+                    }
+                }
             }
+
+
         }
 
         getUserData(dataSnapshot);

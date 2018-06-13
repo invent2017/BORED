@@ -27,9 +27,11 @@ import java.util.Calendar;
 import java.util.Map;
 
 public class EventUpload extends AppCompatActivity {
+    private static final String PREFS_NAME = "UserDetails";
     Bundle eventSettings;
 
     String eventKey;
+    String username;
 
     private EditText titleField, descriptionField;
     private TextView eventDateText;
@@ -44,6 +46,7 @@ public class EventUpload extends AppCompatActivity {
         setContentView(R.layout.activity_event_upload);
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
+        username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
 
         eventSettings = getIntent().getExtras();
         eventKey = mDataRef.push().getKey();
@@ -157,6 +160,7 @@ public class EventUpload extends AppCompatActivity {
             String locationKey = event.getLocationString().replace('.', 'd');
             mDataRef.child("events").child(eventKey).updateChildren(event.toMap());
             mDataRef.child("locations").child(locationKey).child(eventKey).setValue(2);
+            mDataRef.child("users").child(username).child("EventsInterested").child(eventKey).setValue(true);
 
             Toast.makeText(this, "Event added!", Toast.LENGTH_SHORT).show();
             finish();

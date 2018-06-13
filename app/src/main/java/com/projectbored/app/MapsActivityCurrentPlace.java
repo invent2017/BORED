@@ -167,7 +167,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
         username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
-        if(username == null) {
+        if(username.equals("")) {
             Intent login = new Intent(this, Login.class);
             startActivity(login);
             finish();
@@ -575,7 +575,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                             mDataRef.child("users").child(username).child("IgnoredStories").child(storyKey).setValue(storyKey);
                         } else {
                             Toast.makeText(this,
-                                    "In " + markerDistance + "metres, a squawk contains " + keywords + ". Tap again to open!",
+                                    "In " + markerDistance + " metres, a squawk contains " + keywords + ". Tap again to open!",
                                     Toast.LENGTH_LONG).show();
                             mDataRef.child("users").child(username).child("IgnoredStories").child(storyKey).setValue(storyKey);
                         }
@@ -1526,6 +1526,20 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 String location = ds.child("Location").getValue(String.class).replace('.', 'd');
                 mDataRef.child("locations").child(location).child(key).removeValue();
                 ds.getRef().removeValue();
+
+                for(DataSnapshot dataSnapshot1 : dataSnapshot.child("users").getChildren()) {
+                    for(DataSnapshot dataSnapshot2 : dataSnapshot1.child("EventsInterested").getChildren()) {
+                        if(key.equals(dataSnapshot2.getKey())) {
+                            dataSnapshot2.getRef().removeValue();
+                        }
+                    }
+
+                    for(DataSnapshot dataSnapshot2 : dataSnapshot1.child("EventsNotInterested").getChildren()) {
+                        if(key.equals(dataSnapshot2.getKey())) {
+                            dataSnapshot2.getRef().removeValue();
+                        }
+                    }
+                }
             }
         }
     }

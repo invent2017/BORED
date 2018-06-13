@@ -32,6 +32,7 @@ public class Event {
         result.put("Description", description);
         result.put("ExpiryTime", expiryTime);
         result.put("Location", location);
+        result.put("Interested", 1);
 
         return result;
     }

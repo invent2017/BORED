@@ -33,8 +33,7 @@ public class ViewEvent extends AppCompatActivity {
     private String username;
 
     private DatabaseReference mDataRef;
-    private TextView titleText, descriptionText, dateText;
-    private TextView timeView;
+    private TextView titleText, descriptionText, dateText, timeView, interestedNumber;
     //private ImageView imageView;
     private Button interestedButton;
 
@@ -60,21 +59,15 @@ public class ViewEvent extends AppCompatActivity {
         descriptionText = findViewById(R.id.event_description);
         dateText = findViewById(R.id.date_text);
         timeView = findViewById(R.id.event_time);
-        //imageView = findViewById(R.id.event_image);
         interestedButton = findViewById(R.id.interested_button);
-        interestedButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mDataRef.child("users").child(username).child("EventsNotInterested").child(eventKey).removeValue();
-                mDataRef.child("users").child(username).child("EventsInterested").child(eventKey).setValue(true);
-
-                //TODO: Should we allow event creators to customise this message?
-                Toast.makeText(ViewEvent.this, "Thank you for your participation in this event!",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+        interestedNumber = findViewById(R.id.interested_number);
+        //imageView = findViewById(R.id.event_image);
 
         loadEventDetails();
+
+
+
+
     }
 
     @Override
@@ -99,14 +92,37 @@ public class ViewEvent extends AppCompatActivity {
         eventKey = eventDetails.getString("key");
     }
 
+    private void indicateInterest(DataSnapshot dataSnapshot) {
+        if(dataSnapshot.child("EventsInterested").hasChild(eventKey)) {
+            Toast.makeText(ViewEvent.this, "You have already indicated your interest for this event.",
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            mDataRef.child("users").child(username).child("EventsNotInterested").child(eventKey).removeValue();
+            mDataRef.child("users").child(username).child("EventsInterested").child(eventKey).setValue(true);
+            int numInterested = dataSnapshot.child("events").child(eventKey).child("Interested").getValue(Integer.class);
+            mDataRef.child("events").child(eventKey).child("Interested").setValue(numInterested + 1);
+            //TODO: Should we allow event creators to customise this message?
+            Toast.makeText(ViewEvent.this, "Thank you for your participation in this event!",
+                    Toast.LENGTH_SHORT).show();
+            interestedButton.setText(R.string.event_already_interested);
+        }
+    }
+
     private void loadEventDetails() {
-        mDataRef.child("events").child(eventKey).addListenerForSingleValueEvent(new ValueEventListener() {
+        mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String eventTitle = dataSnapshot.child("Title").getValue(String.class);
-                String eventDescription = dataSnapshot.child("Description").getValue(String.class);
-                //String imageUri = dataSnapshot.child("URI").getValue(String.class);
-                long eventTimeMillis = dataSnapshot.child("ExpiryTime").getValue(Long.class);
+            public void onDataChange(final DataSnapshot dataSnapshot) {
+                if(dataSnapshot.child("users").child("username").child("EventsInterested").hasChild(eventKey)) {
+                    interestedButton.setText(R.string.event_already_interested);
+                } else {
+                    interestedButton.setText(R.string.event_interested);
+                }
+
+                String eventTitle = dataSnapshot.child("events").child(eventKey).child("Title").getValue(String.class);
+                String eventDescription = dataSnapshot.child("events").child(eventKey).child("Description").getValue(String.class);
+                int numInterested = dataSnapshot.child("events").child(eventKey).child("Interested").getValue(Integer.class);
+                //String imageUri = dataSnapshot.child("events").child(eventKey).child("URI").getValue(String.class);
+                long eventTimeMillis = dataSnapshot.child("events").child(eventKey).child("ExpiryTime").getValue(Long.class);
 
                 Calendar timeNow = Calendar.getInstance();
                 Calendar eventTime = Calendar.getInstance();
@@ -121,10 +137,17 @@ public class ViewEvent extends AppCompatActivity {
                 } else {
                     dateText.setText(R.string.today);
                 }
+                interestedNumber.setText(numInterested);
 
                 //StorageReference mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl(imageUri);
                 //Glide.with(ViewEvent.this).using(new FirebaseImageLoader()).load(mStorageRef).into(imageView);
 
+                interestedButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        indicateInterest(dataSnapshot);
+                    }
+                });
             }
 
             @Override
