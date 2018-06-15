@@ -59,7 +59,7 @@ public class Startup extends AppCompatActivity {
                     underMaintenance = dataSnapshot.child("maintenance").getValue(boolean.class);
                 }
                 if(underMaintenance) {
-                    Toast.makeText(Startup.this, "unBORED is currently under maintenance.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Startup.this, "See GO is currently under maintenance.", Toast.LENGTH_SHORT).show();
                     Startup.this.finish();
                 } else {
                     checkUpdates(dataSnapshot);
@@ -78,14 +78,12 @@ public class Startup extends AppCompatActivity {
     // 1: force update
     // else: choice to update
     private void checkUpdates(final DataSnapshot dataSnapshot) {
-        final String versionName = BuildConfig.VERSION_NAME;
-        String[] versionDetailsArray = dataSnapshot.child("version").getValue(String.class).split(" ");
-        if(!(versionDetailsArray[0].equals(versionName))) {
+        final int versionCode = BuildConfig.VERSION_CODE;
+        int latestVersionCode = dataSnapshot.child("VersionCode").getValue(Integer.class);
+        if(versionCode < latestVersionCode) {
             AlertDialog.Builder updatePrompt = new AlertDialog.Builder(Startup.this);
-            boolean critical = false;
-            if(versionDetailsArray[1].equals("1")) {
-                critical = true;
-            }
+
+            boolean critical = dataSnapshot.child("UpdateCritical").getValue(boolean.class);
             if(critical) {
                 updatePrompt.setMessage("A new version of See GO is available.")
                         .setPositiveButton("Update", new DialogInterface.OnClickListener() {

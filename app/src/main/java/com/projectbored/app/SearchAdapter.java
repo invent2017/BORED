@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -113,7 +114,6 @@ public class SearchAdapter extends BaseAdapter
                     filterResults.count = filteredSearches.size();
                 }
 
-
                 return filterResults;
             }
 
@@ -123,6 +123,14 @@ public class SearchAdapter extends BaseAdapter
                 searchResults.addAll((ArrayList<String>)filterResults.values);
                 notifyDataSetChanged();
             }
+
         };
+
+
+    }
+
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
     }
 }

@@ -200,9 +200,13 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                             storyCaption.setText(caption);
                         }
 
-                        int storyDay = dataSnapshot.child("DateTime").child("date").getValue(Integer.class);
-                        int storyMonth = 1 + dataSnapshot.child("DateTime").child("month").getValue(Integer.class);
-                        int storyYear = 1900 + dataSnapshot.child("DateTime").child("year").getValue(Integer.class);
+                        long timeInMillis = dataSnapshot.child("Time").getValue(Long.class);
+                        Calendar storyCalendar = Calendar.getInstance();
+                        storyCalendar.setTimeInMillis(timeInMillis);
+
+                        int storyDay = storyCalendar.get(Calendar.DAY_OF_MONTH);
+                        int storyMonth = storyCalendar.get(Calendar.MONTH);
+                        int storyYear = storyCalendar.get(Calendar.YEAR);
 
                         DateCreator storyDateCreator = new DateCreator(storyDay, storyMonth, storyYear);
                         dateText.setText(storyDateCreator.getDateString());

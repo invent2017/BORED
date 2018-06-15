@@ -943,12 +943,12 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                         //supposed to compare date
 
                         //gets User date here
-                        long todayDate = new Date().getTime();
+                        long todayDate = Calendar.getInstance().getTimeInMillis();
 
                         //gets story date below
 
                         String storyKey = ds.getKey();
-                        long storyDate = ds.child("DateTime").getValue(Date.class).getTime();
+                        long storyDate = ds.child("Time").getValue(Long.class);
 
                         if(todayDate - storyDate <= 86400000) {
                             Marker storyMarker = mMap.addMarker(new MarkerOptions()
