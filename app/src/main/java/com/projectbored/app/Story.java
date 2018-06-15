@@ -135,7 +135,7 @@ public class Story {
         result.put("Location", locationString(location));
         result.put("Caption", caption);
         result.put("Keywords", keywords);
-        result.put("DateTime", dateTime);
+        result.put("Time", dateTime.getTime());
         result.put("Votes", votes);
         result.put("Views",views);
         result.put("Featured", featured);

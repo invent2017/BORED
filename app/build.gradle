@@ -17,8 +17,8 @@ android {
         applicationId "com.projectbored.app"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 10
-        versionName "1.0.2b"
+        versionCode 11
+        versionName "1.0.3b"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         resValue "string", "google_maps_key", (project.findProperty("GOOGLE_MAPS_API_KEY") ?: "")
         multiDexEnabled true
