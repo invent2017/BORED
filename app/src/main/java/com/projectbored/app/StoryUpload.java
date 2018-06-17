@@ -53,6 +53,8 @@ public class StoryUpload extends AppCompatActivity {
     private StorageReference mStorageRef;
     private DatabaseReference mDataRef;
 
+    private UploadTask uploadTask;
+
     String mCurrentPhotoPath;
     String storyKey;
 
@@ -217,7 +219,7 @@ public class StoryUpload extends AppCompatActivity {
 
         //TODO: check if image with same name already exists
 
-        UploadTask uploadTask = mStorageRef.child(imageFileName).putFile(file, metadata);
+        uploadTask = mStorageRef.child(imageFileName).putFile(file, metadata);
 
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
@@ -383,21 +385,30 @@ public class StoryUpload extends AppCompatActivity {
     }
 
     private void deleteImage() {
-        mDataRef.child("uploads").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.hasChild(storyKey)) {
-                    String storyUri = dataSnapshot.child(storyKey).getValue(String.class);
-                    FirebaseStorage.getInstance().getReferenceFromUrl(storyUri).delete();
-                    dataSnapshot.child(storyKey).getRef().removeValue();
-                }
-            }
+        if(uploadTask != null) {
+            if(uploadTask.isComplete()) {
+                mDataRef.child("uploads").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.hasChild(storyKey)) {
+                            String storyUri = dataSnapshot.child(storyKey).getValue(String.class);
+                            FirebaseStorage.getInstance().getReferenceFromUrl(storyUri).delete();
+                            dataSnapshot.child(storyKey).getRef().removeValue();
+                        }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                finish();
+                        mDataRef.removeEventListener(this);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            } else {
+                uploadTask.cancel();
             }
-        });
+        }
+
     }
 
 }
