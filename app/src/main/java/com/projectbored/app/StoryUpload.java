@@ -98,6 +98,7 @@ public class StoryUpload extends AppCompatActivity {
         return true;
     }
 
+    // Menu allows user to 1) upload story or  2) change image
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.option_upload_story) {
@@ -108,6 +109,7 @@ public class StoryUpload extends AppCompatActivity {
         return true;
     }
 
+    // On back pressed, storyupload activity closes to show mapsactivitycurrentplace
     @Override
     public void onBackPressed() {
         if(storyKey != null) {
@@ -117,6 +119,7 @@ public class StoryUpload extends AppCompatActivity {
         finish();
     }
 
+    // Take pic with camera
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
@@ -144,6 +147,7 @@ public class StoryUpload extends AppCompatActivity {
         }
     }
 
+    // Pick pic from gallery
     private void galleryPickerIntent() {
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
@@ -172,6 +176,8 @@ public class StoryUpload extends AppCompatActivity {
         }
     }
 
+
+    // Set image as image, get URI from image, connects to uploadImage method
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
         //    Bundle extras= data.getExtras();
@@ -244,6 +250,7 @@ public class StoryUpload extends AppCompatActivity {
         });
 
     }
+
 
     private void uploadImageData(UploadTask.TaskSnapshot taskSnapshot) {
         final Uri PHOTO_URI = taskSnapshot.getMetadata().getDownloadUrl();

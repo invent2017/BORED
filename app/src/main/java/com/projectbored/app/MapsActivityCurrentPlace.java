@@ -806,6 +806,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                             String query = popularHashtags.get(i - 6);
                             searchHashtags(view, query);
                         }
+                        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                     }
                 });
 
