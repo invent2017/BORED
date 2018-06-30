@@ -796,7 +796,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
                 searchView.setAdapter(new SearchAdapter(MapsActivityCurrentPlace.this, popularHashtags));
 
-
                 searchView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -806,8 +805,12 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                             String query = popularHashtags.get(i - 6);
                             searchHashtags(view, query);
                         }
+
+                        //Dismisses keyboard after item chosen
                         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+
+                        searchView.clearFocus();
                     }
                 });
 
