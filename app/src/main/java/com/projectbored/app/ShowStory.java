@@ -619,11 +619,25 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
     // Code for deleting story
     private void deleteStory(){
-        Intent delete = new Intent(getApplicationContext(), StoryDeleter.class);
+        final Intent delete = new Intent(getApplicationContext(), StoryDeleter.class);
         storyDetails.putString("Username", username);
         delete.putExtras(storyDetails);
         delete.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(delete);
+
+        new AlertDialog.Builder(this)
+                .setTitle("Delete Story")
+                .setMessage("Are you sure you want to delete this story?")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        startActivity(delete);
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                }).show();
         // RAWR Test Finish
         //finish();
     }

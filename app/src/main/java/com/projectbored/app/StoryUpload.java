@@ -1,7 +1,10 @@
 package com.projectbored.app;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
@@ -9,6 +12,8 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
@@ -46,6 +51,8 @@ import java.util.regex.Pattern;
 public class StoryUpload extends AppCompatActivity {
     //private static final String TAG = ShowStory.class.getSimpleName();  //for debugging purposes
     private static final String PREFS_NAME = "UserDetails";
+    private static final int PERMISSIONS_REQUEST_ACCESS_CAMERA = 1;
+    private boolean cameraPermissionGranted;
 
     EditText caption;
     EditText keywordsBox;
@@ -85,7 +92,7 @@ public class StoryUpload extends AppCompatActivity {
         storyKey = mDataRef.child("stories").push().getKey();
 
         if(storySettings.getBoolean("FromCamera")){
-            dispatchTakePictureIntent();
+            getCameraPermission();
         } else {
             galleryPickerIntent();
         }
@@ -119,28 +126,59 @@ public class StoryUpload extends AppCompatActivity {
         finish();
     }
 
+    private void getCameraPermission() {
+        if(ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+            cameraPermissionGranted = true;
+            dispatchTakePictureIntent();
+        } else {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CAMERA}, PERMISSIONS_REQUEST_ACCESS_CAMERA);
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        cameraPermissionGranted = false;
+        switch (requestCode) {
+            case PERMISSIONS_REQUEST_ACCESS_CAMERA: {
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    cameraPermissionGranted = true;
+                    dispatchTakePictureIntent();
+                } else {
+                    Toast.makeText(this, "Couldn't access camera. Please check your permissions and try again.",
+                            Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
+        }
+    }
+
     // Take pic with camera
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             File photoFile = null;
-            try{
+            try {
                 photoFile = createImageFile();
-            }catch (IOException ex) {
+            } catch (IOException ex) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setMessage("Camera failed. Please try again later.")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent backToMap = new Intent(StoryUpload.this, MapsActivityCurrentPlace.class);
-                        backToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(backToMap);
-                    }
-                });
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent backToMap = new Intent(StoryUpload.this,
+                                        MapsActivityCurrentPlace.class);
+                                backToMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(backToMap);
+                            }
+                        });
                 builder.create().show();
             }
             if (photoFile != null) {
-                Uri photoUri = FileProvider.getUriForFile(this, "com.projectbored.app.fileprovider", photoFile);
+                Uri photoUri = FileProvider.getUriForFile(this, "com.projectbored.app.fileprovider",
+                        photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
             }

@@ -8,6 +8,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.media.ExifInterface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -65,6 +66,7 @@ public class MultiSquawk extends AppCompatActivity {
 
     String mCurrentPhotoPath;
     String storyKey;
+    String imageFileName;
 
     Bundle storySettings;
 
@@ -199,7 +201,7 @@ public class MultiSquawk extends AppCompatActivity {
                 .setContentType("image/jpg")
                 .build();
 
-        String imageFileName = file.getLastPathSegment();
+        imageFileName = file.getLastPathSegment();
 
         //TODO: check if image with same name already exists
 
@@ -251,7 +253,7 @@ public class MultiSquawk extends AppCompatActivity {
 
     private void uploadStoryData () {
         String photoUri = storySettings.getString("PHOTO_URI");
-        final Location storyLocation = new Location(readGeoTagImage(photoUri));
+        final Location storyLocation = new Location(readGeoTagImage(imageFileName));
 
             final String locationString = Double.toString(storyLocation.getLatitude())
                     + ","
@@ -350,7 +352,7 @@ public class MultiSquawk extends AppCompatActivity {
      */
     public Location readGeoTagImage(String imagePath)
     {
-        Location loc = new Location("");
+        Location loc = new Location(LocationManager.GPS_PROVIDER);
         try {
             ExifInterface exif = new ExifInterface(imagePath);
             float [] latlong = new float[2] ;
