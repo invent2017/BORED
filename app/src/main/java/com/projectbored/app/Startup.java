@@ -55,20 +55,6 @@ public class Startup extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                for(DataSnapshot ds : dataSnapshot.child("stories").getChildren()) {
-                    if(!(ds.hasChild("URI"))) {
-                        String key = ds.getKey();
-
-                        for(DataSnapshot ds1 : dataSnapshot.child("users").getChildren()) {
-                            if(ds1.child("stories").hasChild(key)) {
-                                ds1.child("stories").child(key).getRef().removeValue();
-                            }
-                        }
-
-                        ds.getRef().removeValue();
-                    }
-                }
-
                 boolean underMaintenance = false;
                 if(dataSnapshot.child("maintenance").exists()) {
                     underMaintenance = dataSnapshot.child("maintenance").getValue(boolean.class);
