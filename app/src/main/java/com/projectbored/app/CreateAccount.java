@@ -38,7 +38,6 @@ public class CreateAccount extends AppCompatActivity {
     private EditText usernameField;
     private EditText emailField;
     private EditText passwordField;
-
     private Button signUpButton;
 
     @Override

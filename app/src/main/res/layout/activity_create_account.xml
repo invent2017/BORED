@@ -18,24 +18,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/login_title"
+        <ImageView
+            android:id="@+id/imageView4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="casual"
-            android:text="@string/login_title"
-            android:textAlignment="center"
-            android:textSize="36sp" />
+            android:layout_height="170dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/splash" />
 
         <EditText
             android:id="@+id/signUpUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="2dp"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"
@@ -44,37 +39,38 @@
             android:hint="@string/prompt_username"
             android:inputType="textPersonName"
             android:textAlignment="center"
-            android:textColorHint="#87adbf" />
+            android:textColorHint="#87adbf"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/signUpEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="2dp"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="3dp"
             android:ems="10"
             android:fontFamily="sans-serif"
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
             android:textAlignment="center"
-            android:textColorHint="#87adbf" />
+            android:textColorHint="#87adbf"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/signUpPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="3dp"
             android:ems="10"
             android:fontFamily="sans-serif"
             android:hint="@string/prompt_password"
             android:inputType="textPassword"
             android:textAlignment="center"
-            android:textColorHint="#87adbf" />
+            android:textColorHint="#87adbf"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/signup_button"

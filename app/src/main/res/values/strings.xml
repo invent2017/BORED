@@ -38,7 +38,7 @@
     <!-- Strings related to login -->
     <string name="login_title">Welcome to See GO</string>
     <string name="prompt_username">Username</string>
-    <string name="prompt_email">Email address</string>
+    <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="prompt_old_password">Old Password</string>
     <string name="prompt_new_password">New Password</string>

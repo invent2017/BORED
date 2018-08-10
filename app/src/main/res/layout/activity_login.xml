@@ -19,24 +19,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/login_title"
+        <ImageView
+            android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="casual"
-            android:text="@string/login_title"
-            android:textAlignment="center"
-            android:textSize="36sp" />
+            android:layout_height="170dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/splash" />
 
         <EditText
             android:id="@+id/signInEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="2dp"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"
@@ -45,40 +40,41 @@
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
             android:textAlignment="center"
-            android:textColorHint="#87adbf" />
+            android:textColorHint="#87adbf"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/signInPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="3dp"
             android:ems="10"
             android:fontFamily="sans-serif"
             android:hint="@string/prompt_password"
             android:inputType="textPassword"
             android:textAlignment="center"
-            android:textColorHint="#87adbf" />
+            android:textColorHint="#87adbf"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/login_error_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="3dp"
-            android:textColor="#ff0000"
-            android:text="" />
+            android:text=""
+            android:textColor="#ff0000" />
 
         <Button
             android:id="@+id/signin_button"
             android:layout_width="250dp"
             android:layout_height="30dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="13dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="3dp"
@@ -91,7 +87,7 @@
             android:layout_width="250dp"
             android:layout_height="30dp"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="8dp"
+            android:layout_margin="2dp"
             android:background="@drawable/roundishbutton"
             android:text="@string/prompt_sign_up"
             android:textColor="#fafafa" />
