@@ -324,7 +324,7 @@ public class StoryFragment extends Fragment {
                         StorageReference mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl(uri);
 
                         //Load story image into image view.
-                        Glide.with(getActivity()).using(new FirebaseImageLoader()).load(mStorageRef).into(imageView);
+                        Glide.with(getActivity()).load(mStorageRef).into(imageView);
 
                         storyCaption.setText(caption);
                     }

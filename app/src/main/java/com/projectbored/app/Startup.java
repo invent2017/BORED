@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,13 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,6 +44,7 @@ public class Startup extends AppCompatActivity {
     private boolean loggedIn;
 
     private DatabaseReference mDataRef;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +53,7 @@ public class Startup extends AppCompatActivity {
         setContentView(R.layout.activity_startup);
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
 
         checkAppStatus();
 
@@ -155,11 +165,11 @@ public class Startup extends AppCompatActivity {
 
         }
 
-        getUserData(dataSnapshot);
+        getUserData();
     }
 
     // Checks log-in and onboarding using SharedPreferences
-    private void getUserData(DataSnapshot dataSnapshot) {
+    private void getUserData() {
         SharedPreferences preferences =  getSharedPreferences(PREFS_NAME, 0);
 
         // Check if onboarding has been completed
@@ -183,22 +193,61 @@ public class Startup extends AppCompatActivity {
                 finish();
 
             } else {
-                String username = settings.getString("Username", "");
+                String email = settings.getString("Email", "");
                 String password = settings.getString("Password", "");
                 //Toast.makeText(Startup.this, "Logged in as " + username + "." , Toast.LENGTH_LONG).show();
-                verifyAccount(settings, username, password, dataSnapshot.child("users"));
-
-                Intent start = new Intent(Startup.this, MapsActivityCurrentPlace.class);
-                startActivity(start);
-
-                finish();
+                verifyAccount(email, password);
             }
 
         }
     }
 
     // verify log-in
-    private void verifyAccount(SharedPreferences settings, String username, String password, DataSnapshot dataSnapshot){
+    private void verifyAccount(final String email, String password) {
+        if (email.equals("") || password.equals("")) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Hello!");
+            builder.setMessage("If you have created an account using an earlier version of the app, you will need to create a new account as we are moving your account data to a more secure place. You will not be able to access any data you may have saved in your old account for now, but we will work on migrating it over to your new account.");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    Intent logout = new Intent(Startup.this, Logout.class);
+                    logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(logout);
+
+                    finish();
+                }
+            });
+            builder.show();
+        } else {
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()) {
+                        Toast.makeText(Startup.this, "Logged in as " + email + ".", Toast.LENGTH_SHORT).show();
+
+                        Intent i = new Intent(Startup.this, MapsActivityCurrentPlace.class);
+                        startActivity(i);
+                        finish();
+                    }
+                }
+            }).addOnFailureListener(Startup.this, new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(Startup.this, "Account settings have changed. Please log in again.", Toast.LENGTH_SHORT).show();
+
+                    Intent logout = new Intent(Startup.this, Logout.class);
+                    logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(logout);
+
+                    finish();
+
+                }
+            });
+
+
+        /* Old code
+        /
         if(dataSnapshot.child(username).exists()){
             if(dataSnapshot.child(username).child("Password").getValue(String.class).equals(password)) {
                 Toast.makeText(Startup.this, "Logged in as " + username + "." , Toast.LENGTH_SHORT).show();
@@ -221,6 +270,7 @@ public class Startup extends AppCompatActivity {
             startActivity(logout);
 
             finish();
+        }*/
         }
     }
 }

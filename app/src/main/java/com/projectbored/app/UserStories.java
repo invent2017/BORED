@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,6 +23,7 @@ public class UserStories extends AppCompatActivity {
     private ListView storyList;
 
     private DatabaseReference mDataRef;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +37,9 @@ public class UserStories extends AppCompatActivity {
         actionBar.setDisplayShowTitleEnabled(false);
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
 
-        username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
+        username = mAuth.getUid();
         storyList = (ListView) findViewById(R.id.story_list);
 
         getUserStories();

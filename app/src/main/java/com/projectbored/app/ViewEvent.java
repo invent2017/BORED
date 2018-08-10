@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +35,7 @@ public class ViewEvent extends AppCompatActivity {
     private String username;
 
     private DatabaseReference mDataRef;
+    private FirebaseAuth mAuth;
     private TextView titleText, descriptionText, dateText, timeView, interestedNumber;
     //private ImageView imageView;
     private Button interestedButton;
@@ -40,7 +43,10 @@ public class ViewEvent extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
+        mDataRef = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+
+        username = mAuth.getUid();
 
         eventDetails = getIntent().getExtras();
         getEventKey();
@@ -52,8 +58,6 @@ public class ViewEvent extends AppCompatActivity {
         actionBar.setLogo(R.drawable.whitebored);
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
-
-        mDataRef = FirebaseDatabase.getInstance().getReference();
 
         titleText = findViewById(R.id.event_title);
         descriptionText = findViewById(R.id.event_description);

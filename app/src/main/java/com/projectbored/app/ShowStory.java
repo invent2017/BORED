@@ -28,6 +28,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -84,6 +86,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     DatabaseReference mDataRef;
     DatabaseReference mVotesRef;
     DatabaseReference mViewsRef;
+    FirebaseAuth mAuth;
 
     StorageReference mStorageRef;
 
@@ -105,16 +108,14 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
         storyDetails = getIntent().getExtras();
         STORY_KEY = storyDetails.getString("key");
-        username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
-        if(username.equals("")){
-            logout();
-        }
 
         comments = new ArrayList<>();
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
-
         mStorageRef = FirebaseStorage.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+
+        username = mAuth.getUid();
 
         imageView = findViewById(R.id.imageView);
 
@@ -179,6 +180,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         if(storyKey != null) {
             mViewsRef= FirebaseDatabase.getInstance().getReference().child("stories").child(storyKey).child("Views");
             mVotesRef= FirebaseDatabase.getInstance().getReference().child("stories").child(storyKey).child("Votes");
+            mDataRef.child("users").child(username).child("IgnoredStories").child(storyKey).removeValue();
             mDataRef.child("stories").child(storyKey).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -195,7 +197,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                             StorageReference mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl(uri);
 
                             //Load story image into image view.
-                            Glide.with(ShowStory.this).using(new FirebaseImageLoader()).load(mStorageRef).into(imageView);
+                            Glide.with(ShowStory.this).load(mStorageRef).into(imageView);
 
                             storyCaption.setText(caption);
                         }

@@ -232,23 +232,26 @@ public class MultiSquawk extends AppCompatActivity {
     }
 
     private void uploadImageData(UploadTask.TaskSnapshot taskSnapshot) {
-        final Uri PHOTO_URI = taskSnapshot.getMetadata().getDownloadUrl();
-
-        if(PHOTO_URI == null) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-            builder.setMessage("Upload failed. Please try again later.")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent i = new Intent(MultiSquawk.this, MapsActivityCurrentPlace.class);
-                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(i);
-                        }
-                    });
-            builder.create().show();
-        } else {
-            mDataRef.child("uploads").child(storyKey).setValue(PHOTO_URI.toString());
-        }
+        taskSnapshot.getMetadata().getReference().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                if(uri == null) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                    builder.setMessage("Upload failed. Please try again later.")
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent i = new Intent(MultiSquawk.this, MapsActivityCurrentPlace.class);
+                                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(i);
+                                }
+                            });
+                    builder.create().show();
+                } else {
+                    mDataRef.child("uploads").child(storyKey).setValue(uri.toString());
+                }
+            }
+        });
     }
 
     private void uploadStoryData () {

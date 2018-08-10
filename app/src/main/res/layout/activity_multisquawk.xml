@@ -34,8 +34,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="0.8"
-                android:contentDescription="image to be uploaded"
-                app:srcCompat="@drawable/cast_abc_scrubber_control_off_mtrl_alpha" />
+                android:contentDescription="image to be uploaded" />
 
             <EditText
                 android:id="@+id/story_caption"

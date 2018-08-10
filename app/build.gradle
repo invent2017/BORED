@@ -17,8 +17,8 @@ android {
         applicationId "com.projectbored.app"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 12
-        versionName "1.0.4b"
+        versionCode 13
+        versionName "1.1.4b"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         resValue "string", "google_maps_key", (project.findProperty("GOOGLE_MAPS_API_KEY") ?: "")
         multiDexEnabled true
@@ -63,19 +63,26 @@ dependencies {
     implementation 'com.android.support:design:27.0.0'
     implementation 'com.android.support:mediarouter-v7:27.0.0'
     implementation 'com.android.support:palette-v7:27.0.0'
-    implementation 'com.google.android.gms:play-services:11.6.0'
+    //implementation 'com.google.android.gms:play-services:12.0.1'
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
+    implementation 'com.google.android.gms:play-services-location:15.0.1'
+    implementation 'com.google.android.gms:play-services-places:15.0.1'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.google.firebase:firebase-storage:10.0.1'
-    implementation 'com.google.firebase:firebase-auth:10.0.1'
-    implementation 'com.google.firebase:firebase-database:10.0.1'
-    implementation 'com.firebaseui:firebase-ui-storage:0.6.0'
+    implementation 'com.firebaseui:firebase-ui-auth:4.0.0'
+    implementation 'com.facebook.android:facebook-android-sdk:4.34.0'
+    implementation 'com.twitter.sdk.android:twitter-core:3.1.1'
+    implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.google.firebase:firebase-storage:16.0.1'
+    implementation 'com.google.firebase:firebase-auth:16.0.2'
+    implementation 'com.google.firebase:firebase-database:16.0.1'
+    implementation 'com.firebaseui:firebase-ui-storage:4.0.0'
     implementation 'com.getbase:floatingactionbutton:1.10.1'
     implementation 'com.github.vajro:MaterialDesignLibrary:1.6'
     //implementation 'com.github.navasmdc:MaterialDesign:1.5@aar'
     implementation 'com.ogaclejapan.smarttablayout:library:1.2.1@aar'
 
     //Crashlytics
-    api 'com.crashlytics.sdk.android:crashlytics:2.9.1'
+    api 'com.crashlytics.sdk.android:crashlytics:2.9.4'
 
     testImplementation 'junit:junit:4.12'
 }

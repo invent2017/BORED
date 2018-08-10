@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +25,7 @@ public class ShowMultipleStories extends AppCompatActivity {
     String username;
 
     DatabaseReference mDataRef;
+    FirebaseAuth mAuth;
 
     ViewPager storiesPager;
     String[] storyKeys;
@@ -33,7 +36,8 @@ public class ShowMultipleStories extends AppCompatActivity {
         setContentView(R.layout.activity_show_multiple_stories);
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
-        username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
+        mAuth = FirebaseAuth.getInstance();
+        username = mAuth.getUid();
 
         stories = getIntent().getExtras();
         storyKeys = stories.getString("key").split(",");

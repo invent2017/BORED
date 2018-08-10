@@ -47,8 +47,9 @@
     <string name="prompt_sign_up">Don\'t have an account?</string>
     <string name="action_sign_up">Sign up</string>
     <string name="error_invalid_username">This username is invalid.</string>
-    <string name="error_incorrect_username">This username does not exist.</string>
+    <string name="error_invalid_user">Incorrect username.</string>
     <string name="error_existing_username">This username is already taken.</string>
+    <string name="error_incorrect_email">An account with this email address does not exist.</string>
     <string name="error_invalid_email">Please enter a valid email address.</string>
     <string name="error_existing_email">An account with this email address already exists.</string>
     <string name="error_invalid_password">This password is too short.</string>
@@ -86,4 +87,13 @@
     <string name="upvotes">upvotes</string>
     <string name="what_is_this_about">What is this about?</string>
     <string name="take_a_survey">Take a Survey instead</string>
+
+    <!-- for future use
+    <string name="facebook_application_id" translatable="false">YOUR_APP_ID</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fbYOUR_APP_ID</string>
+
+    <string name="twitter_consumer_key" translatable="false">YOUR_CONSUMER_KEY</string>
+    <string name="twitter_consumer_secret" translatable="false">YOUR_CONSUMER_SECRET</string>
+     -->
+
 </resources>

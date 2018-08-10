@@ -20,6 +20,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -39,6 +41,7 @@ public class EventUpload extends AppCompatActivity {
     private TimePicker timePicker;
 
     private DatabaseReference mDataRef;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +49,8 @@ public class EventUpload extends AppCompatActivity {
         setContentView(R.layout.activity_event_upload);
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
-        username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
+        mAuth = FirebaseAuth.getInstance();
+        username = mAuth.getUid();
 
         eventSettings = getIntent().getExtras();
         eventKey = mDataRef.push().getKey();

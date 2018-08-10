@@ -74,16 +74,16 @@
                 app:layout_constraintBaseline_toBaselineOf="@+id/stories_read"
                 app:layout_constraintLeft_toRightOf="@+id/stories_read" />
 
-            <ImageView
+            <!--ImageView
                 android:id="@+id/walk"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stories"
-                app:srcCompat="@drawable/man_walk" />
+                app:srcCompat="@drawable/man_walk" /-->
 
-            <TextView
+            <!--TextView
                 android:id="@+id/kilometeres_covered"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
@@ -93,16 +93,16 @@
                 android:text="@string/no"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="@+id/walk"
-                app:layout_constraintLeft_toRightOf="@+id/walk" />
+                app:layout_constraintLeft_toRightOf="@+id/walk" /-->
 
-            <TextView
+            <!--TextView
                 android:id="@+id/kilometres_covered_text"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="@string/kilometres_covered"
                 app:layout_constraintBaseline_toBaselineOf="@+id/kilometeres_covered"
-                app:layout_constraintLeft_toRightOf="@+id/kilometeres_covered" />
+                app:layout_constraintLeft_toRightOf="@+id/kilometeres_covered" /-->
 
             <ImageView
                 android:id="@+id/upload"
@@ -110,7 +110,7 @@
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/walk"
+                app:layout_constraintTop_toBottomOf="@+id/stories"
                 app:srcCompat="@drawable/upload" />
 
             <TextView

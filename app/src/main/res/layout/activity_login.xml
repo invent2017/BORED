@@ -33,7 +33,7 @@
             android:textSize="36sp" />
 
         <EditText
-            android:id="@+id/signInUsername"
+            android:id="@+id/signInEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -42,8 +42,8 @@
             android:layout_marginTop="8dp"
             android:ems="10"
             android:fontFamily="sans-serif"
-            android:hint="@string/prompt_username"
-            android:inputType="textPersonName"
+            android:hint="@string/prompt_email"
+            android:inputType="textEmailAddress"
             android:textAlignment="center"
             android:textColorHint="#87adbf" />
 
@@ -61,6 +61,17 @@
             android:inputType="textPassword"
             android:textAlignment="center"
             android:textColorHint="#87adbf" />
+
+        <TextView
+            android:id="@+id/login_error_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:textColor="#ff0000"
+            android:text="" />
 
         <Button
             android:id="@+id/signin_button"

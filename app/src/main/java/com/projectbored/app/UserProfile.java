@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,13 +20,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class UserProfile extends AppCompatActivity {
-    private static final String PREFS_NAME = "UserDetails";
+    //private static final String PREFS_NAME = "UserDetails";
 
-    private TextView usernameField, emailField, distanceNumber, viewsNumber,
+    private TextView usernameField, emailField, /*distanceNumber,*/ viewsNumber,
             storyNumber, viewedNumber, upvotesNumber, upvotedNumber;
     private Button inviteFriendButton;
 
     private DatabaseReference mDataRef;
+    private FirebaseAuth mAuth;
     private String username;
 
     @Override
@@ -36,7 +39,7 @@ public class UserProfile extends AppCompatActivity {
 
         usernameField = findViewById(R.id.username);
         emailField = findViewById(R.id.email);
-        distanceNumber = findViewById(R.id.kilometeres_covered);
+        //distanceNumber = findViewById(R.id.kilometeres_covered);
         viewsNumber = findViewById(R.id.stories_read);
         storyNumber = findViewById(R.id.stories_posted);
         viewedNumber = findViewById(R.id.views_received);
@@ -51,8 +54,9 @@ public class UserProfile extends AppCompatActivity {
         });
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
 
-        username = getSharedPreferences(PREFS_NAME, 0 ).getString("Username", "");
+        username = mAuth.getUid();
 
         if(username != null) {
             loadFields();
@@ -90,11 +94,11 @@ public class UserProfile extends AppCompatActivity {
     }
 
     private void loadFields() {
-        usernameField.setText(username);
 
         mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                usernameField.setText(dataSnapshot.child("users").child(username).child("Username").getValue(String.class));
                 emailField.setText(dataSnapshot.child("users").child(username).child("Email").getValue(String.class));
                 //distanceNumber.setText(dataSnapshot.child("users").child(username)
                                         //.child("Distance").getValue(Integer.class).toString());

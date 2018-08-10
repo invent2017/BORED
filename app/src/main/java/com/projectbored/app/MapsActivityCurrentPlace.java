@@ -44,6 +44,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -120,6 +121,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     //private LatLng[] mLikelyPlaceLatLngs = new LatLng[mMaxEntries];
 
     private DatabaseReference mDataRef;
+    private FirebaseAuth mAuth;
     private ValueEventListener storyListener;
 
     //private boolean isMapLoaded;
@@ -165,16 +167,32 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+        username = mAuth.getCurrentUser().getUid();
+        displayedUsername =  findViewById(R.id.my_username);
+        mDataRef.child("users").child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String actualUsername = dataSnapshot.child("Username").getValue(String.class);
+                displayedUsername.setText(actualUsername);
 
-        username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
+                mDataRef.removeEventListener(this);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        /* username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
         if(username.equals("")) {
             Intent login = new Intent(this, Login.class);
             startActivity(login);
             finish();
         } else {
-            displayedUsername =  findViewById(R.id.my_username);
-            displayedUsername.setText(username);
-        }
+
+        } */
 
         // Triggers MultiSquawk where pictures are uploaded using geotags instead of current location
         exploreButton = findViewById(R.id.explore);

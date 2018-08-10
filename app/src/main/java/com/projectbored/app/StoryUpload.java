@@ -27,6 +27,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -59,6 +61,7 @@ public class StoryUpload extends AppCompatActivity {
 
     private StorageReference mStorageRef;
     private DatabaseReference mDataRef;
+    private FirebaseAuth mAuth;
 
     private UploadTask uploadTask;
 
@@ -81,6 +84,7 @@ public class StoryUpload extends AppCompatActivity {
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mDataRef = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
 
         caption = findViewById(R.id.story_caption);
         if(storySettings.getString("Caption") != null) {
@@ -291,23 +295,28 @@ public class StoryUpload extends AppCompatActivity {
 
 
     private void uploadImageData(UploadTask.TaskSnapshot taskSnapshot) {
-        final Uri PHOTO_URI = taskSnapshot.getMetadata().getDownloadUrl();
+        taskSnapshot.getMetadata().getReference().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                if(uri == null) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                    builder.setMessage("Upload failed. Please try again later.")
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent i = new Intent(StoryUpload.this, MapsActivityCurrentPlace.class);
+                                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(i);
+                                }
+                            });
+                    builder.create().show();
+                } else {
+                    mDataRef.child("uploads").child(storyKey).setValue(uri.toString());
+                }
+            }
+        });
 
-        if(PHOTO_URI == null) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-            builder.setMessage("Upload failed. Please try again later.")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent i = new Intent(StoryUpload.this, MapsActivityCurrentPlace.class);
-                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(i);
-                        }
-                    });
-            builder.create().show();
-        } else {
-            mDataRef.child("uploads").child(storyKey).setValue(PHOTO_URI.toString());
-        }
+
     }
 
     private void uploadStoryData () {
@@ -340,7 +349,7 @@ public class StoryUpload extends AppCompatActivity {
                         childUpdates.put("/locations/" + locationKey + "/" + storyKey, 0);
 
                         if (storySettings.getBoolean("Logged in")) {
-                            String username = getSharedPreferences(PREFS_NAME, 0).getString("Username", "");
+                            String username = mAuth.getUid();
                             childUpdates.put("/users/" + username + "/stories/" + storyKey, locationString);
                         }
 

@@ -84,7 +84,7 @@ public class UserStoryListAdapter extends BaseAdapter {
         String storyUri = dataSnapshot.child(storyKey).child("URI").getValue(String.class);
 
         StorageReference mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl(storyUri);
-        Glide.with(context).using(new FirebaseImageLoader()).load(mStorageRef).into(viewHolder.imageView);
+        Glide.with(context).load(mStorageRef).into(viewHolder.imageView);
 
         String storyCaption = dataSnapshot.child(storyKey).child("Caption").getValue(String.class);
         if(storyCaption == null) {
