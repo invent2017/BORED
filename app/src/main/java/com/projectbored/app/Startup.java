@@ -236,7 +236,7 @@ public class Startup extends AppCompatActivity {
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(Startup.this, "Account settings have changed. Please log in again.", Toast.LENGTH_SHORT).show();
 
-                    Intent logout = new Intent(Startup.this, Logout.class);
+                    Intent logout = new Intent(Startup.this, LogoutNoToast.class);
                     logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(logout);
 

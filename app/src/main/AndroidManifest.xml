@@ -95,7 +95,8 @@
             android:name="io.fabric.ApiKey"
             android:value="99b6567a311795acfabe5a3d549e6727b3ab56eb" />
 
-        <activity android:name=".EmptyMap"></activity>
+        <activity android:name=".EmptyMap" />
+        <activity android:name=".LogoutNoToast"></activity>
     </application>
 
 </manifest>

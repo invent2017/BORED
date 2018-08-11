@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -37,6 +38,7 @@ import java.util.Locale;
 public class StoryFragment extends Fragment {
 
     String storyKey;
+    String locationString;
     String username;
 
     ImageView imageView;
@@ -66,6 +68,8 @@ public class StoryFragment extends Fragment {
         Bundle storyDetails = getArguments();
         storyKey = storyDetails.getString("key");
         username = getUsername();
+        locationString = new StringBuilder().append(storyDetails.getDouble("Latitude"))
+                .append(",").append(storyDetails.getDouble("Longitude")).toString();
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
 
@@ -90,13 +94,13 @@ public class StoryFragment extends Fragment {
             }
         });
 
-        downVoteButton = view.findViewById(R.id.downVoteButton);
+        /*downVoteButton = view.findViewById(R.id.downVoteButton);
         downVoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 downVote();
             }
-        });
+        });*/
 
         shareButton = view.findViewById(R.id.shareButton);
         shareButton.setOnClickListener(new View.OnClickListener() {
@@ -135,7 +139,7 @@ public class StoryFragment extends Fragment {
         DatabaseReference mStoryRef = FirebaseDatabase.getInstance().getReference().child("stories").child(storyKey).child("Views");
         mStoryRef.runTransaction(new Transaction.Handler() {
             @Override
-            public Transaction.Result doTransaction(MutableData mutableData) {
+            public @NonNull Transaction.Result doTransaction(@NonNull MutableData mutableData) {
                 if(mutableData.getValue() != null) {
                     int storyViews = mutableData.getValue(Integer.class);
                     ++storyViews;
@@ -154,15 +158,15 @@ public class StoryFragment extends Fragment {
 
         mDataRef.child("users").child(username).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 if(!(dataSnapshot.child("ReadStories").hasChild(storyKey))){
-                    dataSnapshot.child("ReadStories").child(storyKey).getRef().setValue(storyKey);
+                    dataSnapshot.child("ReadStories").child(storyKey).getRef().setValue(locationString);
                 }
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -203,28 +207,28 @@ public class StoryFragment extends Fragment {
                         dataSnapshot.child("users").child(getUsername()).child("DownvotedStories")
                                 .child(storyKey).getRef().setValue(null);
                         dataSnapshot.child("users").child(getUsername()).child("UpvotedStories")
-                                .child(storyKey).getRef().setValue(storyKey);
+                                .child(storyKey).getRef().setValue(locationString);
                     } else {
                         votes++;
                         dataSnapshot.child("stories").child(storyKey)
                                 .child("Upvoters").child(getUsername()).getRef().setValue(getUsername());
 
                         dataSnapshot.child("users").child(getUsername()).child("UpvotedStories")
-                                .child(storyKey).getRef().setValue(storyKey);
+                                .child(storyKey).getRef().setValue(locationString);
                     }
                     dataSnapshot.child("stories").child(storyKey).child("Votes").getRef().setValue(votes);
                 }
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
 
     }
 
-    public void downVote(){
+    /*public void downVote(){
         mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -250,14 +254,14 @@ public class StoryFragment extends Fragment {
                         dataSnapshot.child("users").child(getUsername()).child("UpvotedStories")
                                 .child(storyKey).getRef().setValue(null);
                         dataSnapshot.child("users").child(getUsername()).child("DownvotedStories")
-                                .child(storyKey).getRef().setValue(storyKey);
+                                .child(storyKey).getRef().setValue(locationString);
                     } else {
                         votes--;
                         dataSnapshot.child("stories").child(storyKey)
                                 .child("Downvoters").child(getUsername()).getRef().setValue(getUsername());
 
                         dataSnapshot.child("users").child(getUsername()).child("DownvotedStories")
-                                .child(storyKey).getRef().setValue(storyKey);
+                                .child(storyKey).getRef().setValue(locationString);
                     }
                     dataSnapshot.child("stories").child(storyKey).child("Votes").getRef().setValue(votes);
                 }
@@ -268,7 +272,7 @@ public class StoryFragment extends Fragment {
 
             }
         });
-    }
+    }*/
 
     public void shareFunction(){
         // this is the sharing code, it might not work -hy
@@ -290,10 +294,10 @@ public class StoryFragment extends Fragment {
                 break;
             }
 
-            case R.id.downVoteButton: {
+            /*case R.id.downVoteButton: {
                 downVote();
                 break;
-            }
+            }*/
 
             case R.id.shareButton: {
                 shareFunction();

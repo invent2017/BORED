@@ -1041,78 +1041,28 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         mDataRef.removeEventListener(storyListener);
         mDataRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.child("locations").getChildren()) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.child("users").child(username).child("ReadStories").getChildren()) {
                     if(ds.exists()) {
-                        String[] locationArray = ds.getKey().replace('d', '.').split(",");
+                        String storyKey = ds.getKey();
+                        String[] locationArray = ds.getValue(String.class).replace('d', '.').split(",");
                         Location storyLocation = new Location(LocationManager.GPS_PROVIDER);
                         storyLocation.setLatitude(Double.parseDouble(locationArray[0]));
                         storyLocation.setLongitude(Double.parseDouble(locationArray[1]));
 
-                        if(ds.getChildrenCount() == 1) {
-                            for (DataSnapshot dataSnapshot1 : ds.getChildren()) {
-                                if(dataSnapshot1.exists()) {
-                                    String storyKey = dataSnapshot1.getKey();
-                                    boolean isRead = false;
-                                    if (isLoggedIn()) {
-                                        if (dataSnapshot.child("users").child(username)
-                                                .child("ReadStories").child(storyKey).exists()) {
-                                            isRead = true;
-                                        }
-                                    }
-
-                                    if (isRead) {
-                                        if(mLastKnownLocation.distanceTo(storyLocation) <= 500) {
-                                            Marker storyMarker = mMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
-                                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
-                                            storyMarker.setTag(storyKey+ "/"+ 0);
-                                        } else {
-                                            Marker storyMarker = mMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
-                                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
-                                            storyMarker.setTag(storyKey+ "/"+ 0);
-                                        }
-
-                                    }
-                                }
-                            }
+                        if(mLastKnownLocation.distanceTo(storyLocation) <= 500) {
+                            Marker storyMarker = mMap.addMarker(new MarkerOptions()
+                                    .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
+                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
+                            storyMarker.setTag(storyKey+ "/"+ 0);
                         } else {
-                            StringBuilder storyKeys = new StringBuilder();
-                            for(DataSnapshot dataSnapshot1 : ds.getChildren()) {
-                                if(dataSnapshot1.getValue(Integer.class) == 0) {
-                                    String storyKey = dataSnapshot1.getKey();
-
-                                    boolean isRead = false;
-                                    if (isLoggedIn()) {
-                                        if (dataSnapshot.child("users").child(username)
-                                                .child("ReadStories").child(storyKey).exists()) {
-                                            isRead = true;
-                                        }
-                                    }
-
-                                    if(isRead) {
-                                        if (storyKeys.toString().equals("")) {
-                                            storyKeys.append(storyKey);
-                                        } else {
-                                            storyKeys.append(",").append(storyKey);
-                                        }
-                                    }
-                                }
-                            }
-
-                            if(mLastKnownLocation.distanceTo(storyLocation) <= 500) {
-                                Marker storyMarker = mMap.addMarker(new MarkerOptions()
-                                        .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
-                                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
-                                storyMarker.setTag(storyKeys.toString()+ "/"+ 0);
-                            } else {
-                                Marker storyMarker = mMap.addMarker(new MarkerOptions()
-                                        .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
-                                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
-                                storyMarker.setTag(storyKeys+ "/"+ 0);
-                            }
+                            Marker storyMarker = mMap.addMarker(new MarkerOptions()
+                                    .position(new LatLng(storyLocation.getLatitude(), storyLocation.getLongitude()))
+                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
+                            storyMarker.setTag(storyKey+ "/"+ 0);
                         }
+
+
                     } else {
                         SingleToast.show(MapsActivityCurrentPlace.this, "There are no stories.", Toast.LENGTH_SHORT);
                     }
@@ -1121,7 +1071,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -1132,7 +1082,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         mDataRef.removeEventListener(storyListener);
         mDataRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.child("locations").getChildren()) {
                     if(ds.exists()) {
                         String[] locationArray = ds.getKey().replace('d', '.').split(",");
@@ -1178,7 +1128,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -1190,7 +1140,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         mDataRef.child("users").child(username).child("stories").addValueEventListener(new ValueEventListener() {
 
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     if(ds.exists()) {
                         String storyKey = ds.getKey();

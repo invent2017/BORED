@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -63,6 +64,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
     private static final String PREFS_NAME = "UserDetails";
     private String STORY_KEY;
+    private String locationString;
     private String username;
 
     ArrayList<String> comments;
@@ -108,6 +110,8 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
         storyDetails = getIntent().getExtras();
         STORY_KEY = storyDetails.getString("key");
+        locationString = new StringBuilder().append(storyDetails.getDouble("Latitude"))
+                .append(",").append(storyDetails.getDouble("Longitude")).toString();
 
         comments = new ArrayList<>();
 
@@ -349,7 +353,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 if(!(dataSnapshot.child("ReadStories").hasChild(STORY_KEY))){
-                    dataSnapshot.child("ReadStories").child(STORY_KEY).getRef().setValue(STORY_KEY);
+                    dataSnapshot.child("ReadStories").child(STORY_KEY).getRef().setValue(locationString);
                 }
             }
 
@@ -376,11 +380,11 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                 //downVoteButton.setVisibility(View.VISIBLE);
                 break;
 
-            case R.id.downVoteButton:
-                downVote();
+            //case R.id.downVoteButton:
+            //    downVote();
                 //upVoteButton.setVisibility(View.VISIBLE);
                 //downVoteButton.setVisibility(View.INVISIBLE);
-                break;
+            //    break;
 
             case R.id.shareButton:
                 shareFunction();
@@ -405,7 +409,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     public void upVote(){
         mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child("stories").child(STORY_KEY).getValue() != null) {
                     int votes = dataSnapshot.child("stories").child(STORY_KEY)
                             .child("Votes").getValue(Integer.class);
@@ -435,7 +439,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                         dataSnapshot.child("users").child(username).child("DownvotedStories")
                                 .child(STORY_KEY).getRef().setValue(null);
                         dataSnapshot.child("users").child(username).child("UpvotedStories")
-                                .child(STORY_KEY).getRef().setValue(STORY_KEY);
+                                .child(STORY_KEY).getRef().setValue(locationString);
                     } else {
 
                         // upvotes
@@ -444,7 +448,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                                 .child("Upvoters").child(username).getRef().setValue(username);
 
                         dataSnapshot.child("users").child(username).child("UpvotedStories")
-                                .child(STORY_KEY).getRef().setValue(STORY_KEY);
+                                .child(STORY_KEY).getRef().setValue(locationString);
                     }
                     dataSnapshot.child("stories").child(STORY_KEY).child("Votes").getRef().setValue(votes);
                 }
@@ -460,7 +464,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     }
 
     // Downvote code
-    public void downVote(){
+    /*public void downVote(){
         mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -490,14 +494,14 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                         dataSnapshot.child("users").child(username).child("UpvotedStories")
                                 .child(STORY_KEY).getRef().setValue(null);
                         dataSnapshot.child("users").child(username).child("DownvotedStories")
-                                .child(STORY_KEY).getRef().setValue(STORY_KEY);
+                                .child(STORY_KEY).getRef().setValue(locationString);
                     } else {
                         votes--;
                         dataSnapshot.child("stories").child(STORY_KEY)
                                 .child("Downvoters").child(username).getRef().setValue(username);
 
                         dataSnapshot.child("users").child(username).child("DownvotedStories")
-                                .child(STORY_KEY).getRef().setValue(STORY_KEY);
+                                .child(STORY_KEY).getRef().setValue(locationString);
                     }
                     dataSnapshot.child("stories").child(STORY_KEY).child("Votes").getRef().setValue(votes);
                 }
@@ -522,7 +526,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
             }
         });
 
-    }
+    }*/
 
     // Share function enables user to share the story to friends.
     // Clicking on the link actually opens up the story in-app
@@ -646,8 +650,6 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
     // Code for bookmarking story
     private void bookmarkStory() {
-        String locationString = new StringBuilder().append(storyDetails.getDouble("Latitude"))
-                .append(",").append(storyDetails.getDouble("Longitude")).toString();
         mDataRef.child("users").child(username).child("Bookmarked").child(STORY_KEY).setValue(locationString);
 
         SingleToast.show(this, "Story bookmarked.", Toast.LENGTH_SHORT);

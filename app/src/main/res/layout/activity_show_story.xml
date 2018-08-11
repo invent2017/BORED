@@ -181,7 +181,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/featuredText"
                 app:srcCompat="@android:drawable/ic_menu_report_image" />
 
-            <ImageButton
+            <!--ImageButton
                 android:id="@+id/downVoteButton"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
@@ -190,7 +190,7 @@
                 android:contentDescription="@string/down_vote"
                 app:layout_constraintTop_toBottomOf="@+id/storyCaption"
                 app:srcCompat="@drawable/downvote"
-                tools:layout_editor_absoluteX="86dp" />
+                tools:layout_editor_absoluteX="86dp" /-->
 
             <android.support.constraint.Guideline
                 android:layout_width="wrap_content"
