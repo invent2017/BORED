@@ -71,7 +71,6 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
     ImageView imageView;
     ImageButton upVoteButton;
-    ImageButton downVoteButton;
     ImageButton shareButton;
     TextView voteNumber;
     TextView viewNumber;
@@ -126,10 +125,10 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         upVoteButton = findViewById(R.id.upVoteButton);
         upVoteButton.setOnClickListener(this);
 
-        downVoteButton = findViewById(R.id.downVoteButton);
-        downVoteButton.setOnClickListener(this);
+        //downVoteButton = findViewById(R.id.downVoteButton);
+        //downVoteButton.setOnClickListener(this);
         // RAWR Test: No downvote
-        downVoteButton.setVisibility(View.INVISIBLE);
+        //downVoteButton.setVisibility(View.INVISIBLE);
 
         shareButton = findViewById(R.id.shareButton);
         shareButton.setOnClickListener(this);
