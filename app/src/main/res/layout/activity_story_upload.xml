@@ -36,6 +36,19 @@
                 android:contentDescription="image to be uploaded" />
 
             <EditText
+                android:id="@+id/keywords"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="7dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginStart="7dp"
+                android:layout_weight="0.05"
+                android:ems="10"
+                android:hint="@string/insert_keywords_here"
+                android:maxLength="80" />
+
+            <EditText
                 android:id="@+id/story_caption"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,18 +65,6 @@
                 android:lines="3"
                 android:paddingTop="10dp" />
 
-            <EditText
-                android:id="@+id/keywords"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="7dp"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="7dp"
-                android:layout_marginStart="7dp"
-                android:layout_weight="0.05"
-                android:ems="10"
-                android:hint="@string/insert_keywords_here"
-                android:maxLength="80"/>
             <!--
                 <Button
                     android:id="@+id/uploadstory"

@@ -172,9 +172,11 @@ public class Startup extends AppCompatActivity {
     private void getUserData() {
         SharedPreferences preferences =  getSharedPreferences(PREFS_NAME, 0);
 
-        // Check if onboarding has been completed
+        // Check if onboarding has been completed & user Alert Builder
         if(!preferences.getBoolean("onboarding_complete",false)) {
-            // Stsart the onboarding Activity
+            // TO-DO: replace onboarding with alert. that appears after log in at maps activity?
+
+            // Start the onboarding Activity
             Intent onboarding = new Intent(this, Onboarding.class);
             startActivity(onboarding);
 
