@@ -174,14 +174,35 @@ public class Startup extends AppCompatActivity {
 
         // Check if onboarding has been completed & user Alert Builder
         if(!preferences.getBoolean("onboarding_complete",false)) {
-            // TO-DO: replace onboarding with alert. that appears after log in at maps activity?
 
-            // Start the onboarding Activity
+            // Start the onboarding Activity (OLD AND WORKING)
+
             Intent onboarding = new Intent(this, Onboarding.class);
             startActivity(onboarding);
 
             // Close the Startup activity
             finish();
+
+
+
+            // TO-DO: replace onboarding with alert. that appears after log in at maps activity?
+            /*
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Hello, you seem to be a new user!");
+            builder.setMessage("Check out our basic how-to for best experience");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    Intent login = new Intent(Startup.this, Login.class);
+                    startActivity(login);
+
+                    // start up URL
+
+                    finish();
+                }
+            });
+            builder.show();
+            */
 
         } else {
 
