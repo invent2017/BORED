@@ -7,7 +7,7 @@
 
     <string-array name="filter_story_options">
         <item>Nearby</item>
-        <item>Today's squawks</item>
+        <item>Today\'s squawks</item>
         <item>My squawks</item>
         <item>Read squawks</item>
     </string-array>
