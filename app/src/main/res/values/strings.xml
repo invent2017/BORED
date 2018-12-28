@@ -59,6 +59,10 @@
     <string name="action_log_out">Log out</string>
     <string name="username">username</string>
     <string name="email">email</string>
+    <string name="import_old_account">Import old account data</string>
+    <string name="login_old_account">Login to old account</string>
+    <string name="account_not_found">Account not found.</string>
+    <string name="transferring_data">Transferring data...</string>
 
 
     <string name="kilometres_covered">kilometres covered</string>

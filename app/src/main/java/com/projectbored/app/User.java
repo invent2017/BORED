@@ -62,7 +62,6 @@ public class User {
         this.admin = admin;
     }
 
-    @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("Username", username);

@@ -67,6 +67,7 @@ public class StoryUpload extends AppCompatActivity {
 
     String mCurrentPhotoPath;
     String storyKey;
+    String username;
 
     Bundle storySettings;
 
@@ -85,6 +86,8 @@ public class StoryUpload extends AppCompatActivity {
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mDataRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
+
+        username = mAuth.getUid();
 
         caption = findViewById(R.id.story_caption);
         if(storySettings.getString("Caption") != null) {
@@ -339,7 +342,7 @@ public class StoryUpload extends AppCompatActivity {
 
                         Map<String, Object> childUpdates = new HashMap<>();
 
-                        Story story = new Story(storyURI, storyLocation, storyCaption, keywords, new Date());
+                        Story story = new Story(storyURI, storyLocation, storyCaption, keywords, new Date(), username);
                         Map<String, Object> storyDetails = story.toMap();
 
                         childUpdates.put("/stories/" + storyKey, storyDetails);
@@ -347,11 +350,9 @@ public class StoryUpload extends AppCompatActivity {
                         String locationKey = (Double.toString(storyLocation.getLatitude()) + ","
                                 + Double.toString(storyLocation.getLongitude())).replace('.', 'd');
                         childUpdates.put("/locations/" + locationKey + "/" + storyKey, 0);
+                        childUpdates.put("/users/" + username + "/stories/" + storyKey, locationString);
 
-                        if (storySettings.getBoolean("Logged in")) {
-                            String username = mAuth.getUid();
-                            childUpdates.put("/users/" + username + "/stories/" + storyKey, locationString);
-                        }
+
 
                         if (storyCaption.contains("#")) {
                             String hashTagPattern = ("#(\\w+)");

@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -63,6 +64,9 @@ public class MultiSquawk extends AppCompatActivity {
 
     private StorageReference mStorageRef;
     private DatabaseReference mDataRef;
+    private FirebaseAuth mAuth;
+
+    String username;
 
     String mCurrentPhotoPath;
     String storyKey;
@@ -89,6 +93,9 @@ public class MultiSquawk extends AppCompatActivity {
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mDataRef = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+
+        username = mAuth.getUid();
 
         caption = findViewById(R.id.story_caption);
         if(storySettings.getString("Caption") != null) {
@@ -272,7 +279,7 @@ public class MultiSquawk extends AppCompatActivity {
 
                         Map<String, Object> childUpdates = new HashMap<>();
 
-                        Story story = new Story(storyURI, storyLocation, storyCaption, storyKeywords, new Date());
+                        Story story = new Story(storyURI, storyLocation, storyCaption, storyKeywords, new Date(), username);
                         Map<String, Object> storyDetails = story.toMap();
 
                         childUpdates.put("/stories/" + storyKey, storyDetails);

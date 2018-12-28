@@ -12,7 +12,7 @@ apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.projectbored.app"
         minSdkVersion 17
@@ -35,11 +35,6 @@ android {
     sourceSets {
         main {
             res.srcDirs = ['src/main/res', 'src/main/res/string']
-        }
-    }
-    externalNativeBuild {
-        cmake {
-            path 'CMakeLists.txt'
         }
     }
 }
@@ -71,10 +66,10 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:4.0.0'
     implementation 'com.facebook.android:facebook-android-sdk:4.34.0'
     implementation 'com.twitter.sdk.android:twitter-core:3.1.1'
-    implementation 'com.google.firebase:firebase-core:16.0.1'
-    implementation 'com.google.firebase:firebase-storage:16.0.1'
-    implementation 'com.google.firebase:firebase-auth:16.0.2'
-    implementation 'com.google.firebase:firebase-database:16.0.1'
+    implementation 'com.google.firebase:firebase-core:16.0.6'
+    implementation 'com.google.firebase:firebase-storage:16.0.5'
+    implementation 'com.google.firebase:firebase-auth:16.1.0'
+    implementation 'com.google.firebase:firebase-database:16.0.5'
     implementation 'com.firebaseui:firebase-ui-storage:4.0.0'
     implementation 'com.getbase:floatingactionbutton:1.10.1'
     implementation 'com.github.vajro:MaterialDesignLibrary:1.6'
@@ -82,9 +77,10 @@ dependencies {
     implementation 'com.ogaclejapan.smarttablayout:library:1.2.1@aar'
 
     //Crashlytics
-    api 'com.crashlytics.sdk.android:crashlytics:2.9.4'
+    api 'com.crashlytics.sdk.android:crashlytics:2.9.8'
 
     testImplementation 'junit:junit:4.12'
+    implementation 'com.google.firebase:firebase-database:16.0.5'
 }
 
 apply plugin: 'com.google.gms.google-services'

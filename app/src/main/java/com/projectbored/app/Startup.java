@@ -55,7 +55,7 @@ public class Startup extends AppCompatActivity {
         mDataRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
 
-        checkAppStatus();
+        getUserData();
 
     }
 
@@ -63,7 +63,7 @@ public class Startup extends AppCompatActivity {
     private void checkAppStatus() {
         mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 boolean underMaintenance = false;
                 if(dataSnapshot.child("maintenance").exists()) {
@@ -89,6 +89,7 @@ public class Startup extends AppCompatActivity {
     // 1: force update
     // else: choice to update
     private void checkUpdates(final DataSnapshot dataSnapshot) {
+
         final int versionCode = BuildConfig.VERSION_CODE;
         int latestVersionCode = dataSnapshot.child("VersionCode").getValue(Integer.class);
         if(versionCode < latestVersionCode) {
@@ -132,9 +133,10 @@ public class Startup extends AppCompatActivity {
         } else {
             checkEvents(dataSnapshot);
         }
+
     }
 
-    // removes expired events (in Startup instead of MapsActvitiy due to certain errors)
+    // removes expired events (in Startup instead of MapsActivity due to certain errors)
     private void checkEvents(DataSnapshot dataSnapshot) {
 
         for(DataSnapshot ds : dataSnapshot.child("events").getChildren()) {
@@ -165,7 +167,7 @@ public class Startup extends AppCompatActivity {
 
         }
 
-        getUserData();
+        startApp();
     }
 
     // Checks log-in and onboarding using SharedPreferences
@@ -249,9 +251,7 @@ public class Startup extends AppCompatActivity {
                     if(task.isSuccessful()) {
                         Toast.makeText(Startup.this, "Logged in as " + email + ".", Toast.LENGTH_SHORT).show();
 
-                        Intent i = new Intent(Startup.this, MapsActivityCurrentPlace.class);
-                        startActivity(i);
-                        finish();
+                        checkAppStatus();
                     }
                 }
             }).addOnFailureListener(Startup.this, new OnFailureListener() {
@@ -295,5 +295,11 @@ public class Startup extends AppCompatActivity {
             finish();
         }*/
         }
+    }
+
+    private void startApp(){
+        Intent i = new Intent(Startup.this, MapsActivityCurrentPlace.class);
+        startActivity(i);
+        finish();
     }
 }

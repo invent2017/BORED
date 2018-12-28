@@ -88,6 +88,9 @@ public class UserProfile extends AppCompatActivity {
         } else if(item.getItemId() == R.id.option_view_bookmarked_stories) {
             Intent viewBookmarkedStories = new Intent(this, BookmarkedStories.class);
             startActivity(viewBookmarkedStories);
+        } else if(item.getItemId() == R.id.option_import_account) {
+            Intent importOldAccount = new Intent(this, ImportOldAccount.class);
+            startActivity(importOldAccount);
         }
 
         return true;

@@ -118,23 +118,11 @@ public class CreateAccount extends AppCompatActivity {
                 storeLocalUserData(uid, email, password);
 
                 //Add user details to database
-                mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if(!(dataSnapshot.child("users").child(username).exists())) {
-                            User user = new User(username, email, password);
-                            Map<String, Object> userDetails = user.toMap();
-                            Map<String, Object> childUpdates = new HashMap<>();
-                            childUpdates.put("/users/" + uid, userDetails);
-                            mDataRef.updateChildren(childUpdates);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
+                User user = new User(username, email, password);
+                Map<String, Object> userDetails = user.toMap();
+                Map<String, Object> childUpdates = new HashMap<>();
+                childUpdates.put("/users/" + uid, userDetails);
+                mDataRef.updateChildren(childUpdates);
 
                 Toast.makeText(CreateAccount.this, "Logged in as " + email + ".", Toast.LENGTH_SHORT).show();
 

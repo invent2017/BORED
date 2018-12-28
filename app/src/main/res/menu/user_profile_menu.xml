@@ -11,4 +11,8 @@
     <item
         android:id="@+id/option_change_password"
         android:title="@string/change_password" />
+
+    <item
+        android:id="@+id/option_import_account"
+        android:title="@string/import_old_account" />
 </menu>

@@ -30,7 +30,7 @@ public class Story {
 
     }
 
-    public Story (Uri u, Location myLocation, String snippet, Date dateTime) {
+    public Story (Uri u, Location myLocation, String snippet, Date dateTime, String user) {
         uri = u.toString();
         location = myLocation;
         caption = snippet;
@@ -39,9 +39,10 @@ public class Story {
         views = 0;
         featured = false;
         flagged = false;
+        this.user = user;
     }
 
-    public Story (String uri, Location location, String caption, String keywords, Date dateTime) {
+    public Story (String uri, Location location, String caption, String keywords, Date dateTime, String user) {
         this.uri = uri;
         this.location = location;
         this.caption = caption;
@@ -51,6 +52,7 @@ public class Story {
         views = 0;
         featured = false;
         flagged = false;
+        this.user = user;
     }
 
     public Story(String u, Location myLocation, String snippet, Date dateTime, int numVotes, int numViews){
@@ -140,6 +142,7 @@ public class Story {
         result.put("Views",views);
         result.put("Featured", featured);
         result.put("Flagged", flagged);
+        result.put("User", user);
 
         return result;
     }
