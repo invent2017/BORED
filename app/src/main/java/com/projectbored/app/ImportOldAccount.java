@@ -89,6 +89,8 @@ public class ImportOldAccount extends AppCompatActivity {
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     importData(dataSnapshot, username);
                                     dialogInterface.dismiss();
+
+                                    finishActivity();
                                 }
                             }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
                                 @Override
@@ -164,6 +166,8 @@ public class ImportOldAccount extends AppCompatActivity {
                 }
                 transferringDataProgress.incrementProgressBy(20);
 
+                mDataRef.child("users").child(oldUsername).removeValue();
+
                 recountStats(dataSnapshot);
             }
 
@@ -206,7 +210,6 @@ public class ImportOldAccount extends AppCompatActivity {
 
         transferringDataProgress.incrementProgressBy(20);
 
-        finishActivity();
 
     }
 

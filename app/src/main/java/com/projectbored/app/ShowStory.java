@@ -354,6 +354,20 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                 if(!(dataSnapshot.child("ReadStories").hasChild(STORY_KEY))){
                     dataSnapshot.child("ReadStories").child(STORY_KEY).getRef().setValue(locationString);
                 }
+
+                /* In progress
+                TODO: Update user statistics when upvoted
+
+                String poster = dataSnapshot.child("stories").child(STORY_KEY).child("User").getValue(String.class);
+                int userViews = dataSnapshot.child("users").child(username).child("Views").getValue(Integer.class);
+                int posterViewsReceived = dataSnapshot.child("users").child(poster).child("Viewed").getValue(Integer.class);
+
+                userViews++;
+                posterViewsReceived++;
+
+                dataSnapshot.child("users").child(username).child("Views").getRef().setValue(userViews);
+                dataSnapshot.child("users").child(poster).child("Viewed").getRef().setValue(posterViewsReceived);
+                */
             }
 
             @Override
@@ -413,6 +427,21 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                     int votes = dataSnapshot.child("stories").child(STORY_KEY)
                             .child("Votes").getValue(Integer.class);
 
+                    /* In progress
+                    TODO: Update user statistics when upvoted
+
+                    String poster = dataSnapshot.child("stories").child(STORY_KEY).child("User").getValue(String.class);
+                    int userVotesGiven = dataSnapshot.child("users").child(username).child("Upvotes").getValue(Integer.class);
+                    int posterVotesReceived = dataSnapshot.child("users").child(poster).child("Upvoted").getValue(Integer.class);
+
+                    userVotesGiven++;
+                    posterVotesReceived++;
+
+                    dataSnapshot.child("users").child(username).child("Views").getRef().setValue(userVotesGiven);
+                    dataSnapshot.child("users").child(poster).child("Viewed").getRef().setValue(posterVotesReceived);
+                    */
+
+
                     // If you have already upvoted before
                     if(dataSnapshot.child("stories").child(STORY_KEY)
                             .child("Upvoters").hasChild(username)) {
@@ -425,20 +454,6 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                         dataSnapshot.child("users").child(username).child("UpvotedStories")
                                 .child(STORY_KEY).getRef().setValue(null);
 
-                    } else if(dataSnapshot.child("stories").child(STORY_KEY)
-                            .child("Downvoters").hasChild(username)) {
-
-                        // changes from downvote to upvote
-                        votes = votes + 2;
-                        dataSnapshot.child("stories").child(STORY_KEY)
-                                .child("Downvoters").child(username).getRef().setValue(null);
-                        dataSnapshot.child("stories").child(STORY_KEY)
-                                .child("Upvoters").child(username).getRef().setValue(username);
-
-                        dataSnapshot.child("users").child(username).child("DownvotedStories")
-                                .child(STORY_KEY).getRef().setValue(null);
-                        dataSnapshot.child("users").child(username).child("UpvotedStories")
-                                .child(STORY_KEY).getRef().setValue(locationString);
                     } else {
 
                         // upvotes

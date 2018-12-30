@@ -229,21 +229,32 @@ public class Startup extends AppCompatActivity {
 
     // verify log-in
     private void verifyAccount(final String email, String password) {
-        if (email.equals("") || password.equals("")) {
+        if(!getSharedPreferences(PREFS_NAME, 0).getBoolean("old_account_option_seen", false))
+        {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Hello!");
-            builder.setMessage("If you have created an account using an earlier version of the app, you will need to create a new account as we are moving your account data to a more secure place. You will not be able to access any data you may have saved in your old account for now, but we will work on migrating it over to your new account.");
+            builder.setMessage("If you have created an account using an earlier version of the app, you may now migrate the data over from your old account. This option can be found in the menu on your profile page.");
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    Intent logout = new Intent(Startup.this, Logout.class);
-                    logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(logout);
-
-                    finish();
+                    dialogInterface.dismiss();
                 }
             });
             builder.show();
+
+            SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, 0).edit();
+            editor.putBoolean("old_account_option_seen", true);
+            editor.apply();
+        }
+
+
+        if (email.equals("") || password.equals("")) {
+            Intent logout = new Intent(Startup.this, Logout.class);
+            logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(logout);
+
+            finish();
+
         } else {
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override

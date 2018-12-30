@@ -117,14 +117,16 @@ public class Login extends AppCompatActivity {
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        final String uid = task.getResult().getUser().getUid();
-                        storeLocalUserData(uid, email, password);
+                        if(task.isSuccessful()) {
+                            final String uid = task.getResult().getUser().getUid();
+                            storeLocalUserData(uid, email, password);
 
-                        Toast.makeText(Login.this, "Logged in as " + email + ".", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Logged in as " + email + ".", Toast.LENGTH_SHORT).show();
 
-                        Intent i = new Intent(Login.this, MapsActivityCurrentPlace.class);
-                        startActivity(i);
-                        finish();
+                            Intent i = new Intent(Login.this, MapsActivityCurrentPlace.class);
+                            startActivity(i);
+                            finish();
+                        }
                     }
                 }).addOnFailureListener(this, new OnFailureListener() {
                     @Override
