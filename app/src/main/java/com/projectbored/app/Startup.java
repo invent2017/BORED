@@ -27,6 +27,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import io.fabric.sdk.android.Fabric;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -166,6 +168,31 @@ public class Startup extends AppCompatActivity {
 
 
         }
+
+        /*int storiesWithoutURI = 0;
+        ArrayList<String> keyArray = new ArrayList<>();
+        for(DataSnapshot ds : dataSnapshot.child("stories").getChildren()) {
+            if(!ds.hasChild("URI")) {
+                storiesWithoutURI++;
+                keyArray.add(ds.getKey());
+            }
+        }
+
+        StringBuilder messageBuilder = new StringBuilder();
+        messageBuilder.append("Number of stories without URI: ").append(storiesWithoutURI).append("\n").append("\n");
+        for(String key : keyArray) {
+            messageBuilder.append(key).append("\n");
+        }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(Startup.this);
+        builder.setMessage(messageBuilder.toString());
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                startApp();
+            }
+        });
+        builder.show();*/
 
         startApp();
     }

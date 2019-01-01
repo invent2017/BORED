@@ -75,48 +75,55 @@ public class ImportOldAccount extends AppCompatActivity {
             final String username = oldUsernameField.getText().toString();
             final String password = oldPasswordField.getText().toString();
 
-            mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
+            if(username.contains(".") || username.contains("#") || username.contains("$") || username.contains("[")
+                    || username.contains("]")) {
+                errorMessageText.setText(R.string.error_invalid_username);
+            } else {
 
-                    if(dataSnapshot.child("users").hasChild(username)) {
-                        if(password.equals(dataSnapshot.child("users").child(username).child("Password").getValue(String.class))){
-                            AlertDialog.Builder builder = new AlertDialog.Builder(ImportOldAccount.this);
-                            builder.setTitle("Import data from " + username);
-                            builder.setMessage("Would you like to transfer data from " + username + " to this account?");
-                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    importData(dataSnapshot, username);
-                                    dialogInterface.dismiss();
+                mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
 
-                                    finishActivity();
-                                }
-                            }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    dialogInterface.dismiss();
-                                }
-                            });
+                        if (dataSnapshot.child("users").hasChild(username)) {
+                            if (password.equals(dataSnapshot.child("users").child(username)
+                                    .child("Password").getValue(String.class))) {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(ImportOldAccount.this);
+                                builder.setTitle("Import data from " + username);
+                                builder.setMessage("Would you like to transfer data from " + username + " to this account?");
+                                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        importData(dataSnapshot, username);
+                                        dialogInterface.dismiss();
 
-                            builder.show();
+                                        finishActivity();
+                                    }
+                                }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        dialogInterface.dismiss();
+                                    }
+                                });
 
+                                builder.show();
+
+
+                            } else {
+                                errorMessageText.setText(R.string.error_incorrect_password);
+                            }
 
                         } else {
-                            errorMessageText.setText(R.string.error_incorrect_password);
+                            errorMessageText.setText(R.string.account_not_found);
+                            mDataRef.child("users").removeEventListener(this);
                         }
-
-                    } else {
-                        errorMessageText.setText(R.string.account_not_found);
-                        mDataRef.child("users").removeEventListener(this);
                     }
-                }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                }
-            });
+                    }
+                });
+            }
 
 
         }
