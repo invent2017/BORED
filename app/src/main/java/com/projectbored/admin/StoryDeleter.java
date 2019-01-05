@@ -88,9 +88,22 @@ public class StoryDeleter extends AppCompatActivity {
                     if(ds.child("stories").hasChild(storyKey)) {
                         ds.child("stories").child(storyKey).getRef().removeValue();
                     }
-                    /*if(ds.child("Bookmarked").hasChild(storyKey)) {
+
+                    if(ds.child("Bookmarked").hasChild(storyKey)) {
                         ds.child("Bookmarked").child(storyKey).getRef().removeValue();
-                    }*/
+                    }
+
+                    if(ds.child("UpvotedStories").hasChild(storyKey)) {
+                        ds.child("UpvotedStories").child(storyKey).getRef().removeValue();
+                    }
+
+                    if(ds.child("IgnoredStories").hasChild(storyKey)) {
+                        ds.child("IgnoredStories").child(storyKey).getRef().removeValue();
+                    }
+
+                    if(ds.child("ReadStories").hasChild(storyKey)) {
+                        ds.child("ReadStories").child(storyKey).getRef().removeValue();
+                    }
                 }
             }
 

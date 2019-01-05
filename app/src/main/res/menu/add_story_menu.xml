@@ -2,7 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/option_change_image"
+        android:title="@string/change_image"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/option_upload_story"
         android:title="@string/nextonly"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
 </menu>

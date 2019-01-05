@@ -28,10 +28,10 @@
         android:title="@string/add_story"
         app:showAsAction="always" />
 
-<!--    <item
+    <item
         android:id="@+id/option_clean_database"
         android:title="Do stuff"
         app:showAsAction="always" />
--->
+
 
 </menu>

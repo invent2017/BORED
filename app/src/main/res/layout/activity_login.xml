@@ -33,13 +33,13 @@
             android:textSize="36sp" />
 
         <EditText
-            android:id="@+id/signInUsername"
+            android:id="@+id/signInEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:ems="10"
             android:fontFamily="monospace"
-            android:hint="@string/prompt_username"
+            android:hint="@string/prompt_email"
             android:inputType="textPersonName" />
 
         <EditText

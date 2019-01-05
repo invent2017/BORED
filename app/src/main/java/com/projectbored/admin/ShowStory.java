@@ -3,6 +3,7 @@ package com.projectbored.admin;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ import java.util.Locale;
 public class ShowStory extends AppCompatActivity implements View.OnClickListener {
     private static final String PREFS_NAME = "UserDetails";
 
+    TextView storyKeyView;
     ImageView imageView;
     ImageButton upVoteButton;
     ImageButton downVoteButton;
@@ -64,9 +66,11 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
-        imageView = (ImageView)findViewById(R.id.imageView);
+        storyKeyView = findViewById(R.id.storyKeyView);
 
-        upVoteButton = (ImageButton)findViewById(R.id.upVoteButton);
+        imageView = findViewById(R.id.imageView);
+
+        upVoteButton = findViewById(R.id.upVoteButton);
         upVoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +78,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
             }
         });
 
-        downVoteButton = (ImageButton)findViewById(R.id.downVoteButton);
+        downVoteButton = findViewById(R.id.downVoteButton);
         downVoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +86,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
             }
         });
 
-        shareButton = (ImageButton)findViewById(R.id.shareButton);
+        shareButton = findViewById(R.id.shareButton);
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,14 +94,14 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
             }
         });
 
-        voteNumber = (TextView) findViewById(R.id.voteNumber);
-        viewNumber = (TextView) findViewById(R.id.viewNumber);
+        voteNumber = findViewById(R.id.voteNumber);
+        viewNumber = findViewById(R.id.viewNumber);
 
-        storyCaption = (TextView) findViewById(R.id.storyCaption);
+        storyCaption = findViewById(R.id.storyCaption);
 
         storyDetails = getIntent().getExtras();
 
-        reportStoryButton = (Button) findViewById(R.id.reportstory);
+        reportStoryButton = findViewById(R.id.reportstory);
         reportStoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,13 +113,13 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         loggedIn = storyDetails.getBoolean("Logged in");
 
 
-        addView();
+        //addView();
 
         //trying to do emoji things
 
     }
 
-    public void addView(){
+    /*public void addView(){
         final String storyKey = storyDetails.getString("key");
         DatabaseReference mStoryRef = FirebaseDatabase.getInstance().getReference().child("stories").child(storyKey).child("Views");
         mStoryRef.runTransaction(new Transaction.Handler() {
@@ -141,7 +145,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
             String username = getUsername();
             mDataRef.child("stories").child(storyKey).child("Viewers").child(username).setValue(username);
         }
-    }
+    }*/
 
     // stuff the buttons do when clicked -hy
 
@@ -300,6 +304,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
 
     private void loadStoryDetails(Bundle storyDetails){
         final String storyKey = storyDetails.getString("key");
+        storyKeyView.setText(storyKey);
 
         if(storyKey != null) {
             mViewsRef= FirebaseDatabase.getInstance().getReference().child("stories").child(storyKey).child("Views");
@@ -311,10 +316,10 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                     String caption = dataSnapshot.child("Caption").getValue(String.class);
 
                     if(uri != null && caption != null){
-                        StorageReference mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl(uri);
+                        //StorageReference mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl(uri);
 
                         //Load story image into image view.
-                        Glide.with(ShowStory.this).using(new FirebaseImageLoader()).load(mStorageRef).into(imageView);
+                        Glide.with(ShowStory.this).load(Uri.parse(uri)).into(imageView);
 
                         storyCaption.setText(caption);
                     }

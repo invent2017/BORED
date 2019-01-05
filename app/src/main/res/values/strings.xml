@@ -19,6 +19,8 @@
     <string name="report"><b>Report</b></string>
     <string name="title_activity_login">Sign in</string>
     <string name="views"> views</string>
+    <string name="insert_keywords_here">Insert keywords here</string>
+    <string name="change_image">Change Image</string>
 
     <!-- Strings related to login -->
     <string name="login_title">Welcome to BORED!</string>
@@ -32,7 +34,8 @@
     <string name="error_incorrect_username">This username does not exist.</string>
     <string name="error_existing_username">This username is already taken.</string>
     <string name="error_invalid_email">Please enter a valid email address.</string>
-    <string name="error_existing_email">An accounr with this email address already exists.</string>
+    <string name="error_incorrect_email">An account with this email address does not exist.</string>
+    <string name="error_existing_email">An account with this email address already exists.</string>
     <string name="error_invalid_password">This password is too short.</string>
     <string name="error_incorrect_password">This password is incorrect.</string>
     <string name="error_field_required">Please fill in all fields.</string>

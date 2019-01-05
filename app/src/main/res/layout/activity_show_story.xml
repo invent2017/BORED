@@ -26,6 +26,13 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <TextView
+                android:id="@+id/storyKeyView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.69"
+                android:text="" />
+
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"

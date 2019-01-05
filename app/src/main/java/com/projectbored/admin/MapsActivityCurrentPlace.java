@@ -529,8 +529,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                         } else {
                             showNormalStories(storyKey, storyLocation);
                         }
-                    } else {
-                        Toast.makeText(MapsActivityCurrentPlace.this, "There are no stories.", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -731,23 +729,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         });
     }*/
 
-    /*private void cleanDatabase() {
-        mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.child("stories").getChildren()) {
-                    ds.child("User").getRef().removeValue();
-                    ds.child("Viewers").getRef().removeValue();
-                    ds.child("Upvoters").getRef().removeValue();
-                    ds.child("Downvoters").getRef().removeValue();
-                }
-            }
+    private void cleanDatabase() {
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }*/
+    }
 
 }

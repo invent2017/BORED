@@ -15,6 +15,7 @@ public class Story {
     private String uri;
     private Location location;
     private String caption;
+    private String keywords;
     private Date dateTime;
     private int votes;
     private int views;
@@ -22,12 +23,14 @@ public class Story {
     private boolean featured;
     private boolean flagged;
 
+    private String user;
+
 
     public Story() {
 
     }
 
-    public Story (Uri u, Location myLocation, String snippet, Date dateTime) {
+    public Story (Uri u, Location myLocation, String snippet, Date dateTime, String user) {
         uri = u.toString();
         location = myLocation;
         caption = snippet;
@@ -36,17 +39,20 @@ public class Story {
         views = 0;
         featured = false;
         flagged = false;
+        this.user = user;
     }
 
-    public Story (String uri, Location location, String caption, Date dateTime) {
+    public Story (String uri, Location location, String caption, String keywords, Date dateTime, String user) {
         this.uri = uri;
         this.location = location;
         this.caption = caption;
+        this.keywords = keywords;
         this.dateTime = dateTime;
         votes = 0;
         views = 0;
         featured = false;
         flagged = false;
+        this.user = user;
     }
 
     public Story(String u, Location myLocation, String snippet, Date dateTime, int numVotes, int numViews){
@@ -130,11 +136,13 @@ public class Story {
         result.put("URI", uri);
         result.put("Location", locationString(location));
         result.put("Caption", caption);
-        result.put("DateTime", dateTime);
+        result.put("Keywords", keywords);
+        result.put("Time", dateTime.getTime());
         result.put("Votes", votes);
         result.put("Views",views);
         result.put("Featured", featured);
         result.put("Flagged", flagged);
+        result.put("User", user);
 
         return result;
     }
@@ -147,5 +155,4 @@ public class Story {
         String storyLocation = latitude.toString() + "," + longitude.toString();
         return storyLocation;
     }
-
 }
