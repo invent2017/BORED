@@ -209,11 +209,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
                         Calendar storyCalendar = Calendar.getInstance();
                         storyCalendar.setTimeInMillis(timeInMillis);
 
-                        int storyDay = storyCalendar.get(Calendar.DAY_OF_MONTH);
-                        int storyMonth = storyCalendar.get(Calendar.MONTH);
-                        int storyYear = storyCalendar.get(Calendar.YEAR);
-
-                        DateCreator storyDateCreator = new DateCreator(storyDay, storyMonth, storyYear);
+                        DateCreator storyDateCreator = new DateCreator(storyCalendar);
                         dateText.setText(storyDateCreator.getDateString());
 
                     }

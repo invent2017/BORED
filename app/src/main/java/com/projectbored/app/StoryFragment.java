@@ -31,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -333,11 +334,11 @@ public class StoryFragment extends Fragment {
                         storyCaption.setText(caption);
                     }
 
-                    int storyDay = dataSnapshot.child("DateTime").child("date").getValue(Integer.class);
-                    int storyMonth = 1+ dataSnapshot.child("DateTime").child("month").getValue(Integer.class);
-                    int storyYear = 1900 + dataSnapshot.child("DateTime").child("year").getValue(Integer.class);
+                    long timeInMillis = dataSnapshot.child("Time").getValue(Long.class);
+                    Calendar storyCalendar = Calendar.getInstance();
+                    storyCalendar.setTimeInMillis(timeInMillis);
 
-                    DateCreator storyDateCreator = new DateCreator(storyDay, storyMonth, storyYear);
+                    DateCreator storyDateCreator = new DateCreator(storyCalendar);
                     dateText.setText(storyDateCreator.getDateString());
 
                 }
