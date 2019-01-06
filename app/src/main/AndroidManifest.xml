@@ -97,7 +97,7 @@
 
         <activity android:name=".EmptyMap" />
         <activity android:name=".LogoutNoToast" />
-        <activity android:name=".ImportOldAccount"></activity>
+        <activity android:name=".ImportOldAccount" />
     </application>
 
 </manifest>

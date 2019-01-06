@@ -588,7 +588,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                         String keywords = dataSnapshot.child("stories").child(storyKey).child("Keywords").getValue(String.class);
                         if (keywords == null) {
                             Toast.makeText(this,
-                                    "There is a squwawk in " + markerDistance + " metres. Tap again to open!",
+                                    "There is a squawk in " + markerDistance + " metres. Tap again to open!",
                                     Toast.LENGTH_SHORT).show();
                             mDataRef.child("users").child(username).child("IgnoredStories").child(storyKey).setValue(storyKey);
                         } else {
@@ -652,7 +652,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                     String keywords = dataSnapshot.child("stories").child(storyKey).child("Keywords").getValue(String.class);
                     if (keywords == null) {
                         Toast.makeText(this,
-                                "There is a squwawk in " + markerDistance + " metres.", Toast.LENGTH_SHORT).show();
+                                "There is a squawk in " + markerDistance + " metres.", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(this,
                                 "In " + markerDistance + "metres, a squawk contains " + keywords + ".",
@@ -954,7 +954,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         mDataRef.removeEventListener(storyListener);
         mDataRef.child("stories").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     if(ds.exists()) {
                         String[] locationArray = ds.child("Location").getValue(String.class).split(",");
@@ -986,7 +986,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });

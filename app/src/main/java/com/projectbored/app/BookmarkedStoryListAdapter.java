@@ -2,6 +2,7 @@ package com.projectbored.app;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -81,8 +82,7 @@ public class BookmarkedStoryListAdapter extends BaseAdapter {
         String storyKey = storyKeys.get(i);
         String storyUri = dataSnapshot.child(storyKey).child("URI").getValue(String.class);
 
-        StorageReference mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl(storyUri);
-        Glide.with(context).load(mStorageRef).into(viewHolder.imageView);
+        Glide.with(context).load(Uri.parse(storyUri)).into(viewHolder.imageView);
 
         String storyCaption = dataSnapshot.child(storyKey).child("Caption").getValue(String.class);
         if(storyCaption == null) {

@@ -118,8 +118,7 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
-                            final String uid = task.getResult().getUser().getUid();
-                            storeLocalUserData(uid, email, password);
+                            storeLocalUserData(email, password);
 
                             Toast.makeText(Login.this, "Logged in as " + email + ".", Toast.LENGTH_SHORT).show();
 
@@ -184,7 +183,7 @@ public class Login extends AppCompatActivity {
     */
 
     // Local database things so you remain signed in unless you sign out
-    private void storeLocalUserData(String uid, String email, String password) {
+    private void storeLocalUserData(String email, String password) {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean("Logged in", true);
