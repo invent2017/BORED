@@ -25,6 +25,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,6 +69,8 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     private String locationString;
     private String username;
 
+    ScrollView scrollView;
+
     ArrayList<String> comments;
 
     ImageView imageView;
@@ -80,7 +83,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     TextView dateText;
     ImageButton reportStoryButton;
     ListView commentsList;
-    EditText commentInput;
+    ExitableEditText commentInput;
 
     int storyVotes;
     int storyViews;
@@ -107,6 +110,16 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         // Prevents keyboard from automoatically appearing
         // also did focusableInTouchMode in layout to prevent activity from automatically scrolling
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+        scrollView = findViewById(R.id.story_scroll_view);
+        scrollView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                view.requestFocusFromTouch();
+                return false;
+            }
+
+        });
 
         storyDetails = getIntent().getExtras();
         STORY_KEY = storyDetails.getString("key");
@@ -272,6 +285,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
         Comment comment = new Comment(username, STORY_KEY, commentString);
         Map<String, Object> commentDetails = comment.toMap();
         String commentKey = mDataRef.push().getKey();
+        comments.clear();
         mDataRef.child("comments").child(STORY_KEY).child(commentKey).setValue(commentDetails);
         commentInput.setText("");
     }
@@ -555,6 +569,7 @@ public class ShowStory extends AppCompatActivity implements View.OnClickListener
     // Pressing back moves story back to map
     @Override
     public void onBackPressed() {
+
         finish();
     }
 

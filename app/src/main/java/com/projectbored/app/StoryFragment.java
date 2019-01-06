@@ -44,7 +44,6 @@ public class StoryFragment extends Fragment {
 
     ImageView imageView;
     ImageButton upVoteButton;
-    ImageButton downVoteButton;
     ImageButton shareButton;
     TextView voteNumber;
     TextView viewNumber;
